@@ -1,0 +1,1764 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Stellar Spectra Part 5: Domain Transfer &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter2/spectra-5';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter2/spectra-5.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tabular Data" href="../chapter3/section_intro.html" />
+    <link rel="prev" title="Stellar Spectra Part 4: Detecting Stellar Activity Indicators" href="spectra-4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1/section_intro.html">Time-domain Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Spectra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter2/spectra-5.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter2/spectra-5.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter2/spectra-5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter2/spectra-5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stellar Spectra Part 5: Domain Transfer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-synthetic-gap">The Synthetic Gap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-data-driven-approach-to-bridge-the-gap">A Data-driven Approach to Bridge the Gap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-starnet-generators">Cycle-StarNet: Generators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-starnet-discriminators">Cycle-StarNet: Discriminators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-starnet-losses">Cycle-StarNet: Losses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-reconstructions">Visualizing Reconstructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-synth-rightarrow-chi-synth"><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{synth}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-obs-rightarrow-chi-obs"><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{obs}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-synth-rightarrow-chi-obs"><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-obs-rightarrow-chi-synth"><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-synth-rightarrow-chi-obs-rightarrow-chi-synth"><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs} \rightarrow \chi_{synth}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-obs-rightarrow-chi-synth-rightarrow-chi-obs"><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth} \rightarrow \chi_{obs}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-consistency">Representation Consistency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-analyses">Sensitivity Analyses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-toy-example">A Toy Example</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stellar-spectra-part-5-domain-transfer">
+<span id="content-references-spectra-part5"></span><h1>Stellar Spectra Part 5: <em>Domain Transfer</em><a class="headerlink" href="#stellar-spectra-part-5-domain-transfer" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>In this Section, we will explore a case study of using machine learning to bridge the gap between theory and observation.</p>
+<section id="the-synthetic-gap">
+<h2>The Synthetic Gap<a class="headerlink" href="#the-synthetic-gap" title="Permalink to this headline">#</a></h2>
+<p>Synthetic spectra often fail to perfectly reproduce real stellar observations. This mismatch is known as the <strong>synthetic gap</strong>, and it arises from several limitations:</p>
+<ul class="simple">
+<li><p>Incomplete or uncertain atomic/molecular data, including oscillator strengths</p></li>
+<li><p>Not all spectral lines are well characterized from laboratory experiments.</p></li>
+<li><p>Molecular bands in cool stars (e.g., CN) can be especially difficult to model accurately.</p></li>
+<li><p>Simplifying assumptions in theoretical spectra, such one-dimensional static atmospheres, hydrostatic equilibrium, and Local Thermodynamic Equibrium (LTE). Non-LTE effects such as convection, rotation, and magnetic fields that alter line shapes and strengths are not simulated.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Local Thermodynamic Equilibrium (LTE) is the idea that the population of atomic energy levels is determined solely by the local temperature. In other words, this is as if each layer of the star were in perfect thermal balance and can be described a single, well-defined temperature. This allows us to use familiar thermodynamic laws (like the Boltzmann and Saha equations) to describe atomic populations and line formation, even though the overall atmosphere is not in full equilibrium.</p>
+<p>In reality, stellar atmospheres can deviate from LTE, particularly in cases where radiation governs atomic excitation and ionization instead of collisions. This may affect line strengths and shapes, such that models assuming LTE misrepresent key spectral features.</p>
+</div>
+<ul class="simple">
+<li><p>Emission lines and line core fillings due to chromospheric heating (e.g., in <a class="reference internal" href="spectra-4.html#content-references-spectra-part4"><span class="std std-ref">Stellar Spectra Part 4: Detecting Stellar Activity Indicators</span></a>) are not included</p></li>
+<li><p>Real observations are affected by noise, resolution, and telluric contamination, which are difficult to replicate in models.</p></li>
+</ul>
+<figure class="align-default" id="arcturus">
+<a class="reference internal image-reference" href="../_images/arcturus.png"><img alt="../_images/arcturus.png" src="../_images/arcturus.png" style="width: 700px; height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Observed (black) and calculated (red) spectra for Arcturus from <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2015PhyS...90e4010H/abstract">Heiter et al. (2015)</a>. The observed features are mostly replicated by the calculations, except in several places at which the calculated lines are too weak or completely missing, indicative of the synthetic gap.</span><a class="headerlink" href="#arcturus" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="a-data-driven-approach-to-bridge-the-gap">
+<h2>A Data-driven Approach to Bridge the Gap<a class="headerlink" href="#a-data-driven-approach-to-bridge-the-gap" title="Permalink to this headline">#</a></h2>
+<p>To mitigate effects of the synthetic gap, the <a class="reference external" href="https://github.com/teaghan/Cycle_SN"><code class="docutils literal notranslate"><span class="pre">Cycle-StarNet</span></code></a> machine learning framework was designed to freely convert spectral observations between the synthetic and observed domain. The method is based on Generative Adversarial Network (GAN) approaches for image-to-image translation and domain adaptation, including <a class="reference external" href="https://github.com/junyanz/CycleGAN"><code class="docutils literal notranslate"><span class="pre">CycleGAN</span></code></a> and <a class="reference external" href="https://github.com/mingyuliutw/UNIT"><code class="docutils literal notranslate"><span class="pre">UNIT</span></code> (Unsupervised Image-to-Image Translation Networks)</a>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">CycleGAN</p>
+<p>At its essence, the CycleGAN architecture comprises two generator networks and two discriminator networks:</p>
+<ul class="simple">
+<li><p>The <strong>generators</strong> learn to translate data between two domains: one maps from domain A to domain B, and the other from B to A.</p></li>
+<li><p>The <strong>discriminators</strong> evaluate whether a given image belongs to the true data distribution of each domain or is a generated (translated) image.</p></li>
+</ul>
+<p>A key innovation in CycleGAN is the introduction of <strong>cycle consistency</strong>: if an image is translated to the other domain and then translated back, the result should closely resemble the original. This constraint ensures that the generators do more than just produce realistic outputs; they must also preserve the underlying content or structure during translation, even without paired training examples.</p>
+<figure class="align-default" id="cyclegan">
+<a class="reference internal image-reference" href="../_images/CycleGAN.png"><img alt="../_images/CycleGAN.png" src="../_images/CycleGAN.png" style="width: 800px; height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Schematic of CycleGAN. Image source: <a class="reference external" href="https://pyimagesearch.com/2022/09/12/cyclegan-unpaired-image-to-image-translation-part-1/">PyImageSearch</a></span><a class="headerlink" href="#cyclegan" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<section id="cycle-starnet-generators">
+<h3>Cycle-StarNet: Generators<a class="headerlink" href="#cycle-starnet-generators" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="cyclestarnet1">
+<a class="reference internal image-reference" href="../_images/CycleStarNet1.png"><img alt="../_images/CycleStarNet1.png" src="../_images/CycleStarNet1.png" style="width: 450px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Schematic of the generative architecture for <code class="docutils literal notranslate"><span class="pre">Cycle-StarNet</span></code>.</span><a class="headerlink" href="#cyclestarnet1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Key Points</strong></p>
+<ul class="simple">
+<li><p>Encoder-latent space-decoder (<span class="math notranslate nohighlight">\(E-\mathcal{Z}-D\)</span>) architectures exist for each <strong>observed</strong> (<span class="math notranslate nohighlight">\(\chi_{obs}\)</span>) and <strong>synthetic</strong> (<span class="math notranslate nohighlight">\(\chi_{synth}\)</span>) domains.</p></li>
+<li><p><em>The Payne</em>, a neural network, provides a differentiable spectral generator in the synthetic domain.</p></li>
+<li><p>There is a <strong>shared</strong> (<span class="math notranslate nohighlight">\(_{sh}\)</span>) and <strong>split</strong> (<span class="math notranslate nohighlight">\(_{sp}\)</span>) component for each <span class="math notranslate nohighlight">\(E-\mathcal{Z}-D\)</span> architecture.</p>
+<ul>
+<li><p>The split components encode and recinstruct information that is unique to the observed domain such as instrumental noise, telluric contamination, and spectral resolution differences in the observed spectra.</p></li>
+<li><p>The shared components ideally encode and reconstruct astrophysical information common to both domains, which are spectral features like absorption and emission.</p></li>
+<li><p>The latent space <span class="math notranslate nohighlight">\(\mathcal{Z}_{sh}\)</span> enforces that encoders from both domains must extract and preserve only the astrophysically meaningful, <strong>domain-invariant</strong> structure of the spectrum.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cycle-StarNet</span></code> performs the following reconstructions:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\chi_{synth \rightarrow synth}\)</span> : synthetic domain autoencoding</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi_{obs \rightarrow obs}\)</span>: observational domain autoencoding</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi_{synth \rightarrow obs}\)</span>: translating synthetic spectra to their observed forms</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi_{obs \rightarrow synth}\)</span>: translating observed spectra to their synthetic forms</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="cycle-starnet-discriminators">
+<h3>Cycle-StarNet: Discriminators<a class="headerlink" href="#cycle-starnet-discriminators" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="cyclestarnet2">
+<a class="reference internal image-reference" href="../_images/CycleStarNet2.png"><img alt="../_images/CycleStarNet2.png" src="../_images/CycleStarNet2.png" style="width: 450px; height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Schematic of the discriminative architecture for <code class="docutils literal notranslate"><span class="pre">Cycle-StarNet</span></code>.</span><a class="headerlink" href="#cyclestarnet2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Each domain’s discriminator <span class="math notranslate nohighlight">\(C\)</span> serves to identify which reconstruction actually belongs to a cross-domain translation as opposed to a within-domain reconstruction.</p>
+<p>Crucially, the discriminator also uses the shared latent space representations of inputs from both domains (i.e., <span class="math notranslate nohighlight">\(\mathcal{Z}_{sh, synth}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{Z}_{sh, obs}\)</span>) to make its classification. This encourages the cross-domain generators to create both spectral reconstructions and latent representations that can fool the discriminator. By having similar latent representations, there exists semantic alignment of the encoded astrophysical information across domains.</p>
+</section>
+<section id="cycle-starnet-losses">
+<h3>Cycle-StarNet: Losses<a class="headerlink" href="#cycle-starnet-losses" title="Permalink to this headline">#</a></h3>
+<p>The total loss function <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> comprises the following :</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}_{rec}\)</span>: within-domain mean squared error reconstruction loss for both <span class="math notranslate nohighlight">\(\chi_{synth}\)</span> and <span class="math notranslate nohighlight">\(\chi_{obs}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}_{adv}\)</span>: domain transfer loss in the form of binary cross-entropy for both <span class="math notranslate nohighlight">\(C_{synth}\)</span> and <span class="math notranslate nohighlight">\(C_{obs}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}_{cr}\)</span>: cycle reconstruction loss (mean squared error) for the following cross-domain reconstructions</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\chi_{obs \rightarrow synth \rightarrow obs}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi_{synth \rightarrow obs \rightarrow synth}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">The Necessity of Cycle Consistency</p>
+<p>The GAN loss encourages the generator to produce outputs that are indistinguishable from the target domain. However, this only ensures that the generator produces an output that came from the target domain, with no guarantee that it has <strong>preserved</strong> information from the home domain of the input.</p>
+<p>Cycle consistency enforces <strong>invertibility</strong>, such that <span class="math notranslate nohighlight">\(\chi_{obs \rightarrow synth \rightarrow obs}\)</span> retains information about <span class="math notranslate nohighlight">\(\chi_{obs}\)</span>, and similarly <span class="math notranslate nohighlight">\(\chi_{synth \rightarrow obs \rightarrow synth}\)</span> retains information about <span class="math notranslate nohighlight">\(\chi_{synth}\)</span>.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The adversarial loss <span class="math notranslate nohighlight">\(\mathcal{L}_{adv}\)</span> involves training domain-specific discriminators (<span class="math notranslate nohighlight">\(C_{{synth}}\)</span>, <span class="math notranslate nohighlight">\(C_{{obs}}\)</span>) to distinguish between real and translated spectra.</p>
+<p><strong>Question</strong>:<br />
+When training <span class="math notranslate nohighlight">\(C_{{synth}}\)</span>, what label should be assigned to each class?</p>
+<ul class="simple">
+<li><p>A) Assign label <code class="docutils literal notranslate"><span class="pre">1</span></code> to <span class="math notranslate nohighlight">\(\chi_{{obs} \rightarrow {synth}}\)</span>, and label <code class="docutils literal notranslate"><span class="pre">0</span></code> to <span class="math notranslate nohighlight">\(\chi_{{synth}}\)</span></p></li>
+<li><p>B) Assign label <code class="docutils literal notranslate"><span class="pre">1</span></code> to <span class="math notranslate nohighlight">\(\chi_{{synth}}\)</span>, and label <code class="docutils literal notranslate"><span class="pre">0</span></code> to <span class="math notranslate nohighlight">\(\chi_{{obs} \rightarrow {synth}}\)</span></p></li>
+<li><p>C) Assign label <code class="docutils literal notranslate"><span class="pre">1</span></code> to both, since both live in the synthetic domain</p></li>
+<li><p>D) Assign label <code class="docutils literal notranslate"><span class="pre">0.5</span></code> to encourage uncertain classification</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p><strong>Correct Answer: B)</strong></p>
+<p>The discriminator <span class="math notranslate nohighlight">\(C_{{synth}}\)</span> is trained to:</p>
+<ul class="simple">
+<li><p>Output <strong><code class="docutils literal notranslate"><span class="pre">1</span></code> for real synthetic spectra</strong> (<span class="math notranslate nohighlight">\(\chi_{{synth}}\)</span>)</p></li>
+<li><p>Output <strong><code class="docutils literal notranslate"><span class="pre">0</span></code> for fake synthetic spectra</strong>, i.e., observed spectra that have been translated to the synthetic domain (<span class="math notranslate nohighlight">\(\chi_{{obs} \rightarrow {synth}}\)</span>)</p></li>
+</ul>
+<p>This setup allows the generator for the observed <span class="math notranslate nohighlight">\(\rightarrow\)</span> synthetic transformation to learn from its mistakes: if <span class="math notranslate nohighlight">\(C_{{synth}}\)</span> successfully detects a fake, the generator is penalized, and its parameters are adjusted to produce more realistic translations.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="visualizing-reconstructions">
+<h2>Visualizing Reconstructions<a class="headerlink" href="#visualizing-reconstructions" title="Permalink to this headline">#</a></h2>
+<p>Next, let’s examine the spectral reconstructions of a pre-trained version of <code class="docutils literal notranslate"><span class="pre">Cycle-StarNet</span></code>. The implementation here closely follows the example demonstrated by the <a class="reference external" href="https://github.com/teaghan/Cycle_SN">official repo</a>. The following lists the network architecture:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">configparser</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span><span class="p">,</span> <span class="n">mark_inset</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter2&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+<span class="n">script_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter2&#39;</span> <span class="o">/</span> <span class="s1">&#39;scripts&#39;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">script_folder_path</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="kn">from</span> <span class="nn">network</span> <span class="kn">import</span> <span class="n">CycleSN</span>
+<span class="kn">from</span> <span class="nn">training_fns</span> <span class="kn">import</span> <span class="n">create_synth_batch</span><span class="p">,</span> <span class="n">CSNDataset</span>
+<span class="kn">from</span> <span class="nn">analysis_fns</span> <span class="kn">import</span> <span class="n">apstarwavegrid</span><span class="p">,</span> <span class="n">plot_spec_resid_density</span><span class="p">,</span> <span class="n">tsne_domain_analysis2</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">redirect_stdout</span>
+<span class="kn">import</span> <span class="nn">io</span>
+
+<span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;kurucz_to_apogee_1&#39;</span>
+
+<span class="c1"># Directories</span>
+<span class="n">csn_dir</span> <span class="o">=</span> <span class="s1">&#39;..&#39;</span>
+<span class="n">config_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/csn_config/&#39;</span>
+<span class="n">model_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/csn_models&#39;</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span>
+
+<span class="c1"># Model configuration</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_dir</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.ini&#39;</span><span class="p">)</span>
+<span class="n">architecture_config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ARCHITECTURE&#39;</span><span class="p">]</span>
+
+<span class="c1"># Data Files</span>
+<span class="n">data_file_obs</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/csn_apogee_test.h5&#39;</span>
+<span class="n">spectra_norm_file</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/mean_and_std_PAYNE_specs.npy&#39;</span>
+<span class="n">emulator_fn</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;DATA&#39;</span><span class="p">][</span><span class="s1">&#39;emulator_fn&#39;</span><span class="p">])</span>
+
+<span class="c1"># Defining Model and Loading Pre-trained Weights into it&quot;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CycleSN</span><span class="p">(</span><span class="n">architecture_config</span><span class="p">,</span> <span class="n">emulator_fn</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model_filename</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.pth.tar&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_filename</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;cycle_model&#39;</span><span class="p">]))</span>
+
+<span class="n">buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">redirect_stdout</span><span class="p">(</span><span class="n">buffer</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Synthetic Emulator:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">emulator</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Encoder_synth and Encoder_obs :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">encoder_synth</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Encoder_sh :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">encoder_sh</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">use_split</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Encoder_sp :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">encoder_sp</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decoder_sp :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">decoder_sp</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decoder_sh :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">decoder_sh</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decoder_synth and Decoder_obs :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">decoder_synth</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Discrim_synth and Discrim_obs :</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">discriminator_synth</span><span class="p">)</span>
+
+<span class="n">_summary</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="n">buffer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Markdown</span>
+<span class="n">Markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;```</span><span class="se">\n</span><span class="si">{</span><span class="n">_summary</span><span class="si">}</span><span class="se">\n</span><span class="s2">```&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;All keys matched successfully&gt;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Synthetic</span> <span class="n">Emulator</span><span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">7214</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">Encoder_synth</span> <span class="ow">and</span> <span class="n">Encoder_obs</span> <span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">Encoder_sh</span> <span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">6</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">7</span><span class="p">):</span> <span class="n">InstanceNorm1d</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">track_running_stats</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">Encoder_sp</span> <span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">6</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">7</span><span class="p">):</span> <span class="n">InstanceNorm1d</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">track_running_stats</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">Decoder_sp</span> <span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">Decoder_sh</span> <span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">Decoder_synth</span> <span class="ow">and</span> <span class="n">Decoder_obs</span> <span class="p">:</span>
+ <span class="n">Sequential</span><span class="p">(</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">ConvTranspose1d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+  <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+<span class="p">)</span>
+
+<span class="n">Discrim_synth</span> <span class="ow">and</span> <span class="n">Discrim_obs</span> <span class="p">:</span>
+ <span class="n">Discrimninator</span><span class="p">(</span>
+  <span class="p">(</span><span class="n">discriminator_x</span><span class="p">):</span> <span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">8</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">9</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="p">(</span><span class="n">discriminator_z</span><span class="p">):</span> <span class="n">Sequential</span><span class="p">(</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">2</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">4</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">6</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="p">(</span><span class="mi">8</span><span class="p">):</span> <span class="n">Conv1d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,))</span>
+    <span class="p">(</span><span class="mi">9</span><span class="p">):</span> <span class="n">LeakyReLU</span><span class="p">(</span><span class="n">negative_slope</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+  <span class="p">)</span>
+  <span class="p">(</span><span class="n">fc</span><span class="p">):</span> <span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="mi">13824</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="p">(</span><span class="n">activ_out</span><span class="p">):</span> <span class="n">Sigmoid</span><span class="p">()</span>
+<span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we define preliminary properties of the dataset to be used. We start, with a batch of observational data, contained in <code class="docutils literal notranslate"><span class="pre">obs_batch</span></code>. The global stellar parameters (e.g., <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>, <span class="math notranslate nohighlight">\(\log\)</span>(g)) and abundances ([X/H]) of each are already known, and from these, synthetic spectra <code class="docutils literal notranslate"><span class="pre">synth_batch</span></code> will be generated using <em>The Payne</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_spec</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;test&#39;</span>
+
+<span class="c1"># Normalization data for the spectra</span>
+<span class="n">x_mean</span><span class="p">,</span> <span class="n">x_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">spectra_norm_file</span><span class="p">)</span>
+
+<span class="c1"># Load ASPCAP wave-grid</span>
+<span class="n">wave_grid</span> <span class="o">=</span> <span class="n">apstarwavegrid</span><span class="p">()[</span><span class="mi">47</span><span class="p">:]</span>
+
+<span class="c1"># A set of observed spectra</span>
+<span class="n">obs_dataset</span> <span class="o">=</span> <span class="n">CSNDataset</span><span class="p">(</span><span class="n">data_file_obs</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">x_mean</span><span class="o">=</span><span class="n">x_mean</span><span class="p">,</span> 
+                             <span class="n">x_std</span><span class="o">=</span><span class="n">x_std</span><span class="p">,</span> <span class="n">line_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">obs_batch</span> <span class="o">=</span> <span class="n">obs_dataset</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_spec</span><span class="p">))</span> <span class="c1"># Contains observed spectra and their spectral properties</span>
+
+<span class="c1"># Generate synth batch of matching spectra using the emulator (The Payne)</span>
+<span class="n">synth_batch</span> <span class="o">=</span> <span class="n">create_synth_batch</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_mean</span><span class="p">,</span> <span class="n">x_std</span><span class="p">,</span> <span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> 
+                                             <span class="n">line_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">denormalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x_std</span> <span class="o">+</span> <span class="n">x_mean</span>
+
+<span class="k">def</span> <span class="nf">overlay_two_spec</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">spec1</span><span class="p">,</span> <span class="n">spec2</span><span class="p">,</span> <span class="n">label1</span><span class="p">,</span> <span class="n">label2</span><span class="p">,</span>
+                    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.075</span><span class="p">),</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">16000</span><span class="p">,</span> <span class="mi">16150</span><span class="p">)):</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span><span class="mi">2</span><span class="p">]);</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">spec1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">spec2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+    
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">spec1</span><span class="o">-</span><span class="n">spec2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuals&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">41</span>
+<span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Observed&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;Emulated (The Payne)&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/f9b5652805bc5ff4fca590b7b80e07c874b6ad44ab0289fe6dddcaee72f42057.png" src="../_images/f9b5652805bc5ff4fca590b7b80e07c874b6ad44ab0289fe6dddcaee72f42057.png" />
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Vary <code class="docutils literal notranslate"><span class="pre">idx</span></code> to view reconstructions from other spectra within the dataset.</p>
+</div>
+<p>Next, we will compare this with reconstructions from the network.</p>
+<section id="chi-synth-rightarrow-chi-synth">
+<h3><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{synth}\)</span><a class="headerlink" href="#chi-synth-rightarrow-chi-synth" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="synthsynth">
+<a class="reference internal image-reference" href="../_images/synthsynth.png"><img alt="../_images/synthsynth.png" src="../_images/synthsynth.png" style="width: 450px; height: 425px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate validation set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Encoding</span>
+    <span class="n">z_sh_synth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">synth_to_z</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Within-domain Reconstruction (Autoencoding)</span>
+    <span class="n">x_synth_synth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_synth</span><span class="p">(</span><span class="n">z_sh_synth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_synth_synth</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Emulated (The Payne)&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8412ccd91bdf200063e6ef9db981571a3356dbf7570bc8f7a294082a17f76d35.png" src="../_images/8412ccd91bdf200063e6ef9db981571a3356dbf7570bc8f7a294082a17f76d35.png" />
+</div>
+</div>
+</section>
+<section id="chi-obs-rightarrow-chi-obs">
+<h3><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{obs}\)</span><a class="headerlink" href="#chi-obs-rightarrow-chi-obs" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="obsobs">
+<a class="reference internal image-reference" href="../_images/obsobs.png"><img alt="../_images/obsobs.png" src="../_images/obsobs.png" style="width: 450px; height: 425px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate validation set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Encoding</span>
+    <span class="n">z_sh_obs</span><span class="p">,</span> <span class="n">z_sp_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">obs_to_z</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Within-domain Reconstruction (Autoencoding)</span>
+    <span class="n">x_obs_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_obs</span><span class="p">(</span><span class="n">z_sh_obs</span><span class="p">,</span> <span class="n">z_sp_obs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_obs_obs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Observed Data&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/207b5180a91ff80197c4cb86b6846e27131f79de21a887dde00ab671736373f3.png" src="../_images/207b5180a91ff80197c4cb86b6846e27131f79de21a887dde00ab671736373f3.png" />
+</div>
+</div>
+<p>While subtle, there are indeed differences between the <span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{obs}\)</span> and the ‘<span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{synth}\)</span>’ spectra.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_synth_synth</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_obs_obs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a4fa94dc6be008905452a0c38dfbdb3aa502c9b5da65e6e7b7568879566e934a.png" src="../_images/a4fa94dc6be008905452a0c38dfbdb3aa502c9b5da65e6e7b7568879566e934a.png" />
+</div>
+</div>
+</section>
+<section id="chi-synth-rightarrow-chi-obs">
+<h3><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs}\)</span><a class="headerlink" href="#chi-synth-rightarrow-chi-obs" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="synthobs">
+<a class="reference internal image-reference" href="../_images/synthobs.png"><img alt="../_images/synthobs.png" src="../_images/synthobs.png" style="width: 450px; height: 425px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate validation set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Encoding</span>
+    <span class="n">z_sh_synth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">synth_to_z</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+    <span class="n">z_sh_obs</span><span class="p">,</span> <span class="n">z_sp_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">obs_to_z</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Cross-domain Mapping</span>
+    <span class="n">x_synth_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_obs</span><span class="p">(</span><span class="n">z_sh_synth</span><span class="p">,</span> <span class="n">z_sp_obs</span><span class="p">)</span> <span class="c1"># 𝜒𝑠𝑦𝑛𝑡ℎ→𝜒𝑜𝑏𝑠</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_synth_obs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Observed&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/414c796b89efff8cb45a0b09bef6ee9336fed2ab34c5c056d9c375b986cebe8e.png" src="../_images/414c796b89efff8cb45a0b09bef6ee9336fed2ab34c5c056d9c375b986cebe8e.png" />
+</div>
+</div>
+</section>
+<section id="chi-obs-rightarrow-chi-synth">
+<h3><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth}\)</span><a class="headerlink" href="#chi-obs-rightarrow-chi-synth" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="obssynth">
+<a class="reference internal image-reference" href="../_images/obssynth.png"><img alt="../_images/obssynth.png" src="../_images/obssynth.png" style="width: 450px; height: 425px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate validation set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Encoding</span>
+    <span class="n">z_sh_obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">obs_to_z</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Cross-domain Mapping</span>
+    <span class="n">x_obs_synth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_synth</span><span class="p">(</span><span class="n">z_sh_obs</span><span class="p">)</span> <span class="c1"># 𝜒𝑜𝑏𝑠→𝜒𝑠𝑦𝑛𝑡ℎ </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_obs_synth</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Emulated (The Payne)&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/bb5b84741994c376db7c6310c9e191ab65fc1e07b70c70d750d7840ecc5ef950.png" src="../_images/bb5b84741994c376db7c6310c9e191ab65fc1e07b70c70d750d7840ecc5ef950.png" />
+</div>
+</div>
+</section>
+<section id="chi-synth-rightarrow-chi-obs-rightarrow-chi-synth">
+<h3><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs} \rightarrow \chi_{synth}\)</span><a class="headerlink" href="#chi-synth-rightarrow-chi-obs-rightarrow-chi-synth" title="Permalink to this headline">#</a></h3>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<ol class="arabic simple">
+<li><p>Fill in the blanks in the code block below to generate the mapping of <span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs} \rightarrow \chi_{synth}\)</span>, which yields the synthetic spectrum <code class="docutils literal notranslate"><span class="pre">x_synth_obs_synth</span></code>.</p></li>
+<li><p>Do the same for <span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth} \rightarrow \chi_{obs}\)</span>. The first split latent variable containing information that is unique to the observed domain (namely <code class="docutils literal notranslate"><span class="pre">z_sp_obs</span></code>) should be used to cycle-reconstruct <code class="docutils literal notranslate"><span class="pre">x_obs_synth_obs</span></code> .</p></li>
+</ol>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate validation set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Encoding</span>
+    <span class="n">z_sh_synth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">synth_to_z</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+    <span class="n">z_sh_obs</span><span class="p">,</span> <span class="n">z_sp_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">obs_to_z</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Cross-domain Mapping</span>
+    <span class="n">x_synth_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_obs</span><span class="p">(</span><span class="n">z_sh_synth</span><span class="p">,</span> <span class="n">z_sp_obs</span><span class="p">)</span> <span class="c1"># 𝜒𝑠𝑦𝑛𝑡ℎ→𝜒𝑜𝑏𝑠</span>
+
+    <span class="c1"># Cycle-Reconstruction: Encoding Cross-domain Mapping to Latent Variable</span>
+    <span class="n">z_sh_synth_obs</span><span class="p">,</span> <span class="n">z_sp_synth_obs</span> <span class="o">=</span> <span class="c1"># Your Code Here </span>
+
+    <span class="c1"># Cycle-Reconstruction: Latent Variable to Mapping</span>
+    <span class="n">x_synth_obs_synth</span> <span class="o">=</span> <span class="c1"># Your Code Here  # 𝜒𝑠𝑦𝑛𝑡ℎ→𝜒𝑜𝑏𝑠→𝜒𝑠𝑦𝑛𝑡ℎ</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_synth_obs_synth</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Emulated (The Payne)&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1"> </span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8213924a21d0e8d2a8a23f2660273954e0368f389639258a9d48d55ec28aa4c4.png" src="../_images/8213924a21d0e8d2a8a23f2660273954e0368f389639258a9d48d55ec28aa4c4.png" />
+</div>
+</div>
+</section>
+<section id="chi-obs-rightarrow-chi-synth-rightarrow-chi-obs">
+<h3><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth} \rightarrow \chi_{obs}\)</span><a class="headerlink" href="#chi-obs-rightarrow-chi-synth-rightarrow-chi-obs" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate validation set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+    
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Encoding</span>
+    <span class="n">z_sh_obs</span><span class="p">,</span> <span class="n">z_sp_obs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">obs_to_z</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+    <span class="c1"># Cross-domain Mapping</span>
+    <span class="n">x_obs_synth</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_synth</span><span class="p">(</span><span class="n">z_sh_obs</span><span class="p">)</span> <span class="c1"># 𝜒𝑜𝑏𝑠→𝜒𝑠𝑦𝑛𝑡ℎ </span>
+    
+    <span class="c1"># Cycle-Reconstruction: Encoding Cross-domain Mapping to Latent Variable</span>
+    <span class="n">z_sh_obs_synth</span> <span class="o">=</span> <span class="c1"># Your Code Here </span>
+    
+    <span class="c1"># Cycle-Reconstruction: Latent Variable to Mapping</span>
+    <span class="n">x_obs_synth_obs</span> <span class="o">=</span> <span class="c1"># Your Code Here   #  𝜒𝑜𝑏𝑠→𝜒𝑠𝑦𝑛𝑡ℎ→𝜒𝑜𝑏𝑠 </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">overlay_two_spec</span><span class="p">(</span><span class="n">wave_grid</span><span class="p">,</span> 
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]),</span>
+                <span class="n">denormalize</span><span class="p">(</span><span class="n">x_obs_synth_obs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">),</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Observed&#39;</span><span class="p">,</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="s1"> </span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span>
+                <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c92dfebca02f0d347380f0a51090e8197662bd7cd8e84415800882126958e9cf.png" src="../_images/c92dfebca02f0d347380f0a51090e8197662bd7cd8e84415800882126958e9cf.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="representation-consistency">
+<h2>Representation Consistency<a class="headerlink" href="#representation-consistency" title="Permalink to this headline">#</a></h2>
+<p>We can examine the consistency of how spectra are represented by looking at t-SNE projections of</p>
+<ul class="simple">
+<li><p>The spectra directly (<span class="math notranslate nohighlight">\(\chi\)</span>)</p></li>
+<li><p>Their encoded representations (<span class="math notranslate nohighlight">\(\mathcal{Z}\)</span>)</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+
+<span class="k">def</span> <span class="nf">plot_tsne</span><span class="p">(</span><span class="n">data_a</span><span class="p">,</span> <span class="n">data_b</span><span class="p">,</span> <span class="n">perplex</span><span class="p">,</span> <span class="n">label1</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">label2</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_a</span><span class="p">)</span>
+
+    <span class="c1"># Combine data</span>
+    <span class="n">t_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">row_stack</span><span class="p">((</span><span class="n">data_a</span><span class="p">,</span><span class="n">data_b</span><span class="p">))</span>
+
+    <span class="c1"># Convert data to float64 matrix. float64 is need for bh_sne</span>
+    <span class="n">t_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">t_data</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+    <span class="n">t_data</span> <span class="o">=</span> <span class="n">t_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">t_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Run t-SNE    </span>
+    <span class="n">vis_data</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="n">perplex</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">t_data</span><span class="p">)</span>
+    
+    <span class="c1"># Separate 2D into x and y axes information</span>
+    <span class="n">vis_x_a</span> <span class="o">=</span> <span class="n">vis_data</span><span class="p">[:</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">vis_y_a</span> <span class="o">=</span> <span class="n">vis_data</span><span class="p">[:</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">vis_x_b</span> <span class="o">=</span> <span class="n">vis_data</span><span class="p">[</span><span class="n">m</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">vis_y_b</span> <span class="o">=</span> <span class="n">vis_data</span><span class="p">[</span><span class="n">m</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vis_x_a</span><span class="p">,</span> <span class="n">vis_y_a</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;cornflowerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vis_x_b</span><span class="p">,</span> <span class="n">vis_y_b</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Dimension 2&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;t-SNE&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>The difference in the distribution between the 2D manifold of the synthetic and observed spectra shows the synthetic gap.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tsne</span><span class="p">(</span><span class="n">synth_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">x_obs_obs</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">perplex</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+         <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;Emulated (The Payne)&#39;</span><span class="p">,</span>
+         <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/f100d3ad404b6e4b87467107113e60d0620937f4bea0f68cf705565c58db03cd.png" src="../_images/f100d3ad404b6e4b87467107113e60d0620937f4bea0f68cf705565c58db03cd.png" />
+</div>
+</div>
+<p>The mapping <span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs}\)</span> by <code class="docutils literal notranslate"><span class="pre">Cycle-SN</span></code> results in spectra whose distribution on the 2D manifold is identical to observations.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tsne</span><span class="p">(</span><span class="n">x_synth_obs</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">x_obs_obs</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">perplex</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+         <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{synth}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span>
+         <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="se">\\</span><span class="s1">rightarrow </span><span class="se">\\</span><span class="s1">chi_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/23b20e322a8e801003d08bce120c9ca08415a8ad569acaedcba2fc73c6d7af05.png" src="../_images/23b20e322a8e801003d08bce120c9ca08415a8ad569acaedcba2fc73c6d7af05.png" />
+</div>
+</div>
+<p>At the same time, the similarity in distribution of the mapped <span class="math notranslate nohighlight">\(\mathcal{Z}\)</span> for both synthetic and observed spectra in latent space indicates that their encoded representations are identical.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tsne</span><span class="p">(</span><span class="n">z_sh_synth</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">z_sh_obs</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">perplex</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+         <span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mathcal</span><span class="si">{Z}</span><span class="s1">_{sh, synth}$&#39;</span><span class="p">,</span>
+         <span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">mathcal</span><span class="si">{Z}</span><span class="s1">_{sh, obs}$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/648d9db29eefb48dd94fb7a0d7f89b9f7425b6ba2784ec0da3cebbaf8107059a.png" src="../_images/648d9db29eefb48dd94fb7a0d7f89b9f7425b6ba2784ec0da3cebbaf8107059a.png" />
+</div>
+</div>
+</section>
+<section id="sensitivity-analyses">
+<h2>Sensitivity Analyses<a class="headerlink" href="#sensitivity-analyses" title="Permalink to this headline">#</a></h2>
+<p>To observe the sensitivity of the generative aspect of the network, we can perform a sensitivity analysis similar to that in <a class="reference internal" href="spectra-3.html#content-references-spectra-part3"><span class="std std-ref">Stellar Spectra Part 3: The Payne</span></a>. We examine the network’s <strong>Jacobian matrix</strong>, which tells us the first order partial derivatives of each output (the pixels) with respect to each input (the labels).</p>
+<p>Because the synthetic emulator uses <em>The Payne</em> and is thus differentiable, <span class="math notranslate nohighlight">\(x_{synth}=Payne(\mathbf{y})\)</span>, such that the Jacobian can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{J_{synth}}(\mathbf{y}) = \begin{bmatrix}
+   \frac{\partial x_{synth_{1}}}{\partial y_{1}} &amp;
+   \cdots  &amp; \frac{\partial x_{synth_{1}}}{\partial y_{n}} \\
+   \vdots &amp; \ddots &amp; \vdots \\
+   \frac{\partial x_{synth_{_m}}}{\partial y_{1}} &amp;
+   \cdots &amp; \frac{\partial x_{synth_{m}}}{\partial y_{n}}
+\end{bmatrix}(\mathbf{y}) .
+\end{split}\]</div>
+<p>In a similar fashion, we can compute the sensitivity in the observed domain, <span class="math notranslate nohighlight">\(\mathbf{J_{obs}}\)</span>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Jacobian Matrices Across Domains</p>
+<ul class="simple">
+<li><p>Which Jacobian matrix is expected to contain more detailed spectral sensitivity information — <span class="math notranslate nohighlight">\(\mathbf{J_{\text{synth}}}\)</span> or <span class="math notranslate nohighlight">\(\mathbf{J_{\text{obs}}}\)</span>? Why?</p></li>
+<li><p>In what ways does the Jacobian structure differ between synthetic and observed domains?</p></li>
+</ul>
+</div>
+<section id="a-toy-example">
+<h3>A Toy Example<a class="headerlink" href="#a-toy-example" title="Permalink to this headline">#</a></h3>
+<p>An illustrative example, as described in the <a class="reference external" href="https://github.com/teaghan/Cycle_SN">original study</a>, performs the following:</p>
+<ul class="simple">
+<li><p>Masks spectral features of model spectra to create a <strong>new synthetic domain</strong>.</p></li>
+<li><p>Uses the original model spectra with added noise as the <strong>observed domain</strong>.</p></li>
+</ul>
+<p>A version of <code class="docutils literal notranslate"><span class="pre">Cycle-SN</span></code> pre-trained on data from these domains will be used in this example.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">&#39;new_lines_10perc&#39;</span>
+
+<span class="c1"># Model configuration</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_dir</span><span class="o">+</span><span class="n">model_name</span><span class="o">+</span><span class="s1">&#39;.ini&#39;</span><span class="p">)</span>
+<span class="n">architecture_config</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;ARCHITECTURE&#39;</span><span class="p">]</span>
+
+<span class="c1"># Data Files</span>
+<span class="n">data_file_obs</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/csn_apogee_mock_test.h5&#39;</span>
+
+<span class="c1"># Defining Model and Loading Pre-trained Weights into it&quot;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">CycleSN</span><span class="p">(</span><span class="n">architecture_config</span><span class="p">,</span> <span class="n">emulator_fn</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model_filename</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">model_dir</span><span class="p">,</span><span class="s1">&#39;new_lines_1.pth.tar&#39;</span><span class="p">)</span>
+<span class="n">checkpoint</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_filename</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="k">lambda</span> <span class="n">storage</span><span class="p">,</span> <span class="n">loc</span><span class="p">:</span> <span class="n">storage</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">checkpoint</span><span class="p">[</span><span class="s1">&#39;cycle_model&#39;</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval_mode</span><span class="p">()</span>
+
+<span class="c1"># Load line mask that masks spectral features</span>
+<span class="n">line_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_dir</span><span class="o">+</span><span class="s1">&#39;/mock_missing_lines.npz&#39;</span><span class="p">)[</span><span class="s1">&#39;total_mask&#39;</span><span class="p">]</span> 
+<span class="n">line_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">line_mask</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In the following, we define the label vector <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Teff&quot;</span><span class="p">,</span> <span class="s2">&quot;Logg&quot;</span><span class="p">,</span> <span class="s2">&quot;Vturb&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[C/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[N/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[O/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Na/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Mg/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[Al/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Si/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[P/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[S/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[K/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[Ca/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Ti/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[V/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Cr/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Mn/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[Fe/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Co/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Ni/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Cu/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Ge/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;C12/C13&quot;</span><span class="p">,</span> <span class="s2">&quot;Vmacro&quot;</span><span class="p">]</span>
+
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">4750.</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> 
+                        <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>
+                        <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> 
+                        <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>
+                        <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> 
+                        <span class="mf">7.5</span><span class="p">,</span> <span class="mf">6.</span><span class="p">]])</span>
+<span class="n">ref_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following code snippet defines helper functions for predicting spectra.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The mapping to <span class="math notranslate nohighlight">\(\chi_{obs}\)</span> requires encoded information specific to the observational domain. To get a representative sample, we may take the average of the <strong>split</strong> encoding <span class="math notranslate nohighlight">\(\mathcal{Z}_{sp}\)</span> of spectra from the observational domain.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>num_spec = 100
+
+# Create a batch of &#39;observed&#39; spectra
+obs_dataset = CSNDataset(data_file_obs, dataset=&#39;val&#39;, x_mean=x_mean, 
+                             x_std=x_std, line_mask=None)
+obs_batch = obs_dataset.__getitem__(np.arange(num_spec)) 
+
+# Get an average z_split from the observations 
+z_split = torch.mean(model.obs_to_z(obs_batch[&#39;x&#39;])[1], 0, keepdim=True)
+</pre></div>
+</div>
+</div>
+<p>For simplicity, the derivatives for the Jacobian will be calculated as first order (linear) derivatives of labels <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> relative to the pixel flux <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">y_to_synth</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    
+    <span class="c1"># Produce synthetic spectrum</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">emulator</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Mask lines</span>
+    <span class="n">x</span><span class="p">[:,</span><span class="n">line_mask</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mf">1.</span>
+    
+    <span class="c1"># Return last 7167 pixels</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">47</span><span class="p">:]</span>
+
+<span class="k">def</span> <span class="nf">y_to_synth_to_synth</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+
+    <span class="c1"># Produce synthetic spectrum with masked lines</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y_to_synth</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Normalize</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x_mean</span><span class="p">)</span><span class="o">/</span><span class="n">x_std</span>
+    
+    <span class="c1"># Encode the synthetic spectrum</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">synth_to_z</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Decode the latent variables into the synthetic domain</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_synth</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    
+    <span class="c1"># Return to the regular continuum level and scale</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x_std</span> <span class="o">+</span> <span class="n">x_mean</span>
+    
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">def</span> <span class="nf">y_to_synth_to_obs</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+
+    <span class="c1"># Produce synthetic spectrum with masked lines</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">y_to_synth</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Normalize</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x_mean</span><span class="p">)</span><span class="o">/</span><span class="n">x_std</span>
+
+    <span class="c1"># Encode the synthetic spectrum</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">synth_to_z</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="c1"># Decode the latent variables into the observed domain</span>
+    <span class="n">z_sp</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="p">[</span><span class="n">z_split</span><span class="p">])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">z_to_obs</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z_sp</span><span class="p">)</span>
+
+    <span class="c1"># Return to the regular continuum level and scale</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x_std</span> <span class="o">+</span> <span class="n">x_mean</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="n">num_spec</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Create a batch of &#39;observed&#39; spectra</span>
+<span class="n">obs_dataset</span> <span class="o">=</span> <span class="n">CSNDataset</span><span class="p">(</span><span class="n">data_file_obs</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="n">x_mean</span><span class="o">=</span><span class="n">x_mean</span><span class="p">,</span> 
+                             <span class="n">x_std</span><span class="o">=</span><span class="n">x_std</span><span class="p">,</span> <span class="n">line_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">obs_batch</span> <span class="o">=</span> <span class="n">obs_dataset</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_spec</span><span class="p">))</span> 
+
+<span class="c1"># Get an average z_split from the observations </span>
+<span class="n">z_split</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">obs_to_z</span><span class="p">(</span><span class="n">obs_batch</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Scale labels for emulator input</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_labels</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y_max</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="c1"># Create a synthetic spectrum</span>
+    <span class="n">x_synth</span> <span class="o">=</span> <span class="n">y_to_synth</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># Create observed spectrum</span>
+    <span class="n">x_obs</span> <span class="o">=</span> <span class="n">y_to_synth_to_obs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vectors to collect</span>
+<span class="n">jac_synth</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;ARCHITECTURE&#39;</span><span class="p">][</span><span class="s1">&#39;num_pixels&#39;</span><span class="p">]),</span><span class="mi">25</span><span class="p">))</span>
+<span class="n">jac_synthobs</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;ARCHITECTURE&#39;</span><span class="p">][</span><span class="s1">&#39;num_pixels&#39;</span><span class="p">]),</span><span class="mi">25</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">ele_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+
+    <span class="c1"># Deviate reference labels</span>
+    <span class="n">deviate_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">clone</span><span class="p">(</span><span class="n">ref_labels</span><span class="p">)</span>
+    <span class="n">deviate_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">ele_index</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.05</span>
+
+    <span class="c1"># Scale labels for emulator input</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">ref_labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y_max</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+    <span class="n">y_dev</span> <span class="o">=</span> <span class="p">(</span><span class="n">deviate_labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y_max</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">y_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+    <span class="c1"># Create a synthetic spectrum</span>
+    <span class="n">x_synth</span> <span class="o">=</span> <span class="n">y_to_synth</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">x_synth_dev</span> <span class="o">=</span> <span class="n">y_to_synth</span><span class="p">(</span><span class="n">y_dev</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="c1"># Create observed spectrum</span>
+    <span class="n">x_synthobs</span> <span class="o">=</span> <span class="n">y_to_synth_to_obs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">x_synthobs_dev</span> <span class="o">=</span> <span class="n">y_to_synth_to_obs</span><span class="p">(</span><span class="n">y_dev</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="c1"># Calculate difference</span>
+    <span class="n">jac_synth</span><span class="p">[:,</span><span class="n">ele_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_synth_dev</span><span class="o">-</span><span class="n">x_synth</span>
+    <span class="n">jac_synthobs</span><span class="p">[:,</span><span class="n">ele_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_synthobs_dev</span><span class="o">-</span><span class="n">x_synthobs</span>
+    
+<span class="c1"># Only select abundances</span>
+<span class="n">jac_synthobs</span> <span class="o">=</span> <span class="n">jac_synthobs</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">jac_synth</span> <span class="o">=</span> <span class="n">jac_synth</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>    
+<span class="n">jac_diff</span> <span class="o">=</span> <span class="n">jac_synthobs</span> <span class="o">-</span> <span class="n">jac_synth</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_jacobian_diff</span><span class="p">(</span><span class="n">ele_indices</span><span class="p">,</span> <span class="n">ele_labels</span><span class="p">,</span> <span class="n">wave_grid</span><span class="p">,</span> <span class="n">wave_grid_full</span><span class="p">,</span> 
+                       <span class="n">x_obs</span><span class="p">,</span> <span class="n">x_synth</span><span class="p">,</span> <span class="n">jac_diff</span><span class="p">,</span> <span class="n">min_wave</span><span class="o">=</span><span class="mi">15880</span><span class="p">,</span> <span class="n">max_wave</span><span class="o">=</span><span class="mi">16230</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot CycleSN synthetic, observed, residual spectrum, and Jacobian differences for selected elements.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        ele_indices (list): indices of elements to plot Jacobians for</span>
+<span class="sd">        ele_labels (list): full list of element abundance labels</span>
+<span class="sd">        wave_grid (np.array): wavelength array (47 onward)</span>
+<span class="sd">        wave_grid_full (np.array): full wavelength array</span>
+<span class="sd">        x_obs (Tensor): observed spectrum (Torch tensor)</span>
+<span class="sd">        x_synth (np.array): synthetic spectrum</span>
+<span class="sd">        jac_diff (np.array): Jacobian difference array (wavelength x abundance)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+    <span class="n">ele_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;teal&#39;</span><span class="p">,</span> <span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="s1">&#39;goldenrod&#39;</span><span class="p">,</span> <span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+    <span class="n">wave</span> <span class="o">=</span> <span class="n">wave_grid</span>
+    <span class="n">x_resid</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_obs</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="o">-</span> <span class="n">x_synth</span><span class="p">)</span>
+    <span class="n">x_resid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">47</span><span class="p">)),</span> <span class="n">x_resid</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Panel 1: Synthetic</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">x_synth</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+    <span class="c1"># Panel 2: Observed</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">x_obs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+    <span class="c1"># Panel 3: Residual</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_grid_full</span><span class="p">,</span> <span class="n">x_resid</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+    <span class="c1"># Panel 4: Jacobian Difference</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ele_index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ele_indices</span><span class="p">):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">ele_colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">ele_colors</span><span class="p">)]</span>
+        <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">jac_diff</span><span class="p">[:,</span> <span class="n">ele_index</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ele_labels</span><span class="p">[</span><span class="n">ele_index</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ele_indices</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta\, \partial F/\partial [X/H]$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">min_wave</span><span class="p">,</span> <span class="n">max_wave</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">))</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="n">titles</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sa">r</span><span class="s1">&#39;$\mathbf{x_</span><span class="si">{synth}</span><span class="s1">}=\mathrm</span><span class="si">{Payne}</span><span class="s1">(\mathbf</span><span class="si">{y}</span><span class="s1">)$&#39;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s1">&#39;$T_{\mathrm</span><span class="si">{synth}</span><span class="s1">\rightarrow \mathrm</span><span class="si">{obs}</span><span class="s1">}(\mathbf{x_</span><span class="si">{synth}</span><span class="s1">})$&#39;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s1">&#39;$T_{\mathrm</span><span class="si">{synth}</span><span class="s1"> \rightarrow \mathrm</span><span class="si">{obs}</span><span class="s1">}(\mathbf{x_</span><span class="si">{synth}</span><span class="s1">})-\mathbf{x_</span><span class="si">{synth}</span><span class="s1">}$&#39;</span><span class="p">,</span>
+        <span class="sa">r</span><span class="s1">&#39;$\frac{\partial T_{\mathrm</span><span class="si">{synth}</span><span class="s1"> \rightarrow \mathrm</span><span class="si">{obs}</span><span class="s1">}}{\partial y_j} - \frac{\partial \mathrm</span><span class="si">{Payne}</span><span class="s1">}{\partial y_j}$&#39;</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">titles</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise - Spectral Line Discovery</p>
+<p>Suppose we know that an observed and a synthetic spectrum supposedly have the same elemental abundances but have subtle differences due to the synthetic gap. The plot below highlights a spectral region where the <code class="docutils literal notranslate"><span class="pre">CycleSN</span></code>-translated spectrum shows an several absorption features not present in the synthetic spectrum. This suggests that the <strong>observational domain</strong> contains information absent from the synthetic domain.</p>
+<p>Can we identify <strong>which element</strong> is likely responsible?</p>
+<div class="dropdown admonition hint">
+<p class="admonition-title">Hint</p>
+<ul class="simple">
+<li><p>The final panel shows the <strong>difference in Jacobians</strong>: <span class="math notranslate nohighlight">\(\mathbf{J_{diff} \equiv J_{obs} - J_{synth}}\)</span>. This is how sensitive the observed and synthetic models are to individual element abundances.</p></li>
+<li><p>A sharp peak in <code class="docutils literal notranslate"><span class="pre">∂Flux/∂[X/H]</span></code> near the unknown feature can signal that element <strong>X</strong> is responsible.</p></li>
+</ul>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elem_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;[C/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[N/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[O/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Na/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Mg/H]&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;[Al/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Si/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[P/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[S/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[K/H]&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;[Ca/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Ti/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[V/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Cr/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Mn/H]&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;[Fe/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Co/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Ni/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Cu/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;[Ge/H]&#39;</span><span class="p">]</span>
+
+<span class="n">plot_indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">,]</span> <span class="c1"># indices of elem_labels to plot</span>
+
+<span class="n">plot_jacobian_diff</span><span class="p">(</span><span class="n">plot_indices</span><span class="p">,</span> <span class="n">elem_labels</span><span class="p">,</span> <span class="n">wave</span><span class="p">,</span> <span class="n">wave_grid</span><span class="p">,</span> <span class="n">x_obs</span><span class="p">,</span> <span class="n">x_synth</span><span class="p">,</span> <span class="n">jac_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5447bc70fb22270b8ec218b4e3e8f17b489d1bf261c724a449c352a72299a6ed.png" src="../_images/5447bc70fb22270b8ec218b4e3e8f17b489d1bf261c724a449c352a72299a6ed.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="spectra-4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter3/section_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tabular Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-synthetic-gap">The Synthetic Gap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-data-driven-approach-to-bridge-the-gap">A Data-driven Approach to Bridge the Gap</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-starnet-generators">Cycle-StarNet: Generators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-starnet-discriminators">Cycle-StarNet: Discriminators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycle-starnet-losses">Cycle-StarNet: Losses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-reconstructions">Visualizing Reconstructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-synth-rightarrow-chi-synth"><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{synth}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-obs-rightarrow-chi-obs"><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{obs}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-synth-rightarrow-chi-obs"><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-obs-rightarrow-chi-synth"><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-synth-rightarrow-chi-obs-rightarrow-chi-synth"><span class="math notranslate nohighlight">\(\chi_{synth}\rightarrow \chi_{obs} \rightarrow \chi_{synth}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chi-obs-rightarrow-chi-synth-rightarrow-chi-obs"><span class="math notranslate nohighlight">\(\chi_{obs}\rightarrow \chi_{synth} \rightarrow \chi_{obs}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-consistency">Representation Consistency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-analyses">Sensitivity Analyses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-toy-example">A Toy Example</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1605 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Fitting Red Giant Oscillations Part 2: Flows &amp; Simulation-Based Inference &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/fitting_power_spectrum_2';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/fitting_power_spectrum_2.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Power Spectrum Statistics" href="ps_statistics.html" />
+    <link rel="prev" title="Fitting Red Giant Oscillations Part 1: Traditional Optimization" href="fitting_power_spectrum_1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/fitting_power_spectrum_2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/fitting_power_spectrum_2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/fitting_power_spectrum_2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/fitting_power_spectrum_2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fitting Red Giant Oscillations Part 2: Flows & Simulation-Based Inference</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulations-using-a-realistic-range-of-inputs">Simulations using a realistic range of inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sample-able-training-set">A sample-able training set</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-posterior-estimation-inference">Neural Posterior Estimation Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sbi-with-a-pre-computed-dataset">SBI with a pre-computed dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-posterior-predictive-checks">Simple, posterior predictive checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sbi-with-a-simulator">SBI with a simulator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-trained-npe-to-real-data">Applying the trained NPE to real data</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fitting-red-giant-oscillations-part-2-flows-simulation-based-inference">
+<span id="content-ps-fitting-sbi"></span><h1>Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em><a class="headerlink" href="#fitting-red-giant-oscillations-part-2-flows-simulation-based-inference" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Authors: Marc Hon</strong></em></p>
+<p>In the first part of this notebook, we have used Markov Chain Monte Carlo sampling to determine Bayesian-based estimates of parameters fitted to the power spectra of red giants. Here, let’s go through an alternative way to determine posterior distributions. Instead of sampling, we may approximate it directly using <strong>Simulation-Based Inference (SBI)</strong>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">timer</span>
+<span class="kn">import</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">corner</span>
+<span class="kn">import</span> <span class="nn">scienceplots</span>
+
+<span class="kn">from</span> <span class="nn">sbi.analysis</span> <span class="kn">import</span> <span class="n">pairplot</span>
+<span class="kn">from</span> <span class="nn">sbi.inference</span> <span class="kn">import</span> <span class="n">SNPE</span>
+<span class="kn">from</span> <span class="nn">sbi.utils</span> <span class="kn">import</span> <span class="n">BoxUniform</span>
+<span class="kn">from</span> <span class="nn">sbi.utils.user_input_checks</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">check_sbi_inputs</span><span class="p">,</span>
+    <span class="n">process_prior</span><span class="p">,</span>
+    <span class="n">process_simulator</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">astropy.units</span> <span class="kn">import</span> <span class="n">UnitsWarning</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">UnitsWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2025-02-26 11:09:58.419898: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2025-02-26 11:09:59.322864: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2025-02-26 11:09:59.322942: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2025-02-26 11:09:59.322951: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+</pre></div>
+</div>
+</div>
+</div>
+<p>To recap:</p>
+<p>We are fitting the power density (<span class="math notranslate nohighlight">\(P\)</span>) of time-resolved photometric observations of red giants as a function of frequency (<span class="math notranslate nohighlight">\(\nu\)</span>):</p>
+<div class="math notranslate nohighlight" id="equation-psd-model2">
+<span class="eqno">(6)<a class="headerlink" href="#equation-psd-model2" title="Permalink to this equation">#</a></span>\[\begin{aligned}
+P(\nu) = P_n + \sum\limits_{i} \frac{A_i}{1 + (\nu/b_i)^c} + P_g \exp \frac{(\nu-\nu_{\mathrm{max}})^2}{2\sigma^2}
+\end{aligned}\]</div>
+<p>We will fit a two-component model (<span class="math notranslate nohighlight">\(i=2\)</span>), shown in the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_sLor</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">nu</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="o">**</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_sinc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bgModel</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Background model value at a given frequency &#39;nu&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Pn</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">nuNyq</span> <span class="o">=</span> <span class="mi">283</span>
+    <span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">Pg</span><span class="p">,</span> <span class="n">numax</span><span class="p">,</span> <span class="n">sigmaEnv</span> <span class="o">=</span> <span class="n">theta</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">_sinc</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nuNyq</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">Pn</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">Pg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">nu</span> <span class="o">-</span> <span class="n">numax</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigmaEnv</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">bg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are seven free parameters to consider, shown below:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A_2\)</span>, <span class="math notranslate nohighlight">\(A_3\)</span>:       Granulation amplitudes.</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_2\)</span>, <span class="math notranslate nohighlight">\(b_3\)</span>:       Granulation timescales.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_g\)</span>:       Height of the power excess envelope.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nu_{\mathrm{max}}\)</span>:       Center of the power excess envelope, known also as the <strong>frequency at maximum power</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span>:       Width of the power excess envelope.</p></li>
+</ul>
+<p>Note that we assume a noise floor of <span class="math notranslate nohighlight">\(100\)</span> ppm.</p>
+<p>These have been systematically fit across a large ensemble of red giants observed by the <em>Kepler</em> mission. We will load the dataset, which comprises <span class="math notranslate nohighlight">\(\sim14,600\)</span> entries.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_folder_path</span> <span class="o">/</span><span class="s1">&#39;KeplerRG_BG.csv&#39;</span><span class="p">)</span>
+<span class="n">bg_df</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A2</th>
+      <th>A3</th>
+      <th>b2</th>
+      <th>b3</th>
+      <th>Pg</th>
+      <th>numax</th>
+      <th>sigmaEnv</th>
+      <th>Teff</th>
+      <th>[Fe/H]</th>
+      <th>Phase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22737.001773</td>
+      <td>3622.262794</td>
+      <td>9.194869</td>
+      <td>32.499644</td>
+      <td>7160.525910</td>
+      <td>29.682241</td>
+      <td>5.178923</td>
+      <td>4751.0</td>
+      <td>-0.08</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>19301.468236</td>
+      <td>4907.254684</td>
+      <td>11.809899</td>
+      <td>32.123772</td>
+      <td>9163.734556</td>
+      <td>29.410508</td>
+      <td>5.278565</td>
+      <td>5188.0</td>
+      <td>-0.21</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>12330.271869</td>
+      <td>1858.741735</td>
+      <td>12.003733</td>
+      <td>42.358073</td>
+      <td>3341.057493</td>
+      <td>40.254536</td>
+      <td>6.307454</td>
+      <td>4728.0</td>
+      <td>-0.15</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4938.018676</td>
+      <td>1027.383223</td>
+      <td>15.391087</td>
+      <td>47.867438</td>
+      <td>1462.296669</td>
+      <td>45.871939</td>
+      <td>8.208854</td>
+      <td>5072.0</td>
+      <td>-0.12</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>23879.048501</td>
+      <td>5280.272149</td>
+      <td>10.090316</td>
+      <td>32.097376</td>
+      <td>8043.019833</td>
+      <td>35.364523</td>
+      <td>4.867138</td>
+      <td>4718.0</td>
+      <td>-0.02</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14598</th>
+      <td>10967.250418</td>
+      <td>2735.849005</td>
+      <td>12.053097</td>
+      <td>37.808500</td>
+      <td>4983.498344</td>
+      <td>38.101759</td>
+      <td>5.308268</td>
+      <td>4906.0</td>
+      <td>-0.09</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>14599</th>
+      <td>28033.812005</td>
+      <td>8813.403509</td>
+      <td>8.740449</td>
+      <td>27.931656</td>
+      <td>10829.477403</td>
+      <td>28.477241</td>
+      <td>4.559205</td>
+      <td>5077.0</td>
+      <td>-0.53</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>14600</th>
+      <td>2681.631546</td>
+      <td>673.155384</td>
+      <td>25.213777</td>
+      <td>86.723090</td>
+      <td>909.403904</td>
+      <td>92.775745</td>
+      <td>9.802084</td>
+      <td>4846.0</td>
+      <td>0.07</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>14601</th>
+      <td>10273.560481</td>
+      <td>2293.886607</td>
+      <td>13.323097</td>
+      <td>47.348840</td>
+      <td>3240.073356</td>
+      <td>52.280628</td>
+      <td>6.986744</td>
+      <td>4855.0</td>
+      <td>0.12</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>14602</th>
+      <td>35450.517223</td>
+      <td>7374.095450</td>
+      <td>8.325165</td>
+      <td>29.660732</td>
+      <td>10831.137458</td>
+      <td>29.641194</td>
+      <td>5.376340</td>
+      <td>4834.0</td>
+      <td>0.01</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>14603 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>Let’s plot a subset of these to visualize the fits over the dataset.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+
+<span class="n">norm</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">bg_df</span><span class="o">.</span><span class="n">numax</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">bg_df</span><span class="o">.</span><span class="n">numax</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>  
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral_r</span>
+
+<span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">283</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">90</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">bgModel</span><span class="p">(</span><span class="n">bg_df</span><span class="p">[[</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">,</span> <span class="s1">&#39;A3&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;Pg&#39;</span><span class="p">,</span> <span class="s1">&#39;numax&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaEnv&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+               <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">bg_df</span><span class="o">.</span><span class="n">numax</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">3e7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">283</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">sm</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">);</span> <span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\nu_{\mathrm</span><span class="si">{max}</span><span class="s1">}\,(\mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>  <span class="c1"># Move ticks to the top</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Noise Floor&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">;</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6b65a52b7f561323c2de3c0490c7d04f441f88601409d7dc3b03477e0a61d002.png" src="../_images/6b65a52b7f561323c2de3c0490c7d04f441f88601409d7dc3b03477e0a61d002.png" />
+</div>
+</div>
+<section id="simulations-using-a-realistic-range-of-inputs">
+<h2>Simulations using a realistic range of inputs<a class="headerlink" href="#simulations-using-a-realistic-range-of-inputs" title="Permalink to this headline">#</a></h2>
+<p>SBI requires us to generate simulations by drawing parameters <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> from a prior distribution. Convenient distributions to use as priors are uniform (uninformative) priors, but these rarely reflect the range of real datasets. In other words, not all possible combinations of <span class="math notranslate nohighlight">\(\theta = [A_2, b_2, A_3, b_3, P_g, \nu_{\mathrm{max}}, \sigma]\)</span> are physical! Let’s examine its distribution across our dataset:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The parameters in <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> range across several orders of magnitude, so it is much better to display them in logarithmic units.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">corner</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="n">labels</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;$A_2$&#39;</span><span class="p">,</span> <span class="s1">&#39;$b_2$&#39;</span><span class="p">,</span> <span class="s1">&#39;$A_3$&#39;</span><span class="p">,</span> <span class="s1">&#39;$b_3$&#39;</span><span class="p">,</span> <span class="s1">&#39;$P_g$&#39;</span><span class="p">,</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">nu_</span><span class="se">\\</span><span class="s1">mathrm</span><span class="si">{max}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">sigma$&#39;</span><span class="p">]</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">bg_df</span><span class="p">[[</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">,</span> <span class="s1">&#39;A3&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;Pg&#39;</span><span class="p">,</span> <span class="s1">&#39;numax&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaEnv&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> <span class="c1"># plotting the samples in a Corner plot!</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    
+<span class="n">axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/950299d73739a9e865485b2213eac49aa9d7d398b2f719ce0be2d868d11e2de6.png" src="../_images/950299d73739a9e865485b2213eac49aa9d7d398b2f719ce0be2d868d11e2de6.png" />
+</div>
+</div>
+<p>Training a network to perform SBI requires input training data in the form of <span class="math notranslate nohighlight">\((\theta, x)\)</span> pairs, where <span class="math notranslate nohighlight">\(x\)</span> is the simulated data. Hence, we will pass the vector <span class="math notranslate nohighlight">\(\theta\)</span> through our simulator function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">bgModel</span><span class="p">(</span><span class="n">tet</span><span class="p">)</span> <span class="k">for</span> <span class="n">tet</span> <span class="ow">in</span> <span class="mi">10</span><span class="o">**</span><span class="n">theta</span><span class="p">])</span> <span class="c1"># beware that theta is already in log units!</span>
+<span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((14603, 7), (14603, 283))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our training set is hence a pair of vectors of dimensionality <span class="math notranslate nohighlight">\((N, 7)\)</span> and <span class="math notranslate nohighlight">\((N, 283)\)</span>.</p>
+<section id="a-sample-able-training-set">
+<h3>A sample-able training set<a class="headerlink" href="#a-sample-able-training-set" title="Permalink to this headline">#</a></h3>
+<p>What if we wished to randomly sample a representative population of the training data, or sample from a specific higher-density interval of the training distribution? The latter scenario can arise if we wanted to not include outliers in our training sample, for instance.</p>
+<p>One way of going about with this is to train a Kernel Density Estimator on the 7D distribution above. We will, however, use a more flexible and powerful tool, a <strong>Normalizing Flow</strong>, as implemented by the <code class="docutils literal notranslate"><span class="pre">zuko</span></code> library, available <a class="reference external" href="https://zuko.readthedocs.io/stable/">here</a>. We will use a simple Neural Spline Flow with comprising 3 stacked MLPs of width 64.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zuko</span>
+<span class="kn">import</span> <span class="nn">torch.utils.data</span> <span class="k">as</span> <span class="nn">utils</span>
+<span class="kn">from</span> <span class="nn">torch.optim.lr_scheduler</span> <span class="kn">import</span> <span class="n">ReduceLROnPlateau</span>
+
+<span class="n">device</span> <span class="o">=</span><span class="s1">&#39;cuda&#39;</span>
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span> <span class="c1">## Defining dataset</span>
+
+<span class="n">flow</span> <span class="o">=</span> <span class="n">zuko</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">NSF</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">transforms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">hidden_features</span><span class="o">=</span><span class="p">[</span><span class="mi">64</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="c1">## Defining flow</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_lr</span> <span class="o">=</span> <span class="mf">1E-12</span><span class="p">)</span>
+<span class="n">iterations</span> <span class="o">=</span> <span class="mi">500</span> <span class="c1">## training parameters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+    <span class="n">loss_vec</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">X_inp</span><span class="p">,)</span> <span class="ow">in</span> <span class="n">train_dataloader</span><span class="p">:</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="n">flow</span><span class="p">()</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">X_inp</span><span class="p">)</span>  
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">loss_vec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+    <span class="n">scheduler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss_vec</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">100</span><span class="p">)</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Iterations: </span><span class="si">%d</span><span class="s1">/</span><span class="si">%d</span><span class="s1">, Loss: </span><span class="si">%.4f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss_vec</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterations: 0/500, Loss: 18.8831
+Iterations: 100/500, Loss: -8.8779
+Epoch 00170: reducing learning rate of group 0 to 5.0000e-04.
+Iterations: 200/500, Loss: -9.1227
+Epoch 00206: reducing learning rate of group 0 to 2.5000e-04.
+Epoch 00240: reducing learning rate of group 0 to 1.2500e-04.
+Iterations: 300/500, Loss: -9.2040
+Epoch 00308: reducing learning rate of group 0 to 6.2500e-05.
+Epoch 00334: reducing learning rate of group 0 to 3.1250e-05.
+Epoch 00351: reducing learning rate of group 0 to 1.5625e-05.
+Epoch 00371: reducing learning rate of group 0 to 7.8125e-06.
+Epoch 00397: reducing learning rate of group 0 to 3.9063e-06.
+Iterations: 400/500, Loss: -9.2616
+Epoch 00413: reducing learning rate of group 0 to 1.9531e-06.
+Epoch 00433: reducing learning rate of group 0 to 9.7656e-07.
+Epoch 00449: reducing learning rate of group 0 to 4.8828e-07.
+Epoch 00467: reducing learning rate of group 0 to 2.4414e-07.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s sample from our trained flow to get our modelled distribution of <span class="math notranslate nohighlight">\(\theta\)</span> and compare it with the true values. We will iterate over the training dataset with the flow, storing the following in each batch:</p>
+<ul class="simple">
+<li><p>Random samples drawn from the flow that approximate the distribution over <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
+<li><p>Their corresponding log probabilities as estimated by the flow</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_samps</span><span class="p">,</span> <span class="n">y_logprobs</span><span class="p">,</span> <span class="n">y_s</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">Y_inp</span> <span class="ow">in</span> <span class="n">train_dataloader</span><span class="p">:</span>
+    <span class="n">samps</span><span class="p">,</span><span class="n">logprobs</span> <span class="o">=</span> <span class="n">flow</span><span class="p">()</span><span class="o">.</span><span class="n">rsample_and_log_prob</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">Y_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">]),))</span>
+    <span class="n">y_logprobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">logprobs</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">y_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Y_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">y_samps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">samps</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    
+<span class="n">y_logprobs</span><span class="p">,</span> <span class="n">y_s</span><span class="p">,</span> <span class="n">y_samps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">y_logprobs</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">y_s</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">y_samps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s now observe the approximation of <span class="math notranslate nohighlight">\(\theta\)</span> using the flow.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">y_s</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="n">cond</span> <span class="o">=</span> <span class="n">y_logprobs</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y_logprobs</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span> <span class="c1"># trim big outliers from flow</span>
+<span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">y_samps</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span><span class="n">label_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="n">fs</span><span class="p">},</span> <span class="n">fig</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">minorticks_on</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.45</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+    
+<span class="n">axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
+<span class="n">handles</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$ true&#39;</span><span class="p">),</span>
+           <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$ approx. from flow&#39;</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Too few points to create valid contours
+WARNING:root:Too few points to create valid contours
+WARNING:root:Too few points to create valid contours
+</pre></div>
+</div>
+<img alt="../_images/1b7fceea5becb39a7fdabbf498ab68acb3e75ce460d90e0644029bb7736acfdc.png" src="../_images/1b7fceea5becb39a7fdabbf498ab68acb3e75ce460d90e0644029bb7736acfdc.png" />
+</div>
+</div>
+<p>This looks like a fairly accurate approximation of <span class="math notranslate nohighlight">\(\theta\)</span>! The advantage of using a flow, aside from being able to freely generate samples from your training data on the fly, is that it can estimate the log probability of arbritary samples under the training data distribution.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">Y_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span>
+           <span class="n">c</span> <span class="o">=</span> <span class="n">flow</span><span class="p">()</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">Y_inp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Log Probability&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$A_2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$b_2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6a819b34f195c13ffccba28ac23df6790c16a032d90865341a1501a1d2e990a0.png" src="../_images/6a819b34f195c13ffccba28ac23df6790c16a032d90865341a1501a1d2e990a0.png" />
+</div>
+</div>
+<p>As shown, the outliers in the plot of <span class="math notranslate nohighlight">\(A_2\)</span> versus <span class="math notranslate nohighlight">\(b_2\)</span> above are given lower log probabilities as expected.</p>
+</section>
+</section>
+<section id="neural-posterior-estimation-inference">
+<h2>Neural Posterior Estimation Inference<a class="headerlink" href="#neural-posterior-estimation-inference" title="Permalink to this headline">#</a></h2>
+<p>Training samples aside, we are now ready to train a network to perform SBI. We will be using the <strong>Neural Posterior Estimation (NPE)</strong> method, as implemented by the <code class="docutils literal notranslate"><span class="pre">sbi</span></code> library, available <a class="reference external" href="https://sbi-dev.github.io/">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">sbi</span></code> version <code class="docutils literal notranslate"><span class="pre">0.23</span></code> has some API breaking updates, so we will stick to version <code class="docutils literal notranslate"><span class="pre">0.22</span></code> in this tutorial.</p>
+</div>
+<p>In NPE, the goal is for the network to learn the posterior distribution of model parameters <span class="math notranslate nohighlight">\((\theta)\)</span> conditioned on observed data <span class="math notranslate nohighlight">\((x)\)</span>, performed by learning an approximation to the true posterior distribution <span class="math notranslate nohighlight">\(p(\theta | x)\)</span>. The network learns to approximate the posterior distribution using a variational distribution <span class="math notranslate nohighlight">\(q_{\phi}(\theta | x)\)</span>. The variational approach seeks to minimize the <strong>Kullback-Leibler (KL) divergence</strong> between the true posterior <span class="math notranslate nohighlight">\(p(\theta | x)\)</span> and the variational distribution <span class="math notranslate nohighlight">\( q_\phi(\theta | x) \)</span>.</p>
+<p>Using the variational approach, we have:</p>
+<p><span class="math notranslate nohighlight">\(\log p(x) = \log\int p(x, \theta) d\theta = \mathbb{E}_{q_\phi(\theta | x)}\)</span> <span class="math notranslate nohighlight">\(\big[ \log \frac{p(x, \theta)}{q_\phi(\theta | x)} \big]\)</span> <span class="math notranslate nohighlight">\(+\text{constant} \)</span>,</p>
+<p>This can be expressed as:</p>
+<p><span class="math notranslate nohighlight">\(\log p(x) = \mathbb{E}_{q_\phi(\theta | x)} \big[ \log p(x | \theta) + \log p(\theta) - \log q_\phi(\theta | x) \big] = \text{ELBO}\)</span></p>
+<p>This is the <strong>evidence lower bound (ELBO)</strong>, which is a lower bound on the log-marginal likelihood.</p>
+<p>Based on an identify of the ELBO:</p>
+<p><span class="math notranslate nohighlight">\(\text{ELBO} =\)</span> <span class="math notranslate nohighlight">\(\log p(x)\)</span> <span class="math notranslate nohighlight">\(- \text{KL}(q_{\phi}(\theta | x)|| p(\theta|x))\)</span>,</p>
+<p>such that <strong>maximizing the ELBO is equivalent to minimizing the KL divergence</strong> between the variational posterior <span class="math notranslate nohighlight">\(q_{\phi}(\theta | x)\)</span> and the true posterior distribution <span class="math notranslate nohighlight">\(p(\theta|x)\)</span>.</p>
+<p>Here, <span class="math notranslate nohighlight">\(\phi\)</span> are the parameters for a density estimator <span class="math notranslate nohighlight">\(q\)</span>, typically a <strong>normalizing flow</strong>.</p>
+<p>Let’s consider two cases of our training set:</p>
+<ol class="arabic simple">
+<li><p>Pre-computed dataset</p></li>
+<li><p>A simulator</p></li>
+</ol>
+<section id="sbi-with-a-pre-computed-dataset">
+<h3>SBI with a pre-computed dataset<a class="headerlink" href="#sbi-with-a-pre-computed-dataset" title="Permalink to this headline">#</a></h3>
+<p>We simply have to define an <code class="docutils literal notranslate"><span class="pre">inference</span></code> instance and associate it with the training dataset of <span class="math notranslate nohighlight">\((\theta, x)\)</span> pairs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inference</span> <span class="o">=</span> <span class="n">SNPE</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">inference</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">append_simulations</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> 
+                                         <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+
+<span class="n">density_estimator</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">show_train_summary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># training the NPE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Neural network successfully converged after 118 epochs.
+        -------------------------
+        ||||| ROUND 1 STATS |||||:
+        -------------------------
+        Epochs trained: 118
+        Best validation performance: 25.3597
+        -------------------------
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we define a function to draw posterior functions from using our posterior approximator (a.k.a. the neural network).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">posterior</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">build_posterior</span><span class="p">(</span><span class="n">density_estimator</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s observe how well the posterior samples are predicted for a given example. As a sanity check, let’s use an observation from the training set and make 10,000 draws from the estimated posterior distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">137</span>
+<span class="n">posterior_samples</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">10000</span><span class="p">,),</span> 
+                                     <span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)[</span><span class="n">idx</span><span class="p">])</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "82dfebdd8aca46ef985efede61671df0", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="simple-posterior-predictive-checks">
+<h3>Simple, posterior predictive checks<a class="headerlink" href="#simple-posterior-predictive-checks" title="Permalink to this headline">#</a></h3>
+<p>We should always visualize the outputs of our algorithm to make sure the resulting predictions are sensible. Here, we do some simple checks:</p>
+<ol class="arabic simple">
+<li><p>Checking whether the posterior distribution encapsulates the ground truth <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
+<li><p>Observing the fidelity of the outputs simulated from the approximate posterior samples to the observed data</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Remove the noisy outliers based on the HDI to ease the corner plot visuals ##</span>
+<span class="n">hdis</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">posterior_samples</span><span class="p">,</span> <span class="n">hdi_prob</span><span class="o">=</span><span class="mf">0.999</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">posterior_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">posterior_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">hdis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">posterior_samples</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">lower</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">posterior_samples</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">upper</span><span class="p">)</span>
+
+<span class="n">posterior_samples</span> <span class="o">=</span> <span class="n">posterior_samples</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">posterior_samples</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[::</span><span class="mi">10</span><span class="p">],</span>
+                   <span class="n">truths</span><span class="o">=</span><span class="n">theta</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Posterior Predictive Check \#1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/88eeffc1f0f45c085a3ec79601a18f7c9744146e5611cd3eb24fca2fddd61fa1.png" src="../_images/88eeffc1f0f45c085a3ec79601a18f7c9744146e5611cd3eb24fca2fddd61fa1.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">283</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="n">posterior_samples</span><span class="p">[::</span><span class="mi">100</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">():</span>
+    <span class="n">x_o</span> <span class="o">=</span> <span class="n">bgModel</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">samp</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">x_o</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">([],[],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">999</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Samples from Approximate Posterior&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">3e7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">283</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Posterior Predictive Check \#2&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">3e5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/babbed2bb7611b1d986cfc501a9f0503b6fdc9b1243ba046d5f8ad289927dd7f.png" src="../_images/babbed2bb7611b1d986cfc501a9f0503b6fdc9b1243ba046d5f8ad289927dd7f.png" />
+</div>
+</div>
+<p>The above checks looks good. In particular, the samples from the approximate posterior are strongly centered about the true value and result in samples identical to the observed data.</p>
+</section>
+<section id="sbi-with-a-simulator">
+<h3>SBI with a simulator<a class="headerlink" href="#sbi-with-a-simulator" title="Permalink to this headline">#</a></h3>
+<p>Let’s investigate the alternative, where we have a generating function (simulator), rather than having examples already pre-computed.</p>
+<p>First, let’s define versions of our simulator that are <code class="docutils literal notranslate"><span class="pre">Torch</span></code> Tensor-friendly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_sinc_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">simulator</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Background model value at a given frequency &#39;nu&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Pn</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">nuNyq</span> <span class="o">=</span> <span class="mi">283</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">theta</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">nu_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">nu</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">_sinc_tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">nu_</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nuNyq</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+    
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">Pn</span><span class="c1">#**(torch.rand(1) * 2 + .5).to(device)</span>
+
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">nu_</span><span class="p">,</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">nu_</span><span class="p">,</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">2</span><span class="p">],</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">nu_</span> <span class="o">-</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">5</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">6</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">bg</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">sbi</span></code> library contains a number of high-level functions that makes it convenient to define a simulator with a custom prior function:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">sbi</span></code> it is the most convenient when you have a prior distribution implementable by Pytorch Distributions. Otherwise, a custom prior (such as the flow we’re using) requires specific <code class="docutils literal notranslate"><span class="pre">.sample()</span></code> and <code class="docutils literal notranslate"><span class="pre">.log_prob()</span></code> functions to be defined to be a valid distribution.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sbi.utils</span> <span class="kn">import</span> <span class="n">process_prior</span>
+
+<span class="k">class</span> <span class="nc">FlowPrior</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flow</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flow</span> <span class="o">=</span> <span class="n">flow</span>
+
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_shape</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([])):</span>
+        <span class="sd">&quot;&quot;&quot;Draw samples from the prior.&quot;&quot;&quot;</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flow</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_shape</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">samples</span>
+
+    <span class="k">def</span> <span class="nf">log_prob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate the log probability of a value under the prior.&quot;&quot;&quot;</span>
+        <span class="n">log_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flow</span><span class="p">()</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">log_probs</span>
+
+<span class="n">flowprior</span> <span class="o">=</span> <span class="n">FlowPrior</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
+<span class="n">flowprior_</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">process_prior</span><span class="p">(</span><span class="n">flowprior</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/user_input_checks_utils.py:389: UserWarning: No prior bounds were passed, consider passing lower_bound
+            and / or upper_bound if your prior has bounded support.
+  warnings.warn(
+/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/user_input_checks_utils.py:69: UserWarning: Prior is lacking mean attribute, estimating prior mean from samples.
+  warnings.warn(
+/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/user_input_checks_utils.py:80: UserWarning: Prior is lacking variance attribute, estimating prior variance from
+                samples...
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>At this stage, we have our <strong>normalizing flow as our prior distribution</strong> from which we draw samples to pass to the simulator to generate <span class="math notranslate nohighlight">\(x\)</span> on the fly. We may generate as many (or as few) samples as we want now and it should be distributed following the original <span class="math notranslate nohighlight">\(\theta\)</span> (from the <span class="math notranslate nohighlight">\(\sim14,600\)</span> <em>Kepler</em> red giants). Here, we sample <span class="math notranslate nohighlight">\(10,000\)</span> pairs of <span class="math notranslate nohighlight">\((\theta, x)\)</span> as our training set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sbi.inference</span> <span class="kn">import</span> <span class="n">simulate_for_sbi</span>
+
+<span class="n">thetap</span><span class="p">,</span> <span class="n">xp</span> <span class="o">=</span> <span class="n">simulate_for_sbi</span><span class="p">(</span><span class="n">simulator</span><span class="p">,</span> <span class="n">flowprior</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bb3e88e3406c4749affb0a579ed37386", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Beyond this step, everything else remains identical, save for the explicit definition of the prior in the SNPE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inference</span> <span class="o">=</span> <span class="n">SNPE</span><span class="p">(</span><span class="n">prior</span><span class="o">=</span><span class="n">flowprior_</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">inference</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">append_simulations</span><span class="p">(</span><span class="n">thetap</span><span class="p">,</span> <span class="n">xp</span><span class="p">)</span> <span class="c1"># associate training set with the NPE</span>
+<span class="n">density_estimator</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">show_train_summary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># begin training</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/torchutils.py:27: UserWarning: GPU was selected as a device for training the neural network. Note that we expect no significant speed ups in training for the default architectures we provide. Using the GPU will be effective only for large neural networks with operations that are fast on the GPU, e.g., for a CNN or RNN `embedding_net`.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Training neural network. Epochs trained: 1Training neural network. Epochs trained: 2Training neural network. Epochs trained: 3Training neural network. Epochs trained: 4Training neural network. Epochs trained: 5Training neural network. Epochs trained: 6Training neural network. Epochs trained: 7Training neural network. Epochs trained: 8Training neural network. Epochs trained: 9Training neural network. Epochs trained: 10Training neural network. Epochs trained: 11Training neural network. Epochs trained: 12Training neural network. Epochs trained: 13Training neural network. Epochs trained: 14Training neural network. Epochs trained: 15Training neural network. Epochs trained: 16Training neural network. Epochs trained: 17Training neural network. Epochs trained: 18Training neural network. Epochs trained: 19Training neural network. Epochs trained: 20Training neural network. Epochs trained: 21Training neural network. Epochs trained: 22Training neural network. Epochs trained: 23Training neural network. Epochs trained: 24Training neural network. Epochs trained: 25Training neural network. Epochs trained: 26Training neural network. Epochs trained: 27Training neural network. Epochs trained: 28Training neural network. Epochs trained: 29Training neural network. Epochs trained: 30Training neural network. Epochs trained: 31Training neural network. Epochs trained: 32Training neural network. Epochs trained: 33Training neural network. Epochs trained: 34Training neural network. Epochs trained: 35Training neural network. Epochs trained: 36Training neural network. Epochs trained: 37Training neural network. Epochs trained: 38Training neural network. Epochs trained: 39Training neural network. Epochs trained: 40Training neural network. Epochs trained: 41Training neural network. Epochs trained: 42Training neural network. Epochs trained: 43Training neural network. Epochs trained: 44Training neural network. Epochs trained: 45Training neural network. Epochs trained: 46Training neural network. Epochs trained: 47Training neural network. Epochs trained: 48Training neural network. Epochs trained: 49Training neural network. Epochs trained: 50Training neural network. Epochs trained: 51Training neural network. Epochs trained: 52Training neural network. Epochs trained: 53Training neural network. Epochs trained: 54Training neural network. Epochs trained: 55Training neural network. Epochs trained: 56Training neural network. Epochs trained: 57Training neural network. Epochs trained: 58Training neural network. Epochs trained: 59Training neural network. Epochs trained: 60Training neural network. Epochs trained: 61Training neural network. Epochs trained: 62Training neural network. Epochs trained: 63Training neural network. Epochs trained: 64Training neural network. Epochs trained: 65Training neural network. Epochs trained: 66Training neural network. Epochs trained: 67Training neural network. Epochs trained: 68Training neural network. Epochs trained: 69Training neural network. Epochs trained: 70Training neural network. Epochs trained: 71Training neural network. Epochs trained: 72Training neural network. Epochs trained: 73Training neural network. Epochs trained: 74Training neural network. Epochs trained: 75Training neural network. Epochs trained: 76Training neural network. Epochs trained: 77Training neural network. Epochs trained: 78Training neural network. Epochs trained: 79Training neural network. Epochs trained: 80Training neural network. Epochs trained: 81Training neural network. Epochs trained: 82Training neural network. Epochs trained: 83Training neural network. Epochs trained: 84Training neural network. Epochs trained: 85Training neural network. Epochs trained: 86Training neural network. Epochs trained: 87Training neural network. Epochs trained: 88Training neural network. Epochs trained: 89Training neural network. Epochs trained: 90Training neural network. Epochs trained: 91Training neural network. Epochs trained: 92Training neural network. Epochs trained: 93Training neural network. Epochs trained: 94Training neural network. Epochs trained: 95Training neural network. Epochs trained: 96Training neural network. Epochs trained: 97Training neural network. Epochs trained: 98Training neural network. Epochs trained: 99Training neural network. Epochs trained: 100Training neural network. Epochs trained: 101Training neural network. Epochs trained: 102Training neural network. Epochs trained: 103Training neural network. Epochs trained: 104Training neural network. Epochs trained: 105Training neural network. Epochs trained: 106Training neural network. Epochs trained: 107Training neural network. Epochs trained: 108Training neural network. Epochs trained: 109Training neural network. Epochs trained: 110Training neural network. Epochs trained: 111Training neural network. Epochs trained: 112Training neural network. Epochs trained: 113Training neural network. Epochs trained: 114Training neural network. Epochs trained: 115Training neural network. Epochs trained: 116Training neural network. Epochs trained: 117Training neural network. Epochs trained: 118Training neural network. Epochs trained: 119Training neural network. Epochs trained: 120Training neural network. Epochs trained: 121Training neural network. Epochs trained: 122Training neural network. Epochs trained: 123Training neural network. Epochs trained: 124Training neural network. Epochs trained: 125Training neural network. Epochs trained: 126Training neural network. Epochs trained: 127Training neural network. Epochs trained: 128Training neural network. Epochs trained: 129Training neural network. Epochs trained: 130Training neural network. Epochs trained: 131Training neural network. Epochs trained: 132Training neural network. Epochs trained: 133Training neural network. Epochs trained: 134Training neural network. Epochs trained: 135Training neural network. Epochs trained: 136Training neural network. Epochs trained: 137Training neural network. Epochs trained: 138Training neural network. Epochs trained: 139Training neural network. Epochs trained: 140Training neural network. Epochs trained: 141Training neural network. Epochs trained: 142Training neural network. Epochs trained: 143Training neural network. Epochs trained: 144Training neural network. Epochs trained: 145Training neural network. Epochs trained: 146Training neural network. Epochs trained: 147Training neural network. Epochs trained: 148Training neural network. Epochs trained: 149Training neural network. Epochs trained: 150Training neural network. Epochs trained: 151Training neural network. Epochs trained: 152Training neural network. Epochs trained: 153Training neural network. Epochs trained: 154Training neural network. Epochs trained: 155Training neural network. Epochs trained: 156Training neural network. Epochs trained: 157Training neural network. Epochs trained: 158Training neural network. Epochs trained: 159Training neural network. Epochs trained: 160Training neural network. Epochs trained: 161Training neural network. Epochs trained: 162Training neural network. Epochs trained: 163Training neural network. Epochs trained: 164Training neural network. Epochs trained: 165Training neural network. Epochs trained: 166Training neural network. Epochs trained: 167Training neural network. Epochs trained: 168Training neural network. Epochs trained: 169Training neural network. Epochs trained: 170Training neural network. Epochs trained: 171Training neural network. Epochs trained: 172Training neural network. Epochs trained: 173Training neural network. Epochs trained: 174Training neural network. Epochs trained: 175Training neural network. Epochs trained: 176Training neural network. Epochs trained: 177Training neural network. Epochs trained: 178Training neural network. Epochs trained: 179Training neural network. Epochs trained: 180Training neural network. Epochs trained: 181Training neural network. Epochs trained: 182Training neural network. Epochs trained: 183Training neural network. Epochs trained: 184Training neural network. Epochs trained: 185Training neural network. Epochs trained: 186Training neural network. Epochs trained: 187Training neural network. Epochs trained: 188Training neural network. Epochs trained: 189
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Training neural network. Epochs trained: 190Training neural network. Epochs trained: 191Training neural network. Epochs trained: 192Training neural network. Epochs trained: 193Training neural network. Epochs trained: 194Training neural network. Epochs trained: 195Training neural network. Epochs trained: 196Training neural network. Epochs trained: 197Training neural network. Epochs trained: 198Training neural network. Epochs trained: 199Training neural network. Epochs trained: 200Training neural network. Epochs trained: 201Training neural network. Epochs trained: 202Training neural network. Epochs trained: 203Training neural network. Epochs trained: 204Training neural network. Epochs trained: 205Training neural network. Epochs trained: 206Training neural network. Epochs trained: 207Training neural network. Epochs trained: 208Training neural network. Epochs trained: 209Training neural network. Epochs trained: 210Training neural network. Epochs trained: 211Training neural network. Epochs trained: 212Training neural network. Epochs trained: 213Training neural network. Epochs trained: 214Training neural network. Epochs trained: 215Training neural network. Epochs trained: 216Training neural network. Epochs trained: 217Training neural network. Epochs trained: 218Neural network successfully converged after 218 epochs.
+        -------------------------
+        ||||| ROUND 1 STATS |||||:
+        -------------------------
+        Epochs trained: 218
+        Best validation performance: 26.4052
+        -------------------------
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">137</span>
+<span class="n">posterior</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">build_posterior</span><span class="p">(</span><span class="n">density_estimator</span><span class="p">)</span>
+<span class="n">posterior_samples</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">10000</span><span class="p">,),</span> 
+                                     <span class="n">x</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)[</span><span class="n">idx</span><span class="p">])</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">hdis</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">posterior_samples</span><span class="p">,</span> <span class="n">hdi_prob</span><span class="o">=</span><span class="mf">0.999</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">posterior_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">posterior_samples</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">hdis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">posterior_samples</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">lower</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">posterior_samples</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">upper</span><span class="p">)</span>
+
+<span class="n">posterior_samples</span> <span class="o">=</span> <span class="n">posterior_samples</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">posterior_samples</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[::</span><span class="mi">10</span><span class="p">],</span>
+                   <span class="n">truths</span><span class="o">=</span><span class="n">theta</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Posterior Distribution</span><span class="se">\n</span><span class="s1"> Training with Generator</span><span class="se">\n\n</span><span class="s1">(Identical to Training using</span><span class="se">\n</span><span class="s1">Full Dataset)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7f4ca9a2583e449483b8c2ec9ec3625e", "version_major": 2, "version_minor": 0}</script><img alt="../_images/1ba5190bfbc97e9d2e713287b1e10557c44490de20f85240cbe51963efc094e8.png" src="../_images/1ba5190bfbc97e9d2e713287b1e10557c44490de20f85240cbe51963efc094e8.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="applying-the-trained-npe-to-real-data">
+<h2>Applying the trained NPE to real data<a class="headerlink" href="#applying-the-trained-npe-to-real-data" title="Permalink to this headline">#</a></h2>
+<p>Let’s apply our trained posterior estimator to a real example, KIC 6144777 in <a class="reference internal" href="fitting_power_spectrum_1.html#content-references-ps-fitting"><span class="std std-ref">Fitting Red Giant Oscillations Part 1: Traditional Optimization</span></a>. Recall that we have fitted the background of that star using MCMC approaches at the end of that Section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">periodogram</span> <span class="kn">import</span> <span class="n">psd</span>
+<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span><span class="p">,</span> <span class="n">Box1DKernel</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binned_statistic</span>
+
+<span class="n">rg_data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data_folder_path</span> <span class="o">/</span> <span class="s1">&#39;hlsp_kepseismic_kepler_phot_kplr006144777-80d_kepler_v1_cor-filt-inp.fits&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">freq</span><span class="p">,</span> <span class="n">power</span> <span class="o">=</span> <span class="n">psd</span><span class="p">(</span><span class="n">rg_data</span><span class="o">.</span><span class="n">TIME</span><span class="o">.</span><span class="n">values</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Ms</span><span class="p">),</span> <span class="n">rg_data</span><span class="o">.</span><span class="n">FLUX</span><span class="p">)</span>
+<span class="n">truth_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_folder_path</span> <span class="o">/</span> <span class="s1">&#39;PS_Part1_samples2.npz&#39;</span><span class="p">)[</span><span class="s1">&#39;samples&#39;</span><span class="p">]</span>
+<span class="n">truth_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">truth_samples</span><span class="p">,</span> <span class="n">shift</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We need a highly smoothed version of our observed data to have them being comparable with the simulated power spectra we have been designing. We will smooth the mean-binned observed spectrum with a boxcar filter of <span class="math notranslate nohighlight">\(20\mu\)</span>Hz width.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">283</span><span class="p">,</span> <span class="mi">284</span><span class="p">)</span>
+
+<span class="n">binned_power_raw</span><span class="p">,</span> <span class="n">freq_binedges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binned_statistic</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span>
+                                      <span class="n">power</span><span class="p">,</span>
+                                      <span class="n">statistic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">,</span>
+                                      <span class="n">bins</span> <span class="o">=</span> <span class="n">freq_bins</span><span class="p">)</span>
+<span class="n">smooth_power</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">binned_power_raw</span><span class="p">,</span> <span class="n">Box1DKernel</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mf">20.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">freq_bins</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))),</span><span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;fill&#39;</span><span class="p">,</span> 
+                        <span class="n">fill_value</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">power</span><span class="p">[</span><span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">250</span><span class="p">])</span> <span class="p">)</span> 
+<span class="n">smooth_power</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">smooth_power</span><span class="p">,</span> <span class="n">Box1DKernel</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mf">20.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">freq_bins</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))),</span>
+                        <span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;extend&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">binned_freq</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">freq_binedges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">freq_binedges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed Power Spectrum&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">binned_freq</span><span class="p">,</span> <span class="n">smooth_power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binned Smoothed Spectrum</span><span class="se">\n</span><span class="s1">(Input)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;KIC 6144777&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">})</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">283</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">3e6</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/26fe364797e9d5f7fcb91f4cb85c4789f25cfee1e79bb27e7a5edceaff863789.png" src="../_images/26fe364797e9d5f7fcb91f4cb85c4789f25cfee1e79bb27e7a5edceaff863789.png" />
+</div>
+</div>
+<p>Let’s estimate the posterior distribution of <span class="math notranslate nohighlight">\(\theta\)</span> for KIC 6144777. We will use a heavily smoothed version of observed power spectrum, showed in red above, defined as <code class="docutils literal notranslate"><span class="pre">smooth_power</span></code>, as the input to the trained NPE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred_x_o</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">smooth_power</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="c1"># wrapping as a torch Tensor</span>
+<span class="n">pred_posterior_samples</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">10000</span><span class="p">,),</span> <span class="n">x</span><span class="o">=</span><span class="n">pred_x_o</span><span class="p">)</span> <span class="c1"># sampling 10,000 values from the posterior dist.</span>
+<span class="n">pred_posterior_samples_np</span> <span class="o">=</span> <span class="n">pred_posterior_samples</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "018d3158751346a5b25a4245e256eccd", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>How does our NPE-estimated posterior distribution compare to those fitted from MCMC in the previous section?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hdis</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">pred_posterior_samples_np</span><span class="p">,</span> <span class="n">hdi_prob</span><span class="o">=</span><span class="mf">0.99</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">pred_posterior_samples_np</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pred_posterior_samples_np</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">hdis</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">mask</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">pred_posterior_samples_np</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">lower</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">pred_posterior_samples_np</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">upper</span><span class="p">)</span>
+<span class="n">pred_posterior_samples</span> <span class="o">=</span> <span class="n">pred_posterior_samples</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">truth_samples</span><span class="p">),</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span>
+                   <span class="n">hist_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+
+<span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">pred_posterior_samples_np</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span>    
+              <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> 
+              <span class="n">plot_contours</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+              <span class="n">hist_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> 
+              <span class="n">scatter_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+             <span class="n">fig</span> <span class="o">=</span> <span class="n">fig</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    
+<span class="n">axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
+<span class="n">handles</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$ from MCMC (log units)&#39;</span><span class="p">),</span>
+           <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$ approx. from flow (log units)&#39;</span><span class="p">)]</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/97b295911705374c3a148ec0164f5b0aba1eebe67f8256edf232d411412c75b8.png" src="../_images/97b295911705374c3a148ec0164f5b0aba1eebe67f8256edf232d411412c75b8.png" />
+</div>
+</div>
+<p>Evidently, something strange is going on with our estimator. Not only are the estimates off significantly from the true posterior distribution (in black), but they are also highly uncertain. Let’s plot samples from the estimated posterior distribution to see what’s going on.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="n">pred_posterior_samples</span><span class="p">[::</span><span class="mi">150</span><span class="p">]:</span>
+    <span class="n">x_o</span> <span class="o">=</span> <span class="n">simulator</span><span class="p">(</span><span class="n">samp</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="p">(</span><span class="n">x_o</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">binned_freq</span><span class="p">,</span> <span class="n">smooth_power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binned Smoothed Spectrum</span><span class="se">\n</span><span class="s1">(Input)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">loglog</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Samples Generated From</span><span class="se">\n</span><span class="s1">Estimated Posterior Distribution&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;KIC 6144777&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">})</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">283</span><span class="p">);</span>  <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">3e6</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Noise Floor&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c0837e9a2390528dee8549b54464e6ebaca40fed4ce05633462f193b88f58724.png" src="../_images/c0837e9a2390528dee8549b54464e6ebaca40fed4ce05633462f193b88f58724.png" />
+</div>
+</div>
+<p>There is a clear mismatch between the new samples with the input! From the above visuals, what is a limitation  based on an assumptions we’ve made about the model spectrum?</p>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The existing model is incapable of fitting the data across different levels of white noise, which contributes to a vertical offset along the y-axis.</p>
+</div>
+<p>The existing power spectrum model is <strong>underspecified</strong> and lacks flexibility to fit the observed data. Test the following to see if NPE can produce comparable distributions to the MCMC approach.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Perform the following:</p>
+<ol class="arabic simple">
+<li><p>Augmenting the simulator with a white noise parameter <span class="math notranslate nohighlight">\(P_n\)</span>, where <span class="math notranslate nohighlight">\(\log_{10}P_n\sim\mathcal{U}\in(0.5, 2.5)\)</span>. This can be done in two ways:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Including <span class="math notranslate nohighlight">\(P_n\)</span> as an additional property to the observational dataset <code class="docutils literal notranslate"><span class="pre">bg_df</span></code> and effectively training the normalizing flow prior with an additional parameter.</p></li>
+<li><p>Generating a random instance of <span class="math notranslate nohighlight">\(P_n\)</span> during the simulation process (i.e., within <code class="docutils literal notranslate"><span class="pre">simulator</span></code>)</p></li>
+</ul>
+<p>If all works well, you should see a much better agreement between the MCMC and NPE posterior distributions, as follows:</p>
+<figure class="align-default" id="compare-corner">
+<a class="reference internal image-reference" href="../_images/compare_corner.png"><img alt="../_images/compare_corner.png" src="../_images/compare_corner.png" style="height: 650px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Comparison of posterior distributions from MCMC (black) versus from NPE (red) from the model incorporating <span class="math notranslate nohighlight">\(P_n\)</span> as a free parameter.</span><a class="headerlink" href="#compare-corner" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The agreement, however, is not perfect. What are potential improvements to the methodology?</p>
+<ol class="arabic simple" start="2">
+<li><p>Re-do the background estimation (either using MCMC or NPE) on KIC 6144777, but down to a lower frequency limit of 0.2<span class="math notranslate nohighlight">\(\mu\)</span>Hz. Comment on the feasibility of the model fits and potential inclusions to the model to make its samples fit better.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fitting_power_spectrum_1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ps_statistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><em>Power Spectrum Statistics</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulations-using-a-realistic-range-of-inputs">Simulations using a realistic range of inputs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sample-able-training-set">A sample-able training set</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-posterior-estimation-inference">Neural Posterior Estimation Inference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sbi-with-a-pre-computed-dataset">SBI with a pre-computed dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-posterior-predictive-checks">Simple, posterior predictive checks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sbi-with-a-simulator">SBI with a simulator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-trained-npe-to-real-data">Applying the trained NPE to real data</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1475 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Stellar Spectra Part 4: Detecting Stellar Activity Indicators &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter2/spectra-4';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter2/spectra-4.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stellar Spectra Part 5: Domain Transfer" href="spectra-5.html" />
+    <link rel="prev" title="Stellar Spectra Part 3: The Payne" href="spectra-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1/section_intro.html">Time-domain Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Spectra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter2/spectra-4.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter2/spectra-4.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter2/spectra-4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter2/spectra-4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stellar Spectra Part 4: Detecting Stellar Activity Indicators</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-activity-indicators">Spectral Activity Indicators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoding-stellar-spectra">Autoencoding Stellar Spectra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-anomalous-spectral-features-equivalent-width">Detecting Anomalous Spectral Features – Equivalent Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-transfer">Label Transfer</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stellar-spectra-part-4-detecting-stellar-activity-indicators">
+<span id="content-references-spectra-part4"></span><h1>Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em><a class="headerlink" href="#stellar-spectra-part-4-detecting-stellar-activity-indicators" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>In this Section, we will examine how autoencoding techniques can be useful to find stars of interest, namely those showing peculiar spectral features.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span><span class="p">,</span> <span class="n">mark_inset</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter2&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="spectral-activity-indicators">
+<h2>Spectral Activity Indicators<a class="headerlink" href="#spectral-activity-indicators" title="Permalink to this headline">#</a></h2>
+<p>In magnetically active stars, the chromosphere is heated by magnetic reconnection and related non-radiative processes. This enhanced heating increases the rate of collisional excitation and de-excitation, particularly of atoms and ions that form spectral features in the chromospheric layers. These spectral lines act as powerful diagnostics of stellar magnetic activity, revealing localized heating in the outer atmosphere.</p>
+<p>In this section, we examine two such widely used activity indicators:</p>
+<ul class="simple">
+<li><p><strong>Hydrogen alpha (H-<span class="math notranslate nohighlight">\(\alpha\)</span>):</strong>  The H-α line is part of the Balmer series of hydrogen, produced by electrons transitioning from the <span class="math notranslate nohighlight">\(n=3\)</span> to <span class="math notranslate nohighlight">\(n=2\)</span> energy level. It typically appears as a strong absorption feature at 6562.8 Å. In magnetically active stars, increased chromospheric heating can lead to net emission of H-α photons, resulting in either filling-in of the absorption core or full emission profiles.</p></li>
+<li><p><strong>Ca II InfraRed Triplet (IRT)</strong>: The Ca II IRT consists of three transitions of singly ionized calcium at approximately 8498, 8542, and 8662 Å. These lines usually appear in absorption in cool stars and are formed in the lower chromosphere. In active stars, the line cores can become partially or fully filled with emission.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wav</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">AA</span>
+
+<span class="n">flux_conv</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">erg</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">AA</span>
+<span class="n">flux_conv2</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">erg</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span>
+<span class="n">ph_wav_lr</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/model_spectra/lte05700-4.00-0.0.PHOENIX-ACES-AGSS-COND-2011-HiRes.fits&#39;</span><span class="p">)</span>
+<span class="n">xlim_min</span><span class="p">,</span> <span class="n">xlim_max</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">40000</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CRVAL1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">],</span>
+           <span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">*</span><span class="n">flux_conv2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">flux_conv</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Model Spectrum&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength, $</span><span class="se">\\</span><span class="s1">lambda$ ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Irradiance, $F_</span><span class="se">\\</span><span class="s1">lambda$ (erg cm$^{-2}$ s$^{-1}$ $</span><span class="se">\\</span><span class="s1">AA^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim_min</span><span class="p">,</span> <span class="n">xlim_max</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+
+<span class="n">ax1a</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                  <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
+                  <span class="n">bbox_transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CRVAL1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">],</span>
+           <span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">*</span><span class="n">flux_conv2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">flux_conv</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;H-$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">6471</span><span class="p">,</span> <span class="mi">6670</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.2e7</span><span class="p">,</span> <span class="mf">0.8e7</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">indicate_inset_zoom</span><span class="p">(</span><span class="n">ax1a</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">mark_inset</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">,</span> <span class="n">loc1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc2</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;0.5&quot;</span><span class="p">);</span>
+
+<span class="n">ax1b</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                  <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
+                  <span class="n">bbox_transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CRVAL1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">],</span>
+           <span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">*</span><span class="n">flux_conv2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">flux_conv</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ca Infrared Triplets&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">8381</span><span class="p">,</span><span class="mi">8780</span><span class="p">)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.1e7</span><span class="p">,</span> <span class="mf">0.5e7</span><span class="p">);</span> <span class="n">ax1b</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">indicate_inset_zoom</span><span class="p">(</span><span class="n">ax1b</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">mark_inset</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1b</span><span class="p">,</span> <span class="n">loc1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc2</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;0.5&quot;</span><span class="p">);</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_xminorticklabels</span><span class="p">():</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">set_ha</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/382d583252285f466e99626d47e51d3b956455d1e8e2499da63d1ec75c2734bb.png" src="../_images/382d583252285f466e99626d47e51d3b956455d1e8e2499da63d1ec75c2734bb.png" />
+</div>
+</div>
+<p>In moderate to high-resolution spectra with reasonable signal-to-noise levels, the presence of emission within these lines are fairly easy to detect.</p>
+<figure class="align-default" id="halphamrs">
+<a class="reference internal image-reference" href="../_images/HalphaMRS.png"><img alt="../_images/HalphaMRS.png" src="../_images/HalphaMRS.png" style="width: 700px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">H<span class="math notranslate nohighlight">\(\alpha\)</span> emission lines for nine different stars from LAMOST Medium Resolution Spectra reported by <a class="reference external" href="https://link.springer.com/article/10.1007/s10509-023-04219-w">He et al. (2023)</a>. Each column corresponds to a different spectral type, indicative of the temperature of the star (hotter stars to the left). The vertical band in each panel marks the  center band of the H<span class="math notranslate nohighlight">\(\alpha\)</span> line, whose mean flux is compared with the flux from the continuum (green bands) to calculate the activity indicator <span class="math notranslate nohighlight">\(I_{\mathrm{H}\alpha}\)</span>.</span><a class="headerlink" href="#halphamrs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In this activity, we are going to be using a dataset of low-resolution spectra from the Large Sky Area Multi-Object Fiber Spectroscopic Telescope (<strong>LAMOST</strong>). These spectra have a resolution of 1800 at 5500 Å and have a wavelength range of 370-900nm. Meanwhile, the selection for targets will be for those with temperatures between <span class="math notranslate nohighlight">\(3000-8500\,\)</span>K and a minimum signal-to-noise ratio of 10.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/LAMOST_MRS_Activity.npz&#39;</span><span class="p">)</span>
+
+<span class="c1">## Halpha Line ##</span>
+<span class="n">wave_ha</span> <span class="o">=</span> <span class="n">mrs_data</span><span class="p">[</span><span class="s1">&#39;wave_ha&#39;</span><span class="p">];</span> <span class="n">flux_ha</span> <span class="o">=</span> <span class="n">mrs_data</span><span class="p">[</span><span class="s1">&#39;flux_ha&#39;</span><span class="p">];</span> <span class="n">flux_ha_active</span> <span class="o">=</span> <span class="n">mrs_data</span><span class="p">[</span><span class="s1">&#39;flux_ha_active&#39;</span><span class="p">]</span>
+
+<span class="c1">## Calcium Triplets ##</span>
+<span class="n">wave_ca</span> <span class="o">=</span> <span class="n">mrs_data</span><span class="p">[</span><span class="s1">&#39;wave_ca&#39;</span><span class="p">];</span> <span class="n">flux_ca</span> <span class="o">=</span> <span class="n">mrs_data</span><span class="p">[</span><span class="s1">&#39;flux_ca&#39;</span><span class="p">];</span> <span class="n">flux_ca_active</span> <span class="o">=</span> <span class="n">mrs_data</span><span class="p">[</span><span class="s1">&#39;flux_ca_active&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataset includes both active and inactive spectra, as shown in the following:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">,</span> <span class="n">ax2a</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">14</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">flux_ha</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">flux_ca</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">flux_ha_active</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">flux_ca_active</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1a</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">6410</span><span class="p">,</span> <span class="mi">6740</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">8410</span><span class="p">,</span> <span class="mi">8740</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1a</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([]);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength $</span><span class="se">\\</span><span class="s1">AA$&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax2a</span><span class="p">]]</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">6562.8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+<span class="p">[</span><span class="n">ax1a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">8498</span><span class="p">,</span> <span class="mi">8542</span><span class="p">,</span><span class="mi">8662</span><span class="p">]];</span> <span class="p">[</span><span class="n">ax2a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">8498</span><span class="p">,</span> <span class="mi">8542</span><span class="p">,</span><span class="mi">8662</span><span class="p">]]</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.485</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;H$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.485</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;H$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.42</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Ca IRT&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1a</span><span class="p">,</span> <span class="n">ax2a</span><span class="p">]]</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Inactive Star&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Active Star&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/50d87c226b1d718f1d691e27d2a603a67fbd61738fc56885b2e426741238fa6b.png" src="../_images/50d87c226b1d718f1d691e27d2a603a67fbd61738fc56885b2e426741238fa6b.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">The Challenge of Simple Metrics</p>
+<p>Notice that Hα can sometimes appear in full emission above the continuum, while the Ca IRT lines show only reduced absorption depth in active stars. These differing morphological responses to magnetic activity highlight why it can be oversimplistic to rely on integrated the flux within the Hα band without consideration of the other spectral signatures of the star.</p>
+<p>The detectability of activity signatures must be also interpreted in relation to the surrounding continuum and other global stellar parameters, such as effective temperature, surface gravity, metallicity, and rotational broadening.</p>
+</div>
+</section>
+<section id="autoencoding-stellar-spectra">
+<h2>Autoencoding Stellar Spectra<a class="headerlink" href="#autoencoding-stellar-spectra" title="Permalink to this headline">#</a></h2>
+<p>The traditional approach to detecting and measuring chromospheric emission from a star’s spectrum is to subtract an inactive copy of the spectrum from the observed data. This process, known as <strong>spectral subtraction</strong>, typically requires <a class="reference external" href="https://www.aanda.org/articles/aa/full_html/2015/03/aa24409-14/aa24409-14.html">synthesizing quiet template spectra</a>, which is a large computational burden for the analysis of millions of spectra collected by large surveys such as LAMOST.</p>
+<p>A data-driven approach provides a computationally efficient alternative to traditional spectral modeling. By training an autoencoder to reconstruct quiet stellar spectra, it learns to capture the underlying structure of normal stellar atmospheres. Once trained, the autoencoder can rapidly generate template spectra for new observations, implicitly accounting for both global stellar parameters and the characteristic spectral features of each star.</p>
+<figure class="align-default" id="vaemagnetic">
+<a class="reference internal image-reference" href="../_images/vae_magnetic.png"><img alt="../_images/vae_magnetic.png" src="../_images/vae_magnetic.png" style="width: 650px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">A schematic of the variational autoencoder used for this analysis. Image from <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2022MNRAS.514.4781X/abstract">Yue et al. (2022)</a>.</span><a class="headerlink" href="#vaemagnetic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let’s define the tools required to train a <strong>variational autoencoder</strong> on the spectra.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="nn">optim</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span><span class="p">,</span> <span class="n">random_split</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">flux_ha</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">flux_ca</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)],</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">X_active</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">flux_ha_active</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">flux_ca_active</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)],</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">X_quiet</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">X_active</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X_active</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">active_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_active</span><span class="p">)</span>
+
+<span class="n">val_fraction</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># 10 % of the quiet data is randomly held out for validation</span>
+<span class="n">dataset_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_quiet</span><span class="p">)</span>
+<span class="n">val_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_fraction</span> <span class="o">*</span> <span class="n">dataset_size</span><span class="p">)</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="n">dataset_size</span> <span class="o">-</span> <span class="n">val_size</span>
+
+<span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span>
+    <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_quiet</span><span class="p">),</span>
+    <span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="n">train_size</span><span class="p">,</span> <span class="n">val_size</span><span class="p">],</span>
+    <span class="n">generator</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> 
+<span class="p">)</span>
+
+<span class="n">dataloader_quiet_train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataloader_quiet_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dataloader_active</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">active_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Defining the training objective -- MSE Loss and KL Divergence</span>
+
+<span class="k">def</span> <span class="nf">vae_loss</span><span class="p">(</span><span class="n">recon_x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">recon_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">recon_x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+    <span class="n">kl_div</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">log_var</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">log_var</span><span class="o">.</span><span class="n">exp</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">recon_loss</span> <span class="o">+</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">kl_div</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we define the variational autoencoder model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">VAE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">num_hidden1</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">num_hidden2</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">num_hidden3</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">code_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">drop_rate</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">num_hidden1</span><span class="p">),</span><span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">drop_rate</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden1</span><span class="p">,</span> <span class="n">num_hidden2</span><span class="p">),</span><span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">drop_rate</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden2</span><span class="p">,</span> <span class="n">num_hidden3</span><span class="p">),</span><span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">drop_rate</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2mu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden3</span><span class="p">,</span> <span class="n">code_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2log_var</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden3</span><span class="p">,</span> <span class="n">code_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">code_size</span><span class="p">,</span> <span class="n">num_hidden3</span><span class="p">),</span><span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">drop_rate</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden3</span><span class="p">,</span> <span class="n">num_hidden2</span><span class="p">),</span><span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">drop_rate</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden2</span><span class="p">,</span> <span class="n">num_hidden1</span><span class="p">),</span><span class="n">nn</span><span class="o">.</span><span class="n">PReLU</span><span class="p">(),</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">drop_rate</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_hidden1</span><span class="p">,</span> <span class="n">input_size</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">reparameterization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">log_var</span><span class="p">)</span>
+            <span class="n">epsilon</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">std</span><span class="o">*</span><span class="n">epsilon</span>
+            <span class="k">return</span> <span class="n">z</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">mu</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden2mu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">log_var</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden2log_var</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reparameterization</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden2mu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAE</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="n">flux_ha</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_hidden1</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+            <span class="n">num_hidden2</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">num_hidden3</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+            <span class="n">code_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">drop_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">lr</span> <span class="o">=</span> <span class="mf">1e-3</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_quiet_train</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">vae_loss</span><span class="p">(</span><span class="n">recon_x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader_quiet_train</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1">## Perform Validation ##</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_quiet_val</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">x2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span>  <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">vae_loss</span><span class="p">(</span><span class="n">recon_x</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+                <span class="n">val_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">avg_val_loss</span> <span class="o">=</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader_quiet_val</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+    
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_epochs</span><span class="si">}</span><span class="s2">, Train Loss: </span><span class="si">{</span><span class="n">avg_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Val Loss: </span><span class="si">{</span><span class="n">avg_val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15000, Train Loss: 728.4055, Val Loss: 667.4794
+Epoch 1001/15000, Train Loss: 0.0914, Val Loss: 0.0830
+Epoch 2001/15000, Train Loss: 0.0776, Val Loss: 0.0698
+Epoch 3001/15000, Train Loss: 0.0691, Val Loss: 0.0652
+Epoch 4001/15000, Train Loss: 0.0711, Val Loss: 0.0649
+Epoch 5001/15000, Train Loss: 0.0964, Val Loss: 0.0875
+Epoch 6001/15000, Train Loss: 0.0691, Val Loss: 0.0640
+Epoch 7001/15000, Train Loss: 0.0691, Val Loss: 0.0655
+Epoch 8001/15000, Train Loss: 0.0663, Val Loss: 0.0654
+Epoch 9001/15000, Train Loss: 0.0646, Val Loss: 0.0645
+Epoch 10001/15000, Train Loss: 0.0658, Val Loss: 0.0633
+Epoch 11001/15000, Train Loss: 0.0661, Val Loss: 0.0635
+Epoch 12001/15000, Train Loss: 0.0624, Val Loss: 0.0628
+Epoch 13001/15000, Train Loss: 0.0634, Val Loss: 0.0632
+Epoch 14001/15000, Train Loss: 0.0624, Val Loss: 0.0660
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s visualize these reconstructions of the autoencoder:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_recons</span><span class="p">,</span> <span class="n">active_recons</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">val_truth</span><span class="p">,</span> <span class="n">active_truth</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">val_mu</span><span class="p">,</span> <span class="n">active_mu</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_quiet_val</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span>  <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+        <span class="n">val_recons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recon_x</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">val_truth</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">val_mu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_active</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span>  <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+        <span class="n">active_recons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recon_x</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">active_truth</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x2</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">active_mu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">val_recons</span><span class="p">,</span> <span class="n">active_recons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">val_recons</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">active_recons</span><span class="p">)</span>     
+<span class="n">val_truth</span><span class="p">,</span> <span class="n">active_truth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">val_truth</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">active_truth</span><span class="p">)</span>       
+<span class="n">val_mu</span><span class="p">,</span> <span class="n">active_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">val_mu</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">active_mu</span><span class="p">)</span>     
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_recons</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">val_recons</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">,</span> <span class="n">active_recons</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">hspace</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]);</span> <span class="n">hspace</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax2</span><span class="p">,</span> <span class="n">ax2a</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax2_r</span><span class="p">,</span> <span class="n">ax2a_r</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">val_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reconstruction&#39;</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">val_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">ax1_r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">]</span><span class="o">-</span> <span class="n">val_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax1a_r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:]</span> <span class="o">-</span> <span class="n">val_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">active_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reconstruction&#39;</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">active_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+    <span class="n">ax2_r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">]</span><span class="o">-</span> <span class="n">active_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:</span><span class="mi">400</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax2a_r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:]</span> <span class="o">-</span> <span class="n">active_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="mi">400</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.625</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+    <span class="n">ax1a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1a</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">6410</span><span class="p">,</span> <span class="mi">6740</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+    <span class="n">ax1a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">8410</span><span class="p">,</span> <span class="mi">8740</span><span class="p">);</span> <span class="n">ax2a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1a</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+    <span class="n">ax2a_r</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax2a</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">());</span> <span class="n">ax2_r</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax2</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">());</span> <span class="n">ax1_r</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span> <span class="p">;</span> <span class="n">ax1a_r</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1a</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+    
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">,</span> <span class="n">ax2_r</span><span class="p">,</span> <span class="n">ax2a_r</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Observed - Reconstructed&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;goldenrod&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">,</span> <span class="n">ax2_r</span><span class="p">,</span> <span class="n">ax2a_r</span><span class="p">]]</span>
+    
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax2a</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax1a</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span><span class="n">ax2a</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength $</span><span class="se">\\</span><span class="s1">AA$&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">,</span> <span class="n">ax2_r</span><span class="p">,</span> <span class="n">ax2a_r</span><span class="p">]]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Quiet Validation Sample&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.1</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Active Star Sample&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]]</span>
+    
+    <span class="n">ha_lines</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6553</span><span class="p">,</span> <span class="mi">6573</span><span class="p">];</span> <span class="n">ca_lines</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8493</span><span class="p">,</span> <span class="mi">8503</span><span class="p">,</span> <span class="mi">8537</span><span class="p">,</span> <span class="mi">8547</span><span class="p">,</span> <span class="mi">8657</span><span class="p">,</span> <span class="mi">8667</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ha_lines</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax2_r</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ca_lines</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1a_r</span><span class="p">,</span> <span class="n">ax2a_r</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">compare_recons</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">val_recons</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">,</span> <span class="n">active_recons</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3719c134a7eba1a3f7c3e939e8974050b1863378d8cc624575f1f7ddd83fc644.png" src="../_images/3719c134a7eba1a3f7c3e939e8974050b1863378d8cc624575f1f7ddd83fc644.png" />
+</div>
+</div>
+<p>The autoencoder learns how to reproduce quiet spectra well. In the presence of an active star, the autoencoder’s outputs are interpreted as the prediction of what a quiet spectrum of that star would look like <strong>given context from other regions of that star’s spectrum.</strong></p>
+</section>
+<section id="detecting-anomalous-spectral-features-equivalent-width">
+<h2>Detecting Anomalous Spectral Features – Equivalent Width<a class="headerlink" href="#detecting-anomalous-spectral-features-equivalent-width" title="Permalink to this headline">#</a></h2>
+<p>By subtracting the predicted quiet spectrum template from the observed spectrum, we can compute the excess flux from emission in the residuals by computing the <strong>equivalent width</strong> of the relevant spectral lines. This is simply the integral of the residual flux over the wavelengths of the H<span class="math notranslate nohighlight">\(\alpha\)</span> and Ca IRT lines, as indicated by the regions between the dashed dotted lines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_ha_emission</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">flux_vae</span><span class="p">):</span>
+    <span class="n">window_int</span> <span class="o">=</span> <span class="p">(</span><span class="n">wave</span> <span class="o">&gt;=</span> <span class="mi">6553</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wave</span> <span class="o">&lt;=</span> <span class="mi">6573</span><span class="p">)</span>
+    <span class="n">ew_act</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">flux</span><span class="p">[</span><span class="n">window_int</span><span class="p">]</span> <span class="o">-</span> <span class="n">flux_vae</span><span class="p">[</span><span class="n">window_int</span><span class="p">],</span> <span class="n">wave</span><span class="p">[</span><span class="n">window_int</span><span class="p">],</span> 
+                      <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">wave</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">ew_act</span>
+
+<span class="k">def</span> <span class="nf">calc_irt_emission</span><span class="p">(</span><span class="n">wave</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">flux_vae</span><span class="p">):</span>
+    <span class="n">window_int</span> <span class="o">=</span> <span class="p">[</span> <span class="p">((</span><span class="n">wave</span> <span class="o">&gt;=</span> <span class="mi">8493</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wave</span> <span class="o">&lt;=</span> <span class="mi">8503</span><span class="p">)),</span>
+                   <span class="p">((</span><span class="n">wave</span> <span class="o">&gt;=</span> <span class="mi">8537</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wave</span> <span class="o">&lt;=</span> <span class="mi">8547</span><span class="p">)),</span>
+                <span class="p">((</span><span class="n">wave</span> <span class="o">&gt;=</span> <span class="mi">8657</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">wave</span> <span class="o">&lt;=</span> <span class="mi">8667</span><span class="p">))</span> <span class="p">]</span>
+    <span class="n">ew_act</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">wint</span> <span class="ow">in</span> <span class="n">window_int</span><span class="p">:</span>
+        <span class="n">ew_act</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">flux</span><span class="p">[</span><span class="n">wint</span><span class="p">]</span> <span class="o">-</span> <span class="n">flux_vae</span><span class="p">[</span><span class="n">wint</span><span class="p">],</span> <span class="n">wave</span><span class="p">[</span><span class="n">wint</span><span class="p">],</span> 
+                      <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">wave</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">ew_act</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ha_ews_quiet</span><span class="p">,</span> <span class="n">irt_ews_quiet</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">ha_ews_active</span><span class="p">,</span> <span class="n">irt_ews_active</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">pred</span><span class="p">,</span> <span class="n">tru</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">val_recons</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">):</span>
+    <span class="n">ha_ews_quiet</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">calc_ha_emission</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">tru</span><span class="p">[:</span><span class="mi">400</span><span class="p">],</span> <span class="n">pred</span><span class="p">[:</span><span class="mi">400</span><span class="p">])</span> <span class="p">)</span>
+    <span class="n">irt_ews_quiet</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">calc_irt_emission</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">tru</span><span class="p">[</span><span class="mi">400</span><span class="p">:],</span> <span class="n">pred</span><span class="p">[</span><span class="mi">400</span><span class="p">:])</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">pred</span><span class="p">,</span> <span class="n">tru</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">active_recons</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">):</span>
+    <span class="n">ha_ews_active</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">calc_ha_emission</span><span class="p">(</span><span class="n">wave_ha</span><span class="p">,</span> <span class="n">tru</span><span class="p">[:</span><span class="mi">400</span><span class="p">],</span> <span class="n">pred</span><span class="p">[:</span><span class="mi">400</span><span class="p">])</span> <span class="p">)</span>
+    <span class="n">irt_ews_active</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">calc_irt_emission</span><span class="p">(</span><span class="n">wave_ca</span><span class="p">,</span> <span class="n">tru</span><span class="p">[</span><span class="mi">400</span><span class="p">:],</span> <span class="n">pred</span><span class="p">[</span><span class="mi">400</span><span class="p">:])</span> <span class="p">)</span>
+    
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="c1"># H-alpha KDEs</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ha_ews_quiet</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quiet&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ha_ews_active</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;H$</span><span class="se">\\</span><span class="s2">alpha$ Emission KDE&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Equivalent Width ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Ca II IRT KDEs</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">irt_ews_quiet</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quiet&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">irt_ews_active</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Ca IRT Emission KDE&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Equivalent Width ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/024a354a29031fee25d869be00aec8e3c2dc268ef46247b60b04e2ae35a801b9.png" src="../_images/024a354a29031fee25d869be00aec8e3c2dc268ef46247b60b04e2ae35a801b9.png" />
+</div>
+</div>
+<p>The combination of both measurements provides a useful diagnostic to identify stars that show enhanced magnetic activity:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ha_ews_active</span><span class="p">,</span><span class="n">irt_ews_active</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ha_ews_quiet</span><span class="p">,</span><span class="n">irt_ews_quiet</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quiet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Ca IRT Equivalent Width&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;H$</span><span class="se">\\</span><span class="s1">alpha$ Equivalent Width&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6efe3a5446dc5108b90cae4287faeed6f1fcbd180af6b79be66d291f6a150109.png" src="../_images/6efe3a5446dc5108b90cae4287faeed6f1fcbd180af6b79be66d291f6a150109.png" />
+</div>
+</div>
+<p>Because we used a variational autoencoder, we may expect some structural differences in the latent space between our quiet stars and the active stars.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">active_mu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">active_mu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">val_mu</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">val_mu</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quiet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Latent Dimension 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latent Dimension 1&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c6d97ac3ac12a995deca1d4e93fd55d1eaa60d16e13b4e0e5906fcb101b2c22c.png" src="../_images/c6d97ac3ac12a995deca1d4e93fd55d1eaa60d16e13b4e0e5906fcb101b2c22c.png" />
+</div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<ol class="arabic">
+<li><p>Using the equivalent widths (EWs) of H<span class="math notranslate nohighlight">\(\alpha\)</span> and the Ca II IRT lines as features, train a simple classifier (e.g., logistic regression, support vector machine, or random forest) to distinguish between active and quiet stars.</p></li>
+<li><p>Repeat the classification task using metrics derived from your trained autoencoder or variational autoencoder—specifically:</p>
+<ul class="simple">
+<li><p>The reconstruction loss</p></li>
+<li><p>The (negative) log probability under the model:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\log p(z) = -\frac{1}{2} \left( 2 \log(2\pi) + \sum_{i=1}^2 z_i^2 \right)\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(z\)</span> is the latent variable.</p>
+</li>
+<li><p>Evaluate which features yield better separability. Is the log probability an effective indicator of spectra with anomalous features? If not, why so?</p></li>
+</ol>
+</div>
+</section>
+<section id="label-transfer">
+<h2>Label Transfer<a class="headerlink" href="#label-transfer" title="Permalink to this headline">#</a></h2>
+<p>The data used in this Section has considerably lower resolution compared to those seen in <a class="reference internal" href="spectra-1.html#content-references-spectra-part1"><span class="std std-ref">Stellar Spectra Part 1: Observing Detailed Spectral Features</span></a> and <a class="reference internal" href="spectra-2.html#content-references-spectra-part2"><span class="std std-ref">Stellar Spectra Part 2: The Cannon</span></a>. Modern stellar astrophysics relies on an ensemble of large spectroscopic surveys, each with distinct instrumental setups, spectral resolutions, signal-to-noise ratios, and calibration pipelines. Because of this, even when the same star is observed in multiple surveys, its inferred properties may differ due to systematic differences in data quality or pipeline methodology.</p>
+<p>In many cases, some surveys (e.g., those with higher resolution) may produce labels that are demonstrably more reliable. To that end, we would like to <strong>calibrate</strong> the labels of the less trusted survey based on the more reliable one. In other words, we transfer the label scale of the more trusted survey onto that of a less reliable one.</p>
+<p>To see this, let’s consider a toy example of the same dataset, but at a lower resolution and is un-normalized around the H<span class="math notranslate nohighlight">\(\alpha\)</span> spectral feature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lrs_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/LAMOST_LRS_Activity.npz&#39;</span><span class="p">)</span>
+<span class="n">wave_R250</span> <span class="o">=</span> <span class="n">lrs_data</span><span class="p">[</span><span class="s1">&#39;wave_R250&#39;</span><span class="p">];</span> <span class="n">flux_R250</span> <span class="o">=</span> <span class="n">lrs_data</span><span class="p">[</span><span class="s1">&#39;flux_R250&#39;</span><span class="p">];</span> <span class="n">flux_R250_active</span> <span class="o">=</span> <span class="n">lrs_data</span><span class="p">[</span><span class="s1">&#39;flux_R250_active&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_lrs</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">flux_R250</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">flux_R250_active</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="c1"># ax1.set_ylim(0.65, 1.2); ax2.set_ylim(0.65, 1.2)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">6000</span><span class="p">,</span> <span class="mi">7500</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength $</span><span class="se">\\</span><span class="s1">AA$&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">6562.8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.405</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;H$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.405</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;H$</span><span class="se">\\</span><span class="s1">alpha$&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Inactive Star&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Active Star&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">141</span>
+<span class="n">plot_lrs</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9a669eace6edd2ccfd89cbf37f1e6cea05d5b0c17d9feb8ae6e28c3caad8f4b3.png" src="../_images/9a669eace6edd2ccfd89cbf37f1e6cea05d5b0c17d9feb8ae6e28c3caad8f4b3.png" />
+</div>
+</div>
+<p>Let’s proceed as before, training an autoencoder on the low-resolution spectra.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Extra care should be taken for the flux scale, given that these low-resolution spectra are not normalized. Here we use <code class="docutils literal notranslate"><span class="pre">tslearn</span></code>’s <code class="docutils literal notranslate"><span class="pre">TimeSeriesScalerMeanVariance</span></code> to normalize <strong>each</strong> spectrum to have zero mean and unit variance. This is <strong>not</strong> the same as applying <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>, which will instead perform a pixel-by-pixel normalization, such that the flux values at a particular pixel/wavelength <strong>across the dataset</strong> is normally distributed.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tslearn.preprocessing</span> <span class="kn">import</span> <span class="n">TimeSeriesScalerMeanVariance</span>
+
+<span class="n">scaler_r250</span> <span class="o">=</span> <span class="n">TimeSeriesScalerMeanVariance</span><span class="p">()</span>
+
+<span class="n">inp_r250_flux</span> <span class="o">=</span> <span class="n">scaler_r250</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">flux_R250</span><span class="p">)</span>
+<span class="n">active_r250_flux</span> <span class="o">=</span> <span class="n">scaler_r250</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">flux_R250_active</span><span class="p">)</span>
+
+<span class="n">X_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">inp_r250_flux</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">X_tensor_active</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">active_r250_flux</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">val_fraction</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">dataset_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">)</span>
+<span class="n">val_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val_fraction</span> <span class="o">*</span> <span class="n">dataset_size</span><span class="p">)</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="n">dataset_size</span> <span class="o">-</span> <span class="n">val_size</span>
+
+<span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span>
+    <span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">),</span>
+    <span class="n">lengths</span><span class="o">=</span><span class="p">[</span><span class="n">train_size</span><span class="p">,</span> <span class="n">val_size</span><span class="p">],</span>
+    <span class="n">generator</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Generator</span><span class="p">()</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># for reproducibility</span>
+<span class="p">)</span>
+
+<span class="n">dataloader_r250_train</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataloader_r250_val</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dataloader_r250_active</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">TensorDataset</span><span class="p">(</span><span class="n">X_tensor_active</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">code_size</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">model_r250</span> <span class="o">=</span> <span class="n">VAE</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="n">flux_R250</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">num_hidden1</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+            <span class="n">num_hidden2</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">num_hidden3</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+            <span class="n">code_size</span><span class="o">=</span><span class="n">code_size</span><span class="p">,</span> <span class="n">drop_rate</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model_r250</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">15000</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_r250_train</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model_r250</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">vae_loss</span><span class="p">(</span><span class="n">recon_x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader_r250_train</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  <span class="c1">## Perform Validation ##</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_r250_val</span><span class="p">:</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model_r250</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">vae_loss</span><span class="p">(</span><span class="n">recon_x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+                <span class="n">val_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">avg_val_loss</span> <span class="o">=</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader_quiet_val</span><span class="o">.</span><span class="n">dataset</span><span class="p">)</span>
+    
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_epochs</span><span class="si">}</span><span class="s2">, Train Loss: </span><span class="si">{</span><span class="n">avg_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, Val Loss: </span><span class="si">{</span><span class="n">avg_val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/15000, Train Loss: 295.8449, Val Loss: 280.2026
+Epoch 1001/15000, Train Loss: 4.0944, Val Loss: 3.7203
+Epoch 2001/15000, Train Loss: 3.0727, Val Loss: 4.5231
+Epoch 3001/15000, Train Loss: 2.4577, Val Loss: 4.5844
+Epoch 4001/15000, Train Loss: 2.2555, Val Loss: 4.6865
+Epoch 5001/15000, Train Loss: 2.1033, Val Loss: 5.1448
+Epoch 6001/15000, Train Loss: 1.9143, Val Loss: 5.4187
+Epoch 7001/15000, Train Loss: 1.8337, Val Loss: 5.2826
+Epoch 8001/15000, Train Loss: 1.8053, Val Loss: 5.1539
+Epoch 9001/15000, Train Loss: 1.7823, Val Loss: 4.9016
+Epoch 10001/15000, Train Loss: 1.6940, Val Loss: 5.0102
+Epoch 11001/15000, Train Loss: 1.6025, Val Loss: 5.0028
+Epoch 12001/15000, Train Loss: 1.7330, Val Loss: 5.2744
+Epoch 13001/15000, Train Loss: 1.5640, Val Loss: 5.2879
+Epoch 14001/15000, Train Loss: 1.5860, Val Loss: 5.3906
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val_recons_r250</span><span class="p">,</span> <span class="n">active_recons_r250</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">val_truth_r250</span><span class="p">,</span> <span class="n">active_truth_r250</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">model_r250</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>  
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_r250_val</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model_r250</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">val_recons_r250</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recon_x</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">val_truth_r250</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader_r250_active</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">recon_x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">log_var</span> <span class="o">=</span> <span class="n">model_r250</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">active_recons_r250</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recon_x</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+        <span class="n">active_truth_r250</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">cpu</span><span class="p">())</span>
+<span class="n">val_recons_r250</span><span class="p">,</span> <span class="n">active_recons_r250</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">val_recons_r250</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">active_recons_r250</span><span class="p">)</span>     
+<span class="n">val_truth_r250</span><span class="p">,</span> <span class="n">active_truth_r250</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">val_truth_r250</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">active_truth_r250</span><span class="p">)</span>       
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_recons_lrs</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">val_recons</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">,</span> <span class="n">active_recons</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">val_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reconstruction&#39;</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">active_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">ax1_r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">val_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span><span class="o">-</span> <span class="n">val_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax1a_r</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">active_truth</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">active_recons</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+    <span class="n">ax1_r</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span> <span class="p">;</span> <span class="n">ax1a_r</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">ax1a</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+    
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Observed - Reconstructed&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;goldenrod&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">]]</span>
+    
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax1a</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength $</span><span class="se">\\</span><span class="s1">AA$&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">]]</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Quiet Validation Sample&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Active Star Sample&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">]]</span>
+    
+    <span class="n">ha_lines</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6553</span><span class="p">,</span> <span class="mi">6573</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ha_lines</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1_r</span><span class="p">,</span> <span class="n">ax1a_r</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>As indicated, the differences in resolution and data processing may result in systematic differences in the reconstruction quality, and subsequently measurements like equivalent widths.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">compare_recons_lrs</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">val_recons_r250</span><span class="p">,</span> <span class="n">val_truth_r250</span><span class="p">,</span> <span class="n">active_recons_r250</span><span class="p">,</span> <span class="n">active_truth_r250</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/155d90fdbd273e9be98affd51f02ef2bef6f979c6e7c4527d73300a9b6940d33.png" src="../_images/155d90fdbd273e9be98affd51f02ef2bef6f979c6e7c4527d73300a9b6940d33.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ha_ews_r250_quiet</span><span class="p">,</span> <span class="n">ha_ews_r250_active</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+ 
+<span class="k">for</span> <span class="n">pred</span><span class="p">,</span> <span class="n">tru</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">val_recons_r250</span><span class="p">,</span> <span class="n">val_truth_r250</span><span class="p">):</span>
+    <span class="n">ha_ews_r250_quiet</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">calc_ha_emission</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">tru</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">pred</span><span class="p">,</span> <span class="n">tru</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">active_recons_r250</span><span class="p">,</span> <span class="n">active_truth_r250</span><span class="p">):</span>
+    <span class="n">ha_ews_r250_active</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">calc_ha_emission</span><span class="p">(</span><span class="n">wave_R250</span><span class="p">,</span> <span class="n">tru</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="p">)</span>
+    
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="c1"># H-alpha KDEs</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ha_ews_r250_quiet</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quiet&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">ha_ews_r250_active</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;H$</span><span class="se">\\</span><span class="s2">alpha$ Emission KDE (R250)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Equivalent Width ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b9dd8b2b138ff7394cf32cd47435d9e776be3f599dc62d1b13da99cb4533e809.png" src="../_images/b9dd8b2b138ff7394cf32cd47435d9e776be3f599dc62d1b13da99cb4533e809.png" />
+</div>
+</div>
+<p>As shown in the KDE, the data-driven spectral subtraction method then also loses some of its diagnostic power in separating quiet stars from active stars.</p>
+<p>However, by learning a <strong>mapping</strong> from the lower quality data to the higher quality data, we can reduce systematic discrepancies in the derived labels. The following plot shows that a correlation exists between the medium- and low-resolution-derived equivalent widths, and so this can be leveraged to derive a <strong>label transfer model</strong> to convert measurements from low-resolution data to medium-resolution ones.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ha_ews_active</span><span class="p">,</span> <span class="n">ha_ews_r250_active</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Active&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ha_ews_quiet</span><span class="p">,</span> <span class="n">ha_ews_r250_quiet</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quiet&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Medium Res. H$</span><span class="se">\\</span><span class="s1">alpha$ EW ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Low Res. H$</span><span class="se">\\</span><span class="s1">alpha$ EW ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/e3a17217e959bf2ae42924a17c627c853c09131f14b45c125def7ebf78915468.png" src="../_images/e3a17217e959bf2ae42924a17c627c853c09131f14b45c125def7ebf78915468.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise: Label Transfer for Activity Classification</p>
+<p>In this exercise, you will investigate how label transfer can help mitigate the loss of discriminative power caused by lower spectral resolution.</p>
+<ol class="arabic">
+<li><p><strong>Classification from Medium-Resolution EWs</strong><br />
+Use the H<span class="math notranslate nohighlight">\(\alpha\)</span> equivalent widths derived from medium-resolution, normalized spectra to classify stars as <em>active</em> or <em>quiet</em>. Apply a simple classifier (e.g., logistic regression, decision tree, or support vector machine), and report the classification accuracy or AUC.</p></li>
+<li><p><strong>Classification from Low-Resolution EWs</strong><br />
+Repeat the classification task using H<span class="math notranslate nohighlight">\(\alpha\)</span> EWs measured from the low-resolution, unnormalized spectra. Compare performance with the medium-resolution case. How much discriminative power is lost?</p></li>
+<li><p><strong>Label Transfer and Improved Classification</strong><br />
+Using objects observed in both resolution regimes, fit a simple model (e.g., linear regression) to map low-resolution EWs onto the medium-resolution EW scale. Apply this mapping to the full low-resolution set, and then re-run the classifier using the <strong>transferred</strong> EWs.</p>
+<blockquote>
+<div><p>Does the classification performance improve after label transfer? What does this suggest about the utility of simple domain alignment techniques for heterogeneous spectroscopic data?</p>
+</div></blockquote>
+</li>
+</ol>
+<p>Data-driven models like <em>The Cannon</em> have been used to <a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2017ApJ...836....5H/abstract">transfer labels</a> from higher resolution surveys like APOGEE (<span class="math notranslate nohighlight">\(R\sim22,500\)</span>) to lower resolution surveys like LAMOST (<span class="math notranslate nohighlight">\(R\sim1,800\)</span>). This has allowed the extraction of astrophysical information from lower-quality spectra even when their wavelength coverage or resolution precludes direct access to the same spectral features.</p>
+<p>In this exercise, this is equivalent to predicting the Ca IRT equivalent widths for the low resolution data, despite the absence of their absorption lines from the observed wavelength range.</p>
+<p>Label transfer achieves this by <strong>learning correlations</strong> between the Ca IRT and accessible features, such as H<span class="math notranslate nohighlight">\(\alpha\)</span>. However, caution is warranted: the model must not merely memorize correlations from the training set. Instead, it should generalize from spectral features that retain physical sensitivity to the target label. including line asymmetries, continuum shape, or nearby metal lines that co-vary with activity. Otherwise, the transfer risks becoming a statistical interpolation without physical grounding.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="spectra-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stellar Spectra Part 3: <em>The Payne</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spectra-5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stellar Spectra Part 5: <em>Domain Transfer</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectral-activity-indicators">Spectral Activity Indicators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoding-stellar-spectra">Autoencoding Stellar Spectra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-anomalous-spectral-features-equivalent-width">Detecting Anomalous Spectral Features – Equivalent Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-transfer">Label Transfer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

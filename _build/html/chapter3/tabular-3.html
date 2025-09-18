@@ -1,0 +1,1782 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Catalogue Data Part 1: Mixed Data Types &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter3/tabular-3';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter3/tabular-3.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Catalogue Data Part 2: Finding Clusters and Overdensities" href="tabular-4.html" />
+    <link rel="prev" title="Grids of Stellar Models Part 2: Interpolation" href="tabular-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1/section_intro.html">Time-domain Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Tabular Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter3/tabular-3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter3/tabular-3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter3/tabular-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter3/tabular-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Catalogue Data Part 1: Mixed Data Types</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-of-red-giant-star-properties">Dataset of Red Giant Star Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolutionary-state-ev">Evolutionary state, <code class="docutils literal notranslate"><span class="pre">EV</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-enhancement-alphacat">Alpha enhancement, <code class="docutils literal notranslate"><span class="pre">alphaCat</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#age-prediction-with-gradient-boosted-trees">Age prediction with Gradient Boosted Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-prediction-using-continuous-features">Baseline prediction using continuous features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizing-categorical-data">Utilizing Categorical Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">One Hot Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#native-encoding-approach">Native Encoding Approach</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="catalogue-data-part-1-mixed-data-types">
+<span id="content-references-tabular-part3"></span><h1>Catalogue Data Part 1: <em>Mixed Data Types</em><a class="headerlink" href="#catalogue-data-part-1-mixed-data-types" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p><a class="reference internal" href="tabular-2.html#content-references-tabular-part2"><span class="std std-ref">Grids of Stellar Models Part 2: Interpolation</span></a> presented how we may determine the ages of stars using stellar models. The ages of stars are inferred – there is no way of determining them independently of models.</p>
+<p>There may exist a small sample of stars for which their ages can be inferred to a relatively higher precision due to the availability of multiple types of measurements, including spectroscopy, asteroseismology, and photometry. These stars are often used as a benchmark or training set for new machine learning models that infer the ages of other stars around our Galaxy.</p>
+<p>In this chapter, we will explore the use of Gradient Boosted Trees to infer the ages of stars within the disk of the Milky Way. These are stars observed by the <a class="reference external" href="https://iopscience.iop.org/article/10.3847/1538-4365/ad9fef/pdf">APOKASC</a> collaboration, in which asteroseismic measurements are provided by NASA’s <a class="reference external" href="https://science.nasa.gov/mission/kepler/"><em>Kepler</em></a> mission, and high resolution spectroscopy provided by <a class="reference external" href="https://www.sdss4.org/surveys/apogee/">APOGEE</a> (Apache Point Observatory Galactic Evolution Experiment).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+<span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">ScalarMappable</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">coordinates</span> <span class="k">as</span> <span class="n">coords</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">truncnorm</span><span class="p">,</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span><span class="p">,</span> <span class="n">mark_inset</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">);</span> <span class="n">fs</span><span class="o">=</span><span class="mi">15</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter3&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">agb_grid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/AGB_grid.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;initial_mass&#39;</span><span class="p">,</span> <span class="s1">&#39;initial_met&#39;</span><span class="p">,</span> <span class="s1">&#39;step&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="dataset-of-red-giant-star-properties">
+<h2>Dataset of Red Giant Star Properties<a class="headerlink" href="#dataset-of-red-giant-star-properties" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">apo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/APOKASC3_EvAGB.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;[Fe/H]&#39;</span><span class="p">:</span> <span class="s1">&#39;Fe/H&#39;</span><span class="p">,</span>
+                                                                                 <span class="s1">&#39;[a/Fe]&#39;</span><span class="p">:</span> <span class="s1">&#39;a/Fe&#39;</span><span class="p">,</span>
+                                                                                <span class="s1">&#39;Adopted_Age&#39;</span><span class="p">:</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span>
+                                                                                <span class="s1">&#39;logg-Seis&#39;</span><span class="p">:</span> <span class="s1">&#39;logg&#39;</span><span class="p">})</span>
+<span class="n">apo</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>KIC</th>
+      <th>EV</th>
+      <th>a/Fe</th>
+      <th>Teff</th>
+      <th>Fe/H</th>
+      <th>logg</th>
+      <th>alphaCat</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>893214</td>
+      <td>1</td>
+      <td>0.0815</td>
+      <td>4718.9233</td>
+      <td>-0.2617</td>
+      <td>2.5146</td>
+      <td>Apoor</td>
+      <td>2.8815</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1026309</td>
+      <td>1</td>
+      <td>-0.0295</td>
+      <td>4479.2246</td>
+      <td>0.1609</td>
+      <td>2.1176</td>
+      <td>Apoor</td>
+      <td>0.5842</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1026452</td>
+      <td>2</td>
+      <td>0.0658</td>
+      <td>4910.6035</td>
+      <td>-0.2652</td>
+      <td>2.4510</td>
+      <td>Apoor</td>
+      <td>2.6495</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1027110</td>
+      <td>1</td>
+      <td>0.2615</td>
+      <td>4194.4375</td>
+      <td>-0.3017</td>
+      <td>1.6949</td>
+      <td>Arich</td>
+      <td>9.0694</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1027337</td>
+      <td>1</td>
+      <td>0.0354</td>
+      <td>4621.9960</td>
+      <td>0.2081</td>
+      <td>2.7732</td>
+      <td>Apoor</td>
+      <td>5.8519</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>11442</th>
+      <td>12785401</td>
+      <td>1</td>
+      <td>0.0451</td>
+      <td>4319.3400</td>
+      <td>0.2022</td>
+      <td>2.0897</td>
+      <td>Apoor</td>
+      <td>15.6194</td>
+    </tr>
+    <tr>
+      <th>11443</th>
+      <td>12833300</td>
+      <td>2</td>
+      <td>0.0741</td>
+      <td>4592.0396</td>
+      <td>0.0764</td>
+      <td>2.3738</td>
+      <td>Arich</td>
+      <td>8.1186</td>
+    </tr>
+    <tr>
+      <th>11444</th>
+      <td>12884116</td>
+      <td>1</td>
+      <td>0.0762</td>
+      <td>4645.3340</td>
+      <td>-0.0631</td>
+      <td>2.6086</td>
+      <td>Apoor</td>
+      <td>7.6715</td>
+    </tr>
+    <tr>
+      <th>11445</th>
+      <td>12884930</td>
+      <td>2</td>
+      <td>0.0384</td>
+      <td>4912.1650</td>
+      <td>-0.1505</td>
+      <td>2.4933</td>
+      <td>Apoor</td>
+      <td>3.2902</td>
+    </tr>
+    <tr>
+      <th>11446</th>
+      <td>12885196</td>
+      <td>1</td>
+      <td>0.0282</td>
+      <td>4702.0967</td>
+      <td>0.1631</td>
+      <td>2.8713</td>
+      <td>Apoor</td>
+      <td>4.9813</td>
+    </tr>
+  </tbody>
+</table>
+<p>11447 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>The dataset comprises over 10,000 red giant stars with the following columns for each star:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">KIC</span></code>: <strong>K</strong>epler <strong>I</strong>nput <strong>C</strong>atalog Identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Teff</span></code>: Stellar effective temperature <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Fe/H</span></code>: Surface global metallicity [Fe/H] in cgs units</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">logg</span></code>: Surface gravity in cgs units</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Age</span></code>: Stellar age in units of Gyr</p></li>
+</ul>
+<blockquote>
+<div><p><strong>The goal of this exercise is to train a machine learning model that may predict stellar ages with the information at hand.</strong></p>
+</div></blockquote>
+<p>However, the dataset also contains columns with categorical data, as described by the following:</p>
+<section id="evolutionary-state-ev">
+<h3>Evolutionary state, <code class="docutils literal notranslate"><span class="pre">EV</span></code><a class="headerlink" href="#evolutionary-state-ev" title="Permalink to this headline">#</a></h3>
+<p>Giant stars undergo a complex evolution of their stellar interiors, as shown in the schematic below</p>
+<figure class="align-default" id="giantcross-section">
+<a class="reference internal image-reference" href="../_images/giant_crossection.png"><img alt="../_images/giant_crossection.png" src="../_images/giant_crossection.png" style="width: 800px; height: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Schematic of cross-sections for a giant star. Labelled as ‘sub/red giant’ is a less-evolved giant star that still burns hydrogen in a shell within its interior. Meanwhile, ‘red clump’ stars are <strong>more evolved</strong> and have begun burning helium within their cores. Adapted from <a class="reference external" href="https://arxiv.org/abs/1808.06649">Bellinger et al. (2018)</a>.</span><a class="headerlink" href="#giantcross-section" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Despite having drastically different interiors, hydrogen- and helium- burning giant stars may possess very similar surface properties (e.g., <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span> and <span class="math notranslate nohighlight">\(\log (g)\)</span>), shown by both models and observed data:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_kiel</span><span class="p">(</span><span class="n">f_</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    
+    <span class="n">ax1a</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span>
+                      <span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                      <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">),</span>
+                      <span class="n">bbox_transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;step&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">unique_mass_met</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;initial_mass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                                                 <span class="n">agb_grid</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;initial_met&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">unique_mass_met</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">f_</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">]:</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="mi">10</span><span class="o">**</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;teff&#39;</span><span class="p">][</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">],</span>
+                     <span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;logg&#39;</span><span class="p">][</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">],</span> 
+                         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+                    <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="mi">10</span><span class="o">**</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;teff&#39;</span><span class="p">][</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">],</span>
+                     <span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;logg&#39;</span><span class="p">][</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">],</span> 
+                         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+                    <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="mi">10</span><span class="o">**</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;teff&#39;</span><span class="p">][</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">],</span>
+                     <span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;logg&#39;</span><span class="p">][</span><span class="n">agb_grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">f_</span><span class="p">,</span> <span class="n">s</span><span class="p">)][</span><span class="s1">&#39;phase&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">],</span> 
+                         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span>
+                    <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stage 1: Red Giant Branch&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stage 2: Red Clump&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Stage 3: Asymptotic Giant Branch&#39;</span><span class="p">)</span>
+    
+
+<span class="c1">#     ax1.indicate_inset_zoom(ax1a, edgecolor=&quot;black&quot;, zorder=999)</span>
+    <span class="n">mark_inset</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">,</span> <span class="n">loc1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;0.5&quot;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">999</span><span class="p">)</span>
+    
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">apo</span><span class="o">.</span><span class="n">Teff</span><span class="p">[</span><span class="n">apo</span><span class="o">.</span><span class="n">EV</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">apo</span><span class="p">[</span><span class="s1">&#39;logg&#39;</span><span class="p">][</span><span class="n">apo</span><span class="o">.</span><span class="n">EV</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">apo</span><span class="o">.</span><span class="n">Teff</span><span class="p">[</span><span class="n">apo</span><span class="o">.</span><span class="n">EV</span> <span class="o">==</span> <span class="mi">2</span><span class="p">],</span> <span class="n">apo</span><span class="p">[</span><span class="s1">&#39;logg&#39;</span><span class="p">][</span><span class="n">apo</span><span class="o">.</span><span class="n">EV</span> <span class="o">==</span> <span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">apo</span><span class="o">.</span><span class="n">Teff</span><span class="p">[</span><span class="n">apo</span><span class="o">.</span><span class="n">EV</span> <span class="o">==</span> <span class="mi">3</span><span class="p">],</span> <span class="n">apo</span><span class="p">[</span><span class="s1">&#39;logg&#39;</span><span class="p">][</span><span class="n">apo</span><span class="o">.</span><span class="n">EV</span> <span class="o">==</span> <span class="mi">3</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+    
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">3500</span><span class="p">,</span> <span class="mi">5300</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">3.4</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$T_{</span><span class="se">\\</span><span class="s1">mathrm</span><span class="si">{eff}</span><span class="s1">}$ (K)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">log(g)$ (dex)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">})</span>
+    
+    <span class="n">ax1a</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+    <span class="n">ax1a</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">ax1a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">4500</span><span class="p">,</span> <span class="mi">4200</span><span class="p">)</span>
+    <span class="n">ax1a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">2.2</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stellar Models</span><span class="se">\n</span><span class="s1">(Solar Metallicity)&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observed Data&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    
+<span class="n">init_metallicity</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plot_kiel</span><span class="p">(</span><span class="n">init_metallicity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_13043/1324314857.py:59: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  plt.tight_layout()
+</pre></div>
+</div>
+<img alt="../_images/ddf99afe3ff2b5a68ffc33821698f7a95480e48cc87d83269461d44a9d7f0184.png" src="../_images/ddf99afe3ff2b5a68ffc33821698f7a95480e48cc87d83269461d44a9d7f0184.png" />
+</div>
+</div>
+<p>These different evolutionary stages are encapsulated by the <code class="docutils literal notranslate"><span class="pre">EV</span></code> parameter of the dataset, defined as the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EV</span> <span class="pre">=</span> <span class="pre">1</span></code>: <span style="color: red">Red Giant Branch</span>, hydrogen-burning stage. It is the <strong>first ascent</strong> of giants up the “branch”, where they swell to enormous sizes and develop a low surface gravity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EV</span> <span class="pre">=</span> <span class="pre">2</span></code>: <span style="color: orange">Red Clump</span>, helium-burning stage. Upon reaching the tip of the branch, the stars <strong>ignite helium</strong> in their core and develop a higher <span class="math notranslate nohighlight">\(\log (g)\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EV</span> <span class="pre">=</span> <span class="pre">3</span></code>: <span style="color: royalblue">Asymptotic Giant Branch</span>, helium-burning stage. Over time, red clump stars eventually begin the climb up the “branch” again towards lower <span class="math notranslate nohighlight">\(\log (g)\)</span>.</p></li>
+</ul>
+<p>These stages occur <strong>sequentially</strong>, such that Stages 2 and 3 typically occur several Myr after Stage 1. However, as shown above, there exists significant overlap between stars in these stages based on their <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span> and <span class="math notranslate nohighlight">\(\log(g)\)</span>.</p>
+<div class="danger admonition">
+<p class="admonition-title">Interpreting Ages and Evolution</p>
+<p>Given the following two stars:</p>
+<ul class="simple">
+<li><p><strong>Star A</strong>: Stage 1, hydrogen-burning</p></li>
+<li><p><strong>Star B</strong>: Stage 2, helium-burning</p></li>
+</ul>
+<p>It is tempting to assign an older age to star B simply due to its later stage of evolution. <strong>This is only true in general if both stars have the same mass and metallicity.</strong> As shown in <a class="reference internal" href="tabular-2.html#content-references-tabular-part2"><span class="std std-ref">Grids of Stellar Models Part 2: Interpolation</span></a>, the ages of stars are strongly sensitive to mass and metallicity, rather than evolution. Hence, it is entirely possible (and common!) – that if Star A is lower in mass than Star B – for Star A to be the older star between the two.</p>
+</div>
+</section>
+<section id="alpha-enhancement-alphacat">
+<h3>Alpha enhancement, <code class="docutils literal notranslate"><span class="pre">alphaCat</span></code><a class="headerlink" href="#alpha-enhancement-alphacat" title="Permalink to this headline">#</a></h3>
+<p>This parameter determines the level of enrichment of the star’s surface with <span class="math notranslate nohighlight">\(\alpha\)</span>-elements like C, O, Mg, and Si. The level of enrichment is indicative of the membership of the star within particular stellar populations of the Milky Way.</p>
+<figure class="align-default" id="gal1">
+<a class="reference internal image-reference" href="../_images/gal1.png"><img alt="../_images/gal1.png" src="../_images/gal1.png" style="width: 350px; height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">A cartoon schematic depicting a traditional view of stellar populations around the Milky Way from <a class="reference external" href="https://sites.astro.caltech.edu/~george/ay20/Chiappini-MilkyWay.pdf">Chiappini (2001).</a></span><a class="headerlink" href="#gal1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The following labels are defined:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Arich</span></code>: <span class="math notranslate nohighlight">\(\alpha\)</span>-rich stars belonging to the halo or thick disk populations of the Milky Way. Typically old.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Apoor</span></code>: <span class="math notranslate nohighlight">\(\alpha\)</span>-poor stars belonging to the Milky Way’s thin disk population. Younger on average compared to the thick disk and halo populations.</p></li>
+</ul>
+<p>The distinction between the two are most commonly observed in a [<span class="math notranslate nohighlight">\(\alpha\)</span>-Fe]/[Fe/H] diagram:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">alf_c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="k">if</span> <span class="n">alp</span> <span class="o">==</span> <span class="s1">&#39;Arich&#39;</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">alp</span> <span class="ow">in</span> <span class="n">apo</span><span class="o">.</span><span class="n">alphaCat</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">apo</span><span class="p">[</span><span class="s1">&#39;Fe/H&#39;</span><span class="p">],</span> <span class="n">apo</span><span class="p">[</span><span class="s1">&#39;a/Fe&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">alf_c</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;[Fe/H] (dex)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[$</span><span class="se">\\</span><span class="s1">alpha$/Fe] (dex)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha$-rich&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">alpha$-poor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">1</span><span class="p">},</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/327a8114a0712af7000fd54de184d3672ebfe7cffc45565b8c18191eec90ad0f.png" src="../_images/327a8114a0712af7000fd54de184d3672ebfe7cffc45565b8c18191eec90ad0f.png" />
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Understanding of abundances</p>
+<p>Where does the Sun fall in the [<span class="math notranslate nohighlight">\(\alpha\)</span>-Fe]-[Fe/H] diagram above? Would it be categorized as <code class="docutils literal notranslate"><span class="pre">Arich</span></code> or <code class="docutils literal notranslate"><span class="pre">Apoor</span></code>?</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Chemical Evolution of the Milky Way</p>
+<p>The [<span class="math notranslate nohighlight">\(\alpha\)</span>-Fe] and [Fe/H] abundances of other stars relative to the Sun trace the history of stellar populations in the Milky Way. The most massive stars early in the history of the Galaxy were the first to live out their lifespans, ending with <strong>type II supernovae</strong> (type II SNe) that ejects an <span class="math notranslate nohighlight">\(\alpha\)</span>-element rich envelope into the interstellar medium, leaving behind a neutron star or black hole remnant core.</p>
+<p>Type Ia supernovae (type Ia SNe), on the other hand, occurs from the thermonuclear explosion of a white dwarf in a binary system, <strong>at timescales much longer compared to type II SNe</strong>. Here, a runaway fusion reaction occurs within the carbon and oxygen core of a white dwarf. This yields <strong>iron-peak nuclei</strong> and releases enormous amounts energy that detonates the white dwarf’s core.</p>
+<p>Over time, these two processes are thought to form major pathways to the abundance patterns in Galactic stellar populations seen today.</p>
+<figure class="align-default" id="gal2">
+<a class="reference internal image-reference" href="../_images/gal2.png"><img alt="../_images/gal2.png" src="../_images/gal2.png" style="width: 850px; height: 370px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">A cartoon schematic depicting the role of type Ia and type II supernovae in the patterns observed in the [<span class="math notranslate nohighlight">\(\alpha\)</span>-Fe]-[Fe/H] diagram. Adapted from <a class="reference external" href="https://sites.astro.caltech.edu/~george/ay20/Chiappini-MilkyWay.pdf">Chiappini (2001).</a></span><a class="headerlink" href="#gal2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="age-prediction-with-gradient-boosted-trees">
+<h2>Age prediction with Gradient Boosted Trees<a class="headerlink" href="#age-prediction-with-gradient-boosted-trees" title="Permalink to this headline">#</a></h2>
+<p>In this notebook, we will predict the ages of the giant star with the catalog data at hand using Gradient Boosted Trees (GBTs). GBTs are popular in astronomical catalog analysis for a variety of reasons, including the following:</p>
+<ul class="simple">
+<li><p><strong>Nonlinear Modeling</strong>: The relationship between observable properties and stellar age is often highly nonlinear and interaction-rich. GBTs can model complexities and intricate patterns within features that linear models typically miss.</p></li>
+<li><p><strong>High Predictive Performance</strong>: GBTs generally perform strongly as out-of-the-box models, offering strong generalization with relatively few hyperparameters to tune.</p></li>
+<li><p><strong>Robustness to Feature Scaling and Outliers</strong>: Unlike neural networks or regression models, GBTs do not require feature normalization. Similar to Random Forests, the tree-based splitting approach of GBTs to optimize their objective make them relatively robust to outliers.</p></li>
+<li><p><strong>Model Interpretability</strong>: Modern GBT implementations provide tools (e.g. feature importances, SHAP values) that help quantify which features most strongly influence outputs, providing a convenient way to diagnose key quantities for scientific prediction tasks.</p></li>
+<li><p><strong>Improvement Over Random Forests</strong>: While Random Forests (e.g., as shown in <a class="reference internal" href="tabular-1.html#content-references-tabular-part1"><span class="std std-ref">Grids of Stellar Models Part 1: Stellar Parameter Regression</span></a>) use <strong>bagging</strong> (building trees in parallel on bootstrapped samples), GBTs use <strong>boosting</strong>, where each tree corrects the errors of its predecessor. This sequential refinement enables GBTs to better capture subtle trends and achieve higher accuracy, particularly in structured datasets like stellar catalogs.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Gradient Boosting</p>
+<p>Boosting combines many <strong>weak learners</strong> – typically shallow decision trees – into a strong predictive model. Unlike <em>bagging</em> (e.g., Random Forests), where trees are trained independently and in parallel, boosting builds trees <strong>sequentially</strong>, each one attempting to correct the errors of its predecessors.</p>
+<p>As opposed to classical boosting (e.g., AdaBoost), which re-weights the training data to emphasize misclassified examples, <strong>gradient</strong> boosting trains new trees to predict the <strong>residuals</strong> (or negative gradients) of a chosen loss function. These residual-predicting trees are then added—typically with a small learning rate—to the ensemble’s cumulative prediction, progressively reducing the overall loss.</p>
+<p>This process can be described iteratively as the following:</p>
+<p>Denote:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( y_i \)</span> = true target for the <span class="math notranslate nohighlight">\( i \)</span>-th sample</p></li>
+<li><p><span class="math notranslate nohighlight">\( \hat{y}_i^{(t)} \)</span> = prediction at iteration <span class="math notranslate nohighlight">\( t \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( F^{(t)}(x) \)</span> = ensemble prediction after <span class="math notranslate nohighlight">\( t \)</span> iterations</p></li>
+</ul>
+<p>Beginning with <span class="math notranslate nohighlight">\(F^{(0)}(x) = \text{mean}(y)\)</span>, we perform the following over each iteration <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Compute residuals.</p></li>
+</ol>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(r_i^{(t)} = y_i - F^{(t-1)}(x_i)\)</span></p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Fit a decision tree <span class="math notranslate nohighlight">\( h^{(t)}(x) \)</span> to the residuals <span class="math notranslate nohighlight">\(r_i^{(t)}\)</span>.</p></li>
+<li><p>Update the model.</p></li>
+</ol>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(F^{(t)}(x) = F^{(t-1)}(x) + \eta \cdot h^{(t)}(x)\)</span></p>
+</div></blockquote>
+<p>Here, <span class="math notranslate nohighlight">\( \eta \in (0,1] \)</span> is the learning rate, controlling how much we trust each new tree.</p>
+<p>In summary, a new tree is trained to predict the <strong>residuals</strong> at each iteration, and the new tree’s predictions are added (with a small weight) to the ensemble’s running total.</p>
+</div>
+<p>In this Section, we will use the construction a gradient boosting regressor using <a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/index.html"><code class="docutils literal notranslate"><span class="pre">lightgbm</span></code></a>, a popular gradient boosting library.</p>
+<section id="baseline-prediction-using-continuous-features">
+<h3>Baseline prediction using continuous features<a class="headerlink" href="#baseline-prediction-using-continuous-features" title="Permalink to this headline">#</a></h3>
+<p>To begin, we will use basic, global spectroscopic information of the giant star dataset (<span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>, <span class="math notranslate nohighlight">\(\log\)</span> (g), [Fe/H]), which are readily available from most spectroscopic surveys.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">lightgbm</span> <span class="k">as</span> <span class="nn">lgb</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span> <span class="k">as</span> <span class="n">MSE</span>
+
+<span class="n">trainfeatures</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Teff&#39;</span><span class="p">,</span> <span class="s1">&#39;logg&#39;</span><span class="p">,</span> <span class="s1">&#39;Fe/H&#39;</span><span class="p">]</span>
+
+<span class="n">continuous_df</span> <span class="o">=</span> <span class="n">apo</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">trainfeatures</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">continuous_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Age</th>
+      <th>Teff</th>
+      <th>logg</th>
+      <th>Fe/H</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.8815</td>
+      <td>4718.9233</td>
+      <td>2.5146</td>
+      <td>-0.2617</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.5842</td>
+      <td>4479.2246</td>
+      <td>2.1176</td>
+      <td>0.1609</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.6495</td>
+      <td>4910.6035</td>
+      <td>2.4510</td>
+      <td>-0.2652</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>9.0694</td>
+      <td>4194.4375</td>
+      <td>1.6949</td>
+      <td>-0.3017</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.8519</td>
+      <td>4621.9960</td>
+      <td>2.7732</td>
+      <td>0.2081</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>11442</th>
+      <td>15.6194</td>
+      <td>4319.3400</td>
+      <td>2.0897</td>
+      <td>0.2022</td>
+    </tr>
+    <tr>
+      <th>11443</th>
+      <td>8.1186</td>
+      <td>4592.0396</td>
+      <td>2.3738</td>
+      <td>0.0764</td>
+    </tr>
+    <tr>
+      <th>11444</th>
+      <td>7.6715</td>
+      <td>4645.3340</td>
+      <td>2.6086</td>
+      <td>-0.0631</td>
+    </tr>
+    <tr>
+      <th>11445</th>
+      <td>3.2902</td>
+      <td>4912.1650</td>
+      <td>2.4933</td>
+      <td>-0.1505</td>
+    </tr>
+    <tr>
+      <th>11446</th>
+      <td>4.9813</td>
+      <td>4702.0967</td>
+      <td>2.8713</td>
+      <td>0.1631</td>
+    </tr>
+  </tbody>
+</table>
+<p>10604 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split dataframe into input and output </span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">continuous_df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">continuous_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+
+<span class="c1"># Split into train and test (80-20 split)</span>
+<span class="n">train_X</span><span class="p">,</span> <span class="n">test_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> API is designed to be compatible with <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, which means you can train models using <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> and access predictions with <code class="docutils literal notranslate"><span class="pre">.predict()</span></code>, just as you would with other <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> estimators. This makes it easy to plug LightGBM into standard machine learning workflows.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_lgb</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">()</span>
+<span class="n">model_lgb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>
+             <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;rmse&#39;</span><span class="p">,</span> 
+             <span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">test_X</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)],</span>
+                 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">lgb</span><span class="o">.</span><span class="n">early_stopping</span><span class="p">(</span><span class="n">stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="c1"># Early stopping on validation set </span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[LightGBM] [Info] Auto-choosing col-wise multi-threading, the overhead of testing was 0.000150 seconds.
+You can set `force_col_wise=true` to remove the overhead.
+[LightGBM] [Info] Total Bins 765
+[LightGBM] [Info] Number of data points in the train set: 8483, number of used features: 3
+[LightGBM] [Info] Start training from score 5.774475
+Training until validation scores don&#39;t improve for 10 rounds
+Early stopping, best iteration is:
+[46]	valid_0&#39;s rmse: 3.04319	valid_0&#39;s l2: 9.26099
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-8 {color: black;}#sk-container-id-8 pre{padding: 0;}#sk-container-id-8 div.sk-toggleable {background-color: white;}#sk-container-id-8 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-8 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-8 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-8 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-8 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-8 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-8 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-8 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-8 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-8 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-8 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-8 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-8 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-8 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-8 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-8 div.sk-item {position: relative;z-index: 1;}#sk-container-id-8 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-8 div.sk-item::before, #sk-container-id-8 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-8 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-8 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-8 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-8 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-8 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-8 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-8 div.sk-label-container {text-align: center;}#sk-container-id-8 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-8 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-8" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LGBMRegressor()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" checked><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">LGBMRegressor</label><div class="sk-toggleable__content"><pre>LGBMRegressor()</pre></div></div></div></div></div></div></div>
+</div>
+<p>We will evaluate the performance of the regressor in predicting ages using the Root Mean Squared Error (RMSE) metric and by comparing the age predictions directly as shown in the left panel below. However, an equally informative metric for stellar ages would be the average <strong>fractional error</strong> in the predictions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lgb_pred</span> <span class="o">=</span> <span class="n">model_lgb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span>
+<span class="n">lgb_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">lgb_pred</span><span class="p">))</span>
+<span class="n">lgm_relerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span> <span class="n">lgb_pred</span> <span class="o">-</span> <span class="n">test_y</span> <span class="p">)</span><span class="o">/</span><span class="n">test_y</span><span class="p">)</span>
+<span class="n">lgb_rmse</span><span class="p">,</span> <span class="n">lgm_relerr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.043188250503478, 37.184133898229774)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_age_predictions</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">truth</span><span class="p">,</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">relerr</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">truth</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">truth</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">pred</span> <span class="o">-</span> <span class="n">truth</span><span class="p">)</span><span class="o">/</span><span class="n">truth</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted Ages (Gyr)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fractional Error [Pred - Truth] (\%)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean Relative Error: </span><span class="si">{</span><span class="n">relerr</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">\%&#39;</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Validation Ages (Gyr)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span> <span class="o">=</span> <span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare_age_predictions</span><span class="p">(</span><span class="n">lgb_pred</span><span class="p">,</span> <span class="n">test_y</span><span class="p">,</span> <span class="n">lgb_rmse</span><span class="p">,</span> <span class="n">lgm_relerr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2f5c9f6c720eb5d91c5c309e7ae582bab0330a33bdd010a36e4854a6902b8de8.png" src="../_images/2f5c9f6c720eb5d91c5c309e7ae582bab0330a33bdd010a36e4854a6902b8de8.png" />
+</div>
+</div>
+<p>The model clearly has skewed predictions, it is <strong>overpredicting</strong> at ages <span class="math notranslate nohighlight">\(&lt;5\,\)</span>Gyr, while it is <strong>underpredicting</strong> the ages of old stars (<span class="math notranslate nohighlight">\(&gt;10\,\)</span>Gyr).</p>
+</section>
+</section>
+<section id="utilizing-categorical-data">
+<h2>Utilizing Categorical Data<a class="headerlink" href="#utilizing-categorical-data" title="Permalink to this headline">#</a></h2>
+<p>As previously described, the categorical parameters <code class="docutils literal notranslate"><span class="pre">EV</span></code> and <code class="docutils literal notranslate"><span class="pre">alphaCat</span></code> may contain some useful correlations with age that can improve the performance of our gradient boosting model.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ev_class</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="s1">&#39;EV = 1&#39;</span><span class="p">,</span> <span class="s1">&#39;EV = 2&#39;</span><span class="p">,</span> <span class="s1">&#39;EV = 3&#39;</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;royalblue&#39;</span><span class="p">]):</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">apo</span><span class="p">[</span><span class="n">apo</span><span class="p">[</span><span class="s1">&#39;EV&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ev_class</span><span class="p">],</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">bw_adjust</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">color</span>
+    <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">alf_class</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="s1">&#39;Apoor&#39;</span><span class="p">,</span> <span class="s1">&#39;Arich&#39;</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="s1">&#39;Apoor&#39;</span><span class="p">,</span> <span class="s1">&#39;Arich&#39;</span><span class="p">],</span>
+                                  <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">]):</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">apo</span><span class="p">[</span><span class="n">apo</span><span class="p">[</span><span class="s1">&#39;alphaCat&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">alf_class</span><span class="p">],</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span>
+        <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">common_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">bw_adjust</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">color</span>
+    <span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stellar Age Distributions by Evolutionary State&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Stellar Age Distributions by Alpha Enhancement&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age (Gyr)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d40f8835aa0afc9d964c7bd0727723a811121eea5d330d82e5c36601794c74a5.png" src="../_images/d40f8835aa0afc9d964c7bd0727723a811121eea5d330d82e5c36601794c74a5.png" />
+</div>
+</div>
+<section id="one-hot-encoding">
+<h3>One Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h3>
+<p>To utilize the categorical variables at hand, one direct approach is to <strong>one-hot encode</strong> these variables, for instance using <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>’s <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+
+<span class="k">def</span> <span class="nf">encode_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">colname</span><span class="p">):</span>
+    
+    <span class="c1">### Returns a copy of the original DataFrame with one hot encoded columns ###</span>
+    
+    <span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ev_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">colname</span><span class="p">]])</span>
+    <span class="n">encoded_cols</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">([</span><span class="n">colname</span><span class="p">])</span>
+    <span class="n">encoded_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ev_encoded</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">encoded_cols</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">apo_ev_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">encoded_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">apo_ev_encoded</span>  
+
+<span class="n">apo_oh_encoded</span> <span class="o">=</span> <span class="n">encode_columns</span><span class="p">(</span><span class="n">apo</span><span class="p">,</span> <span class="s1">&#39;EV&#39;</span><span class="p">)</span>
+<span class="n">apo_oh_encoded</span> <span class="o">=</span> <span class="n">encode_columns</span><span class="p">(</span><span class="n">apo_oh_encoded</span><span class="p">,</span> <span class="s1">&#39;alphaCat&#39;</span><span class="p">)</span>
+<span class="n">apo_oh_encoded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>KIC</th>
+      <th>EV</th>
+      <th>a/Fe</th>
+      <th>Teff</th>
+      <th>Fe/H</th>
+      <th>logg</th>
+      <th>alphaCat</th>
+      <th>Age</th>
+      <th>EV_1</th>
+      <th>EV_2</th>
+      <th>EV_3</th>
+      <th>alphaCat_Apoor</th>
+      <th>alphaCat_Arich</th>
+      <th>alphaCat_nan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>893214</td>
+      <td>1</td>
+      <td>0.0815</td>
+      <td>4718.9233</td>
+      <td>-0.2617</td>
+      <td>2.5146</td>
+      <td>Apoor</td>
+      <td>2.8815</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1026309</td>
+      <td>1</td>
+      <td>-0.0295</td>
+      <td>4479.2246</td>
+      <td>0.1609</td>
+      <td>2.1176</td>
+      <td>Apoor</td>
+      <td>0.5842</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1026452</td>
+      <td>2</td>
+      <td>0.0658</td>
+      <td>4910.6035</td>
+      <td>-0.2652</td>
+      <td>2.4510</td>
+      <td>Apoor</td>
+      <td>2.6495</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1027110</td>
+      <td>1</td>
+      <td>0.2615</td>
+      <td>4194.4375</td>
+      <td>-0.3017</td>
+      <td>1.6949</td>
+      <td>Arich</td>
+      <td>9.0694</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1027337</td>
+      <td>1</td>
+      <td>0.0354</td>
+      <td>4621.9960</td>
+      <td>0.2081</td>
+      <td>2.7732</td>
+      <td>Apoor</td>
+      <td>5.8519</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>11442</th>
+      <td>12785401</td>
+      <td>1</td>
+      <td>0.0451</td>
+      <td>4319.3400</td>
+      <td>0.2022</td>
+      <td>2.0897</td>
+      <td>Apoor</td>
+      <td>15.6194</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11443</th>
+      <td>12833300</td>
+      <td>2</td>
+      <td>0.0741</td>
+      <td>4592.0396</td>
+      <td>0.0764</td>
+      <td>2.3738</td>
+      <td>Arich</td>
+      <td>8.1186</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11444</th>
+      <td>12884116</td>
+      <td>1</td>
+      <td>0.0762</td>
+      <td>4645.3340</td>
+      <td>-0.0631</td>
+      <td>2.6086</td>
+      <td>Apoor</td>
+      <td>7.6715</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11445</th>
+      <td>12884930</td>
+      <td>2</td>
+      <td>0.0384</td>
+      <td>4912.1650</td>
+      <td>-0.1505</td>
+      <td>2.4933</td>
+      <td>Apoor</td>
+      <td>3.2902</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11446</th>
+      <td>12885196</td>
+      <td>1</td>
+      <td>0.0282</td>
+      <td>4702.0967</td>
+      <td>0.1631</td>
+      <td>2.8713</td>
+      <td>Apoor</td>
+      <td>4.9813</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>11447 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p>We proceed the same way as before, but now using the one-hot encoded columns as input features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainfeatures</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Teff&#39;</span><span class="p">,</span> <span class="s1">&#39;logg&#39;</span><span class="p">,</span> <span class="s1">&#39;Fe/H&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_1&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_2&#39;</span><span class="p">,</span> <span class="s1">&#39;EV_3&#39;</span><span class="p">,</span> <span class="s1">&#39;alphaCat_Apoor&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;alphaCat_Arich&#39;</span><span class="p">]</span> <span class="c1"># new train features</span>
+
+<span class="n">onehotev_df</span> <span class="o">=</span> <span class="n">apo_oh_encoded</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">trainfeatures</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Split dataframe into input and output </span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">onehotev_df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">onehotev_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+
+<span class="c1"># Split into train and test (80-20 split)</span>
+<span class="n">onehotev_train_X</span><span class="p">,</span> <span class="n">onehotev_test_X</span><span class="p">,</span> <span class="n">onehotev_train_y</span><span class="p">,</span>\
+<span class="n">onehotev_test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="c1">## Initialize a new lightgbm model and train on the one hot ev dataset ##</span>
+<span class="n">model_lgb</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">()</span>
+<span class="n">model_lgb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">onehotev_train_X</span><span class="p">,</span> <span class="n">onehotev_train_y</span><span class="p">,</span>
+             <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;rmse&#39;</span><span class="p">,</span> 
+             <span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">onehotev_test_X</span><span class="p">,</span> <span class="n">onehotev_test_y</span><span class="p">)],</span>
+                 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">lgb</span><span class="o">.</span><span class="n">early_stopping</span><span class="p">(</span><span class="n">stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="c1"># Early stopping on validation set </span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.000305 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 775
+[LightGBM] [Info] Number of data points in the train set: 8483, number of used features: 8
+[LightGBM] [Info] Start training from score 5.774475
+Training until validation scores don&#39;t improve for 10 rounds
+Early stopping, best iteration is:
+[55]	valid_0&#39;s rmse: 2.86185	valid_0&#39;s l2: 8.1902
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-10 {color: black;}#sk-container-id-10 pre{padding: 0;}#sk-container-id-10 div.sk-toggleable {background-color: white;}#sk-container-id-10 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-10 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-10 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-10 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-10 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-10 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-10 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-10 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-10 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-10 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-10 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-10 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-10 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-10 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-10 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-10 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-10 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-10 div.sk-item {position: relative;z-index: 1;}#sk-container-id-10 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-10 div.sk-item::before, #sk-container-id-10 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-10 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-10 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-10 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-10 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-10 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-10 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-10 div.sk-label-container {text-align: center;}#sk-container-id-10 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-10 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-10" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LGBMRegressor()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" checked><label for="sk-estimator-id-10" class="sk-toggleable__label sk-toggleable__label-arrow">LGBMRegressor</label><div class="sk-toggleable__content"><pre>LGBMRegressor()</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lgb_pred_onehotev</span> <span class="o">=</span> <span class="n">model_lgb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">onehotev_test_X</span><span class="p">)</span>
+<span class="n">lgb_rmse_onehotev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">(</span><span class="n">onehotev_test_y</span><span class="p">,</span> <span class="n">lgb_pred_onehotev</span><span class="p">))</span>
+<span class="n">lgm_relerr_onehotev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span> <span class="n">lgb_pred_onehotev</span> <span class="o">-</span> <span class="n">onehotev_test_y</span> <span class="p">)</span><span class="o">/</span><span class="n">onehotev_test_y</span><span class="p">)</span>
+
+<span class="n">compare_age_predictions</span><span class="p">(</span><span class="n">lgb_pred_onehotev</span><span class="p">,</span> <span class="n">onehotev_test_y</span><span class="p">,</span> <span class="n">lgb_rmse_onehotev</span><span class="p">,</span> <span class="n">lgm_relerr_onehotev</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/02bb226da918aac57f319bd861f199ab4c1310fa019dec1ea4e7a9cb79a527dd.png" src="../_images/02bb226da918aac57f319bd861f199ab4c1310fa019dec1ea4e7a9cb79a527dd.png" />
+</div>
+</div>
+</section>
+<section id="native-encoding-approach">
+<h3>Native Encoding Approach<a class="headerlink" href="#native-encoding-approach" title="Permalink to this headline">#</a></h3>
+<p>Another way would be to use <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>’s native encoding approach, which provides the option to handle categorical variables without the need of one hot encoding.</p>
+<div class="note admonition">
+<p class="admonition-title">lightgbm’s native encoding</p>
+<p>LightGBM does <strong>not</strong> split on individual category values or expand them via one-hot encoding. Instead, it evaluates <strong>partitions of category values</strong> into two subsets (left vs. right in the tree).</p>
+<p>Naively, if a categorical feature has <span class="math notranslate nohighlight">\(k\)</span> unique values, there are <span class="math notranslate nohighlight">\(2^{(k - 1)} - 1\)</span> ways to partition them. Exhaustively testing all is computationally infeasible.</p>
+<p>However, LightGBM uses an <a class="reference external" href="https://lightgbm.readthedocs.io/en/latest/Features.html#optimal-split-for-categorical-features">efficient approximation</a> during training:</p>
+<ul class="simple">
+<li><p>For each tree node, it computes the <strong>sum of gradients and Hessians</strong> for each category.</p></li>
+<li><p>It then <strong>sorts the categories</strong> by their <strong>gradient statistics</strong>:<br />
+<span class="math notranslate nohighlight">\(\frac{\text{sum of gradients}}{\text{sum of Hessians}}\)</span><br />
+(a proxy for how predictive each category is).</p></li>
+<li><p>Once ordered, it performs a sequential scan over the sorted sequence to find the best binary split (i.e., optimal threshold in the category order).</p></li>
+</ul>
+<p>This reduces complexity from <span class="math notranslate nohighlight">\(\mathcal{O}(2^k)\)</span> to <span class="math notranslate nohighlight">\(\mathcal{O}(k \log k)\)</span>, allowing LightGBM to handle high-cardinality categorical features efficiently and robustly.</p>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> does <strong>not</strong> automatically handle string-based categorical features. They must either be converted to integer codes or explicitly cast to the category data type in <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, which <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> will recognize and treat accordingly during training.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainfeatures</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Teff&#39;</span><span class="p">,</span> <span class="s1">&#39;logg&#39;</span><span class="p">,</span> <span class="s1">&#39;Fe/H&#39;</span><span class="p">,</span> <span class="s1">&#39;EV&#39;</span><span class="p">,</span> <span class="s1">&#39;alphaCat&#39;</span><span class="p">]</span>
+
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">apo</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">trainfeatures</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Split dataframe into input and output </span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+
+<span class="c1"># Split into train and test (80-20 split)</span>
+<span class="n">train_X</span><span class="p">,</span> <span class="n">test_X</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>\
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+
+<span class="n">X_train_lgb</span> <span class="o">=</span> <span class="n">train_X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_train_lgb</span><span class="p">[</span><span class="s1">&#39;alphaCat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_train_lgb</span><span class="p">[</span><span class="s1">&#39;alphaCat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+
+<span class="n">X_test_lgb</span> <span class="o">=</span> <span class="n">test_X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X_test_lgb</span><span class="p">[</span><span class="s1">&#39;alphaCat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_test_lgb</span><span class="p">[</span><span class="s1">&#39;alphaCat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_lgb</span> <span class="o">=</span> <span class="n">lgb</span><span class="o">.</span><span class="n">LGBMRegressor</span><span class="p">()</span>
+<span class="n">model_lgb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_lgb</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span>
+             <span class="n">eval_metric</span><span class="o">=</span><span class="s1">&#39;rmse&#39;</span><span class="p">,</span> 
+             <span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_test_lgb</span><span class="p">,</span> <span class="n">test_y</span><span class="p">)],</span>
+                 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">lgb</span><span class="o">.</span><span class="n">early_stopping</span><span class="p">(</span><span class="n">stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="c1"># Early stopping on validation set </span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[LightGBM] [Info] Auto-choosing row-wise multi-threading, the overhead of testing was 0.000090 seconds.
+You can set `force_row_wise=true` to remove the overhead.
+And if memory is not enough, you can set `force_col_wise=true`.
+[LightGBM] [Info] Total Bins 772
+[LightGBM] [Info] Number of data points in the train set: 8483, number of used features: 5
+[LightGBM] [Info] Start training from score 5.774475
+Training until validation scores don&#39;t improve for 10 rounds
+Early stopping, best iteration is:
+[55]	valid_0&#39;s rmse: 2.86185	valid_0&#39;s l2: 8.1902
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-14 {color: black;}#sk-container-id-14 pre{padding: 0;}#sk-container-id-14 div.sk-toggleable {background-color: white;}#sk-container-id-14 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-14 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-14 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-14 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-14 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-14 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-14 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-14 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-14 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-14 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-14 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-14 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-14 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-14 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-14 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-14 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-14 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-14 div.sk-item {position: relative;z-index: 1;}#sk-container-id-14 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-14 div.sk-item::before, #sk-container-id-14 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-14 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-14 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-14 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-14 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-14 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-14 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-14 div.sk-label-container {text-align: center;}#sk-container-id-14 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-14 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-14" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LGBMRegressor()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-14" type="checkbox" checked><label for="sk-estimator-id-14" class="sk-toggleable__label sk-toggleable__label-arrow">LGBMRegressor</label><div class="sk-toggleable__content"><pre>LGBMRegressor()</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lgb_pred</span> <span class="o">=</span> <span class="n">model_lgb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_lgb</span><span class="p">)</span>
+<span class="n">lgb_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">lgb_pred</span><span class="p">))</span>
+<span class="n">lgm_relerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span> <span class="n">lgb_pred</span> <span class="o">-</span> <span class="n">test_y</span> <span class="p">)</span><span class="o">/</span><span class="n">test_y</span><span class="p">)</span>
+
+<span class="n">compare_age_predictions</span><span class="p">(</span><span class="n">lgb_pred</span><span class="p">,</span> <span class="n">test_y</span><span class="p">,</span> <span class="n">lgb_rmse</span><span class="p">,</span> <span class="n">lgm_relerr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02bb226da918aac57f319bd861f199ab4c1310fa019dec1ea4e7a9cb79a527dd.png" src="../_images/02bb226da918aac57f319bd861f199ab4c1310fa019dec1ea4e7a9cb79a527dd.png" />
+</div>
+</div>
+<p>We see that there is no difference between the one hot encoding case and the native encoding case!</p>
+<div class="note admonition">
+<p class="admonition-title">Interpreting the Similarity of Results across Encodings</p>
+<p>Depending on the application, the performance of <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> with native categorical encoding may not differ significantly from standard one-hot encoding.</p>
+<p class="rubric"><strong>Low Cardinality Categorical Feature</strong></p>
+<p>When a categorical feature has only a few distinct values (e.g. three classes: 0, 1, 2), the number of distinct binary partitions <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> could explore is small. For <span class="math notranslate nohighlight">\(k\)</span> categories, <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> may consider up to <span class="math notranslate nohighlight">\(2^{k-1} - 1\)</span> partitions. So for <span class="math notranslate nohighlight">\(k = 3\)</span>, only <strong>3</strong> non-trivial partitions exist. In this setting:</p>
+<ul class="simple">
+<li><p>One-hot encoding effectively separates the classes across orthogonal binary axes.</p></li>
+<li><p>Native encoding does the same by finding the optimal category grouping at a node. However, <strong>for only 3 categories, the set of possibilities is limited</strong>.</p></li>
+</ul>
+<p>Thus, both approaches may lead to similar decision splits in this scenario.</p>
+<hr class="docutils" />
+<p class="rubric"><strong>Low Predictive Power of the Categorical Feature</strong></p>
+<p>If the categorical feature contributes very little to reducing the loss (e.g. it has weak or no correlation with the target), then:</p>
+<ul class="simple">
+<li><p>The model rarely chooses this feature to split on regardless of encoding.</p></li>
+<li><p>Feature importances (e.g. based on split count or gain) for this feature will be low or zero.</p></li>
+<li><p>The resulting predictions will be nearly identical whether one-hot encoding or native encoding is used.</p></li>
+</ul>
+<p>In this case, the model’s performance is <strong>dominated by other, more informative features</strong>, and the encoding method has negligible effect.</p>
+<hr class="docutils" />
+<p>Let’s visualize the feature importances using <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>’s built-in method. Evidently, the categorical features, while useful in providing a performance boost, are not as informative as the other global spectroscopic parameters.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">num_splits</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X_test_lgb</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model_lgb</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Column &quot;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">&quot; was chosen </span><span class="si">{</span><span class="n">num_splits</span><span class="si">}</span><span class="s1"> times to create a decision split.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Column &quot;Teff&quot; was chosen 505 times to create a decision split.
+Column &quot;logg&quot; was chosen 549 times to create a decision split.
+Column &quot;Fe/H&quot; was chosen 454 times to create a decision split.
+Column &quot;EV&quot; was chosen 88 times to create a decision split.
+Column &quot;alphaCat&quot; was chosen 54 times to create a decision split.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercise: Comparing Gradient Boosting Libraries</p>
+<p>There are many modern implementations of gradient boosting decision trees, including <a class="reference external" href="https://catboost.ai/"><strong>CatBoost</strong> developed by Yandex</a>. Unlike <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> or <code class="docutils literal notranslate"><span class="pre">xgboost</span></code>, which typically require categorical variables to be integer-encoded or one-hot encoded, CatBoost natively handles <strong>string-based</strong> or <strong>categorical</strong> features. It uses a special <strong>ordered target-based encoding</strong> that preserves training integrity by avoiding data leakage — making it especially well-suited for <strong>mixed-type datasets</strong>.</p>
+<p>In this exercise, you’ll explore the use of the CatBoost library.</p>
+<hr class="docutils" />
+<p><strong>Tasks:</strong></p>
+<ol class="arabic simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">CatBoostRegressor</span></code> to train a model using the <strong>native categorical feature handling</strong>:</p>
+<ul class="simple">
+<li><p>Provide the categorical feature names via the <code class="docutils literal notranslate"><span class="pre">cat_features</span></code> argument. By design, this is handled even more elegantly compared to <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code>:</p></li>
+</ul>
+</li>
+<li><p>Compare this to a model trained using <strong>one-hot encoding</strong> on the same features (e.g., using <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing.OneHotEncoder</span></code>).</p></li>
+<li><p>Calculate feature importances from the CatBoost model using their <a class="reference external" href="https://catboost.ai/docs/en/features/feature-importances-calculation">in-built approaches</a>.</p></li>
+</ol>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Does CatBoost’s native encoding improve performance?</p></li>
+<li><p>Are there trade-offs in training time or performance?</p></li>
+<li><p>Do the CatBoost feature importances provide the same conclusion as the one obtained by <code class="docutils literal notranslate"><span class="pre">lightgbm</span></code> above?</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tabular-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Grids of Stellar Models Part 2: <em>Interpolation</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tabular-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-of-red-giant-star-properties">Dataset of Red Giant Star Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolutionary-state-ev">Evolutionary state, <code class="docutils literal notranslate"><span class="pre">EV</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alpha-enhancement-alphacat">Alpha enhancement, <code class="docutils literal notranslate"><span class="pre">alphaCat</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#age-prediction-with-gradient-boosted-trees">Age prediction with Gradient Boosted Trees</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-prediction-using-continuous-features">Baseline prediction using continuous features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizing-categorical-data">Utilizing Categorical Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">One Hot Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#native-encoding-approach">Native Encoding Approach</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

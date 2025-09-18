@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Eclipse Morphology Part 3: Latent Spaces and Visualizing Them &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/eb-morphology_3';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/eb-morphology_3.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eclipse Morphology Part 4: The Variational Autoencoder" href="eb-morphology_4.html" />
+    <link rel="prev" title="Eclipse Morphology Part 2: Low-Dimensional Representations" href="eb-morphology_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/eb-morphology_3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/eb-morphology_3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/eb-morphology_3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/eb-morphology_3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Eclipse Morphology Part 3: Latent Spaces and Visualizing Them</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-organizing-maps-soms">Self-Organizing Maps (SOMs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#som-hyperparameters">SOM Hyperparameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#som-error-metrics">SOM Error Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-som">Visualizing the SOM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-smoothness">Map smoothness</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-a-morphological-parameter">Comparison with a Morphological Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="eclipse-morphology-part-3-latent-spaces-and-visualizing-them">
+<span id="content-references-eclipse-part3"></span><h1>Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em><a class="headerlink" href="#eclipse-morphology-part-3-latent-spaces-and-visualizing-them" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>In the previous section, we have looked at projecting light curves down into a low-dimensional space that encodes meaningful information about the light curves’ morphology. This is effectively embedding light curves into a <strong>latent space</strong>, an internal representation of data for which similar items are grouped together.</p>
+<p>In this section, we will explore the concept of latent spaces by applying neural networks to the eclipsing binary dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">astropy.timeseries</span> <span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="self-organizing-maps-soms">
+<h2>Self-Organizing Maps (SOMs)<a class="headerlink" href="#self-organizing-maps-soms" title="Permalink to this headline">#</a></h2>
+<p>Introduced in <span id="id1">[]</span>, the Self-Organizing Map (SOM) is a neural network designed to create a low-dimensional mapping of data. The unique feature of a SOM is its structured grid of neurons. Training is performed in an <strong>unsupervised</strong> manner, neurons compete to activate in a winner-takes-all fashion, with the neuron that best matches the data point being selected as the winner. This winning neuron, along with its neighboring neurons, undergoes adjustments to better represent the data, incorporating a topological neighborhood effect to ensure that similar neurons are updated together.</p>
+<figure class="align-default" id="som-cells">
+<a class="reference internal image-reference" href="../_images/som.png"><img alt="../_images/som.png" src="../_images/som.png" style="height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of a hexagonal Self-Organizing Map. The input layer <span class="math notranslate nohighlight">\(\overrightarrow{w_i}\)</span> has the same dimensionality as the input data <span class="math notranslate nohighlight">\(\mathbf{x}=[x_1, x_2,\cdots,x_n]\)</span>. The weights <span class="math notranslate nohighlight">\(\overrightarrow{w_s}\)</span> connect the input layer to every hexagonal cell on the grid, with each cell comprising a neuron of the same dimensionality as the input. These weights are iteratively adjusted as the neurons learn to represent the dataset. Image from <span id="id2">[]</span>.</span><a class="headerlink" href="#som-cells" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As this competitive adjustment process is extended across the entire dataset, the neurons in the trained SOM self-organize to capture and reflect the underlying diversity and structure of the data. This yields a structured, topological map that reflects the relationships and similarities within the data. Because the dataset has to be described with a finite number of neurons on the grid, the weights of individual neurons end up forming prototypes, or highly representative examples in the dataset. Because of this, SOMs are also an effective approach to clustering, as groups of similar data points are found in the topological neighbourhood of the prototypes in the map.</p>
+<figure class="align-default" id="gsom">
+<a class="reference internal image-reference" href="../_images/gsom.webp"><img alt="../_images/gsom.webp" src="../_images/gsom.webp" style="width: 750px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Example of a SOM being used for taxonomic classification of a metagenome data sets, presented by <span id="id3">[]</span>.</span><a class="headerlink" href="#gsom" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We will use the efficient and minimalistic implementation of a SOM from the <a class="reference external" href="https://github.com/JustGlowing/minisom/"><code class="docutils literal notranslate"><span class="pre">minisom</span></code></a> library.</p>
+<p>Following the previous part in this series, we will load in the dataset and normalize each light curve to the range between 0 and 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">minisom</span> <span class="kn">import</span> <span class="n">MiniSom</span>
+<span class="kn">from</span> <span class="nn">tslearn.preprocessing</span> <span class="kn">import</span> <span class="n">TimeSeriesScalerMinMax</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="s1">&#39;KeplerEB_Filtered.npz&#39;</span><span class="p">))</span>
+<span class="n">scaled_flux</span> <span class="o">=</span> <span class="n">TimeSeriesScalerMinMax</span><span class="p">(</span><span class="n">value_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;flux&#39;</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:])</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As a quick reminder and a sanity check, let’s view what we are trying to visualize from three randomly drawn samples. We are working with flux-normalized binned phase-folded light curves, which are sufficiently processed to be used by a machine learning algorithm to leverage differences in the diversity of eclipse shapes across the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">randint</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;flux&#39;</span><span class="p">]),</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">randint</span><span class="p">:</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;flux&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">scaled_ts</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Star </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>    
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d2f287eb17719d12607c4b971ecf7e71b0b7d097bf2922ae1a3c2e05370367fe.png" src="../_images/d2f287eb17719d12607c4b971ecf7e71b0b7d097bf2922ae1a3c2e05370367fe.png" />
+</div>
+</div>
+<section id="som-hyperparameters">
+<h3>SOM Hyperparameters<a class="headerlink" href="#som-hyperparameters" title="Permalink to this headline">#</a></h3>
+<p>The size of the grid, the neighbourhood function, and its influence parameter <span class="math notranslate nohighlight">\(\sigma\)</span> describe the granularity of the SOM and are thus important user-defined parameters to set when constructing a SOM. The <strong>neighbourhood</strong> function, in particular, weights the influence of a winning neuron to its neighbours, with the following implemented by <code class="docutils literal notranslate"><span class="pre">minisom</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">gaussian</span></code> : A Gaussian with shape parameter <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mexican_hat</span></code>: A Mexican hat function with a spread factor <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bubble</span></code>: Constant function with a spread of sigma in either direction. This is effectively a 2D Heaviside function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">triangle</span></code>: Triangular function with a spread of sigma in either direction. This is similar to <code class="docutils literal notranslate"><span class="pre">bubble</span></code> except that the weights taper off linearly towards the edge.</p>
+<p>We will adopt the <code class="docutils literal notranslate"><span class="pre">gaussian</span></code> neighbourhood function with <span class="math notranslate nohighlight">\(\sigma=1\)</span>, where the value is in units of the map’s dimensions. Let’s visualize a 8x8 map!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dim1</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># width of the map</span>
+<span class="n">dim2</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># height of the map</span>
+
+<span class="n">som</span> <span class="o">=</span> <span class="n">MiniSom</span><span class="p">(</span><span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">,</span> <span class="n">scaled_flux</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+              <span class="n">neighborhood_function</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation_distance</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">)</span> <span class="c1">## initializing the SOM object</span>
+
+<span class="n">som</span><span class="o">.</span><span class="n">pca_weights_init</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">)</span> <span class="c1">## initializing the SOM weights</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Observe above that the SOM weights were initialized by a function that uses the first two principal components across the dataset. In principle, this allows the weights across the map to be spread out in a way that represents the major axes of variance across the dataset, which can help with convergence.</p>
+</div>
+<p>In the following, we will train the the SOM. For each training iteration, we randomly select a sample from the data, find the sample’s Best Matching Unit (BMU, also known as <code class="docutils literal notranslate"><span class="pre">som.winner</span></code>) and update it. We will also save the training errors of the SOM.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_iterations</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="n">q_error</span><span class="p">,</span> <span class="n">t_error</span><span class="p">,</span> <span class="n">d_error</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">training_iterations</span><span class="p">):</span>
+    <span class="n">rand_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">))</span>
+    <span class="n">som</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">[</span><span class="n">rand_i</span><span class="p">],</span> <span class="n">som</span><span class="o">.</span><span class="n">winner</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">[</span><span class="n">rand_i</span><span class="p">]),</span> <span class="n">i</span><span class="p">,</span> <span class="n">training_iterations</span><span class="p">)</span> <span class="c1"># per sample update</span>
+    <span class="n">q_error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">som</span><span class="o">.</span><span class="n">quantization_error</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">))</span>
+    <span class="n">t_error</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">som</span><span class="o">.</span><span class="n">topographic_error</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Training with a ‘for’ loop is slow…</p>
+<p>The use of an explicit <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to train is for illustrative purposes in this exercise. For most applications, <code class="docutils literal notranslate"><span class="pre">minisom</span></code>’s batched training will run significantly faster by orders of magnitude:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">som</span><span class="o">.</span><span class="n">train_batch</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">,</span> <span class="n">num_iteration</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="som-error-metrics">
+<h3>SOM Error Metrics<a class="headerlink" href="#som-error-metrics" title="Permalink to this headline">#</a></h3>
+<p>There are two main errors to consider when training the SOM:</p>
+<p><strong>Quantization Error</strong>: Specifies how much information is lost when representing the data using the map. It is calculated as the average squared distance between the input samples and the BMU they are mapped to.</p>
+<p><strong>Topographic Error</strong>: Measures the extent to which the SOM preserves neighbourhood relationships in the data. In the case of a Gaussian neighbourhood function, we expect a smooth topological variation on the map, meaning that adjacent BMUs should be similar to one another, otherwise there is a high penalty. To calculate this error, we first identify, for each sample, their BMU and second-best matching unit. The error is calculated as the proportion of samples in the dataset for which their BMU and second-best matching units are not adjacent.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">training_iterations</span><span class="p">)[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">q_error</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Quantization Error&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">training_iterations</span><span class="p">)[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">t_error</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Topographic Error&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">},</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">101000</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Training Iterations&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Error&#39;)
+</pre></div>
+</div>
+<img alt="../_images/3cfe66c638614fad264fdd516d4284a83d092ec5af7a4273f6f1b7f5b06b19e0.png" src="../_images/3cfe66c638614fad264fdd516d4284a83d092ec5af7a4273f6f1b7f5b06b19e0.png" />
+</div>
+</div>
+<p>As seen above, the <strong>quantization error</strong> steadily decreases, while the <strong>topographic error</strong> steadily rises in turn. What’s happening with the map to cause these changes?</p>
+<p>SOMs, just like typical supervised learning approaches, can <em>overfit</em> the data. In this instance, overfitting occurs when the neurons fixate more on matching individual examples from the dataset as opposed to preserving smooth changes across adjacent neurons. In other words, we may have very accurate archetypical representations but sacrifice the nice topological properties the trained SOMs possesses.</p>
+</section>
+<section id="visualizing-the-som">
+<h3>Visualizing the SOM<a class="headerlink" href="#visualizing-the-som" title="Permalink to this headline">#</a></h3>
+<p>Let us examine how the morphology of the phase-folded light curves are now distributed with the SOM.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">win_map</span> <span class="o">=</span> <span class="n">som</span><span class="o">.</span><span class="n">win_map</span><span class="p">(</span><span class="n">scaled_flux</span><span class="p">)</span> <span class="c1"># takes the dataset and assigns them to their best-matching units (BMU)</span>
+<span class="n">som_weights</span> <span class="o">=</span> <span class="n">som</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span> <span class="c1"># obtains the archetype of the light curve in each unit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">));</span> <span class="n">the_grid</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">win_map</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">the_grid</span><span class="p">[</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">the_grid</span><span class="p">[</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">frame_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">win_map</span><span class="p">[</span><span class="n">position</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">win_map</span><span class="p">[</span><span class="n">position</span><span class="p">]))</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">som_weights</span><span class="p">[</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>    
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;N: &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">win_map</span><span class="p">[</span><span class="n">position</span><span class="p">])),</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+            <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">position</span><span class="p">),</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span>
+            <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([]);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([]);</span>  <span class="n">ax2</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8ad3d5a62e93b4a56582402fa09bfd0765465ed6ac6a82d1880842ab66fbdd7c.png" src="../_images/8ad3d5a62e93b4a56582402fa09bfd0765465ed6ac6a82d1880842ab66fbdd7c.png" />
+</div>
+</div>
+<p>The above shows the trained 10x10 SOM. Specifically, the grey curves correspond to individual examples that have been assigned to a particular unit or neuron on the map. The archetype, or typical example, of eclipses in each unit are shown by the red curves. <strong>Archetypes are what the SOMs learn during their training.</strong></p>
+<div class="seealso admonition">
+<p class="admonition-title">A Spike Instead of a Dip?</p>
+<p>Why are there archetypes that have a rise in flux instead of a dip?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Hint: Astronomical Cardiology</p>
+<p>These are are a relatively rare subclass of detached binary stars with short periods (<span class="math notranslate nohighlight">\(\leq 100\)</span> days) and high
+eccentricities (<span class="math notranslate nohighlight">\(e \geq\)</span> 0.2) known as <strong>heartbeat stars</strong>. They are termed as such due to the shape of the light curves resembling an electrocardiogram.</p>
+<figure class="align-default" id="hb">
+<a class="reference internal image-reference" href="../_images/hb.png"><img alt="../_images/hb.png" src="../_images/hb.png" style="width: 850px; height: 180px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Image from Figure 1 of <a class="reference external" href="https://iopscience.iop.org/article/10.1088/0004-637X/753/1/86/pdf">Thompson et al. (2012)</a></span><a class="headerlink" href="#hb" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+<p>For convenience, neurons/units on the map are specified with grid coordinates and the number of examples from the dataset that have been allocated to them. Let’s plot a few examples drawn from a specific unit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unit</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1">## Display three random light curves from the specified unit</span>
+<span class="n">randint</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">win_map</span><span class="p">[</span><span class="n">unit</span><span class="p">]),</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">randint</span><span class="p">,[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span><span class="n">ax3</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;flux&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">win_map</span><span class="p">[</span><span class="n">unit</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/47a3c1b77fcf3ac01bded253681cd3dc247009a87f5c41ac15942da649e6b97c.png" src="../_images/47a3c1b77fcf3ac01bded253681cd3dc247009a87f5c41ac15942da649e6b97c.png" />
+</div>
+</div>
+<p>These all have similar shapes as they belong to the same unit!</p>
+</section>
+<section id="map-smoothness">
+<h3>Map smoothness<a class="headerlink" href="#map-smoothness" title="Permalink to this headline">#</a></h3>
+<p>Notice how the shapes of the archetypes gradually vary across the map, which highlights the SOM ability to <strong>preserve the topological structure of the dataset</strong> by mapping similar archetypes to nearby locations.</p>
+<p>To quantify the smoothness of the map, we can plot the <strong>U-Matrix</strong> (unified distance matrix) of the SOM. The U-Matrix calculates, for the archetype in each neuron, a normalized dissimilarity distance relative to adjacent neurons. A larger dissimilarity means that the archetype represented by the neuron stands out rather distinctively from the otherwise smooth variations across the map. This property endows SOMs with the ability to identify clusters from datasets as well!</p>
+<p>Let’s visualize the U-Matrix for our dataset of eclipses:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;bone_r&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span> <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Dissimilarity with Adjacent Neurons&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/229fb2df467445b4aa3cae1f35994f970e86520a52e068eeca4692b643db7ca9.png" src="../_images/229fb2df467445b4aa3cae1f35994f970e86520a52e068eeca4692b643db7ca9.png" />
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Does the U-Matrix agree with your intuition of which regions have strongly dissimilar archetypes from the earlier visualization of the SOM? Do regions of high dissimilarity correspond to neurons with drastically different eclipse shapes relative to its neighbours?</p>
+</div>
+</section>
+</section>
+<section id="comparison-with-a-morphological-parameter">
+<h2>Comparison with a Morphological Parameter<a class="headerlink" href="#comparison-with-a-morphological-parameter" title="Permalink to this headline">#</a></h2>
+<p>In the previous section, we have seen a morphological parameter <span class="math notranslate nohighlight">\(0\leq c\leq1\)</span> being used to define the ‘detached-ness’ of the eclipse shape. Using the SOM, we can observe how this parameter is translated to our map.</p>
+<p>Recall the following:</p>
+<ul class="simple">
+<li><p>A smaller <span class="math notranslate nohighlight">\(c\)</span> indicates a more detached-like morphology</p></li>
+<li><p>A <span class="math notranslate nohighlight">\(c\)</span> closer to <span class="math notranslate nohighlight">\(1\)</span> indicates a more ellipsoidal morphology</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kics</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;kic&#39;</span><span class="p">]</span>
+<span class="n">ebcat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="s1">&#39;eb_morph.dat&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;kic&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bin_quantity_win_map</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+    <span class="c1">## Same as Minisom&#39;s win map, except that the dictionary contains a quantity (e.g. depth or duration)</span>
+    <span class="c1">## binned into position (i,j)</span>
+    <span class="n">winmap</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">winmap</span><span class="p">[</span><span class="n">som</span><span class="o">.</span><span class="n">winner</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">quantity</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">winmap</span>
+
+<span class="n">morph_win_map</span> <span class="o">=</span> <span class="n">bin_quantity_win_map</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">scaled_flux</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ebcat</span><span class="o">.</span><span class="n">morph</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ebcat</span><span class="o">.</span><span class="n">kic</span><span class="o">.</span><span class="n">values</span> <span class="o">==</span> <span class="n">k</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kics</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">morph_win_map</span></code> maps <span class="math notranslate nohighlight">\(c\)</span> based on the assignment of samples in the dataset. Let us visualize the median value of the morphological parameter assigned to each neuron in the SOM.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">morph_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim1</span><span class="p">,</span> <span class="n">dim2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">morph_win_map</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">morph_image</span><span class="p">[</span><span class="n">position</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">morph_win_map</span><span class="p">[</span><span class="n">position</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">morph_image</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">som</span><span class="o">.</span><span class="n">distance_map</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">());</span> <span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span> 
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">);</span> <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Median $c$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2627ccf0f71b6be7b4265ae1cb9ca91c1b2754f92bb64c4ec7ca647617dca93a.png" src="../_images/2627ccf0f71b6be7b4265ae1cb9ca91c1b2754f92bb64c4ec7ca647617dca93a.png" />
+</div>
+</div>
+<p>Notice that this agrees with what we expect from the SOM neuron archetypes!</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>SOMs are incredibly versatile tools, with various hyperparameters that can be changed to further improve its performance to achieve optimal performance on the desired task (e.g., clustering, classification).</p>
+<p>Experiment with changing the following:</p>
+<ul class="simple">
+<li><p>The map’s dimensions</p></li>
+<li><p>The map topology from square to hexagonal (see <a class="reference external" href="https://github.com/JustGlowing/minisom/blob/master/examples/HexagonalTopology.ipynb">this notebook</a>)</p></li>
+<li><p>The type of neighbourhood function and its corresponding influence parameter <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+<li><p>The activation distance (<code class="docutils literal notranslate"><span class="pre">minisom</span></code> natively supports <code class="docutils literal notranslate"><span class="pre">euclidean</span></code>, <code class="docutils literal notranslate"><span class="pre">cosine</span></code>, <code class="docutils literal notranslate"><span class="pre">manhattan</span></code>, <code class="docutils literal notranslate"><span class="pre">chebyshev</span></code> distances)</p></li>
+</ul>
+<p>How does changing any of the above affect the resulting mapping by the SOM?</p>
+</div>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://danhey.com/orbviz/">Binary Visualizer</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="eb-morphology_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eb-morphology_4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#self-organizing-maps-soms">Self-Organizing Maps (SOMs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#som-hyperparameters">SOM Hyperparameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#som-error-metrics">SOM Error Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-som">Visualizing the SOM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-smoothness">Map smoothness</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-a-morphological-parameter">Comparison with a Morphological Parameter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#see-also">See also</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

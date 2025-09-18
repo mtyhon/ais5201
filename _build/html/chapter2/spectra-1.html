@@ -1,0 +1,1475 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Stellar Spectra Part 1: Observing Detailed Spectral Features &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter2/spectra-1';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter2/spectra-1.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stellar Spectra Part 2: The Cannon" href="spectra-2.html" />
+    <link rel="prev" title="Spectral Energy Distribution (SED) Part 3: Bayesian Evidence and Model Selection" href="sed-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1/section_intro.html">Time-domain Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Spectra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter2/spectra-1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter2/spectra-1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter2/spectra-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter2/spectra-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stellar Spectra Part 1: Observing Detailed Spectral Features</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variations-in-stellar-spectra">Variations in Stellar Spectra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-of-real-spectra">Observations of Real Spectra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-spectra">Matching Spectra</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stellar-spectra-part-1-observing-detailed-spectral-features">
+<span id="content-references-spectra-part1"></span><h1>Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em><a class="headerlink" href="#stellar-spectra-part-1-observing-detailed-spectral-features" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>Recall in <a class="reference internal" href="sed-1.html#content-references-sed-part1"><span class="std std-ref">Spectral Energy Distribution (SED) Part 1: Observing SEDs</span></a>, we discussed the broad-band features of a stellar spectrum, described as the Spectral Energy Distribution (SED). However, it’s evident a lot of structure in the spectrum is not captured from the SED alone.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">pysynphot</span> <span class="k">as</span> <span class="nn">S</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">astropy.modeling.models</span> <span class="kn">import</span> <span class="n">BlackBody</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span><span class="p">,</span> <span class="n">mark_inset</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter2&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYSYN_CDBS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wav</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">AA</span>
+<span class="n">temp</span> <span class="o">=</span> <span class="mi">5700</span>
+<span class="n">bb</span> <span class="o">=</span> <span class="n">BlackBody</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temp</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
+<span class="n">flux</span> <span class="o">=</span> <span class="n">bb</span><span class="p">(</span><span class="n">wav</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">erg</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">AA</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">sr</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">,</span> <span class="n">equivalencies</span><span class="o">=</span><span class="n">u</span><span class="o">.</span><span class="n">spectral_density</span><span class="p">(</span><span class="n">wav</span><span class="p">))</span><span class="o">.</span><span class="n">value</span>
+<span class="n">observed_data</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">ArraySpectrum</span><span class="p">(</span><span class="n">wav</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">flux</span><span class="p">)</span>
+
+<span class="n">flux_conv</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">erg</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">AA</span>
+<span class="n">flux_conv2</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">erg</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span><span class="o">/</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span>
+<span class="n">ph_wav_lr</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/model_spectra/lte05700-4.00-0.0.PHOENIX-ACES-AGSS-COND-2011-HiRes.fits&#39;</span><span class="p">)</span>
+<span class="n">xlim_min</span><span class="p">,</span> <span class="n">xlim_max</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">40000</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CRVAL1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">],</span>
+           <span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">*</span><span class="n">flux_conv2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">flux_conv</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PHOENIX Spectrum ($T_{</span><span class="se">\\</span><span class="s1">mathrm</span><span class="si">{eff}</span><span class="s1">}=5700$K, [M/H] = +0.0, $</span><span class="se">\\</span><span class="s1">log(g)=4.0</span><span class="se">\\</span><span class="s1">,$ dex)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">observed_data</span><span class="o">.</span><span class="n">wave</span><span class="p">,</span> <span class="n">observed_data</span><span class="o">.</span><span class="n">flux</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;BlackBody at </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s1"> K&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength, $</span><span class="se">\\</span><span class="s1">lambda$ ($</span><span class="se">\\</span><span class="s1">AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Irradiance, $F_</span><span class="se">\\</span><span class="s1">lambda$ (erg cm$^{-2}$ s$^{-1}$ $</span><span class="se">\\</span><span class="s1">AA^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim_min</span><span class="p">,</span> <span class="n">xlim_max</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_xminorticklabels</span><span class="p">():</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">set_rotation</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">label</span><span class="o">.</span><span class="n">set_ha</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+
+
+<span class="n">ax1a</span> <span class="o">=</span> <span class="n">inset_axes</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;47%&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                  <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">),</span>
+                  <span class="n">bbox_transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CRVAL1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;NAXIS1&#39;</span><span class="p">])</span><span class="o">*</span><span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">],</span>
+           <span class="n">ph_wav_lr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">*</span><span class="n">flux_conv2</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">flux_conv</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fine Spectral Features&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">5160</span><span class="p">,</span> <span class="mi">5200</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.3e7</span><span class="p">,</span> <span class="mf">1e7</span><span class="p">);</span> <span class="n">ax1a</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">indicate_inset_zoom</span><span class="p">(</span><span class="n">ax1a</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">)</span>
+<span class="n">mark_inset</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax1a</span><span class="p">,</span> <span class="n">loc1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">loc2</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;0.5&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/f9cc1f1b31d119226460baaf3fcb392a4fa594c5b37629689db86156d457b6be.png" src="../_images/f9cc1f1b31d119226460baaf3fcb392a4fa594c5b37629689db86156d457b6be.png" />
+</div>
+</div>
+<p>A zoom-in of the spectrum shows fine structure from the presence of <strong>absorption</strong> and <strong>emission features</strong>. These exist because atoms and ions in a star’s atmosphere interact with light at specific wavelengths that correspond to quantized energy transitions. As light generated in the hot, dense stellar interior travels outward, it passes through cooler, lower-density layers of gas.</p>
+<ul class="simple">
+<li><p><strong>Absorption</strong>: Atoms in these outer layers can absorb photons whose energies match the difference between two of their energy levels, removing light at those precise wavelengths and producing absorption lines in the spectrum.</p></li>
+<li><p><strong>Emission</strong>: In rarer cases—such as in chromospheres, stellar winds, or circumstellar disks—these atoms may instead emit photons (i.e., an increase in flux) at characteristic wavelengths, leading to emission lines.</p></li>
+</ul>
+<p>The presence, shape, and strength of these spectral features encode physical information about the star, including its effective temperature (<span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>), chemical composition (global metallicity and elemental abundances), and ionization structure, which makes spectroscopy a staple tool in astrophysics.</p>
+<section id="variations-in-stellar-spectra">
+<h2>Variations in Stellar Spectra<a class="headerlink" href="#variations-in-stellar-spectra" title="Permalink to this headline">#</a></h2>
+<p>Simulating stellar spectra involves solving the radiative transfer equation, informed by the equation of state of the stellar atmosphere, atomic transition probabilities, and detailed calculations of both continuum and line opacities. There exist tools to perform such calculations – we will use the [<a class="github reference external" href="https://github.com/AWehrhahn/SME">AWehrhahn/SME</a>](Spectroscopy Made Easy) code <code class="docutils literal notranslate"><span class="pre">pysme</span></code> to illustrate an example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pysme.sme</span> <span class="kn">import</span> <span class="n">SME_Structure</span> <span class="k">as</span> <span class="n">SME_Struct</span>
+<span class="kn">from</span> <span class="nn">pysme.abund</span> <span class="kn">import</span> <span class="n">Abund</span>
+<span class="kn">from</span> <span class="nn">pysme.linelist.vald</span> <span class="kn">import</span> <span class="n">ValdFile</span>
+<span class="kn">from</span> <span class="nn">pysme.synthesize</span> <span class="kn">import</span> <span class="n">synthesize_spectrum</span><span class="p">,</span> <span class="n">Synthesizer</span>
+<span class="kn">from</span> <span class="nn">pysme.solve</span> <span class="kn">import</span> <span class="n">solve</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In general, the recipe involves defining a <strong>line list</strong> comprising atomic transition parameters of different elements, compiled from databases like the <a class="reference external" href="https://vald.astro.uu.se/">Vienna Atomic Line Database (VALD)</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sme</span> <span class="o">=</span> <span class="n">SME_Struct</span><span class="p">()</span>
+<span class="n">vald</span> <span class="o">=</span> <span class="n">ValdFile</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/synth_spectra/solar.lin&#39;</span><span class="p">)</span>
+<span class="n">sme</span><span class="o">.</span><span class="n">linelist</span> <span class="o">=</span> <span class="n">vald</span>
+<span class="n">sme</span><span class="o">.</span><span class="n">linelist</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">INFO - Loading VALD file /home/marc/jupyter-book/ml_astro/chapter2/data/synth_spectra/solar.lin</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marc/anaconda3/lib/python3.8/site-packages/pysme/abund.py:384: RuntimeWarning: invalid value encountered in log10
+  abund[1] = np.log10(abund[1]/abund[0]) + 12
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING - Could not find citation key: MZH</span>
+<span class=" -Color -Color-Yellow">WARNING - Could not find citation key: BWT</span>
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  species     wlcent   excit  vmic  gflog  gamrad  gamqst  gamvw  lande  \
+0    Cr 1  5161.7653  2.7099   2.0 -1.564    8.16   -6.06 -7.760   2.50   
+1    Fe 1  5162.2720  4.1777   2.0  0.020    8.38   -3.96 -7.239   1.39   
+2    Fe 1  5164.5506  4.4346   2.0 -1.360    8.15   -5.06 -7.095   1.14   
+3    Fe 1  5164.9110  4.1426   2.0 -2.138    8.08   -6.02 -7.790   0.43   
+4    Fe 1  5165.4098  4.2204   2.0 -0.384    8.37   -4.69 -7.510   1.33   
+
+   depth                                          reference  nlte_flag  \
+0  0.104     1 wl:K16   1 K16   1 gf:K16   1 K16   1 K16...        NaN   
+1  0.705     2 wl:K14   2 K14   3 gf:FMW   2 K14   2 K14...        NaN   
+2  0.313     3 wl:FMW   2 K14   3 gf:FMW   2 K14   2 K14...        NaN   
+3  0.143     2 wl:K14   2 K14   2 gf:K14   2 K14   2 K14...        NaN   
+4  0.644     2 wl:K14   2 K14   2 gf:K14   2 K14   2 K14...        NaN   
+
+   atom_number  ionization  
+0          1.0         1.0  
+1          1.0         1.0  
+2          1.0         1.0  
+3          1.0         1.0  
+4          1.0         1.0  
+</pre></div>
+</div>
+</div>
+</div>
+<p>These contain data on the <strong>wavelengths of transitions</strong>, <strong>oscillator strengths</strong>, <strong>excitation potentials</strong>, and  <strong>line broadening parameters</strong>. These only tell us which lines exist and their intrinsic strengths per absorber, but they do not tell us the number of atoms or ions that are present in the stellar atmosphere. To do this, we need relative abundances of each element. Here, we will adopt the solar abundance pattern, shown as the following:</p>
+<figure class="align-default" id="ss-abundances">
+<a class="reference internal image-reference" href="../_images/SolarSystemAbundances.png"><img alt="../_images/SolarSystemAbundances.png" src="../_images/SolarSystemAbundances.png" style="width: 850px; height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Estimated abundances of the chemical elements of our Sun, calculated by measuring the relative mass fraction of different elements.</span><a class="headerlink" href="#ss-abundances" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sme</span><span class="o">.</span><span class="n">abund</span> <span class="o">=</span> <span class="n">Abund</span><span class="o">.</span><span class="n">solar</span><span class="p">()</span>
+<span class="n">sme</span><span class="o">.</span><span class="n">abund</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [M/H]=0.000 applied to abundance pattern. Values below are abundances.
+  H      He     Li     Be     B      C      N      O      F      Ne     Na   
+ 12.000 10.930  1.050  1.380  2.700  8.390  7.780  8.660  4.560  7.840  6.170
+  Mg     Al     Si     P      S      Cl     Ar     K      Ca     Sc     Ti   
+  7.530  6.370  7.510  5.360  7.140  5.500  6.180  5.080  6.310  3.170  4.900
+  V      Cr     Mn     Fe     Co     Ni     Cu     Zn     Ga     Ge     As   
+  4.000  5.640  5.390  7.450  4.920  6.230  4.210  4.600  2.880  3.580  2.290
+  Se     Br     Kr     Rb     Sr     Y      Zr     Nb     Mo     Tc     Ru   
+  3.330  2.560  3.250  2.600  2.920  2.210  2.580  1.420  1.920    nan  1.840
+  Rh     Pd     Ag     Cd     In     Sn     Sb     Te     I      Xe     Cs   
+  1.120  1.660  0.940  1.770  1.600  2.000  1.000  2.190  1.510  2.240  1.070
+  Ba     La     Ce     Pr     Nd     Pm     Sm     Eu     Gd     Tb     Dy   
+  2.170  1.130  1.700  0.580  1.450    nan  1.000  0.520  1.110  0.280  1.140
+  Ho     Er     Tm     Yb     Lu     Hf     Ta     W      Re     Os     Ir   
+  0.510  0.930  0.000  1.080  0.060  0.880 -0.170  1.110  0.230  1.250  1.380
+  Pt     Au     Hg     Tl     Pb     Bi     Po     At     Rn     Fr     Ra   
+  1.640  1.010  1.130  0.900  2.000  0.650    nan    nan    nan    nan    nan
+  Ac     Th     Pa     U      Np     Pu     Am     Cm     Bk     Cf     Es   
+    nan  0.060    nan -0.520    nan    nan    nan    nan    nan    nan    nan
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-solar-abundances admonition">
+<p class="admonition-title">Solar abundances</p>
+<p>The best measurements of the solar chemical composition can be found from measurements of carbonaceous chondrite, a class of meteorites that originated early in the history of the Solar System. These measurements are tabulated by studies such as <a class="reference external" href="https://www.annualreviews.org/content/journals/10.1146/annurev.astro.46.060407.145222">Asplund et al. 2009</a>.</p>
+<p>These abundances are important because they act as a standard reference point for other elemental abundances</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{[X/H]} = \log_{10}\bigg(\frac{n_X}{n_H}\bigg)_\star - \log_{10}\bigg(\frac{n_X}{n_H}\bigg)_\odot,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\odot\)</span> indicates a property of the Sun.</p>
+<p>Pre-computed grids of stellar model atmospheres (e.g., PHOENIX) typically assume <strong>scaled-solar composition</strong>, meaning that they have the same relative proportions as the Sun, but scaled by the iron-to-hydrogen abundance [Fe/H].</p>
+<p>For fitting the global parameters (e.g., <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>, <span class="math notranslate nohighlight">\(\log\)</span> g, [Fe/H]) for large spectroscopic surveys of our Milky Way, it is common to also assume a solar pattern for the purpose of efficiency unless abundances are explicitly being fit.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sme</span><span class="o">.</span><span class="n">teff</span> <span class="o">=</span> <span class="mi">5700</span> <span class="c1"># Teff</span>
+<span class="n">sme</span><span class="o">.</span><span class="n">logg</span> <span class="o">=</span> <span class="mf">4.4</span> <span class="c1"># log ( g)</span>
+<span class="n">sme</span><span class="o">.</span><span class="n">monh</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># [M/H], metallicity</span>
+
+<span class="c1"># Set the wavelength region to match the range of the linelist</span>
+<span class="n">wmin</span> <span class="o">=</span> <span class="n">sme</span><span class="o">.</span><span class="n">linelist</span><span class="o">.</span><span class="n">wlcent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">wmax</span> <span class="o">=</span> <span class="n">sme</span><span class="o">.</span><span class="n">linelist</span><span class="o">.</span><span class="n">wlcent</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">sme</span><span class="o">.</span><span class="n">wran</span> <span class="o">=</span> <span class="p">[</span><span class="n">wmin</span><span class="p">,</span> <span class="n">wmax</span><span class="p">]</span>
+
+<span class="c1"># Calculate the synthetic spectrum</span>
+<span class="n">sme</span> <span class="o">=</span> <span class="n">synthesize_spectrum</span><span class="p">(</span><span class="n">sme</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Green">INFO - No cconfiguration file found at /home/marc/.sme/config.json, using default values instead</span>
+<span class=" -Color -Color-Green">INFO - Don&#39;t forget to cite your sources. Use sme.citation()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Vary the global parameters (<span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>, <span class="math notranslate nohighlight">\(\log\)</span> g, [Fe/H]) for the spectrum synthesizer and observe variations in the detailed spectrum below. How does this compare with the variations in the SED observed in
+<a class="reference internal" href="sed-1.html#content-references-sed-part1"><span class="std std-ref">Spectral Energy Distribution (SED) Part 1: Observing SEDs</span></a>?</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sme</span><span class="o">.</span><span class="n">wave</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">sme</span><span class="o">.</span><span class="n">synth</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">5162</span><span class="p">,</span> <span class="mi">5198</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/bb9c636ce02ee2593d6253ef4f440a912cf5b537ed2a4592d49182117e10b378.png" src="../_images/bb9c636ce02ee2593d6253ef4f440a912cf5b537ed2a4592d49182117e10b378.png" />
+</div>
+</div>
+<p>The observed dips in the stellar spectrum are caused by <strong>absorption</strong> from atoms and ions in the stellar atmosphere. The <strong>depths</strong> of these absorption features reflect how abundant the species are and how effectively they absorb light at specific wavelengths, often tracing the layers where they are most prevalent.</p>
+<p>The depth increases approximately linearly with the number of absorbers for weak lines, but for strong (saturated) lines, an increase in the number of absorbers mainly serves to broaden the wings of the spectral lines instead. The relationship between the strength of a spectral line with the number of absorbers is described by a <a class="reference external" href="https://en.wikipedia.org/wiki/Curve_of_growth">curve of growth</a>.</p>
+<p>In the following, several notable elements are highlighted in the synthetic spectrum:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+<span class="n">elementlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fe 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Ni 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Ti 2&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axlist</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sme</span><span class="o">.</span><span class="n">wave</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">sme</span><span class="o">.</span><span class="n">synth</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">5162</span><span class="p">,</span> <span class="mi">5198</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axlist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+        
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">sme</span><span class="o">.</span><span class="n">linelist</span><span class="p">[</span><span class="n">sme</span><span class="o">.</span><span class="n">linelist</span><span class="o">.</span><span class="n">species</span> <span class="o">==</span> <span class="n">elementlist</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">wlcent</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">w</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">fs</span> <span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">elementlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; ions&#39;</span><span class="p">,</span>\
+    <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;beige&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+              <span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.3&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c9f075058c27e63d1973b3dbf1472c70d3bf4f5844c92035945532534bd91443.png" src="../_images/c9f075058c27e63d1973b3dbf1472c70d3bf4f5844c92035945532534bd91443.png" />
+</div>
+</div>
+</section>
+<section id="observations-of-real-spectra">
+<h2>Observations of Real Spectra<a class="headerlink" href="#observations-of-real-spectra" title="Permalink to this headline">#</a></h2>
+<p>Thus far, we have been working with synthetic spectra—models generated under idealized assumptions, where physical conditions are precisely known and instrumental imperfections are absent. These theoretical spectra are smooth, noise-free, and continuous across wavelength, which gives a clean view of atomic and molecular features.</p>
+<p>However, real stellar spectra collected from telescopes and spectrographs are subject to limitations of the observing instrument and environmental conditions. These include:</p>
+<ul class="simple">
+<li><p>Lower spectral resolution</p></li>
+<li><p>The presence of noise, which lowers the signal-to-noise ratio (SNR)</p></li>
+<li><p>An incomplete or irregular wavelength coverage</p></li>
+<li><p>Systematic differences between instruments</p></li>
+</ul>
+<p>First, let’s examine some real stellar spectra. We will use a library of high resolution (R<span class="math notranslate nohighlight">\(\sim\)</span>55,000), high signal-to-noise (&gt;100) spectra taken with the HIRES instrument on the Keck Observatory in Hawaii by the <a class="reference external" href="https://exoplanets.caltech.edu/cps/">California Planet Search</a>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">specmatch_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/specmatch_lib_spectra_train.npz&#39;</span><span class="p">)</span>
+<span class="n">specmatch_data_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/specmatch_lib_spectra_test.npz&#39;</span><span class="p">)</span>
+
+<span class="n">specmatch_lib</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/specmatch_lib_params_train.csv&#39;</span><span class="p">)</span>
+<span class="n">specmatch_lib_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/specmatch_lib_params_test.csv&#39;</span><span class="p">)</span>
+
+<span class="n">specmatch_spectra</span> <span class="o">=</span> <span class="n">specmatch_data</span><span class="p">[</span><span class="s1">&#39;library_spectra&#39;</span><span class="p">];</span> <span class="n">specmatch_wav</span> <span class="o">=</span> <span class="n">specmatch_data</span><span class="p">[</span><span class="s1">&#39;wav&#39;</span><span class="p">]</span>
+<span class="n">specmatch_spectra_test</span> <span class="o">=</span> <span class="n">specmatch_data_test</span><span class="p">[</span><span class="s1">&#39;library_spectra&#39;</span><span class="p">];</span> <span class="n">specmatch_wav_test</span> <span class="o">=</span> <span class="n">specmatch_data</span><span class="p">[</span><span class="s1">&#39;wav&#39;</span><span class="p">]</span>
+
+<span class="n">specmatch_lib</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lib_index</th>
+      <th>cps_name</th>
+      <th>lib_obs</th>
+      <th>source</th>
+      <th>source_name</th>
+      <th>Teff</th>
+      <th>u_Teff</th>
+      <th>radius</th>
+      <th>u_radius</th>
+      <th>logg</th>
+      <th>...</th>
+      <th>mass</th>
+      <th>u_mass</th>
+      <th>age</th>
+      <th>u_age</th>
+      <th>vsini</th>
+      <th>Plx</th>
+      <th>u_Plx</th>
+      <th>Plx_source</th>
+      <th>Vmag</th>
+      <th>snr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>100623</td>
+      <td>rj06.1125</td>
+      <td>Brewer</td>
+      <td>HD 100623</td>
+      <td>5140.2</td>
+      <td>60.0</td>
+      <td>0.720</td>
+      <td>0.040</td>
+      <td>4.558</td>
+      <td>...</td>
+      <td>0.75</td>
+      <td>0.04</td>
+      <td>9.81</td>
+      <td>0.50</td>
+      <td>0.29</td>
+      <td>104.59</td>
+      <td>0.40</td>
+      <td>Gaia</td>
+      <td>5.980</td>
+      <td>175.723</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>101904</td>
+      <td>rj20.1313</td>
+      <td>Brewer</td>
+      <td>HD 101904</td>
+      <td>5883.2</td>
+      <td>60.0</td>
+      <td>1.540</td>
+      <td>0.190</td>
+      <td>4.104</td>
+      <td>...</td>
+      <td>1.12</td>
+      <td>0.09</td>
+      <td>9.80</td>
+      <td>0.11</td>
+      <td>2.46</td>
+      <td>12.51</td>
+      <td>0.26</td>
+      <td>Gaia</td>
+      <td>8.200</td>
+      <td>149.859</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>102195</td>
+      <td>rj15.2019</td>
+      <td>Brewer</td>
+      <td>HD 102195</td>
+      <td>5276.8</td>
+      <td>60.0</td>
+      <td>0.850</td>
+      <td>0.050</td>
+      <td>4.503</td>
+      <td>...</td>
+      <td>0.89</td>
+      <td>0.04</td>
+      <td>9.74</td>
+      <td>0.49</td>
+      <td>2.82</td>
+      <td>34.02</td>
+      <td>0.26</td>
+      <td>Gaia</td>
+      <td>8.060</td>
+      <td>174.120</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>102444</td>
+      <td>rj72.386</td>
+      <td>Brewer</td>
+      <td>HD 102444</td>
+      <td>5227.3</td>
+      <td>60.0</td>
+      <td>2.670</td>
+      <td>0.390</td>
+      <td>3.600</td>
+      <td>...</td>
+      <td>1.02</td>
+      <td>0.21</td>
+      <td>9.98</td>
+      <td>0.27</td>
+      <td>2.79</td>
+      <td>8.48</td>
+      <td>0.24</td>
+      <td>Gaia</td>
+      <td>7.950</td>
+      <td>152.778</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4</td>
+      <td>102956</td>
+      <td>rj72.98</td>
+      <td>Brewer</td>
+      <td>HD 102956</td>
+      <td>4985.1</td>
+      <td>60.0</td>
+      <td>3.790</td>
+      <td>0.470</td>
+      <td>3.385</td>
+      <td>...</td>
+      <td>1.30</td>
+      <td>0.15</td>
+      <td>9.70</td>
+      <td>0.17</td>
+      <td>1.49</td>
+      <td>8.13</td>
+      <td>0.24</td>
+      <td>Gaia</td>
+      <td>7.851</td>
+      <td>154.959</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>395</th>
+      <td>397</td>
+      <td>GL702A</td>
+      <td>rj187.474</td>
+      <td>Von Braun</td>
+      <td>GJ702A</td>
+      <td>5407.0</td>
+      <td>52.0</td>
+      <td>0.831</td>
+      <td>0.004</td>
+      <td>4.560</td>
+      <td>...</td>
+      <td>0.92</td>
+      <td>0.03</td>
+      <td>9.30</td>
+      <td>0.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.123</td>
+      <td>163.889</td>
+    </tr>
+    <tr>
+      <th>396</th>
+      <td>398</td>
+      <td>GL702B</td>
+      <td>rj187.477</td>
+      <td>Von Braun</td>
+      <td>GJ702B</td>
+      <td>4393.0</td>
+      <td>149.0</td>
+      <td>0.670</td>
+      <td>0.009</td>
+      <td>4.640</td>
+      <td>...</td>
+      <td>0.71</td>
+      <td>0.03</td>
+      <td>9.61</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.160</td>
+      <td>166.148</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>399</td>
+      <td>GL876</td>
+      <td>rj45.596</td>
+      <td>Von Braun</td>
+      <td>GJ876</td>
+      <td>3129.0</td>
+      <td>19.0</td>
+      <td>0.376</td>
+      <td>0.006</td>
+      <td>4.880</td>
+      <td>...</td>
+      <td>0.35</td>
+      <td>0.01</td>
+      <td>10.09</td>
+      <td>0.41</td>
+      <td>NaN</td>
+      <td>214.05</td>
+      <td>0.97</td>
+      <td>Gaia</td>
+      <td>10.192</td>
+      <td>172.906</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>400</td>
+      <td>HIP57087</td>
+      <td>rj06.1488</td>
+      <td>Von Braun</td>
+      <td>GJ436</td>
+      <td>3416.0</td>
+      <td>53.0</td>
+      <td>0.455</td>
+      <td>0.018</td>
+      <td>4.830</td>
+      <td>...</td>
+      <td>0.45</td>
+      <td>0.03</td>
+      <td>9.62</td>
+      <td>0.52</td>
+      <td>NaN</td>
+      <td>102.58</td>
+      <td>0.31</td>
+      <td>Gaia</td>
+      <td>10.613</td>
+      <td>112.768</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>401</td>
+      <td>HIP74995</td>
+      <td>rj23.519</td>
+      <td>Von Braun</td>
+      <td>GJ581</td>
+      <td>3442.0</td>
+      <td>54.0</td>
+      <td>0.299</td>
+      <td>0.010</td>
+      <td>4.970</td>
+      <td>...</td>
+      <td>0.30</td>
+      <td>0.02</td>
+      <td>9.61</td>
+      <td>0.53</td>
+      <td>NaN</td>
+      <td>158.64</td>
+      <td>0.35</td>
+      <td>Gaia</td>
+      <td>10.560</td>
+      <td>146.665</td>
+    </tr>
+  </tbody>
+</table>
+<p>400 rows × 23 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+
+<span class="n">s_params</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Teff&#39;</span><span class="p">,</span> <span class="s1">&#39;feh&#39;</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">]</span>
+<span class="n">s_string</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$T_{</span><span class="se">\\</span><span class="s1">mathrm</span><span class="si">{eff}</span><span class="s1">}$&#39;</span><span class="p">,</span> <span class="s1">&#39;[Fe/H]&#39;</span><span class="p">,</span> <span class="s1">&#39;Radius&#39;</span><span class="p">]</span>
+<span class="n">lbl</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span> <span class="s1">&#39;(b)&#39;</span><span class="p">,</span> <span class="s1">&#39;(c)&#39;</span><span class="p">]</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Spectral</span> 
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">param_name</span><span class="p">,</span> <span class="n">param_string</span><span class="p">,</span> <span class="n">lb</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axlist</span><span class="p">,</span> <span class="n">s_params</span><span class="p">,</span> <span class="n">s_string</span><span class="p">,</span> <span class="n">lbl</span><span class="p">):</span>
+    <span class="n">selected_indices</span> <span class="o">=</span> <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">param_name</span><span class="p">)</span><span class="o">.</span><span class="n">lib_index</span><span class="p">[::</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">num_spectra</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_indices</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">param_name</span><span class="p">)[</span><span class="n">param_name</span><span class="p">][::</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">selected_indices</span><span class="p">,</span> <span class="n">params</span><span class="p">)):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">specmatch_wav</span><span class="p">,</span>
+                 <span class="n">specmatch_spectra</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength [Å]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux (offset)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Variation across </span><span class="si">{</span><span class="n">param_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">5160</span><span class="p">,</span> <span class="mi">5200</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">lb</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">7</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>\
+            <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;beige&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>\
+              <span class="n">boxstyle</span><span class="o">=</span><span class="s1">&#39;round,pad=0.3&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">))</span>
+    <span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">([])</span>  
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">param_string</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/00dcfc3841c19969681d935d69c1665933b4cb40923a8108e18f6e148875adae.png" src="../_images/00dcfc3841c19969681d935d69c1665933b4cb40923a8108e18f6e148875adae.png" />
+</div>
+</div>
+<p>The same 14 spectra are shown across panels (a)-(c). Here, we observe that specific morphological changes in the spectra correspond to variations in more than one global stellar parameter. This suggests that these parameters <strong>are not independent but are instead correlated</strong>, as expected from stellar evolutionary theory. Along the same vein, this indicates that the global parameters of stars are encoded in the morphology in spectra.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">im1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">specmatch_lib</span><span class="o">.</span><span class="n">Teff</span><span class="p">,</span> <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">specmatch_lib</span><span class="o">.</span><span class="n">feh</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">specmatch_lib</span><span class="o">.</span><span class="n">Teff</span><span class="p">[::</span><span class="mi">30</span><span class="p">],</span> <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">radius</span><span class="p">[::</span><span class="mi">30</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Highlighted Library Spectra&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Radius ($R_{</span><span class="se">\\</span><span class="s1">odot}$)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$T_{</span><span class="se">\\</span><span class="s1">mathrm</span><span class="si">{eff}</span><span class="s1">}$ (K)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+<span class="n">cb1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;[Fe/H]&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.025</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/dd05fe7ce0eb2ff1851974c75fc0dd033409398b2236545161ba0eee6b38da11.png" src="../_images/dd05fe7ce0eb2ff1851974c75fc0dd033409398b2236545161ba0eee6b38da11.png" />
+</div>
+</div>
+</section>
+<section id="matching-spectra">
+<h2>Matching Spectra<a class="headerlink" href="#matching-spectra" title="Permalink to this headline">#</a></h2>
+<p>Suppose we are given the following set of spectra below. How do we determine the global properties of these three stars based on the empirical library of spectra at hand?</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu</span> 
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">lib_index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">lib_index</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">specmatch_lib_test</span><span class="p">)),</span> <span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">lib_index</span><span class="p">)):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">specmatch_wav_test</span><span class="p">,</span>
+             <span class="n">specmatch_spectra_test</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span>
+             <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength [Å]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux (offset)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">5160</span><span class="p">,</span> <span class="mi">5200</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d13624508625e7c377123fdd273e3c3f97cf82c78fb6e43fa30d0f7ff8915cf8.png" src="../_images/d13624508625e7c377123fdd273e3c3f97cf82c78fb6e43fa30d0f7ff8915cf8.png" />
+</div>
+</div>
+<p>One way of doing this is to find the library spectrum that has an overall morphology (i.e., line profiles) that is the <strong>most similar</strong> to that of the new, given spectra. One way of capturing this similarity is through a  <strong>correlation</strong> measure, since:</p>
+<ul class="simple">
+<li><p>A cross-correlation measure aligns spectra before comparing them, and thus is invariant to shifts, such as from Doppler shifts</p></li>
+<li><p>Correlation measures focus on the shape of line profiles, instead of fixating on the similarity between raw flux values.</p></li>
+</ul>
+<p>The <a class="reference external" href="https://dl.acm.org/doi/10.1145/2949741.2949758">k-Shape</a> method is a time series clustering algorithm designed to capture shape-based similarities between 1D signals by defining a “shape-based distance” computed as the negative of the normalized cross-correlation (NCC) over all possible circular shifts. Using this method, we can try to identify which library entries are the most similar to our test spectra.</p>
+<p>The <a class="reference external" href="https://tslearn.readthedocs.io/en/stable/"><code class="docutils literal notranslate"><span class="pre">tslearn</span></code></a> library implements handy functions to normalize 1D arrays (time series) and calculate correlation measures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tslearn.metrics.cycc</span> <span class="kn">import</span> <span class="n">normalized_cc</span>
+<span class="kn">from</span> <span class="nn">tslearn.preprocessing</span> <span class="kn">import</span> <span class="n">TimeSeriesScalerMinMax</span>
+
+<span class="c1"># First, normalize the library and test spectra to values between [0, 1]</span>
+
+<span class="n">library_spec</span> <span class="o">=</span> <span class="n">TimeSeriesScalerMinMax</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">specmatch_spectra</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">target_spec</span> <span class="o">=</span>  <span class="n">TimeSeriesScalerMinMax</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">specmatch_spectra_test</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After normalizing the spectra, we will calculate a <strong>correlation matrix</strong>, which measures the similarity of the test spectra to each spectrum in the library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corrmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">target_spec</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">library_spec</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">targ</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">target_spec</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">libspec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">library_spec</span><span class="p">):</span>
+        <span class="n">corrmat</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">normalized_cc</span><span class="p">(</span><span class="n">targ</span><span class="p">[</span><span class="kc">None</span><span class="p">,:],</span> <span class="n">libspec</span><span class="p">[</span><span class="kc">None</span><span class="p">,:]))</span>
+        
+<span class="n">best_matches</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">corrmat</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">best_matches</span></code> now contains the index of the best-matching library spectrum for each test spectrum. Let’s visualize!</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">testspec</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">axlist</span><span class="p">,</span> <span class="n">specmatch_spectra_test</span><span class="p">,</span>
+                                          <span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">lib_index</span><span class="p">)):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">specmatch_wav_test</span><span class="p">,</span> <span class="n">testspec</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">specmatch_wav</span><span class="p">,</span> <span class="n">specmatch_spectra</span><span class="p">[</span><span class="n">best_matches</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">5162</span><span class="p">,</span> <span class="mi">5198</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axlist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+        
+<span class="c1">#     for w in sme.linelist[sme.linelist.species == elementlist[i]].wlcent:</span>
+<span class="c1">#         ax.axvline(x=w,ls=&#39;--&#39;, c=&#39;r&#39;)</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Star </span><span class="si">%d</span><span class="s1"> Ground Truth, $T_{\mathrm</span><span class="si">{eff}</span><span class="s1">}$: </span><span class="si">%d</span><span class="s1"> K, [Fe/H]: </span><span class="si">%.2f</span><span class="s1"> dex, Radius: </span><span class="si">%.1f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> 
+                                                                                             <span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">Teff</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                                                             <span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">feh</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+                                                                                             <span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">radius</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Best Library Match, $T_{\mathrm</span><span class="si">{eff}</span><span class="s1">}$: </span><span class="si">%d</span><span class="s1"> K, [Fe/H]: </span><span class="si">%.2f</span><span class="s1"> dex, Radius: </span><span class="si">%.1f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">specmatch_lib</span><span class="o">.</span><span class="n">Teff</span><span class="p">[</span><span class="n">best_matches</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+                                                                                             <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">feh</span><span class="p">[</span><span class="n">best_matches</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
+                                                                                             <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">radius</span><span class="p">[</span><span class="n">best_matches</span><span class="p">[</span><span class="n">i</span><span class="p">]]))</span>
+        
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/4c206f1088e4262fdeb7caca8ea3a17afdba56dbf1ac3883c8c9c7f73f0d339b.png" src="../_images/4c206f1088e4262fdeb7caca8ea3a17afdba56dbf1ac3883c8c9c7f73f0d339b.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axlist</span><span class="p">):</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">specmatch_lib</span><span class="o">.</span><span class="n">Teff</span><span class="p">,</span> <span class="n">specmatch_lib</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">corrmat</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">Teff</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">specmatch_lib_test</span><span class="o">.</span><span class="n">radius</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+              <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Star </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Radius ($R_{</span><span class="se">\\</span><span class="s1">odot}$)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$T_{</span><span class="se">\\</span><span class="s1">mathrm</span><span class="si">{eff}</span><span class="s1">}$ (K)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mticker</span><span class="o">.</span><span class="n">ScalarFormatter</span><span class="p">())</span>
+    <span class="n">cb1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                      <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Correlation with Star </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6059112dfd0209a46d0a09140f7b807e888fadd8f681d5aa44aa4ab016b67257.png" src="../_images/6059112dfd0209a46d0a09140f7b807e888fadd8f681d5aa44aa4ab016b67257.png" />
+</div>
+</div>
+<p>Not bad! By comparing the ground truth for each star with the best match from the library, we see that a simple correlation metric is able to provide us with very reasonable estimates of the test star’s true values.</p>
+<p>The code <a class="reference external" href="https://specmatch-emp.readthedocs.io/en/latest/"><code class="docutils literal notranslate"><span class="pre">specmatch-emp</span></code></a> uses this idea of matching to an empirical library of stellar spectra observed by Keck/HIRES. The code compares an input spectrum to the library and models it as a linear combination of the most similar library spectra using least squares minimization. The weights from this combination are then used to estimate global stellar parameters such as <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>, radius, and [Fe/H] by taking a weighted average of the corresponding parameters from the selected library stars. In other words, the observed star’s properties are inferred as a weighted mean of the parameters of nearby empirical spectra in spectral space.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<ol class="arabic simple">
+<li><p>In <a class="reference internal" href="../chapter1/eb-morphology_2.html#content-similarity-distances"><span class="std std-ref">Beyond Euclidean distances</span></a>, we introduced several other approaches of measuring the similarity between sequences. Determine how well these other methods find best-matching test spectra. Do these methods find a closer match to the ground truth of these test spectra?</p></li>
+<li><p>Similar to 1., experiment with using a combination of <strong>two</strong> or more distance metrics to find a best match.</p></li>
+<li><p>Discuss the limitations of using an empirical library of high-resolution spectra as a reference for assigning global stellar parameters to new observations.</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sed-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spectra-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stellar Spectra Part 2: <em>The Cannon</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variations-in-stellar-spectra">Variations in Stellar Spectra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-of-real-spectra">Observations of Real Spectra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-spectra">Matching Spectra</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1082 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Eclipse Morphology Part 1: Exploring and Preparing Data &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/eb-morphology_1';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/eb-morphology_1.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eclipse Morphology Part 2: Low-Dimensional Representations" href="eb-morphology_2.html" />
+    <link rel="prev" title="Power Spectrum Statistics" href="ps_statistics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/eb-morphology_1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/eb-morphology_1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/eb-morphology_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/eb-morphology_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Eclipse Morphology Part 1: Exploring and Preparing Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-examples">Binary Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-detached-binary">Semi-Detached Binary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-ellipsoidal-variable">Rotating Ellipsoidal Variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-binary">Contact Binary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fully-detached-binary">Fully Detached Binary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-the-data">Formatting the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-binning-the-data">Option 1: Binning the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-fitting-a-smooth-parametric-model-to-the-data">Option 2: Fitting a smooth, parametric model to the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-trend-filtering">Option 3: Trend Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-less-pristine-example">A less pristine example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-aways">Take-aways</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="eclipse-morphology-part-1-exploring-and-preparing-data">
+<span id="content-references-eclipse-part1"></span><h1>Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em><a class="headerlink" href="#eclipse-morphology-part-1-exploring-and-preparing-data" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>In this next chapter involving time domain data, we will examine tools to study the diversity of eclipsing binary systems observed by the <i>Kepler</i> mission. Depending on the stellar type and the architecture of the binary system, there can be a wide variety of different light curve shapes observed.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Here’s a quick helper function to view the light curve of the binary system.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_lc</span><span class="p">(</span><span class="n">kicid</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+    <span class="n">kicstr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">kicid</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kicstr</span><span class="si">}</span><span class="s1">.00.lc.data&#39;</span><span class="p">),</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bjd&#39;</span><span class="p">,</span><span class="s1">&#39;phase&#39;</span><span class="p">,</span><span class="s1">&#39;raw_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;raw_err&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_err&#39;</span><span class="p">,</span> <span class="s1">&#39;dtr_flux&#39;</span><span class="p">,</span><span class="s1">&#39;dtr_err&#39;</span><span class="p">]</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">bjd</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Barycentric Julian Day&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Detrended Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">bjd</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Barycentric Julian Day&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Detrended Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">bjd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">bjd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">period</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$P=</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="se">\\</span><span class="s1">,$d&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+
+    <span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Detrended Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#     ax3.set_ylim(None, max(data.dtr_flux)*1.045)</span>
+<span class="c1">#     print(max(data.dtr_flux)*1.05)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="binary-examples">
+<h2>Binary Examples<a class="headerlink" href="#binary-examples" title="Permalink to this headline">#</a></h2>
+<section id="semi-detached-binary">
+<h3>Semi-Detached Binary<a class="headerlink" href="#semi-detached-binary" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://keplerebs.villanova.edu/"><i>Kepler</i> Eclipsing Binary catalog</a> lists this <a class="reference external" href="https://keplerebs.villanova.edu/overview/?k=6048106">binary star</a> as having a period of <span class="math notranslate nohighlight">\(1.5593608\pm0.0000359\)</span> days. This is a well-studied system comprising a <span class="math notranslate nohighlight">\(1.5\,M_{\odot}\)</span> dwarf star of spectral type F5 and a <span class="math notranslate nohighlight">\(0.5\,M_{\odot}\)</span> subgiant star of spectral type K5, as reported by <span id="id1">[]</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_lc</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">6048106</span> <span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mf">1.5593608</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cdff12bb92f09b1fc29f91eeb99f11240c065ab5548ca25502dd5692f1471bf3.png" src="../_images/cdff12bb92f09b1fc29f91eeb99f11240c065ab5548ca25502dd5692f1471bf3.png" />
+</div>
+</div>
+<p>The panel on the left shows the full light curve. Dips in the light curve are clearly evident, and upon closer inspection in the middle panel we see that such dips are periodic, that they alternate between a large and a small dip, and they coincide with the troughs of the light curve’s sinusoidal variation about a normalized flux value of 1.</p>
+<p>The plot on the right shows the light curve folded at its binary period, or the <em><strong>phase-folded</strong></em> light curve. It reveals the persistent shape of the light curve’s variations across time. Let’s deconstruct what is seen in this representation:</p>
+<ul class="simple">
+<li><p>The larger dips (centered at zero in the phase-folded representation) are primary eclipses. These correspond to the occultation of the <strong>more</strong> luminous star by the <u>less</u> luminous star.</p></li>
+<li><p>The smaller dips are secondary eclipses. These correspond to the occultation of the <strong>less</strong> luminous star by the <u>more</u> luminous star. Because it is customary for phase-folded diagrams to be centered about the primary eclipse within a range of <span class="math notranslate nohighlight">\(\pm0.5\)</span> (i.e., one full period), the secondary eclipse here appears truncated as it is centered about a phase of 0.5.</p></li>
+<li><p>The <em><strong>out-of-transit</strong></em> regions of the light curve show the combined luminosity variations of both stars in the system. Here, it demonstrates sinusoidal behaviour due to the rapid rotation of the star and the presence of magnetic activity (starspots) on the surface of members in the binary system. Note the synchronization of the eclipses with the rotation, as expected from close binary stars that tidally interact with one another (they are separated by only 3% of the distance between the Earth and the Sun!).</p></li>
+</ul>
+<div class="seealso admonition">
+<p class="admonition-title">Phase of the secondary eclipse</p>
+<p>What does the phase of the secondary eclipse tell you about the orbital eccentricity of the binary system? In the above example, is the orbit more eccentric or circular in nature?</p>
+</div>
+</section>
+<section id="rotating-ellipsoidal-variable">
+<h3>Rotating Ellipsoidal Variable<a class="headerlink" href="#rotating-ellipsoidal-variable" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_lc</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">6699679</span> <span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mf">0.201203</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ff6db985286c2089a0f696a9e905c1da4c61f155c7345f624c4adddc30fd3351.png" src="../_images/ff6db985286c2089a0f696a9e905c1da4c61f155c7345f624c4adddc30fd3351.png" />
+</div>
+</div>
+<p>Technically, this is not an eclipsing system. What is seen here, rather, is the contribution from only one member of the system. However, it has an elongated “teardrop” shape due to the gravitational pull of a closely orbiting binary member. This unique shape causes a varying projection of the star’s surface to our line-of-sight as the star rotates, leading to a smooth variation in brightness.</p>
+</section>
+<section id="contact-binary">
+<h3>Contact Binary<a class="headerlink" href="#contact-binary" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_lc</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">8265951</span> <span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mf">0.7799575</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/21c4bd822812bcb9bdf568cb12eccdbd40162e166ca7238d49130354cfc108cd.png" src="../_images/21c4bd822812bcb9bdf568cb12eccdbd40162e166ca7238d49130354cfc108cd.png" />
+</div>
+</div>
+<p>Though similar in light curve morphology to ellipsoidal variables, contact binaries are eclipsing systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Observe the difference in depth between the troughs at phases of <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(\pm0.5\)</span>, as opposed to the ellipsoidal variable example.</p>
+</div>
+<p>The two stars in this system orbit one another so closely that they share a common envelope, meaning they have both filled their Roche lobes. This allows material from one star to flow into the other. Their proximity also produces strong tidal deformations of their individual surfaces which contributes to the overall shape of the combined envelope. As a result, the light curve exhibit a smooth, rounded appearance during out-of-eclipse phases, as the changing projection of the deformed stars’ surfaces leads to continuous variations in brightness – similar to ellipsoidal variables.</p>
+</section>
+<section id="fully-detached-binary">
+<h3>Fully Detached Binary<a class="headerlink" href="#fully-detached-binary" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_lc</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">11619964</span> <span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mf">10.3685551</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5c26ee8ac07314377efa6c5b61ead3d02f11c040197f1ba78919a2324df20c04.png" src="../_images/5c26ee8ac07314377efa6c5b61ead3d02f11c040197f1ba78919a2324df20c04.png" />
+</div>
+</div>
+<p>Detached binary systems are those whose members are sufficiently separated, such that they do not physically interact. In this example, the out-of-transit light curve shows no signatures of tidal deformation. In some cases where the separation between binary components is sufficiently large, it is possible for the light curve to capture the luminosity variations of a single member alone.</p>
+</section>
+</section>
+<section id="formatting-the-data">
+<h2>Formatting the data<a class="headerlink" href="#formatting-the-data" title="Permalink to this headline">#</a></h2>
+<p>The morphology of the binary’s eclipses can reveal much about the nature and orbital architecture of the system. The task of exploring and categorizing the binary light curve’s morphology is well-suited for machine learning.</p>
+<p>To use machine learning for representing the morphology of the phase-folded light curve, it is best to homogenize the input data to a machine learning model. For representations involving light curves, the data is often required to be kept to a fixed length, which implies smoothing or binning the data.</p>
+<section id="option-1-binning-the-data">
+<h3>Option 1: Binning the data<a class="headerlink" href="#option-1-binning-the-data" title="Permalink to this headline">#</a></h3>
+<p>A straightforward approach is to simply average the flux values into a predetermined grid of phase values, as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binned_statistic</span>
+
+<span class="k">def</span> <span class="nf">get_binned_phaselc</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">phase_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="n">num_bins</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">binned_flux</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binned_statistic</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">phase_bins</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="n">phase_bins</span><span class="p">,</span> <span class="n">binned_flux</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="option-2-fitting-a-smooth-parametric-model-to-the-data">
+<h3>Option 2: Fitting a smooth, parametric model to the data<a class="headerlink" href="#option-2-fitting-a-smooth-parametric-model-to-the-data" title="Permalink to this headline">#</a></h3>
+<p>Another approach would be to fit a smooth polynomial or spline to the phase-folded light curve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">UnivariateSpline</span>
+
+<span class="k">def</span> <span class="nf">get_smooth_phaselc</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">poly_degree</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">spline_smoothing</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">phase_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="n">num_bins</span><span class="p">)</span>
+    <span class="n">flux</span><span class="p">,</span> <span class="n">phase</span> <span class="o">=</span> <span class="n">flux</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">phase</span><span class="p">)],</span> <span class="n">phase</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">phase</span><span class="p">)]</span>
+    
+    <span class="c1"># Fit a polynomial with a pre-specified degree</span>
+    <span class="n">coeffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">poly_degree</span><span class="p">)</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>
+    
+    <span class="n">flux_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="p">(</span><span class="n">phase_bins</span><span class="p">)</span>
+    
+    <span class="c1"># Fit a spline</span>
+    <span class="n">spline</span> <span class="o">=</span> <span class="n">UnivariateSpline</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">spline_smoothing</span><span class="p">)</span>
+    <span class="n">flux_spline</span> <span class="o">=</span> <span class="n">spline</span><span class="p">(</span><span class="n">phase_bins</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">phase_bins</span><span class="p">,</span> <span class="n">flux_poly</span><span class="p">,</span> <span class="n">flux_spline</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s observe how these approaches work on our data.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_binned_lc</span><span class="p">(</span><span class="n">kicid</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">kicstr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">kicid</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kicstr</span><span class="si">}</span><span class="s1">.00.lc.data&#39;</span><span class="p">),</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bjd&#39;</span><span class="p">,</span><span class="s1">&#39;phase&#39;</span><span class="p">,</span><span class="s1">&#39;raw_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;raw_err&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_err&#39;</span><span class="p">,</span> <span class="s1">&#39;dtr_flux&#39;</span><span class="p">,</span><span class="s1">&#39;dtr_err&#39;</span><span class="p">]</span>
+
+    <span class="n">phase_bins</span><span class="p">,</span> <span class="n">binned_flux</span> <span class="o">=</span> <span class="n">get_binned_phaselc</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">num_bins</span><span class="p">)</span>
+    <span class="n">phase_bins_smooth</span><span class="p">,</span> <span class="n">flux_poly</span><span class="p">,</span> <span class="n">flux_spline</span> <span class="o">=</span> <span class="n">get_smooth_phaselc</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">num_bins</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="n">fluxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">binned_flux</span><span class="p">,</span> <span class="n">flux_poly</span><span class="p">,</span> <span class="n">flux_spline</span><span class="p">]</span>
+    <span class="n">phases</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">phase_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">phase_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">phase_bins_smooth</span><span class="p">,</span> <span class="n">phase_bins_smooth</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Binned&#39;</span><span class="p">,</span> <span class="s1">&#39;Polyfit&#39;</span><span class="p">,</span> <span class="s1">&#39;Spline&#39;</span><span class="p">]</span>
+    
+    <span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)]</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">approx_flux</span><span class="p">,</span> <span class="n">ph</span><span class="p">,</span> <span class="n">lbl</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">axlist</span><span class="p">,</span> <span class="n">fluxes</span><span class="p">,</span> <span class="n">phases</span><span class="p">,</span> <span class="n">labels</span><span class="p">)):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ph</span><span class="p">,</span> <span class="n">approx_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">lbl</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axlist</span><span class="p">[:</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axlist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_binned_lc</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">6048106</span> <span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mf">1.5593608</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2007b2811bdf40358922c02ab6e62b8f57c31c11e8f72381c40fa1a7e9ab469c.png" src="../_images/2007b2811bdf40358922c02ab6e62b8f57c31c11e8f72381c40fa1a7e9ab469c.png" />
+</div>
+</div>
+<p>Binning reproduces the shape of the eclipses well, whereas polyfit is certainly too rigid of an approach. Spline fitting looks reasonable at first glance, but is not accurate in capturing sharp features near ingress and egress.</p>
+<p>Let’s try this on another example: the detached binary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_binned_lc</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">11619964</span> <span class="p">,</span><span class="n">period</span><span class="o">=</span><span class="mf">10.3685551</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/33c8b8f6cc57f7bf1fbf9eab0b269ec181fca3a510ec95b1c6f8e7e38d8ec643.png" src="../_images/33c8b8f6cc57f7bf1fbf9eab0b269ec181fca3a510ec95b1c6f8e7e38d8ec643.png" />
+</div>
+</div>
+</section>
+<section id="option-3-trend-filtering">
+<h3>Option 3: Trend Filtering<a class="headerlink" href="#option-3-trend-filtering" title="Permalink to this headline">#</a></h3>
+<p>Trend filtering is an approach for non-parametric regression, whereby the estimate is the “minimizer of a penalized
+least squares criterion, in which the penalty term sums the absolute <span class="math notranslate nohighlight">\(k^{\text{th}}\)</span> order discrete derivatives over the input points.” <span id="id2">[]</span>. The approach fits a smooth model to the data by solving (e.g., <span id="id3">[]</span>)</p>
+<div class="math notranslate nohighlight" id="equation-trend-filtering">
+<span class="eqno">(18)<a class="headerlink" href="#equation-trend-filtering" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+\\ \min_{m} \sum_{i=1}^n \big( f(t_i)-m(t_i) \big)^2 + \gamma\cdot\text{TV}(m^{(k)}),
+\end{aligned}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m^{(k)}\)</span> is the <span class="math notranslate nohighlight">\(k^{\text{th}}\)</span> derivative of <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(\text{TV}(m^{(k)}\)</span> is the <em><strong>total variation</strong></em> of <span class="math notranslate nohighlight">\(m^{(k)}\)</span>, and <span class="math notranslate nohighlight">\(\gamma &gt; 0 \)</span> controls the smoothness of the fit.</p>
+<p>Briefly, the above creates a piecewise polynomial of degree <span class="math notranslate nohighlight">\(k\)</span> with knots selected at a sparse subset of the observed inputs <span class="math notranslate nohighlight">\(t_1, \cdots, t_n\)</span>. This polynomial has small discontinuities in the derivatives, whose total variation is penalized by some penalty (e.g., <span class="math notranslate nohighlight">\(L_1\)</span> or <span class="math notranslate nohighlight">\(L_2\)</span> norm). The derivatives <span class="math notranslate nohighlight">\(m^{(k)}\)</span> are approximated by the discrete approximation <span class="math notranslate nohighlight">\(\Delta^{(k+1)}m(t_i)\)</span>, where</p>
+<div class="math notranslate nohighlight" id="equation-discrete-difference">
+<span class="eqno">(19)<a class="headerlink" href="#equation-discrete-difference" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
+\\ \Delta^{(1)}\,m(t_i) &amp;= \frac{m(t_{i+1}) - m(t_i)}{\Delta t} \quad &amp;\text{for}\,k=0, 
+\\ \Delta^{(k+1)}\,m(t_i) &amp;= \frac{\Delta^{(k)}m(t_{i+1}) - \Delta^{(k)}m(t_i)}{\Delta t} &amp;\quad \text{for}\,k\geq1. 
+\end{aligned}\end{split}\]</div>
+<p>The following is a simple implementation of such fits for <span class="math notranslate nohighlight">\(k\in[0,1,2]\)</span> using the <code class="docutils literal notranslate"><span class="pre">cvxpy</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="k">def</span> <span class="nf">trend_filter_phaselc</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">flux</span><span class="p">,</span> <span class="n">flux_err</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">phase_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">phase</span><span class="p">),</span> <span class="n">num_bins</span><span class="p">)</span>
+    <span class="n">flux</span><span class="p">,</span> <span class="n">phase</span> <span class="o">=</span> <span class="n">flux</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">phase</span><span class="p">)],</span> <span class="n">phase</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">phase</span><span class="p">)]</span>
+    
+    <span class="c1"># Define the optimization variable</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phase</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># Regularization parameter</span>
+    <span class="n">lambda_</span> <span class="o">=</span> <span class="n">reg</span>
+
+    <span class="c1"># Penalty</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;k must be in [0,1,2]&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">penalty</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm1</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">penalty</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm1</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">penalty</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">norm1</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="n">z</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">z</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+
+    <span class="c1"># Objective: minimize the Huber loss plus L1 penalty on third-order differences</span>
+    
+
+    <span class="c1"># incorporate uncertainty</span>
+    <span class="n">isig</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">flux_err</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">isig</span><span class="p">,</span> <span class="n">z</span> <span class="o">-</span> <span class="n">flux</span><span class="p">)</span>
+
+    <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span>
+        <span class="n">cp</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">huber</span><span class="p">(</span><span class="n">diff</span><span class="p">))</span> <span class="o">+</span> <span class="n">lambda_</span> <span class="o">*</span> <span class="n">penalty</span>
+    <span class="p">)</span>
+
+    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
+    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+    <span class="n">filter_flux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">phase_bins</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">z</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">phase_bins</span><span class="p">,</span> <span class="n">filter_flux</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s observe how this approach compares to the simple binning.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_bin_trend</span><span class="p">(</span><span class="n">kicid</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">reg</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="n">kicstr</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">kicid</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">kicstr</span><span class="si">}</span><span class="s1">.00.lc.data&#39;</span><span class="p">),</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;bjd&#39;</span><span class="p">,</span><span class="s1">&#39;phase&#39;</span><span class="p">,</span><span class="s1">&#39;raw_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;raw_err&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;corr_err&#39;</span><span class="p">,</span> <span class="s1">&#39;dtr_flux&#39;</span><span class="p">,</span><span class="s1">&#39;dtr_err&#39;</span><span class="p">]</span>
+
+    <span class="n">phase_bins</span><span class="p">,</span> <span class="n">binned_flux</span> <span class="o">=</span> <span class="n">get_binned_phaselc</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">num_bins</span><span class="p">)</span>
+    <span class="n">phase_trend</span><span class="p">,</span> <span class="n">trend_flux</span> <span class="o">=</span> <span class="n">trend_filter_phaselc</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="n">reg</span><span class="p">,</span> <span class="n">num_bins</span> <span class="o">=</span> <span class="n">num_bins</span><span class="p">,</span>
+                                                     <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">dtr_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">phase_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">phase_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">binned_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binned&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phase_trend</span><span class="p">,</span> <span class="n">trend_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Trend Filter&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">})</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phase_trend</span><span class="p">,</span> <span class="n">trend_flux</span> <span class="o">-</span> <span class="n">binned_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Trend Filter - Binned&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">compare_bin_trend</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">6048106</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mf">1.5593608</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/71882c8501e540856d083262cfa3eaf9ebd37ec88a1686470c12df9d9ee5f167.png" src="../_images/71882c8501e540856d083262cfa3eaf9ebd37ec88a1686470c12df9d9ee5f167.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Tuning hyperparameters</p>
+<p>Experiment with the hyperparameters <code class="docutils literal notranslate"><span class="pre">num_bins</span></code>, <code class="docutils literal notranslate"><span class="pre">k</span></code>, and `reg’, which control the smoothness/stiffness of the resulting representation of the phase-folded light curve. How well do the two approaches (binned vs. trend filter) agree, and are there systematic offsets across a range of a specific hyperparameter?</p>
+</div>
+<p>In the above example, both methods agree to within a fraction of a percent. Both methods effectively smooth the data and compress it into more compact representation (fewer phase points).
+The median binning approach, however, is far more efficient computationally. The trend filter is superior in the event that sparse and/or irregular sampling occurs in the data – this is certainly not exemplified with the pristine <em>Kepler</em> data!</p>
+<p>Let’s observe what happens with very few bins:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compare_bin_trend</span><span class="p">(</span><span class="n">kicid</span> <span class="o">=</span> <span class="mi">6048106</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mf">1.5593608</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/205be6fb3c6c0f24bab5ac9b1509c1875ee79d3f1b2b650dbf0bbbd30e7d87f2.png" src="../_images/205be6fb3c6c0f24bab5ac9b1509c1875ee79d3f1b2b650dbf0bbbd30e7d87f2.png" />
+</div>
+</div>
+<p>In this scenario, the median binning approach is highly sensitive to the width of the bins. It effectively “averages” out parts of the eclipse near the wings and at the trough.</p>
+</section>
+<section id="a-less-pristine-example">
+<h3>A less pristine example<a class="headerlink" href="#a-less-pristine-example" title="Permalink to this headline">#</a></h3>
+<p>Let’s examine observations from the ground-based Optical Gravitational Lensing Experiment (OGLE) survey.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Established in 1992, the OGLE survey is a Polish long-term sky survey whose main goal is to detect microlensing event. These events occur when a massive object (such as a star, planet, or black hole) passes in front of a distant star, bending and magnifying its light.</p>
+<p>At the same time, the survey has measured and cataloged the stellar variability of millions of stars in distant stellar populations residing in the Galactic Bulge and the Magellanic Clouds. The survey observations are publicly <a class="reference external" href="https://ogledb.astrouw.edu.pl/~ogle/OCVS/">available online</a>.</p>
+</div>
+<p>The following is the observation of <a class="reference external" href="https://ogledb.astrouw.edu.pl/~ogle/OCVS/getobj.php?s=OGLE-LMC-ECL-00125">OGLE-LMC-ECL-00125</a>, a short-period eclipsing binary in the Large Magellanic Cloud.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="s1">&#39;OGLE-LMC-ECL-00125.dat&#39;</span><span class="p">),</span>
+                                <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;mag&#39;</span><span class="p">,</span> <span class="s1">&#39;mag_err&#39;</span><span class="p">]</span>
+<span class="n">period</span> <span class="o">=</span> <span class="mf">4.325471</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mag</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Barycentric Julian Day&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Detrended Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;OGLE-LMC-ECL-00125&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="n">phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">period</span><span class="p">)</span><span class="o">/</span><span class="n">period</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mag</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Detrended Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$P=</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="se">\\</span><span class="s1">,$d&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d1fd2c3c4ba67f782c7678243692bb76ba26747b8813fd263584144e100698f9.png" src="../_images/d1fd2c3c4ba67f782c7678243692bb76ba26747b8813fd263584144e100698f9.png" />
+</div>
+</div>
+<p>The trend filtering approach interpolates missing phase coverage due to irregularly sampling much more elegantly than the binning approach. The average of empty bins gives NaNs for the median binning approach, effectively corrupting the input data representation!</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Another advantage that trend filtering has over binning is the ability to weight data points by their uncertainty. In binning, all measurements are given equal importance regardless of precision, but trend filtering allows naturally prioritizing the most precise measurements when making a smooth fit.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_bins</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">phase_bins</span><span class="p">,</span> <span class="n">binned_flux</span> <span class="o">=</span> <span class="n">get_binned_phaselc</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mag</span><span class="p">,</span> <span class="n">num_bins</span><span class="o">=</span><span class="n">num_bins</span><span class="p">)</span>
+<span class="n">phase_trend</span><span class="p">,</span> <span class="n">trend_flux</span> <span class="o">=</span> <span class="n">trend_filter_phaselc</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mag</span><span class="p">,</span> <span class="n">flux_err</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mag_err</span><span class="p">,</span> <span class="n">reg</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_bins</span> <span class="o">=</span> <span class="n">num_bins</span><span class="p">,</span>
+                                                 <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">mag</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">phase_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">phase_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">binned_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binning&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">phase_trend</span><span class="p">,</span> <span class="n">trend_flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Trend Filtering&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Detrended Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;$P=</span><span class="si">{</span><span class="n">period</span><span class="si">}</span><span class="se">\\</span><span class="s1">,$d&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c2be022c8033df294e509585e2eeaf56b52c87087e41dc20df34638b81bccef3.png" src="../_images/c2be022c8033df294e509585e2eeaf56b52c87087e41dc20df34638b81bccef3.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="take-aways">
+<h2>Take-aways<a class="headerlink" href="#take-aways" title="Permalink to this headline">#</a></h2>
+<p>The key learning points of this section are the following:</p>
+<ul class="simple">
+<li><p>Eclipsing binary stars are highly diverse. The morphology of the eclipses can tell us much meaningful information  about the stars comprising the binary system as well as the system’s orbital architecture.</p></li>
+<li><p>Formatting the phase-folded light curves into a representation suited for machine learning requires smoothing or binning. The latter is more efficient for observations regularly sampled in time, whereas smoothing using a non-parametric regression approach is better tailored for noisy and irregularly sampled time series.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ps_statistics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><em>Power Spectrum Statistics</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eb-morphology_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-examples">Binary Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-detached-binary">Semi-Detached Binary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-ellipsoidal-variable">Rotating Ellipsoidal Variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-binary">Contact Binary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fully-detached-binary">Fully Detached Binary</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-the-data">Formatting the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-binning-the-data">Option 1: Binning the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-fitting-a-smooth-parametric-model-to-the-data">Option 2: Fitting a smooth, parametric model to the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-trend-filtering">Option 3: Trend Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-less-pristine-example">A less pristine example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#take-aways">Take-aways</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

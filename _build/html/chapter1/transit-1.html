@@ -1,0 +1,1022 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Planetary Transits Part 1: Observing Transits &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/transit-1';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/transit-1.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Planetary Transits Part 2: Classifying Transits" href="transit-2.html" />
+    <link rel="prev" title="Eclipse Morphology Part 4: The Variational Autoencoder" href="eb-morphology_4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/transit-1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/transit-1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/transit-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/transit-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Planetary Transits Part 1: Observing Transits</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulated-planetary-transits">Simulated Planetary Transits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-periodic-transits">Detecting periodic transits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confounding-observations">Confounding observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-stellar-pulsations-starspots">Example Confounders: Stellar Pulsations/Starspots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-starspots-on-rotating-stars">Example Confounders: Starspots on Rotating Stars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-eclipsing-binaries">Example Confounders: Eclipsing Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-gaps-in-data-instrumental-artifacts">Example Confounders: Gaps in Data/Instrumental Artifacts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bls-libraries">BLS Libraries</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="planetary-transits-part-1-observing-transits">
+<span id="content-references-transits-part1"></span><h1>Planetary Transits Part 1: <em>Observing Transits</em><a class="headerlink" href="#planetary-transits-part-1-observing-transits" title="Permalink to this headline">#</a></h1>
+<p>In this chapter, we will explore how Convolutional Neural Networks are used to identify signals in photometric time series that potentially belong to a planet.</p>
+<p>When a planet passes in front of our line-of-sight of a star, it blocks a fraction of the incoming starlight, which will manifest as dips in the light curve that are denoted as <strong>transits</strong>.</p>
+<figure class="align-default" id="transit-schematic">
+<a class="reference internal image-reference" href="../_images/transit.png"><img alt="../_images/transit.png" src="../_images/transit.png" style="width: 750px; height: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Schematic of a planetary transit. The upper diagram shows a planet (black circle) crossing the disk of its host star, which induces a reduction in the observed flux over time. The lower diagram shows the flux over time from the star, where a characteristic dip is seen during the transit. Parameters like <span class="math notranslate nohighlight">\(T\)</span> (transit duration), <span class="math notranslate nohighlight">\(\delta\)</span> (transit depth), <span class="math notranslate nohighlight">\(b\)</span> (impact parameter), and <span class="math notranslate nohighlight">\(\tau\)</span> characterize the nature of the transit, which provide information into the nature of the planet’s physical and orbital properties. Image from <span id="id1">[]</span>.</span><a class="headerlink" href="#transit-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">batman</span>
+<span class="kn">import</span> <span class="nn">scienceplots</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="simulated-planetary-transits">
+<h2>Simulated Planetary Transits<a class="headerlink" href="#simulated-planetary-transits" title="Permalink to this headline">#</a></h2>
+<p>To visualize a planetary transit and how the characteristics of the planet, star, and the orbit may influence the shape of the observed light curve, we will use the <a class="reference external" href="https://lkreidberg.github.io/batman/"><code class="docutils literal notranslate"><span class="pre">batman</span></code></a> library.</p>
+<p>Let’s visualize a simple light curve.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">batman</span><span class="o">.</span><span class="n">TransitParams</span><span class="p">()</span>       <span class="c1">#object to store transit parameters</span>
+<span class="n">params</span><span class="o">.</span><span class="n">t0</span> <span class="o">=</span> <span class="mf">0.</span>                        <span class="c1">#time of inferior conjunction</span>
+<span class="n">params</span><span class="o">.</span><span class="n">per</span> <span class="o">=</span> <span class="mf">1.</span>                       <span class="c1">#orbital period</span>
+<span class="n">params</span><span class="o">.</span><span class="n">rp</span> <span class="o">=</span> <span class="mf">0.1</span>                       <span class="c1">#planet radius (in units of stellar radii)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">15.</span>                        <span class="c1">#semi-major axis (in units of stellar radii)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="mf">87.</span>                      <span class="c1">#orbital inclination (in degrees)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">ecc</span> <span class="o">=</span> <span class="mf">0.</span>                       <span class="c1">#eccentricity</span>
+<span class="n">params</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">90.</span>                        <span class="c1">#longitude of periastron (in degrees)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">limb_dark</span> <span class="o">=</span> <span class="s2">&quot;nonlinear&quot;</span>        <span class="c1">#limb darkening model</span>
+<span class="n">params</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">]</span>      <span class="c1">#limb darkening coefficients [u1, u2, u3, u4]</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1">#times at which to calculate light curve</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">batman</span><span class="o">.</span><span class="n">TransitModel</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>    <span class="c1">#initializes model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The units of time are allowed to be anything with <code class="docutils literal notranslate"><span class="pre">batman</span></code>, as long as they are consistent across different time variables.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span><span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/bf8dc6396c73f1431b556d13f775e31dd823f8b92d9bed1801218989318220ba.png" src="../_images/bf8dc6396c73f1431b556d13f775e31dd823f8b92d9bed1801218989318220ba.png" />
+</div>
+</div>
+<p>Let’s visualize what happens when changing certain elementary parameters, such as the size of the planet and its distance from the host star.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resampled</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">rp_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.11</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span> <span class="n">a_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">norm_rp</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">rp_range</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">rp_range</span><span class="p">))</span>
+<span class="n">norm_a</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">a_range</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">a_range</span><span class="p">))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rp_range</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">rp</span> <span class="o">=</span> <span class="n">rp</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="p">((</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a_range</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="p">((</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_rp</span><span class="p">)</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Planet radius, $r_p$ (units of stellar radii)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>  <span class="c1"># Move ticks to the top</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+
+<span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_a</span><span class="p">)</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Semi-major axis $a$ (units of stellar radii)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>  <span class="c1"># Move ticks to the top</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/beb63231a421a8c4e52680ac40e0d8e915a550718bb4cffa1c563959a3ccfc2c.png" src="../_images/beb63231a421a8c4e52680ac40e0d8e915a550718bb4cffa1c563959a3ccfc2c.png" />
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Why does changing <span class="math notranslate nohighlight">\(a\)</span> affect <strong>both</strong> the depth and the duration of the transit?</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Transiting planets are assumed to have near <strong>edge-on</strong> orbits. That is, their orbits are tilted such that they align with our line of sight to the star (<span class="math notranslate nohighlight">\(i\sim90^{\circ}\)</span>).</p>
+<figure class="align-default" id="inclinations">
+<a class="reference internal image-reference" href="../_images/inclinations.png"><img alt="../_images/inclinations.png" src="../_images/inclinations.png" style="width: 400px; height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Schematic of orbital inclinations, presented by <span id="id2">[]</span>.</span><a class="headerlink" href="#inclinations" title="Permalink to this image">#</a></p>
+<div class="legend">
+<p>Experiment with adjusting the inclination angle for the simulated transits (<code class="docutils literal notranslate"><span class="pre">params.inc</span></code>). Observe what happens to the shape of the light curve. What happens when you tilt the angle past a certain degree, and why does this happen?</p>
+<div class="dropdown admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The inclination angle of the planet’s orbit affects the impact parameter <span class="math notranslate nohighlight">\(b\)</span>. At some sufficiently low inclination angle, the orbit becomes so tilted such that the planet no longer crosses the stellar disk within our line of sight.</p>
+<figure class="align-default" id="lco-orbit">
+<a class="reference internal image-reference" href="../_images/exoplanet-orbits-lco.png"><img alt="../_images/exoplanet-orbits-lco.png" src="../_images/exoplanet-orbits-lco.png" style="height: 550px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Image credit: <a class="reference external" href="https://lco.global/spacebook/exoplanets/transit-method/">LCO</a></span><a class="headerlink" href="#lco-orbit" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+</div>
+</figcaption>
+</figure>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```
+
+## Observed Planetary Transits
+
+Let&#39;s observe how transits appear in real data collected by NASA&#39;s TESS mission. In the following, we have the light curve of TIC 200473154, which appears to have a transit every $\sim$12 days.
+</pre></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">,</span> <span class="s1">&#39;astronet_tess_ffi_s0039-0000000200473154_tess_v01_llc.fits&#39;</span><span class="p">))</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;TIME&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;QUALITY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;SAP_FLUX&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;QUALITY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;=</span> <span class="mi">1742</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">1743</span><span class="p">)],</span>
+            <span class="n">f</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;=</span> <span class="mi">1742</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">1743</span><span class="p">)],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;=</span> <span class="mi">1755</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mf">1755.65</span><span class="p">)],</span>
+            <span class="n">f</span><span class="p">[(</span><span class="n">t</span><span class="o">&gt;=</span> <span class="mi">1755</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;=</span> <span class="mf">1755.65</span><span class="p">)],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (d)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;TIC 200473154&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="mi">1765</span><span class="p">)</span>
+<span class="n">ax1a</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.275</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.27</span><span class="p">],</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">1742</span><span class="p">,</span> <span class="mi">1743</span><span class="p">))</span> <span class="c1"># , ylim=(y1, y2)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1742</span><span class="p">,</span> <span class="mf">1742.5</span><span class="p">,</span> <span class="mi">1743</span><span class="p">])</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1a</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Transit 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax1b</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">inset_axes</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.775</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.27</span><span class="p">],</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">1754.75</span><span class="p">,</span> <span class="mf">1755.75</span><span class="p">))</span> <span class="c1"># , ylim=(y1, y2)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">1755</span><span class="p">,</span> <span class="mf">1755.25</span><span class="p">,</span> <span class="mf">1755.75</span><span class="p">])</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Transit 2&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9b4be04040c42bfc3d71fbd6a4df673321cfa0669ba58a6c35bbdffdd54088e7.png" src="../_images/9b4be04040c42bfc3d71fbd6a4df673321cfa0669ba58a6c35bbdffdd54088e7.png" />
+</div>
+</div>
+</section>
+<section id="detecting-periodic-transits">
+<h2>Detecting periodic transits<a class="headerlink" href="#detecting-periodic-transits" title="Permalink to this headline">#</a></h2>
+<p>To detect the presence of a periodic dip in a light curve, the Box Least-Squares (BLS) periodogram is often deployed. The periodogram performs least-squares fitting of a template comprising periodic, box-like dips to the light curve, optimizing for a period that best matches what is seen in the observed data.</p>
+<figure class="align-default" id="bls">
+<a class="reference internal image-reference" href="../_images/bls-1.png"><img alt="../_images/bls-1.png" src="../_images/bls-1.png" style="height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Schematic of transit template used by the Box Least-Squares (BLS) periodogram.  Image from <a class="reference external" href="https://docs.astropy.org/en/stable/timeseries/bls.html">astropy</a>.</span><a class="headerlink" href="#bls" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>BLS performs a grid search over a range of parameters that adjusts the shape of template, namely transit period, duration, and depth. To be computationally efficient, BLS implementations often scan over a grid of period values, while the depth and duration can be kept constant to some characteristic value.</p>
+</div>
+<p>Below, we will use the BLS implementation from  <code class="docutils literal notranslate"><span class="pre">astropy.timeseries.BoxLeastSquares</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.timeseries</span> <span class="kn">import</span> <span class="n">BoxLeastSquares</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">BoxLeastSquares</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">periodogram</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Period (d)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Max Power at </span><span class="si">{</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> days&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c2bfeb552a5a3b7cc7e1e185bbd1647e6fb6023c7f818314c1edd3d5acc7711b.png" src="../_images/c2bfeb552a5a3b7cc7e1e185bbd1647e6fb6023c7f818314c1edd3d5acc7711b.png" />
+</div>
+</div>
+<p>The correct transit period often occurs at the period at which the BLS power is a maximum. We often would also like to visualize the transit shape across all events, which we can do by ‘folding’ the light curve at the period of the transit and expressing the products in fractional units of the period, also called <strong>phase</strong>. This yields a so-called phase-folded light curve.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)):</span>
+    <span class="n">centered_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">periodogram</span><span class="o">.</span><span class="n">transit_time</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">/</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">centered_phase</span><span class="p">[</span><span class="n">centered_phase</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centered_phase</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Light Curve Phase Folded at </span><span class="si">{</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> days&#39;</span><span class="p">);</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8fd692971c2d18f97ddf99d48682eea5e82fe3aa8772aff152b9c7023b940b60.png" src="../_images/8fd692971c2d18f97ddf99d48682eea5e82fe3aa8772aff152b9c7023b940b60.png" />
+</div>
+</div>
+</section>
+<section id="confounding-observations">
+<h2>Confounding observations<a class="headerlink" href="#confounding-observations" title="Permalink to this headline">#</a></h2>
+<p>The essence of planetary searches with the transit method is to detect the presence of periodic dips from a planet, often using the BLS algorithm to automate the process.</p>
+<p>However, there are often other sources of stellar phenomena that may fool the BLS algorithm by occurring at regular intervals and appearing to dim the light curve.</p>
+<section id="example-confounders-stellar-pulsations-starspots">
+<h3>Example Confounders: Stellar Pulsations/Starspots<a class="headerlink" href="#example-confounders-stellar-pulsations-starspots" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Helper Function to plot lightcurves</span>
+
+<span class="k">def</span> <span class="nf">plot_lc</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/home/marc/notebooks/astronet/LC/astronet_tess_ffi_s0039-0000000</span><span class="si">{</span><span class="n">tic</span><span class="si">}</span><span class="s1">_tess_v01_llc.fits&#39;</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/home/marc/notebooks/astronet/LC/astronet_tess_ffi_s0039-00000000</span><span class="si">{</span><span class="n">tic</span><span class="si">}</span><span class="s1">_tess_v01_llc.fits&#39;</span><span class="p">)</span>
+        
+    <span class="c1"># df = fits.open(&#39;/home/marc/notebooks/astronet/LC/astronet_tess_ffi_s0039-0000000025117240_tess_v01_llc.fits&#39;)</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;TIME&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;QUALITY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;SAP_FLUX&#39;</span><span class="p">][</span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;QUALITY&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (d)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TIC </span><span class="si">{</span><span class="n">tic</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">f</span>
+
+<span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">plot_lc</span><span class="p">(</span><span class="mi">27789031</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">2028</span><span class="p">,</span> <span class="mi">2034</span><span class="p">))</span> <span class="c1">## Example: Stellar Pulsations </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BoxLeastSquares</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">periodogram</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.21</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+<span class="n">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">)</span>
+<span class="n">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d847d6a3e4a64f3fa140175d7322c4b268f021a1143604d88deae64913594768.png" src="../_images/d847d6a3e4a64f3fa140175d7322c4b268f021a1143604d88deae64913594768.png" />
+<img alt="../_images/daac0ddb739b8635f6db0d8a897c5250b18a7e139d6e33c7101ab06f47dd2509.png" src="../_images/daac0ddb739b8635f6db0d8a897c5250b18a7e139d6e33c7101ab06f47dd2509.png" />
+<img alt="../_images/9e602432b55436fe5523bf0b6f48f6a0cfc33522a56d2020a142c935a22d28da.png" src="../_images/9e602432b55436fe5523bf0b6f48f6a0cfc33522a56d2020a142c935a22d28da.png" />
+</div>
+</div>
+</section>
+<section id="example-confounders-starspots-on-rotating-stars">
+<h3>Example Confounders: Starspots on Rotating Stars<a class="headerlink" href="#example-confounders-starspots-on-rotating-stars" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">plot_lc</span><span class="p">(</span><span class="mi">355772581</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">2255</span><span class="p">,</span> <span class="mi">2310</span><span class="p">))</span> <span class="c1">## Example: Stellar Pulsations </span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">BoxLeastSquares</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">periodogram</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.21</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+<span class="n">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">)</span>
+<span class="n">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span> <span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/7c0d598e3509534ce4a6e71bb5fcf55894c9d9e10a1818c7e50e23b3c9cc7fc2.png" src="../_images/7c0d598e3509534ce4a6e71bb5fcf55894c9d9e10a1818c7e50e23b3c9cc7fc2.png" />
+<img alt="../_images/1a948b842ab8cfc2b6733122a55625d52a24130b3917cb704bfcfb1cff87f0f8.png" src="../_images/1a948b842ab8cfc2b6733122a55625d52a24130b3917cb704bfcfb1cff87f0f8.png" />
+<img alt="../_images/b2af3063617fa864751a5db2a9c20c4f3b04a37b0764352710c5d64c71826efe.png" src="../_images/b2af3063617fa864751a5db2a9c20c4f3b04a37b0764352710c5d64c71826efe.png" />
+</div>
+</div>
+</section>
+<section id="example-confounders-eclipsing-binaries">
+<h3>Example Confounders: Eclipsing Binaries<a class="headerlink" href="#example-confounders-eclipsing-binaries" title="Permalink to this headline">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>How do we distinguish eclipses from a planet candidate versus eclipses from a companion star?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">plot_lc</span><span class="p">(</span><span class="mi">17375136</span><span class="p">,</span> <span class="n">xlim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1690</span><span class="p">,</span> <span class="mi">1710</span><span class="p">))</span> <span class="c1">## Example: Stellar Pulsations </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BoxLeastSquares</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">periodogram</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.21</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+<span class="n">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">)</span>
+<span class="n">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span> <span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8867fefacefd7a205ffc3c15517758bb2c8350d751bb8f392655124d935b10a3.png" src="../_images/8867fefacefd7a205ffc3c15517758bb2c8350d751bb8f392655124d935b10a3.png" />
+<img alt="../_images/a4228ba872d88ead73b516780b70614f3e729857925477b96d3bf75d9f1c8eca.png" src="../_images/a4228ba872d88ead73b516780b70614f3e729857925477b96d3bf75d9f1c8eca.png" />
+<img alt="../_images/c66e46bce967aeced7756eab7add58bf9d2ead0c53dd7583b166f675d980fba1.png" src="../_images/c66e46bce967aeced7756eab7add58bf9d2ead0c53dd7583b166f675d980fba1.png" />
+</div>
+</div>
+</section>
+<section id="example-confounders-gaps-in-data-instrumental-artifacts">
+<h3>Example Confounders: Gaps in Data/Instrumental Artifacts<a class="headerlink" href="#example-confounders-gaps-in-data-instrumental-artifacts" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">plot_lc</span><span class="p">(</span><span class="mi">265400577</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">1510</span><span class="p">,</span> <span class="mi">1550</span><span class="p">))</span> 
+<span class="n">t</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">plot_lc</span><span class="p">(</span><span class="mi">265400577</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">2225</span><span class="p">,</span> <span class="mi">2255</span><span class="p">))</span> 
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">BoxLeastSquares</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">periodogram</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.21</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+<span class="n">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">)</span>
+<span class="n">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span> <span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/599fe6f4414eda253739a4ea165b6e6b1cdea5c59f93c51dbfa4818e8ec22b54.png" src="../_images/599fe6f4414eda253739a4ea165b6e6b1cdea5c59f93c51dbfa4818e8ec22b54.png" />
+<img alt="../_images/2e0372b1d43f19d770ce1ae6a3563738872d5f03a82c89137e416dbacc46452b.png" src="../_images/2e0372b1d43f19d770ce1ae6a3563738872d5f03a82c89137e416dbacc46452b.png" />
+<img alt="../_images/d3b8fdd9d435e0048ad61945543f335742252066ee6eba0e81d8155691746e39.png" src="../_images/d3b8fdd9d435e0048ad61945543f335742252066ee6eba0e81d8155691746e39.png" />
+<img alt="../_images/bf9e4fcc7f15be56a7212c12ce188600fdc0dbb95b3cbf14f0c2f261223a5473.png" src="../_images/bf9e4fcc7f15be56a7212c12ce188600fdc0dbb95b3cbf14f0c2f261223a5473.png" />
+</div>
+</div>
+<p>It’s clear that these confounders also produce fairly peaked signals in the BLS periodogram. Notice, however, that the morphology (or shape) of the phase-folded light curves look vastly different across these different sources of periodicity! This is the key difference that will be utilized to single out potential planet candidates.</p>
+</section>
+</section>
+<section id="bls-libraries">
+<h2>BLS Libraries<a class="headerlink" href="#bls-libraries" title="Permalink to this headline">#</a></h2>
+<p>Some of the other open source libraries to running the BLS algorithm in Python are the following:</p>
+<p><a class="reference external" href="https://johnh2o2.github.io/cuvarbase/bls.html">[1]</a> <code class="docutils literal notranslate"><span class="pre">cuvarbase</span></code></p>
+<p><a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.timeseries.BoxLeastSquares.html">[2]</a> <code class="docutils literal notranslate"><span class="pre">astropy</span></code>’s BLS implementation</p>
+<p><a class="reference external" href="https://transitleastsquares.readthedocs.io">[3]</a> <code class="docutils literal notranslate"><span class="pre">transitleastsquares</span></code></p>
+<p><a class="reference external" href="https://github.com/PrincetonUniversity/FastTemplatePeriodogram">[4]</a> <code class="docutils literal notranslate"><span class="pre">FastTemplatePeriodogram</span></code></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="eb-morphology_4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="transit-2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Planetary Transits Part 2: <em>Classifying Transits</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulated-planetary-transits">Simulated Planetary Transits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-periodic-transits">Detecting periodic transits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confounding-observations">Confounding observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-stellar-pulsations-starspots">Example Confounders: Stellar Pulsations/Starspots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-starspots-on-rotating-stars">Example Confounders: Starspots on Rotating Stars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-eclipsing-binaries">Example Confounders: Eclipsing Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-confounders-gaps-in-data-instrumental-artifacts">Example Confounders: Gaps in Data/Instrumental Artifacts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bls-libraries">BLS Libraries</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

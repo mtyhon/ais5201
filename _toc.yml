@@ -1,0 +1,11 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: chapter1/section_intro
+  sections: 
+  - file: chapter1/fitting_power_spectrum_1
+  - file: chapter1/fitting_power_spectrum_2
+  - file: chapter1/ps_statistics

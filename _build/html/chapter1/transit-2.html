@@ -1,0 +1,1464 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Planetary Transits Part 2: Classifying Transits &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/transit-2';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/transit-2.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Planetary Transits Part 3: Fitting a Transit Profile" href="transit-3.html" />
+    <link rel="prev" title="Planetary Transits Part 1: Observing Transits" href="transit-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/transit-2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/transit-2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/transit-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/transit-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Planetary Transits Part 2: Classifying Transits</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classifying-phase-folded-light-curves-with-a-convnet">Classifying Phase-Folded Light Curves with a ConvNet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-attempt-classification-using-a-global-view">A First Attempt: Classification using a Global View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-local-view">The Local View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="planetary-transits-part-2-classifying-transits">
+<h1>Planetary Transits Part 2: <em>Classifying Transits</em><a class="headerlink" href="#planetary-transits-part-2-classifying-transits" title="Permalink to this headline">#</a></h1>
+<p>In <a class="reference internal" href="transit-1.html#content-references-transits-part1"><span class="std std-ref">Planetary Transits Part 1: Observing Transits</span></a>, we introduced observations of planetary transits as periodic dips in the light curve and how they may be identified. We also discussed the presence of stellar and instrumental variability that can appear as dips, but are not planetary in nature.</p>
+<p>At the end of that Section, we described how the shape of the transits offers a way to distinguish true planetary transits from false positives. In other words, we want to distinguish the following:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scienceplots</span>
+
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+<span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span> <span class="nn">torchinfo</span> <span class="kn">import</span> <span class="n">summary</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/home/marc/notebooks/astronet/AstronetGlobalLocalView.npz&#39;</span><span class="p">)</span>
+<span class="n">flux_global</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;flux_global&#39;</span><span class="p">]</span>
+<span class="n">flux_local</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;flux_loc&#39;</span><span class="p">]</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;tic&#39;</span><span class="p">]</span>  
+
+<span class="n">unique_tic</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">return_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">flux_global</span><span class="p">,</span> <span class="n">flux_local</span><span class="p">,</span> <span class="n">tic</span> <span class="o">=</span> <span class="n">flux_global</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">flux_local</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">tic</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">plot_trio_panel</span><span class="p">(</span><span class="n">ticids</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">tic</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())),</span>
+            <span class="n">flux_global</span><span class="p">[</span><span class="n">tic</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_trio_panel</span><span class="p">(</span><span class="n">ticids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">323878236</span><span class="p">,</span> <span class="mi">29831208</span><span class="p">,</span> <span class="mi">453100658</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/1a5acda75dfa496f85b0a599be84fc683e386d903d2900b24ab5ca1ffe3af47e.png" src="../_images/1a5acda75dfa496f85b0a599be84fc683e386d903d2900b24ab5ca1ffe3af47e.png" />
+</div>
+</div>
+<p>from false positive cases like the following:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_trio_panel</span><span class="p">(</span><span class="n">ticids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">467961579</span><span class="p">,</span> <span class="mi">260302492</span><span class="p">,</span> <span class="mi">41233766</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a3ade184cef41d2c324046c153d0359193ddec121e34d3b1614b1af63141f3dd.png" src="../_images/a3ade184cef41d2c324046c153d0359193ddec121e34d3b1614b1af63141f3dd.png" />
+</div>
+</div>
+<p>The range of observed phenomena is vast, and the morphology of these transits can be quite complex. It is for these reasons that deep learning can be well-suited to classify between these types of objects.</p>
+<section id="classifying-phase-folded-light-curves-with-a-convnet">
+<h2>Classifying Phase-Folded Light Curves with a ConvNet<a class="headerlink" href="#classifying-phase-folded-light-curves-with-a-convnet" title="Permalink to this headline">#</a></h2>
+<p>We will train a convolutional neural network to classify the shape of the phase-folded light curves, identifying those potentially from a planet versus those that are distinctly non-planetary in nature.</p>
+<p>For a training set, we will use the dataset from <span id="id1">[]</span>, which curates a list of stars that have been vetted for transit based on observations from the TESS mission. The catalog lists the following classification labels:</p>
+<ul class="simple">
+<li><p><strong>“E”</strong> - periodic eclipsing signal</p></li>
+<li><p><strong>“S”</strong> - incorrect period</p></li>
+<li><p><strong>“B”</strong> - contact eclipsing binaries</p></li>
+<li><p><strong>“J”</strong> - astrophysical variability/instrumental artifacts</p></li>
+<li><p><strong>“N”</strong> - not sure</p></li>
+</ul>
+<p>The catalog reports a label from the consensus of a minimum of 3 vetters, who categorized the sample of <span class="math notranslate nohighlight">\(\sim25,000\)</span> targets by eye. Labels are not given to training samples for which a consensus is not arrived.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tce</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/home/marc/notebooks/astronet/tces_with_labels_v3.csv&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;TIC ID&#39;</span><span class="p">)</span>
+<span class="n">tce</span><span class="p">[[</span><span class="s1">&#39;TIC ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Period&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="s1">&#39;Depth&#39;</span><span class="p">,</span><span class="s1">&#39;Consensus Label&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TIC ID</th>
+      <th>Epoch</th>
+      <th>Period</th>
+      <th>Duration</th>
+      <th>Depth</th>
+      <th>Consensus Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>387242167</td>
+      <td>1655.407925</td>
+      <td>4.081254</td>
+      <td>0.180881</td>
+      <td>330</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>141709436</td>
+      <td>1338.471105</td>
+      <td>24.959872</td>
+      <td>0.218898</td>
+      <td>640</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>407089973</td>
+      <td>1626.073791</td>
+      <td>0.365865</td>
+      <td>0.064751</td>
+      <td>24320</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>261007876</td>
+      <td>1342.968554</td>
+      <td>42.528679</td>
+      <td>0.655792</td>
+      <td>3830</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>31265416</td>
+      <td>1351.981451</td>
+      <td>35.055941</td>
+      <td>0.276942</td>
+      <td>1030</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>24921</th>
+      <td>91037668</td>
+      <td>2035.837020</td>
+      <td>0.552550</td>
+      <td>0.033167</td>
+      <td>744</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <th>24922</th>
+      <td>92625873</td>
+      <td>1342.985400</td>
+      <td>17.021960</td>
+      <td>0.083583</td>
+      <td>98820</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <th>24923</th>
+      <td>92655287</td>
+      <td>1343.713570</td>
+      <td>17.813630</td>
+      <td>0.120417</td>
+      <td>240940</td>
+      <td>J</td>
+    </tr>
+    <tr>
+      <th>24924</th>
+      <td>96142134</td>
+      <td>1518.266040</td>
+      <td>0.606250</td>
+      <td>0.072750</td>
+      <td>49940</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24925</th>
+      <td>97410755</td>
+      <td>1340.018380</td>
+      <td>23.900440</td>
+      <td>0.557833</td>
+      <td>1410</td>
+      <td>J</td>
+    </tr>
+  </tbody>
+</table>
+<p>24888 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The data needs to be pre-formatted before utilized as samples in a dataset for any machine learning tasks. Similar to <a class="reference internal" href="eb-morphology_1.html#content-references-eclipse-part1"><span class="std std-ref">Eclipse Morphology Part 1: Exploring and Preparing Data</span></a>, the phase-folded light curves need to be normalized and binned into a fixed length across all samples in the dataset.</p>
+<p>Another crucial aspect of formatting the data is <strong>de-trending</strong>. Activity from the star can produce fast or slow light curve variations that distort the shape of the phase-folded transits and hinders a proper classification of a planetary transit.</p>
+</div>
+</section>
+<section id="a-first-attempt-classification-using-a-global-view">
+<h2>A First Attempt: Classification using a Global View<a class="headerlink" href="#a-first-attempt-classification-using-a-global-view" title="Permalink to this headline">#</a></h2>
+<p>To begin, we will classify the phase-folded light curve across the full orbit, denoted as the <strong>global view</strong>. For simplicity, we will consider labels <strong>“E”</strong> and <strong>“B”</strong> as positive samples, and everything else as negative samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos_ids</span> <span class="o">=</span> <span class="n">tce</span><span class="p">[</span><span class="s1">&#39;TIC ID&#39;</span><span class="p">][(</span><span class="n">tce</span><span class="p">[</span><span class="s1">&#39;Consensus Label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">tce</span><span class="p">[</span><span class="s1">&#39;Consensus Label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">neg_ids</span> <span class="o">=</span> <span class="n">tce</span><span class="p">[</span><span class="s1">&#39;TIC ID&#39;</span><span class="p">][</span> <span class="o">~</span><span class="p">(</span> <span class="p">(</span><span class="n">tce</span><span class="p">[</span><span class="s1">&#39;Consensus Label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;E&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">tce</span><span class="p">[</span><span class="s1">&#39;Consensus Label&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">))]</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ratio of Positive to Negative Examples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_ids</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">neg_ids</span><span class="p">)</span> <span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ratio of Positive to Negative Examples: 0.16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s split these samples into training and validation samples using <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">pos_ids_train</span><span class="p">,</span> <span class="n">pos_ids_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">pos_ids</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">neg_ids_train</span><span class="p">,</span> <span class="n">neg_ids_val</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">neg_ids</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks like we have a rather unbalanced dataset, and this is something we should consider in constructing our training sets. Next, we define our training dataloader using <code class="docutils literal notranslate"><span class="pre">torch</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+
+<span class="n">train_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_train</span><span class="p">)])</span> <span class="c1"># positive samples</span>
+<span class="n">train_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_train</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1"># negative samples</span>
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_train</span><span class="p">)]))</span><span class="c1"># positive labels</span>
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_train</span><span class="p">)]))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="c1"># negative labels</span>
+
+<span class="n">val_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_val</span><span class="p">)])</span> 
+<span class="n">val_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">val_x</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_val</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">val_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_val</span><span class="p">)]))</span>
+<span class="n">val_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">val_y</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_val</span><span class="p">)]))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">train_x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">train_y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="n">trainloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">val_x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">val_y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="n">valloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and here we define the architecture in the form of a simple 1D ConvNet with the following structure:</p>
+<figure class="align-default" id="astronet1">
+<a class="reference internal image-reference" href="../_images/astronet1.png"><img alt="../_images/astronet1.png" src="../_images/astronet1.png" style="width: 700px; height: 200px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GlobalViewClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GlobalViewClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># conv5-16</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># conv5-16</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>         
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># conv5-32</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># conv5-32</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># maxpool7-2</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1472</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
+        
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+<span class="n">model</span> <span class="o">=</span> <span class="n">GlobalViewClassifier</span><span class="p">();</span> <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+GlobalViewClassifier                     [1, 1]                    --
+├─Conv1d: 1-1                            [1, 16, 201]              96
+├─Conv1d: 1-2                            [1, 16, 201]              1,296
+├─MaxPool1d: 1-3                         [1, 16, 98]               --
+├─Conv1d: 1-4                            [1, 32, 98]               2,592
+├─Conv1d: 1-5                            [1, 32, 98]               5,152
+├─MaxPool1d: 1-6                         [1, 32, 46]               --
+├─Linear: 1-7                            [1, 64]                   94,272
+├─Linear: 1-8                            [1, 64]                   4,160
+├─Linear: 1-9                            [1, 64]                   4,160
+├─Linear: 1-10                           [1, 64]                   4,160
+├─Linear: 1-11                           [1, 1]                    65
+==========================================================================================
+Total params: 115,953
+Trainable params: 115,953
+Non-trainable params: 0
+Total mult-adds (M): 1.15
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.10
+Params size (MB): 0.46
+Estimated Total Size (MB): 0.57
+==========================================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">torch.nn.BCEWithLogitsLoss()</span></code> loss function already applies a Sigmoid layer, so the network’s output should be <strong>logits</strong>, rather than <strong>probabilities</strong>.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Tensor sizes are (batch, num_channels, length).</p>
+</div>
+<p>Let’s run this through a training loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">()</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">train_cumulative_loss</span><span class="p">,</span> <span class="n">val_cumulative_loss</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">correct_train</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">total_train</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trainloader</span><span class="p">):</span> 
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+
+        <span class="n">binary_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y</span><span class="p">)</span>     
+        <span class="n">binary_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  
+        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">binary_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> 
+        
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  <span class="c1"># Convert logits to binary predictions</span>
+        <span class="n">correct_train</span> <span class="o">+=</span> <span class="p">(</span><span class="n">preds</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>  
+        <span class="n">total_train</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+
+    <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">correct_train</span> <span class="o">/</span> <span class="n">total_train</span>  
+    
+    <span class="c1"># Validation phase</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> 
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">correct_val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">total_val</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>  
+        <span class="k">for</span> <span class="n">batch_val_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valloader</span><span class="p">):</span> 
+            <span class="n">x_val</span> <span class="o">=</span> <span class="n">x_val</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x_val</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x_val</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">y_val</span> <span class="o">=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+            <span class="n">logits_val</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_val</span><span class="p">)</span>
+            <span class="n">binary_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits_val</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_val</span><span class="p">)</span>     
+            <span class="n">val_loss</span> <span class="o">+=</span> <span class="n">binary_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">preds_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits_val</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="n">correct_val</span> <span class="o">+=</span> <span class="p">(</span><span class="n">preds_val</span> <span class="o">==</span> <span class="n">y_val</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">total_val</span> <span class="o">+=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">val_accuracy</span> <span class="o">=</span> <span class="n">correct_val</span> <span class="o">/</span> <span class="n">total_val</span>   
+    <span class="n">train_cumulative_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">))</span>
+    <span class="n">val_cumulative_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_val_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">))</span>
+         
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span><span class="p">:</span>   
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Epoch </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+              <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Train Loss: </span><span class="si">{</span><span class="n">epoch_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">)</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+             <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Training Acc.: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">train_accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
+             <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Val Loss: </span><span class="si">{</span><span class="n">val_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">)</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                          <span class="sa">f</span><span class="s2">&quot;Val Acc.: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">val_accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Epoch 1 	 Train Loss: 0.00350 	 Training Acc.: 90.48% 	 Val Loss: 0.00066 Val Acc.: 92.95%
+	Epoch 11 	 Train Loss: 0.00218 	 Training Acc.: 94.85% 	 Val Loss: 0.00054 Val Acc.: 94.44%
+	Epoch 21 	 Train Loss: 0.00177 	 Training Acc.: 95.62% 	 Val Loss: 0.00054 Val Acc.: 94.89%
+	Epoch 31 	 Train Loss: 0.00125 	 Training Acc.: 96.78% 	 Val Loss: 0.00073 Val Acc.: 94.65%
+	Epoch 41 	 Train Loss: 0.00124 	 Training Acc.: 97.05% 	 Val Loss: 0.00082 Val Acc.: 94.71%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">),</span> <span class="n">train_cumulative_loss</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">),</span> <span class="n">val_cumulative_loss</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation Loss&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">},</span>
+          <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9e881c80eda70bb76877470a919861c28c73c3e730663aa7aaf86af349341ff9.png" src="../_images/9e881c80eda70bb76877470a919861c28c73c3e730663aa7aaf86af349341ff9.png" />
+</div>
+</div>
+<p>This looks like a typical case of overfitting! We could have terminating the training at roughly 10 epochs, which would have already yielded a very reasonable perfomance. Let’s examine the confusion matrix for the network:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> 
+
+<span class="n">all_preds</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">all_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">false_positives</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">false_negatives</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valloader</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span> 
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">(</span><span class="n">predictions</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+        
+        <span class="n">all_preds</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="n">all_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        
+       <span class="c1"># Track false positives and false negatives</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># False Positive</span>
+                <span class="n">false_positives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">batch_idx</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> 
+            <span class="k">elif</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># False Negative</span>
+                <span class="n">false_negatives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">batch_idx</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> 
+
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">all_labels</span><span class="p">,</span> <span class="n">all_preds</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Non-Eclipsing&quot;</span><span class="p">,</span> <span class="s2">&quot;Eclipsing&quot;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Validation Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/29645248aabbe89028748d9f0b307d300e8b3a32658af46ccc6974f8666fbb83.png" src="../_images/29645248aabbe89028748d9f0b307d300e8b3a32658af46ccc6974f8666fbb83.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_bad_pred</span><span class="p">(</span><span class="n">pred_data</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pred_data</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">])):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="n">pred_data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Phase-folded Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.025</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_bad_pred</span><span class="p">(</span><span class="n">false_positives</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;False Positives&#39;</span><span class="p">)</span>
+<span class="n">plot_bad_pred</span><span class="p">(</span><span class="n">false_negatives</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;False Negatives&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/789a22d342e8a5894cccbd9d78dd8fe4b6b94be75ed918401c53504b876b75c2.png" src="../_images/789a22d342e8a5894cccbd9d78dd8fe4b6b94be75ed918401c53504b876b75c2.png" />
+<img alt="../_images/a97387000ddb41240cee17377e1247e7e50ee69fb5576e6eadce18926370c712.png" src="../_images/a97387000ddb41240cee17377e1247e7e50ee69fb5576e6eadce18926370c712.png" />
+</div>
+</div>
+<p>Based on the visualized examples of false negatives and false positives, the weakness of the current approach is identifiable:</p>
+<ul class="simple">
+<li><p>Based on the current (global) data representation, short-duration eclipses may only be represented by a few data points, which is insufficient</p></li>
+<li><p>In addition, there may be some confusion regarding an eclipsing signal from a binary star with some “Junk” signals from other sources of astrophysical nature (i.e., rotation, pulsations). The current representation doesn’t offer much to help disentangle between these.</p></li>
+</ul>
+</section>
+<section id="the-local-view">
+<h2>The Local View<a class="headerlink" href="#the-local-view" title="Permalink to this headline">#</a></h2>
+<p>To remedy these issues, a <strong>local</strong> view of the phase-folded light curve is also added as an input, which better represents the shape of the primary eclipse. In this example, the local view uses the same number of bins (sequence length = 201) as the global view, but the bins range over <span class="math notranslate nohighlight">\(\pm2T\)</span> from the central eclipse.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The duration <span class="math notranslate nohighlight">\(T\)</span> of the eclipse can generally be estimated from the Box Least-Squares algorithm, where a rough estimate would usually suffice to create the local view.</p>
+</div>
+<p>An example is shown below:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_duo_panel</span><span class="p">(</span><span class="n">ticids</span><span class="p">):</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">),</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">tic</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())),</span>
+        <span class="n">flux_global</span><span class="p">[</span><span class="n">tic</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Global View&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">tce</span><span class="o">.</span><span class="n">Duration</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="n">tce</span><span class="o">.</span><span class="n">Period</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="n">tce</span><span class="p">[</span><span class="s2">&quot;TIC ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">tce</span><span class="o">.</span><span class="n">Duration</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="n">tce</span><span class="o">.</span><span class="n">Period</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="n">tce</span><span class="p">[</span><span class="s2">&quot;TIC ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    
+    <span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">tce</span><span class="o">.</span><span class="n">Duration</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="n">tce</span><span class="o">.</span><span class="n">Period</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="n">tce</span><span class="p">[</span><span class="s2">&quot;TIC ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">],</span>
+                            <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">tce</span><span class="o">.</span><span class="n">Duration</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="n">tce</span><span class="o">.</span><span class="n">Period</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="n">tce</span><span class="p">[</span><span class="s2">&quot;TIC ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">flux_local</span><span class="p">[</span><span class="n">tic</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())),</span>
+        <span class="n">flux_local</span><span class="p">[</span><span class="n">tic</span> <span class="o">==</span> <span class="n">ticids</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> <span class="p">;</span><span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Local View&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_duo_panel</span><span class="p">(</span><span class="n">ticids</span> <span class="o">=</span> <span class="mi">323878236</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/f97ff60fbcaca64c73acaf0993dcb001858de3ba9bf2c50a75e779e8980a3080.png" src="../_images/f97ff60fbcaca64c73acaf0993dcb001858de3ba9bf2c50a75e779e8980a3080.png" />
+</div>
+</div>
+<p>In the above, the regions within the dashed lines indicate the region of the phase-folded light curve that is now focused upon and binned to greater detail with the local view.</p>
+<p>Let’s apply this additional information into the network, carefully making the distinction between <strong>local</strong> and <strong>global</strong> view inputs in our new trainloader and dataloader:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_x_local</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_local</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_train</span><span class="p">)])</span> 
+<span class="n">train_x_local</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">train_x_local</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_local</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_train</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">train_x_global</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_train</span><span class="p">)])</span> 
+<span class="n">train_x_global</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">train_x_global</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_train</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">train_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">train_x_local</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">train_x_global</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">val_x_local</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_local</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_val</span><span class="p">)])</span> 
+<span class="n">val_x_local</span><span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">val_x_local</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_local</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_val</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">val_x_global</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">pos_ids_val</span><span class="p">)])</span> 
+<span class="n">val_x_global</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span> <span class="p">(</span><span class="n">val_x_global</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">flux_global</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">in1d</span><span class="p">(</span><span class="n">tic</span><span class="p">,</span> <span class="n">neg_ids_val</span><span class="p">)])),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">val_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">val_x_local</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">val_x_global</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">train_x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">train_y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="n">trainloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">val_dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">val_x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">val_y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+<span class="n">valloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Correspondingly, we should modify our 1D ConvNet to incorporate this additional information. There are now two convolutional branches for each view, where for simplicity, the architecture of the “local” convolutional branch is adopted to be identical to that of the global view.</p>
+<figure class="align-default" id="globallocal-astronet">
+<a class="reference internal image-reference" href="../_images/globallocal_astronet.png"><img alt="../_images/globallocal_astronet.png" src="../_images/globallocal_astronet.png" style="width: 700px; height: 400px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ConvBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span> <span class="c1"># Refactoring</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pool_kernel_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">pool_stride</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ConvBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">kernel_size</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv1d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="n">kernel_size</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="n">kernel_size</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool1d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="n">pool_kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">pool_stride</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+        <span class="k">return</span> <span class="n">x</span>
+
+
+<span class="k">class</span> <span class="nc">GlobalLocalViewClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GlobalLocalViewClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_block_local1</span> <span class="o">=</span> <span class="n">ConvBlock</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_block_local2</span> <span class="o">=</span> <span class="n">ConvBlock</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_block_global1</span> <span class="o">=</span> <span class="n">ConvBlock</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_block_global2</span> <span class="o">=</span> <span class="n">ConvBlock</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1472</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  <span class="c1"># Fully connected 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  <span class="c1"># Fully connected 2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  <span class="c1"># Fully connected 3</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>  <span class="c1"># Fully connected 4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Logistic sigmoid output</span>
+        
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x_local</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv_block_local2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_block_local1</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+        <span class="n">x_global</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv_block_global2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conv_block_global1</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+        
+        <span class="n">x_local</span> <span class="o">=</span> <span class="n">x_local</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x_local</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x_global</span> <span class="o">=</span> <span class="n">x_global</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x_local</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x_local</span><span class="p">,</span> <span class="n">x_global</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+<span class="n">model</span> <span class="o">=</span> <span class="n">GlobalLocalViewClassifier</span><span class="p">();</span> <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">train_x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+GlobalLocalViewClassifier                [1, 1]                    --
+├─ConvBlock: 1-1                         [1, 16, 98]               --
+│    └─Conv1d: 2-1                       [1, 16, 201]              96
+│    └─Conv1d: 2-2                       [1, 16, 201]              1,296
+│    └─MaxPool1d: 2-3                    [1, 16, 98]               --
+├─ConvBlock: 1-2                         [1, 32, 46]               --
+│    └─Conv1d: 2-4                       [1, 32, 98]               2,592
+│    └─Conv1d: 2-5                       [1, 32, 98]               5,152
+│    └─MaxPool1d: 2-6                    [1, 32, 46]               --
+├─ConvBlock: 1-3                         [1, 16, 98]               --
+│    └─Conv1d: 2-7                       [1, 16, 201]              96
+│    └─Conv1d: 2-8                       [1, 16, 201]              1,296
+│    └─MaxPool1d: 2-9                    [1, 16, 98]               --
+├─ConvBlock: 1-4                         [1, 32, 46]               --
+│    └─Conv1d: 2-10                      [1, 32, 98]               2,592
+│    └─Conv1d: 2-11                      [1, 32, 98]               5,152
+│    └─MaxPool1d: 2-12                   [1, 32, 46]               --
+├─Linear: 1-5                            [1, 64]                   188,480
+├─Linear: 1-6                            [1, 64]                   4,160
+├─Linear: 1-7                            [1, 64]                   4,160
+├─Linear: 1-8                            [1, 64]                   4,160
+├─Linear: 1-9                            [1, 1]                    65
+==========================================================================================
+Total params: 219,297
+Trainable params: 219,297
+Non-trainable params: 0
+Total mult-adds (M): 2.28
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.21
+Params size (MB): 0.88
+Estimated Total Size (MB): 1.08
+==========================================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">()</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">train_cumulative_loss</span><span class="p">,</span> <span class="n">val_cumulative_loss</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span> 
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">correct_train</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">total_train</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">trainloader</span><span class="p">):</span> 
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="c1">#.reshape(x.size()[0], 1, x.size()[1])</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+
+        <span class="n">binary_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y</span><span class="p">)</span>     
+        <span class="n">binary_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>  
+        <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">binary_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span> 
+        
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  <span class="c1"># Convert logits to binary predictions</span>
+        <span class="n">correct_train</span> <span class="o">+=</span> <span class="p">(</span><span class="n">preds</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>  
+        <span class="n">total_train</span> <span class="o">+=</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  
+
+    <span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">correct_train</span> <span class="o">/</span> <span class="n">total_train</span>  
+    
+    <span class="c1"># Validation phase</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> 
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">correct_val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">total_val</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>  
+        <span class="k">for</span> <span class="n">batch_val_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valloader</span><span class="p">):</span> 
+            <span class="n">x_val</span> <span class="o">=</span> <span class="n">x_val</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="c1">#.reshape(x_val.size()[0], 1, x_val.size()[1])</span>
+            <span class="n">y_val</span> <span class="o">=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+
+            <span class="n">logits_val</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_val</span><span class="p">)</span>
+            <span class="n">binary_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">logits_val</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_val</span><span class="p">)</span>     
+            <span class="n">val_loss</span> <span class="o">+=</span> <span class="n">binary_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+            <span class="n">preds_val</span> <span class="o">=</span> <span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits_val</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+            <span class="n">correct_val</span> <span class="o">+=</span> <span class="p">(</span><span class="n">preds_val</span> <span class="o">==</span> <span class="n">y_val</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">total_val</span> <span class="o">+=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">val_accuracy</span> <span class="o">=</span> <span class="n">correct_val</span> <span class="o">/</span> <span class="n">total_val</span>   
+    <span class="n">train_cumulative_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">epoch_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">))</span>
+    <span class="n">val_cumulative_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_val_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">))</span>
+         
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span><span class="p">:</span>   
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Epoch </span><span class="si">{</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+              <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Train Loss: </span><span class="si">{</span><span class="n">epoch_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">)</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+             <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Training Acc.: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">train_accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span>
+             <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> Val Loss: </span><span class="si">{</span><span class="n">val_loss</span><span class="o">/</span><span class="p">(</span><span class="n">batch_idx</span><span class="o">*</span><span class="n">batch_size</span><span class="p">)</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                          <span class="sa">f</span><span class="s2">&quot;Val Acc.: </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">val_accuracy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	Epoch 1 	 Train Loss: 0.00560 	 Training Acc.: 86.53% 	 Val Loss: 0.00081 Val Acc.: 86.61%
+	Epoch 11 	 Train Loss: 0.00229 	 Training Acc.: 94.65% 	 Val Loss: 0.00056 Val Acc.: 94.71%
+	Epoch 21 	 Train Loss: 0.00215 	 Training Acc.: 94.98% 	 Val Loss: 0.00055 Val Acc.: 94.93%
+	Epoch 31 	 Train Loss: 0.00200 	 Training Acc.: 95.23% 	 Val Loss: 0.00056 Val Acc.: 94.50%
+	Epoch 41 	 Train Loss: 0.00188 	 Training Acc.: 95.56% 	 Val Loss: 0.00051 Val Acc.: 95.53%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">),</span> <span class="n">train_cumulative_loss</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">),</span> <span class="n">val_cumulative_loss</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation Loss&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">},</span>
+          <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> 
+
+<span class="n">all_preds</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">all_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">false_positives</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">false_negatives</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">valloader</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="c1">#.reshape(x.size()[0], 1, x.size()[1]) </span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">logits</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">(</span><span class="n">predictions</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+        
+        <span class="n">all_preds</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        <span class="n">all_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+        
+       <span class="c1"># Track false positives and false negatives</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># False Positive</span>
+                <span class="n">false_positives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">batch_idx</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> 
+            <span class="k">elif</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># False Negative</span>
+                <span class="n">false_negatives</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">batch_idx</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">preds</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> 
+
+<span class="n">conf_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">all_labels</span><span class="p">,</span> <span class="n">all_preds</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">conf_matrix</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Non-Eclipsing&quot;</span><span class="p">,</span> <span class="s2">&quot;Eclipsing&quot;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Validation Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/980baacc29d62ddda853258c4cc1876cfa7a49e41cc1608488c84019160d10d2.png" src="../_images/980baacc29d62ddda853258c4cc1876cfa7a49e41cc1608488c84019160d10d2.png" />
+<img alt="../_images/e9e295b604c2123c07aaf83bddd2cdb1af2502599d25c611b6a5b9bbaf3c264a.png" src="../_images/e9e295b604c2123c07aaf83bddd2cdb1af2502599d25c611b6a5b9bbaf3c264a.png" />
+</div>
+</div>
+<p>While the gains are modest, there is certainly improvement in reducing the number of true eclipsing targets that are labelled as non-eclipsing.</p>
+<p>The take-away from this exercise is that the use of different or complementary representations of the data can often provide additional vital information that yields a better model performance.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>The full Astronet has this structure:</p>
+<figure class="align-default" id="full-astronet">
+<a class="reference internal image-reference" href="../_images/full_astronet.png"><img alt="../_images/full_astronet.png" src="../_images/full_astronet.png" style="width: 700px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Experiment with changing the following:</span><a class="headerlink" href="#full-astronet" title="Permalink to this image">#</a></p>
+<div class="legend">
+<ul class="simple">
+<li><p>Convert this into a multi-class example, focusing only on eclipsing <span class="math notranslate nohighlight">\((**E**)\)</span> as the positive example.</p></li>
+<li><p>Handling the sample imbalances within the dataset</p></li>
+<li><p>Including other ‘views’ or auxiliary information into the classifier</p></li>
+</ul>
+</div>
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<p>There is a rich body of literature in the use of deep learning to identify the presence of transits from space-based planet-hunting missions. The following are some published papers on the topic:</p>
+<p><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2023AJ....165...95T">[1]</a> Identifying Exoplanets with Deep Learning. V. Improved Light-curve Classification for TESS Full-frame Image Observations <span id="id2">[]</span></p>
+<p><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2022AJ....163...23C">[2]</a> Identify Light-curve Signals with Deep Learning Based Object Detection Algorithm. I. Transit Detection. <span id="id3">[]</span></p>
+<p><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2022ApJ...926..120V">[3]</a> ExoMiner: A Highly Accurate and Explainable Deep Learning Classifier That Validates 301 New Exoplanets. <span id="id4">[]</span></p>
+<p><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2021AJ....161..273O">[4]</a> Identifying Planetary Transit Candidates in TESS Full-frame Image Light Curves via Convolutional Neural Networks. <span id="id5">[]</span></p>
+<p><a class="reference external" href="https://ui.adsabs.harvard.edu/abs/2018AJ....155...94S">[5]</a> Identifying Exoplanets with Deep Learning: A Five-planet Resonant Chain around Kepler-80 and an Eighth Planet around Kepler-90. <span id="id6">[]</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="transit-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Planetary Transits Part 1: <em>Observing Transits</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="transit-3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classifying-phase-folded-light-curves-with-a-convnet">Classifying Phase-Folded Light Curves with a ConvNet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-attempt-classification-using-a-global-view">A First Attempt: Classification using a Global View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-local-view">The Local View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1620 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Stellar Spectra Part 3: The Payne &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter2/spectra-3';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter2/spectra-3.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Stellar Spectra Part 4: Detecting Stellar Activity Indicators" href="spectra-4.html" />
+    <link rel="prev" title="Stellar Spectra Part 2: The Cannon" href="spectra-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201: AI in Astrophysics
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1/section_intro.html">Time-domain Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_1.html">Fitting the Global Properties of Red Giant Oscillations Part 1: Traditional Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_2.html">Fitting the Global Properties of Red Giant Oscillations Part 2: Flows &amp; Simulation-Based Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/ps_statistics.html">Power Spectrum Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_1.html">Eclipse Morphology Part 1: Exploring and Preparing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_2.html">Eclipse Morphology Part 2: Low-Dimensional Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_3.html">Eclipse Morphology Part 3: Latent Spaces and Visualizing Them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_4.html">Eclipse Morphology Part 4: The Variational Autoencoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-1.html">Planetary Transits Part 1: Observing Transits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-2.html">Planetary Transits Part 2: Classifying Transits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-3.html">Planetary Transits Part 3: Fitting a Transit Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Spectra</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sed-1.html">Spectral Energy Distribution (SED) Part 1: Observing SEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-2.html">Spectral Energy Distribution (SED) Part 2: Fitting SEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sed-3.html">Spectral Energy Distribution (SED) Part 3: Bayesian Evidence and Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-1.html">Stellar Spectra Part 1: Observing Detailed Spectral Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-4.html">Stellar Spectra Part 4: Detecting Stellar Activity Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spectra-5.html">Stellar Spectra Part 5: Domain Transfer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: Stellar Parameter Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: Mixed Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: Finding Clusters and Overdensities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html">The Physics Informed Neural Network</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter2/spectra-3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter2/spectra-3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter2/spectra-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter2/spectra-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stellar Spectra Part 3: The Payne</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architecture">Network architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-interpolation-with-the-payne">Label Interpolation with <em>The Payne</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-analysis">Sensitivity Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-chain-rule-step-by-step">Applying the Chain Rule Step-by-Step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emulation-with-the-payne">Emulation with <em>The Payne</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-emulators">Comparison between emulators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-validation-performance">Comparison of validation performance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-from-model-capacity">Overfitting from Model Capacity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stellar-spectra-part-3-the-payne">
+<span id="content-references-spectra-part3"></span><h1>Stellar Spectra Part 3: <em>The Payne</em><a class="headerlink" href="#stellar-spectra-part-3-the-payne" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>In <a class="reference internal" href="spectra-2.html#content-references-spectra-part2"><span class="std std-ref">Stellar Spectra Part 2: The Cannon</span></a>, we explored a data-driven approach to stellar parameter determination by considering the flux at each wavelength/pixel as a quadratic function of stellar labels. Here, we will explore an extension of this approach called <em>The Payne</em>, in which the flux is modeled as a general non-linear function of the stellar labels, learned using a neural network. This allows for more complex label–flux relationships to be captured.</p>
+<p>In the following, we will explore the framework of <em>The Payne</em> model based on the code and tutorial provided <a class="reference external" href="https://github.com/tingyuansen/The_Payne">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name of <em>The Payne</em> is inspired by the astronomer <a class="reference external" href="https://en.wikipedia.org/wiki/Cecilia_Payne-Gaposchkin">Cecilia Payne-Gaposchkin</a>, who is responsible for our modern understanding of the spectral sequence, and that of the chemical makeup of stars being comprised mostly of hydrogen and helium.</p>
+</div>
+<section id="network-architecture">
+<h2>Network architecture<a class="headerlink" href="#network-architecture" title="Permalink to this headline">#</a></h2>
+<p><em>The Payne</em>, at its <a class="reference external" href="https://iopscience.iop.org/article/10.3847/1538-4357/ab2331/pdf">inception</a>, deploys a simple neural network architecture comprising two fully connected layers. Mathematically, this is represented as</p>
+<div class="math notranslate nohighlight">
+\[
+f_\lambda = W^{[2]} \cdot \phi \left( W^{[1]} \, \phi \left( W^{[0]} \, \boldsymbol{\ell} + \mathbf{b}^{[0]} \right) + \mathbf{b}^{[1]} \right) + \bar{f}_\lambda,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( f_\lambda \)</span>: is the flux value at wavelength <span class="math notranslate nohighlight">\( \lambda \)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \boldsymbol{\ell} = (\ell_1, \ell_2, \ldots, \ell_k) \)</span> are the input stellar labels,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \phi(x)\)</span> is a non-linear activation function (defined as <code class="docutils literal notranslate"><span class="pre">LeakyReLU</span></code> in the implementation)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbf{w}^k_{\lambda j}, b_{\lambda j} \)</span>: weights and biases of the first hidden layer,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbf{w}^\lambda_j, \tilde{b} \)</span>: weights and bias of the second hidden layer,</p></li>
+<li><p><span class="math notranslate nohighlight">\( W^{[i]} \)</span> and <span class="math notranslate nohighlight">\( \mathbf{b}^{[i]} \)</span> are weights and biases at layer <span class="math notranslate nohighlight">\( i \)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbf{w} \)</span>: output weights,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \bar{f}_\lambda \)</span>: mean spectrum value at wavelength <span class="math notranslate nohighlight">\( \lambda \)</span>,</p></li>
+</ul>
+<p>and the Einstein summation convention is assumed over repeated indices <span class="math notranslate nohighlight">\( j \)</span> and <span class="math notranslate nohighlight">\( k \)</span>.</p>
+<figure class="align-default" id="paynemodel1">
+<a class="reference internal image-reference" href="../_images/payne.png"><img alt="../_images/payne.png" src="../_images/payne.png" style="width: 650px; height: 75px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">A schematic of a model of <em>The Payne</em>. The length of each block represents the number of neurons in that layer.</span><a class="headerlink" href="#paynemodel1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the following, we will load a pre-trained model of <em>The Payne</em>, structured as the following:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">corner</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1.inset_locator</span> <span class="kn">import</span> <span class="n">inset_axes</span><span class="p">,</span> <span class="n">mark_inset</span>
+<span class="kn">from</span> <span class="nn">The_Payne.training</span> <span class="kn">import</span> <span class="n">Payne_model</span>
+<span class="kn">from</span> <span class="nn">torchinfo</span> <span class="kn">import</span> <span class="n">summary</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter2&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">dim_in</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">num_neurons</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">num_steps</span><span class="o">=</span><span class="mf">1e4</span>
+<span class="n">num_features</span> <span class="o">=</span> <span class="mi">64</span><span class="o">*</span><span class="mi">5</span>
+<span class="n">mask_size</span><span class="o">=</span><span class="mi">11</span>
+<span class="n">num_pixel</span><span class="o">=</span><span class="mi">7214</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Payne_model</span><span class="p">(</span><span class="n">dim_in</span><span class="p">,</span> <span class="n">num_neurons</span><span class="p">,</span> <span class="n">num_features</span><span class="p">,</span> <span class="n">mask_size</span><span class="p">,</span> <span class="n">num_pixel</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim_in</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+Payne_model                              [1, 7214]                 --
+├─Sequential: 1-1                        [1, 7214]                 --
+│    └─Linear: 2-1                       [1, 300]                  7,800
+│    └─LeakyReLU: 2-2                    [1, 300]                  --
+│    └─Linear: 2-3                       [1, 300]                  90,300
+│    └─LeakyReLU: 2-4                    [1, 300]                  --
+│    └─Linear: 2-5                       [1, 7214]                 2,171,414
+==========================================================================================
+Total params: 2,269,514
+Trainable params: 2,269,514
+Non-trainable params: 0
+Total mult-adds (M): 2.27
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.06
+Params size (MB): 9.08
+Estimated Total Size (MB): 9.14
+==========================================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s begin by loading the necessary tools and utilities associated with the library. Similar to <em>The Cannon</em>, we will explore this method using data from The Apache Point Observatory Galactic Evolution Experiment (<strong>APOGEE</strong>). Recall that this will be spectra in the H-band (15200–16900 Å) with gaps between 15781-15892 Å and 16405-16510 Å.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">The_Payne</span> <span class="kn">import</span> <span class="n">utils</span>
+<span class="kn">from</span> <span class="nn">The_Payne</span> <span class="kn">import</span> <span class="n">spectral_model</span>
+<span class="kn">from</span> <span class="nn">The_Payne</span> <span class="kn">import</span> <span class="n">fitting</span>
+
+
+<span class="n">wavelength</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">load_wavelength_array</span><span class="p">()</span>  <span class="c1"># APOGEE wavelength array</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">load_apogee_mask</span><span class="p">()</span>  <span class="c1"># Mask indicating Gaps in APOGEE spectra</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because the default network comprises a simple two-layer perceptron, their weights and biases <span class="math notranslate nohighlight">\((\mathbf{w}, b)\)</span> can easily be saved and loaded as individual <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NN_coeffs</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">read_in_neural_network</span><span class="p">()</span>
+<span class="n">w_array_0</span><span class="p">,</span> <span class="n">w_array_1</span><span class="p">,</span> <span class="n">w_array_2</span><span class="p">,</span> <span class="n">b_array_0</span><span class="p">,</span> \
+<span class="n">b_array_1</span><span class="p">,</span> <span class="n">b_array_2</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">NN_coeffs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Due to this simplicity, inference from the network can simply be performed by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">inside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ij,j-&gt;i&#39;</span><span class="p">,</span> <span class="n">w_array_0</span><span class="p">,</span> <span class="n">scaled_labels</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_array_0</span>
+    <span class="n">outside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ij,j-&gt;i&#39;</span><span class="p">,</span> <span class="n">w_array_1</span><span class="p">,</span> <span class="n">leaky_relu</span><span class="p">(</span><span class="n">inside</span><span class="p">))</span> <span class="o">+</span> <span class="n">b_array_1</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ij,j-&gt;i&#39;</span><span class="p">,</span> <span class="n">w_array_2</span><span class="p">,</span> <span class="n">leaky_relu</span><span class="p">(</span><span class="n">outside</span><span class="p">))</span> <span class="o">+</span> <span class="n">b_array_2</span>
+</pre></div>
+</div>
+</section>
+<section id="label-interpolation-with-the-payne">
+<h2>Label Interpolation with <em>The Payne</em><a class="headerlink" href="#label-interpolation-with-the-payne" title="Permalink to this headline">#</a></h2>
+<p>The network accepts a vector of 26 labels comprising global stellar parameters and individual abundances.</p>
+<div class="tip admonition">
+<p class="admonition-title">Additional Free Parameters</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">RV</span></code> parameter describes <strong>radial velocity</strong> measurements, which simply serve to shift the observed spectrum’s wavelengths to the laboratory rest frame or vice versa.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Vturb</span></code> parameter measures <strong>microturbulence</strong>, or small-scale turbulent motion in the stellar atmosphere. This effect broadens strong (saturated) spectral lines and is treated as a free parameter to match line depths.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Vmacro</span></code> parameter measures <strong>macroturbulence</strong>, large-scale photospheric turbulence. This effect primarily broadens weak and moderate spectral lines.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">C12/C13</span></code> parameter is the <strong>Carbon Isotopic Ratio</strong>, which traces internal mixing and can be a proxy for stellar evolution. This parameter affects molecular bands, like CN and CO.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Teff&quot;</span><span class="p">,</span> <span class="s2">&quot;Logg&quot;</span><span class="p">,</span> <span class="s2">&quot;Vturb&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[C/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[N/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[O/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Na/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Mg/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[Al/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Si/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[P/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[S/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[K/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[Ca/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Ti/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[V/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Cr/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Mn/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;[Fe/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Co/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Ni/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Cu/H]&quot;</span><span class="p">,</span> <span class="s2">&quot;[Ge/H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;C12/C13&quot;</span><span class="p">,</span> <span class="s2">&quot;Vmacro&quot;</span><span class="p">,</span> <span class="s2">&quot;RV&quot;</span>
+<span class="p">]</span>
+
+<span class="n">labels</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">5770</span><span class="p">,</span> <span class="mf">4.04</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span>\
+            <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>\
+            <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>\
+            <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>\
+            <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span>\
+            <span class="mf">90.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">real_label_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">label_names</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vary_label</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="n">label_to_vary</span> <span class="o">=</span> <span class="n">label_names</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">x_max</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">xval</span> <span class="ow">in</span> <span class="n">x_range</span><span class="p">:</span>
+        <span class="n">label_dict</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">real_label_dict</span><span class="p">)</span>
+        <span class="n">label_dict</span><span class="p">[</span><span class="n">label_to_vary</span><span class="p">]</span> <span class="o">=</span> <span class="n">xval</span>
+        <span class="n">label_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">label_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">label_names</span><span class="p">])</span>
+        <span class="n">label_array</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">label_array</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+
+        <span class="c1"># Generate model spectrum</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">spectral_model</span><span class="o">.</span><span class="n">get_spectrum_from_neural_net</span><span class="p">(</span>
+            <span class="n">scaled_labels</span><span class="o">=</span><span class="n">label_array</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">NN_coeffs</span><span class="o">=</span><span class="n">NN_coeffs</span><span class="p">)</span>
+        <span class="n">spec</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">doppler_shift</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">label_array</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label_to_vary</span><span class="si">}</span><span class="s2">= </span><span class="si">{</span><span class="n">xval</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> dex&quot;</span><span class="p">)</span>
+        
+    <span class="n">lambda_min</span><span class="p">,</span> <span class="n">lambda_max</span> <span class="o">=</span> <span class="mi">16000</span><span class="p">,</span> <span class="mi">16150</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">lambda_min</span><span class="p">,</span> <span class="n">lambda_max</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">vary_label</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/83d8e5e71d179e4203a76080f9013738b52f3dc6487833a063665f368a6c6b9e.png" src="../_images/83d8e5e71d179e4203a76080f9013738b52f3dc6487833a063665f368a6c6b9e.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Finding particular spectral lines</p>
+<p>Vary the labels using the index <code class="docutils literal notranslate"><span class="pre">idx</span></code> above. Can you identify which elements are primarily responsible for:</p>
+<ul class="simple">
+<li><p>The absorption line at <span class="math notranslate nohighlight">\(\sim16010\)</span> Å?</p></li>
+<li><p>The absorption line at <span class="math notranslate nohighlight">\(\sim16100\)</span> Å?</p></li>
+</ul>
+</div>
+</section>
+<section id="sensitivity-analysis">
+<h2>Sensitivity Analysis<a class="headerlink" href="#sensitivity-analysis" title="Permalink to this headline">#</a></h2>
+<p>The simple form of <em>The Payne</em> allows us to manually calculate the sensitivity of the predicted flux <span class="math notranslate nohighlight">\(f_{\lambda}\)</span> to input labels <span class="math notranslate nohighlight">\(\boldsymbol{\ell}\)</span>. To first order, this can be done by examining first derivatives by computing the Jacobian matrix:</p>
+<div class="math notranslate nohighlight">
+\[
+J_{\lambda j} = \frac{\partial f_\lambda}{\partial \ell_j}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( f_\lambda \)</span>: model-predicted flux at wavelength <span class="math notranslate nohighlight">\( \lambda \)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\( \ell_j \)</span>: input label (scaled),</p></li>
+<li><p><span class="math notranslate nohighlight">\( J \in \mathbb{R}^{N_{\text{wavelengths}} \times N_{\text{labels}}} \)</span>.</p></li>
+</ul>
+<p>The quantity <span class="math notranslate nohighlight">\(\frac{\partial f_\lambda}{\partial \ell_j}\)</span> can be determined by manually applying the chain rule through the layers of a 2-layer neural network.</p>
+<p>Given input label vector <span class="math notranslate nohighlight">\( \boldsymbol{\ell} \in \mathbb{R}^L \)</span>, the forward pass is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{z}^{[1]} &amp;= W^{[0]} \boldsymbol{\ell} + \mathbf{b}^{[0]} \\
+\mathbf{a}^{[1]} &amp;= \phi(\mathbf{z}^{[1]}) \\
+\mathbf{z}^{[2]} &amp;= W^{[1]} \mathbf{a}^{[1]} + \mathbf{b}^{[1]} \\
+\mathbf{a}^{[2]} &amp;= \phi(\mathbf{z}^{[2]}) \\
+\mathbf{f} &amp;= W^{[2]} \mathbf{a}^{[2]} + \mathbf{b}^{[2]}
+\end{aligned}
+\end{split}\]</div>
+<p>As before:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \phi \)</span> is Leaky ReLU,</p></li>
+<li><p><span class="math notranslate nohighlight">\( W^{[i]} \)</span> and <span class="math notranslate nohighlight">\( \mathbf{b}^{[i]} \)</span> are weights and biases at layer <span class="math notranslate nohighlight">\( i \)</span>.</p></li>
+</ul>
+<hr class="docutils" />
+<section id="applying-the-chain-rule-step-by-step">
+<h3>Applying the Chain Rule Step-by-Step<a class="headerlink" href="#applying-the-chain-rule-step-by-step" title="Permalink to this headline">#</a></h3>
+<p>For each label <span class="math notranslate nohighlight">\( \ell_j \)</span>, compute the gradient of the output flux <span class="math notranslate nohighlight">\(f_{\lambda}\)</span> with respect to that label.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial f_\lambda}{\partial \ell_j} = \sum_k W^{[2]}_{\lambda k} \cdot \frac{\partial a_k^{[2]}}{\partial \ell_j}
+\]</div>
+<p>To obtain <span class="math notranslate nohighlight">\(\frac{\partial a_k^{[2]}}{\partial \ell_j}\)</span>, see that:</p>
+<div class="math notranslate nohighlight">
+\[
+\quad
+\frac{\partial a_k^{[2]}}{\partial \ell_j} = \phi'(z_k^{[2]}) \cdot \frac{\partial z_k^{[2]}}{\partial \ell_j}
+\quad \text{and} \quad
+\frac{\partial z_k^{[2]}}{\partial \ell_j} = \sum_m W^{[1]}_{k m} \cdot \frac{\partial a_m^{[1]}}{\partial \ell_j}
+\]</div>
+<p>Then for <span class="math notranslate nohighlight">\(\frac{\partial a_m^{[1]}}{\partial \ell_j}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial a_m^{[1]}}{\partial \ell_j} = \phi'(z_m^{[1]}) \cdot W^{[0]}_{m j}
+\quad \text{, where} \quad
+\frac{\partial z_m^{[1]}}{\partial \ell_j} = W^{[0]}_{m j}
+\]</div>
+<p>Putting it all together:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{\partial f_\lambda}{\partial \ell_j} =
+\sum_{k, m}
+W^{[2]}_{\lambda k} \cdot \phi'(z_k^{[2]}) \cdot W^{[1]}_{k m} \cdot \phi'(z_m^{[1]}) \cdot W^{[0]}_{m j}
+}
+\]</div>
+<hr class="docutils" />
+<p>This gives the sensitivity of each output flux to each input label in a fully connected feed-forward network with two hidden layers. This can be implemented by the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">leaky_relu</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">leaky_relu_deriv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">jacobian</span><span class="p">(</span><span class="n">scaled_labels</span><span class="p">,</span> <span class="n">NN_coeffs</span><span class="p">):</span>
+    <span class="n">w0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">NN_coeffs</span>
+
+    <span class="c1"># Forward pass</span>
+    <span class="n">z1</span> <span class="o">=</span> <span class="n">w0</span> <span class="o">@</span> <span class="n">scaled_labels</span> <span class="o">+</span> <span class="n">b0</span>            <span class="c1"># shape (H1,)</span>
+    <span class="n">a1</span> <span class="o">=</span> <span class="n">leaky_relu</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span>                     <span class="c1"># shape (H1,)</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">@</span> <span class="n">a1</span> <span class="o">+</span> <span class="n">b1</span>                       <span class="c1"># shape (H2,)</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="n">leaky_relu</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>                     <span class="c1"># shape (H2,)</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">w2</span> <span class="o">@</span> <span class="n">a2</span> <span class="o">+</span> <span class="n">b2</span>                 <span class="c1"># shape (N,)</span>
+
+    <span class="c1"># Backward pass (Jacobian), note that N is number of wavelength bins, L is number of labels</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">scaled_labels</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
+    <span class="n">H1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span>
+    <span class="n">H2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">L</span><span class="p">))</span>                    
+
+    <span class="c1"># Derivatives</span>
+    <span class="n">da2_dz2</span> <span class="o">=</span> <span class="n">leaky_relu_deriv</span><span class="p">(</span><span class="n">z2</span><span class="p">)</span>          <span class="c1"># shape (H2,)</span>
+    <span class="n">da1_dz1</span> <span class="o">=</span> <span class="n">leaky_relu_deriv</span><span class="p">(</span><span class="n">z1</span><span class="p">)</span>          <span class="c1"># shape (H1,)</span>
+
+    <span class="c1"># Chain rule</span>
+    <span class="k">for</span> <span class="n">elle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>  <span class="c1"># for each label</span>
+        <span class="c1"># ∂z1/∂ℓ_j = w0[:, j]                 → shape (H1,)</span>
+        <span class="n">dz1_dl</span> <span class="o">=</span> <span class="n">w0</span><span class="p">[:,</span> <span class="n">elle</span><span class="p">]</span>
+        <span class="n">da1_dl</span> <span class="o">=</span> <span class="n">da1_dz1</span> <span class="o">*</span> <span class="n">dz1_dl</span>                 <span class="c1"># shape (H1,)</span>
+        <span class="n">dz2_dl</span> <span class="o">=</span> <span class="p">(</span><span class="n">w1</span> <span class="o">@</span> <span class="n">da1_dl</span><span class="p">)</span>                    <span class="c1"># shape (H2,)</span>
+        <span class="n">da2_dl</span> <span class="o">=</span> <span class="n">da2_dz2</span> <span class="o">*</span> <span class="n">dz2_dl</span>                 <span class="c1"># shape (H2,)</span>
+        <span class="n">J</span><span class="p">[:,</span> <span class="n">elle</span><span class="p">]</span> <span class="o">=</span> <span class="n">w2</span> <span class="o">@</span> <span class="n">da2_dl</span>                  <span class="c1"># shape (N,)</span>
+
+    <span class="k">return</span> <span class="n">J</span>  <span class="c1"># shape (N_wavelengths, N_labels)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Python operator for matrix multiplication</p>
+<p><code class="docutils literal notranslate"><span class="pre">np.einsum('ij,j-&gt;i',</span> <span class="pre">A,</span> <span class="pre">x)</span></code> performs a matrix–vector multiplication, by computing the dot product of each row of matrix A with vector x. It is equivalent to <code class="docutils literal notranslate"><span class="pre">np.dot(A,x)</span></code> and <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&#64;</span> <span class="pre">x</span></code> in this scenario.</p>
+</div>
+<p>Let’s visualize the sensitivity of <em>The Payne</em>’s prediction from our previous example. It should be much easier to observe which lines are sensitive to which element now!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">vary_label</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+<span class="n">jay</span> <span class="o">=</span> <span class="n">jacobian</span><span class="p">(</span><span class="n">scaled_labels</span><span class="o">=</span><span class="p">((</span><span class="n">labels</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">),</span> 
+               <span class="n">NN_coeffs</span><span class="o">=</span><span class="n">NN_coeffs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="mf">1.15</span><span class="o">+</span><span class="n">jay</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sensitivity&#39;</span><span class="p">)</span>  <span class="c1"># Add with 1 to scale it to the spectrum</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/32569a4699d085b85e83a4f6247608aba218087b83553163e5d78fcf9f7eb6f6.png" src="../_images/32569a4699d085b85e83a4f6247608aba218087b83553163e5d78fcf9f7eb6f6.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="emulation-with-the-payne">
+<h2>Emulation with <em>The Payne</em><a class="headerlink" href="#emulation-with-the-payne" title="Permalink to this headline">#</a></h2>
+<p>As a generative model (i.e., an emulator), <em>The Payne</em> infers stellar parameters and chemical abundances by fitting emulated spectra to observed data. In this codebase, the fitting process is performed using <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization, aiming to match the predicted flux to the observed data across all wavelengths.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><span class="math notranslate nohighlight">\(\chi^2\)</span> minimization is the default technique used to infer stellar parameters and abundances in this implementation of <em>The Payne</em>. This procedure jointly optimizes all labels in a single pass. In contrast, the APOGEE pipeline (<em>ASPCAP</em>: <a class="reference external" href="https://iopscience.iop.org/article/10.3847/0004-6256/151/6/144/pdf">The APOGEE Stellar Parameter and Chemical Abundances Pipeline</a>) performs the label inference in multiple stages, first determining stellar parameters and then deriving individual element abundances in a more <strong>iterative</strong> fashion.</p>
+<p>Although <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization is used here, <em>The Payne</em>’s formulation as a fast forward model makes it naturally compatible with <strong>Bayesian inference</strong> techniques, including sampling-based methods such as <strong>Markov Chain Monte Carlo (MCMC)</strong> as discussed in <a class="reference internal" href="../chapter1/transit-3.html#content-references-transits-part3"><span class="std std-ref">Planetary Transits Part 3: Fitting a Transit Profile</span></a>.</p>
+</div>
+<p>Let’s examine the emulation of the approach on some validation data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_labels</span><span class="p">,</span> <span class="n">training_spectra</span><span class="p">,</span> \
+<span class="n">validation_labels</span><span class="p">,</span> <span class="n">validation_spectra</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">load_training_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fitting function returns the best fit (<code class="docutils literal notranslate"><span class="pre">popt</span></code>), the error (<code class="docutils literal notranslate"><span class="pre">pstd</span></code>) as the square root of the diagonal of the covariance matrix, and the emulated spectrum of the best fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">popt</span><span class="p">,</span> <span class="n">pstd</span><span class="p">,</span> <span class="n">model_spec</span> <span class="o">=</span> <span class="n">fitting</span><span class="o">.</span><span class="n">fit_normalized_spectrum_single_star_model</span><span class="p">(</span>\
+                                <span class="n">norm_spec</span> <span class="o">=</span> <span class="n">validation_spectra</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">spec_err</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">)),</span>\
+                                <span class="n">NN_coeffs</span> <span class="o">=</span> <span class="n">NN_coeffs</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="n">wavelength</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">p0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">validation_spectra</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test Spectrum&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">model_spec</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Emulated Spectrum&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    
+<span class="n">lambda_min</span><span class="p">,</span> <span class="n">lambda_max</span> <span class="o">=</span> <span class="mi">16000</span><span class="p">,</span> <span class="mi">16150</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.075</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">validation_spectra</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-</span> <span class="n">model_spec</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Test - Emulated&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">lambda_min</span><span class="p">,</span> <span class="n">lambda_max</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]];</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;Label&quot;</span><span class="p">:</span> <span class="n">label_names</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;Predicted&quot;</span><span class="p">:</span> <span class="n">popt</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s2">&quot;True&quot;</span><span class="p">:</span> <span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+    <span class="s2">&quot;Residual&quot;</span><span class="p">:</span> <span class="n">popt</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="p">})</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/50e3919ad80d8f333065bfa80ededdcc1115ec06a9c1b73e3552e0142ec7f343.png" src="../_images/50e3919ad80d8f333065bfa80ededdcc1115ec06a9c1b73e3552e0142ec7f343.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Label</th>
+      <th>Predicted</th>
+      <th>True</th>
+      <th>Residual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Teff</td>
+      <td>3554.4931</td>
+      <td>3562.0000</td>
+      <td>-7.5069</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Logg</td>
+      <td>1.2350</td>
+      <td>1.3500</td>
+      <td>-0.1150</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Vturb</td>
+      <td>1.1516</td>
+      <td>1.1884</td>
+      <td>-0.0368</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[C/H]</td>
+      <td>-0.2069</td>
+      <td>-0.1422</td>
+      <td>-0.0647</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[N/H]</td>
+      <td>-0.5379</td>
+      <td>-0.6043</td>
+      <td>0.0664</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>[O/H]</td>
+      <td>-0.0197</td>
+      <td>-0.0053</td>
+      <td>-0.0144</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>[Na/H]</td>
+      <td>-0.7514</td>
+      <td>-0.6460</td>
+      <td>-0.1053</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>[Mg/H]</td>
+      <td>-0.1876</td>
+      <td>-0.1947</td>
+      <td>0.0071</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>[Al/H]</td>
+      <td>-0.2436</td>
+      <td>-0.2255</td>
+      <td>-0.0181</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>[Si/H]</td>
+      <td>-0.2321</td>
+      <td>-0.2263</td>
+      <td>-0.0059</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>[P/H]</td>
+      <td>-0.0123</td>
+      <td>-0.5393</td>
+      <td>0.5270</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>[S/H]</td>
+      <td>-0.2690</td>
+      <td>-0.4264</td>
+      <td>0.1574</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>[K/H]</td>
+      <td>-0.8844</td>
+      <td>-0.6517</td>
+      <td>-0.2326</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>[Ca/H]</td>
+      <td>-0.2096</td>
+      <td>-0.2346</td>
+      <td>0.0250</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>[Ti/H]</td>
+      <td>-0.1624</td>
+      <td>-0.1012</td>
+      <td>-0.0612</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>[V/H]</td>
+      <td>-1.4062</td>
+      <td>-1.1934</td>
+      <td>-0.2128</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>[Cr/H]</td>
+      <td>-0.5072</td>
+      <td>-0.5536</td>
+      <td>0.0464</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>[Mn/H]</td>
+      <td>-0.2191</td>
+      <td>-0.2091</td>
+      <td>-0.0099</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>[Fe/H]</td>
+      <td>-0.3324</td>
+      <td>-0.3137</td>
+      <td>-0.0187</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>[Co/H]</td>
+      <td>-0.3848</td>
+      <td>-0.4150</td>
+      <td>0.0301</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>[Ni/H]</td>
+      <td>-0.3418</td>
+      <td>-0.3178</td>
+      <td>-0.0240</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>[Cu/H]</td>
+      <td>-0.2838</td>
+      <td>-0.2079</td>
+      <td>-0.0759</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>[Ge/H]</td>
+      <td>-0.6479</td>
+      <td>-0.8001</td>
+      <td>0.1522</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>C12/C13</td>
+      <td>8.8131</td>
+      <td>8.6067</td>
+      <td>0.2065</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Vmacro</td>
+      <td>25.5682</td>
+      <td>25.9019</td>
+      <td>-0.3336</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Understandably, the method performs well on data of similar quality.</p>
+</section>
+<section id="comparison-between-emulators">
+<h2>Comparison between emulators<a class="headerlink" href="#comparison-between-emulators" title="Permalink to this headline">#</a></h2>
+<p>Let’s compare the predictive properties of the <em>The Cannon</em> versus <em>The Payne</em>, predicting only on <span class="math notranslate nohighlight">\(T_{\mathrm{eff}}\)</span>, <span class="math notranslate nohighlight">\(\log\)</span> (g), and [Fe/H]. First let us train a model of <em>The Cannon</em>, drawing from the methods outlined in the previous section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TheCannon</span> <span class="kn">import</span> <span class="n">dataset</span>
+
+<span class="c1">## Initialize a Dataset using the training and validation spectra ##</span>
+<span class="n">ds_payne</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">training_labels</span><span class="p">)),</span>
+                           <span class="n">training_spectra</span><span class="p">,</span> <span class="mi">40000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">training_spectra</span><span class="p">),</span> <span class="n">training_labels</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]],</span>
+                     <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_labels</span><span class="p">)),</span> <span class="n">validation_spectra</span><span class="p">,</span> <span class="mi">40000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">validation_spectra</span><span class="p">))</span>
+<span class="n">ds_payne</span><span class="o">.</span><span class="n">set_label_names</span><span class="p">([</span><span class="s1">&#39;T_</span><span class="si">{eff}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;\log g&#39;</span><span class="p">,</span> <span class="s1">&#39;[Fe/H]&#39;</span><span class="p">])</span>
+
+<span class="c1">## Determine pseudo-continuum ##</span>
+<span class="n">pseudo_tr_flux</span><span class="p">,</span> <span class="n">pseudo_tr_ivar</span> <span class="o">=</span> <span class="n">ds_payne</span><span class="o">.</span><span class="n">continuum_normalize_training_q</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span> <span class="n">delta_lambda</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+                                                                  <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1">## Make a continuum mask, fit continuum, and normalize spectra ##</span>
+<span class="n">contmask</span> <span class="o">=</span> <span class="n">ds_payne</span><span class="o">.</span><span class="n">make_contmask</span><span class="p">(</span><span class="n">pseudo_tr_flux</span><span class="p">,</span> <span class="n">pseudo_tr_ivar</span><span class="p">,</span> <span class="n">frac</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
+<span class="n">ds_payne</span><span class="o">.</span><span class="n">set_continuum</span><span class="p">(</span><span class="n">contmask</span><span class="p">)</span>
+<span class="n">cont</span> <span class="o">=</span> <span class="n">ds_payne</span><span class="o">.</span><span class="n">fit_continuum</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;chebyshev&quot;</span><span class="p">)</span> 
+<span class="n">norm_train_flux</span><span class="p">,</span> <span class="n">norm_train_ivar</span><span class="p">,</span> <span class="n">norm_test_flux</span><span class="p">,</span> <span class="n">norm_test_ivar</span> <span class="o">=</span> <span class="n">ds_payne</span><span class="o">.</span><span class="n">continuum_normalize</span><span class="p">(</span><span class="n">cont</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading dataset
+This may take a while...
+Continuum normalizing the tr set using running quantile...
+##########################################################
+@Bo Zhang: you will use only 1 process ...
+           i.e., the original TheCannon version
+##########################################################
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TheCannon</span> <span class="kn">import</span> <span class="n">model</span>
+
+<span class="c1">## Training The Cannon ##</span>
+
+<span class="n">md</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">CannonModel</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">md</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds_payne</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done training model. 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, let’s train a model of <em>The Payne</em> using the same training spectra used to train <em>The Cannon</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">The_Payne</span> <span class="kn">import</span> <span class="n">training</span>
+
+<span class="c1">## Training The Payne ##</span>
+
+<span class="n">training</span><span class="o">.</span><span class="n">neural_net</span><span class="p">(</span><span class="n">training_labels</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]],</span> <span class="n">training_spectra</span><span class="p">,</span>\
+                    <span class="n">validation_labels</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]],</span> <span class="n">validation_spectra</span><span class="p">,</span>\
+                    <span class="n">num_neurons</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>\
+                    <span class="n">num_steps</span><span class="o">=</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="comparison-of-validation-performance">
+<h3>Comparison of validation performance<a class="headerlink" href="#comparison-of-validation-performance" title="Permalink to this headline">#</a></h3>
+<p>Let’s first see the performance from <em>The Cannon</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">errs</span><span class="p">,</span> <span class="n">chisq</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">infer_labels</span><span class="p">(</span><span class="n">ds_payne</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inferring Labels
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3300</span><span class="p">,</span> <span class="mi">8250</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]</span>
+<span class="n">plot_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$T_{\mathrm</span><span class="si">{eff}</span><span class="s1">} (K)$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\log$ (g) (dex)&#39;</span><span class="p">,</span> <span class="s1">&#39;[Fe/H] (dex)&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axlist</span><span class="p">):</span>   
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">validation_labels</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][:,</span><span class="n">i</span><span class="p">],</span> <span class="n">ds_payne</span><span class="o">.</span><span class="n">test_label_vals</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+               <span class="n">s</span><span class="o">=</span><span class="n">chisq</span><span class="o">/</span><span class="mf">250.</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Scaled with $</span><span class="se">\\</span><span class="s1">chi^2$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pred </span><span class="si">{</span><span class="n">plot_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;True </span><span class="si">{</span><span class="n">plot_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;The Cannon Validation Performance&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/623ff1043fabf3075566766c2a5c57bb889aa477ba2d0319924014012d3005fc.png" src="../_images/623ff1043fabf3075566766c2a5c57bb889aa477ba2d0319924014012d3005fc.png" />
+</div>
+</div>
+<p>While we find reasonable agreement with the ground truth, there is a clear population of outliers for which the spectra predicted by <em>The Cannon</em> is strongly discrepant (high <span class="math notranslate nohighlight">\(\chi^2\)</span>). Let’s view several of these.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">md</span><span class="o">.</span><span class="n">infer_spectra</span><span class="p">(</span><span class="n">ds_payne</span><span class="p">)</span>
+<span class="n">pred_flux</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">model_spectra</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+<span class="n">idxes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">chisq</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span> 
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">idxes</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">1.075</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">1.095</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">1.075</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="n">ax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">idxes</span><span class="p">,</span><span class="n">axlist</span><span class="p">)):</span>
+    <span class="n">plot_flux</span> <span class="o">=</span> <span class="n">norm_test_flux</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">plot_flux</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">norm_test_ivar</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span> <span class="n">plot_flux</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">[</span><span class="n">cond</span><span class="p">],</span> <span class="n">pred_flux</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">cond</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;The Cannon</span><span class="se">\n</span><span class="s1">Predicted Spectrum&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">15500</span><span class="p">,</span> <span class="mi">15650</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axlist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">chi^2$: </span><span class="si">{</span><span class="n">chisq</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">; True Params: (</span><span class="si">{</span><span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> K, </span><span class="si">{</span><span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> dex, </span><span class="si">{</span><span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> dex)&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6ac80635c99e13d9097dad8a49304152c03094e7e4595c00aea521b09a072320.png" src="../_images/6ac80635c99e13d9097dad8a49304152c03094e7e4595c00aea521b09a072320.png" />
+</div>
+</div>
+<p>The low temperatures of the stars, combined with our visual inspection of the reconstruction fidelity, suggests that the method struggles with complex spectra, dense with many spectral lines. This was previously seen in <a class="reference internal" href="spectra-2.html#content-references-spectra-part2"><span class="std std-ref">Stellar Spectra Part 2: The Cannon</span></a> as well!</p>
+<p>Now let’s see <em>The Payne</em>’s performance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Loading in The Payne weights from the training session ##</span>
+
+<span class="n">saved_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/NN_normalized_spectra.npz&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">saved_weights</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="nb">globals</span><span class="p">()[</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_trained&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">saved_weights</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> 
+<span class="n">NN_coeffs_trained</span> <span class="o">=</span> <span class="n">w_array_0_trained</span><span class="p">,</span> <span class="n">w_array_1_trained</span><span class="p">,</span>\
+             <span class="n">w_array_2_trained</span> <span class="p">,</span> <span class="n">b_array_0_trained</span><span class="p">,</span>\
+             <span class="n">b_array_1_trained</span><span class="p">,</span> <span class="n">b_array_2_trained</span><span class="p">,</span> <span class="n">x_min_trained</span><span class="p">,</span>\
+             <span class="n">x_max_trained</span>
+
+<span class="c1">## Running predictions over the validation set with The Payne ##</span>
+
+<span class="n">payne_val_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">validation_spectra</span><span class="p">)):</span>
+    <span class="n">popt</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fitting</span><span class="o">.</span><span class="n">fit_normalized_spectrum_single_star_model</span><span class="p">(</span>\
+                                    <span class="n">norm_spec</span> <span class="o">=</span> <span class="n">validation_spectra</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">spec_err</span> <span class="o">=</span> <span class="mf">1e-2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">wavelength</span><span class="p">)),</span>\
+                                    <span class="n">NN_coeffs</span> <span class="o">=</span> <span class="n">NN_coeffs_trained</span><span class="p">,</span> <span class="n">wavelength</span> <span class="o">=</span> <span class="n">wavelength</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">p0</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">payne_val_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">popt</span><span class="p">)</span>
+<span class="n">payne_val_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">payne_val_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+<span class="n">bounds</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3300</span><span class="p">,</span> <span class="mi">8250</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]]</span>
+<span class="n">plot_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$T_{\mathrm</span><span class="si">{eff}</span><span class="s1">} (K)$&#39;</span><span class="p">,</span> <span class="s1">&#39;$\log$ (g) (dex)&#39;</span><span class="p">,</span> <span class="s1">&#39;[Fe/H] (dex)&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axlist</span><span class="p">):</span>   
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">validation_labels</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][:,</span><span class="n">i</span><span class="p">],</span> <span class="n">payne_val_labels</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Scaled with $</span><span class="se">\\</span><span class="s1">chi^2$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">bounds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pred </span><span class="si">{</span><span class="n">plot_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;True </span><span class="si">{</span><span class="n">plot_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;The Payne Validation Performance&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/922ba64c6137ee9e486859194ebb8d54d14bc6e8e3db5cf9b6e5c3e86ec52fd5.png" src="../_images/922ba64c6137ee9e486859194ebb8d54d14bc6e8e3db5cf9b6e5c3e86ec52fd5.png" />
+</div>
+</div>
+<p><em>The Payne</em> provides a much better one-to-one agreement with the validation labels, even at low temperatures. Let’s take a look at how well it reconstructs the same examples for which <em>The Cannon</em>’s predictions were highly discrepant.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">311</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">312</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">313</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]</span>
+<span class="n">idxes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">chisq</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span> 
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">idxes</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">1.075</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">1.095</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">1.075</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">idx</span><span class="p">,</span><span class="n">ax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">idxes</span><span class="p">,</span><span class="n">axlist</span><span class="p">)):</span>
+    <span class="n">plot_flux</span> <span class="o">=</span> <span class="n">norm_test_flux</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">pred_labels</span> <span class="o">=</span> <span class="n">payne_val_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">pred_scaled_labels</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred_labels</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="o">-</span> <span class="n">x_min_trained</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x_max_trained</span> <span class="o">-</span> <span class="n">x_min_trained</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> 
+    <span class="n">pred_spec</span> <span class="o">=</span> <span class="n">spectral_model</span><span class="o">.</span><span class="n">get_spectrum_from_neural_net</span><span class="p">(</span>
+            <span class="n">scaled_labels</span><span class="o">=</span><span class="n">pred_scaled_labels</span><span class="p">,</span> <span class="n">NN_coeffs</span><span class="o">=</span><span class="n">NN_coeffs_trained</span><span class="p">)</span>
+    <span class="n">pred_spec</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">doppler_shift</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">pred_spec</span><span class="p">,</span> <span class="n">pred_labels</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">plot_flux</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">i</span><span class="p">)),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength</span><span class="p">,</span> <span class="n">pred_spec</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;The Payne</span><span class="se">\n</span><span class="s1">Predicted Spectrum&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">15500</span><span class="p">,</span> <span class="mi">15650</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">axlist</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength ($\AA$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.06</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;True Params: (</span><span class="si">{</span><span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> K, </span><span class="si">{</span><span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> dex, </span><span class="si">{</span><span class="n">validation_labels</span><span class="p">[</span><span class="n">idx</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">18</span><span class="p">]][</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> dex)&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/213a14133010090f33a1f065dc49f0f3b69809873f6c96e1f30eab392f9de0a2.png" src="../_images/213a14133010090f33a1f065dc49f0f3b69809873f6c96e1f30eab392f9de0a2.png" />
+</div>
+</div>
+<p>The greater flexibility of <em>The Payne</em> naturally allows per-pixel flux variations to be modeled and reconstructed with higher fidelity.</p>
+</section>
+</section>
+<section id="overfitting-from-model-capacity">
+<h2>Overfitting from Model Capacity<a class="headerlink" href="#overfitting-from-model-capacity" title="Permalink to this headline">#</a></h2>
+<p>Given this increased flexibility of <em>The Payne</em> over <em>The Cannon</em>, is the method more prone to overfitting? Let’s have a cursory analysis from the in-built tools from each repository.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span> <span class="k">as</span> <span class="n">opt</span>
+<span class="kn">from</span> <span class="nn">TheCannon.infer_labels</span> <span class="kn">import</span> <span class="n">_func</span><span class="p">,</span> <span class="n">_get_lvec</span>
+
+<span class="c1">## Hacky way of getting chisq for both training and validation set from the repo ##</span>
+
+<span class="k">def</span> <span class="nf">cannon_infer_labels</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">input_flux</span><span class="p">,</span> <span class="n">input_ivars</span><span class="p">):</span>
+    <span class="n">coeffs_all</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coeffs</span>
+    <span class="n">scatters</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">scatters</span>
+    <span class="n">nlabels</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">get_plotting_labels</span><span class="p">())</span>
+    <span class="n">fluxes</span> <span class="o">=</span> <span class="n">input_flux</span>
+    <span class="n">ivars</span> <span class="o">=</span> <span class="n">input_ivars</span>
+    <span class="n">nstars</span> <span class="o">=</span> <span class="n">fluxes</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">labels_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nstars</span><span class="p">,</span> <span class="n">nlabels</span><span class="p">))</span>
+    <span class="n">MCM_rotate_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nstars</span><span class="p">,</span> <span class="n">coeffs_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                               <span class="n">coeffs_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">errs_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nstars</span><span class="p">,</span> <span class="n">nlabels</span><span class="p">))</span>
+    <span class="n">chisq_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nstars</span><span class="p">)</span>
+    <span class="n">scales</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">scales</span>
+
+    <span class="n">starting_guess</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nlabels</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nstars</span><span class="p">):</span>
+        <span class="n">flux</span> <span class="o">=</span> <span class="n">fluxes</span><span class="p">[</span><span class="n">jj</span><span class="p">,:]</span>
+        <span class="n">ivar</span> <span class="o">=</span> <span class="n">ivars</span><span class="p">[</span><span class="n">jj</span><span class="p">,:]</span>
+
+        <span class="c1"># where the ivar == 0, set the normalized flux to 1 and the sigma to 100</span>
+        <span class="n">bad</span> <span class="o">=</span> <span class="n">ivar</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">flux</span><span class="p">[</span><span class="n">bad</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">ivar</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="mf">100.0</span>
+        <span class="n">sigma</span><span class="p">[</span><span class="o">~</span><span class="n">bad</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">ivar</span><span class="p">[</span><span class="o">~</span><span class="n">bad</span><span class="p">])</span>
+
+        <span class="n">flux_piv</span> <span class="o">=</span> <span class="n">flux</span> <span class="o">-</span> <span class="n">coeffs_all</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1.</span>  <span class="c1"># pivot around the leading term</span>
+        <span class="n">errbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">scatters</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">coeffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">coeffs_all</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># take pivot into account</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">labels</span><span class="p">,</span> <span class="n">covs</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">_func</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">,</span> <span class="n">flux_piv</span><span class="p">,</span>
+                                         <span class="n">p0</span> <span class="o">=</span> <span class="n">starting_guess</span><span class="p">,</span>
+                                         <span class="n">sigma</span><span class="o">=</span><span class="n">errbar</span><span class="p">,</span> <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error - curve_fit failed&quot;</span><span class="p">)</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">starting_guess</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">-</span><span class="mf">9999.</span>
+            <span class="n">covs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">starting_guess</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">starting_guess</span><span class="p">)))</span><span class="o">-</span><span class="mf">9999.</span>
+        <span class="n">chi2</span> <span class="o">=</span> <span class="p">(</span><span class="n">flux_piv</span><span class="o">-</span><span class="n">_func</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="o">*</span><span class="n">labels</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">ivar</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">ivar</span> <span class="o">*</span> <span class="n">scatters</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">chisq_all</span><span class="p">[</span><span class="n">jj</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">chi2</span><span class="p">)</span>
+        <span class="n">labels_all</span><span class="p">[</span><span class="n">jj</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">scales</span> <span class="o">*</span> <span class="n">labels</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">pivots</span>
+        <span class="n">errs_all</span><span class="p">[</span><span class="n">jj</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">covs</span><span class="o">.</span><span class="n">diagonal</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">labels_all</span><span class="p">,</span> <span class="n">chisq_all</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">train_chisq</span> <span class="o">=</span> <span class="n">cannon_infer_labels</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="n">ds_payne</span><span class="p">,</span> 
+                                                    <span class="n">training_spectra</span><span class="p">,</span> <span class="mi">40000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">training_spectra</span><span class="p">))</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">val_chisq</span> <span class="o">=</span> <span class="n">cannon_infer_labels</span><span class="p">(</span><span class="n">md</span><span class="p">,</span> <span class="n">ds_payne</span><span class="p">,</span> <span class="n">validation_spectra</span><span class="p">,</span> <span class="mi">40000</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">validation_spectra</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;The Cannon Training Properties&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">train_chisq</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">val_chisq</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Validation&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">framealpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">log_</span><span class="si">{10}</span><span class="s1"> </span><span class="se">\\</span><span class="s1">chi^2 $&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/1efd5a7066ae0f33224c45057c4da136253be7d7474b2ea47cbc390822520b3a.png" src="../_images/1efd5a7066ae0f33224c45057c4da136253be7d7474b2ea47cbc390822520b3a.png" />
+</div>
+</div>
+<p>The comparable errors observed in both the training and validation sets of The Cannon indicate that the model is not overfitting. Instead, its limited ability to accurately reconstruct the spectra likely stems from insufficient model capacity, rather than poor generalization.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;/training_loss.npz&quot;</span><span class="p">)</span> <span class="c1"># the output array also stores the training and validation loss</span>
+<span class="n">training_loss</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;training_loss&quot;</span><span class="p">]</span>
+<span class="n">validation_loss</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">[</span><span class="s2">&quot;validation_loss&quot;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">training_loss</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">training_loss</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Training set&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">training_loss</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">validation_loss</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Validation set&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">frameon</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;The Payne Training Properties&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Step&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Loss&#39;)
+</pre></div>
+</div>
+<img alt="../_images/e71a7f9f08ac4689c52e9bb230870e990bf71b55627890f069fe904ff69b0ac6.png" src="../_images/e71a7f9f08ac4689c52e9bb230870e990bf71b55627890f069fe904ff69b0ac6.png" />
+</div>
+</div>
+<p>Conversely, <em>The Payne</em>, with its increased model capacity as a two-layer perceptron, shows indication of overfitting in its training.</p>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<ol class="arabic simple">
+<li><p>Repeat the fitting to both <em>The Payne</em> and <em>The Cannon</em>, but include elemental abundances instead of only global stellar parameters. What is the performance of either method? Which is more prone to overfit?</p></li>
+<li><p>A weakness of <em>The Cannon</em> is that it assumes each pixel varies independently of others, when there is clearly a correlation between flux values at wavelengths where spectral features arise. Does <em>The Payne</em> solve this issue? Otherwise, what kind of enhancements could one apply to the network to impose this constraint?</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="spectra-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stellar Spectra Part 2: <em>The Cannon</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spectra-4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stellar Spectra Part 4: Detecting Stellar Activity Indicators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architecture">Network architecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-interpolation-with-the-payne">Label Interpolation with <em>The Payne</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-analysis">Sensitivity Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-chain-rule-step-by-step">Applying the Chain Rule Step-by-Step</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emulation-with-the-payne">Emulation with <em>The Payne</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-emulators">Comparison between emulators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-of-validation-performance">Comparison of validation performance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-from-model-capacity">Overfitting from Model Capacity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

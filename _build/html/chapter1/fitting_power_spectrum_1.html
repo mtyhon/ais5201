@@ -1,0 +1,1799 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Fitting Red Giant Oscillations Part 1: Traditional Optimization &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/fitting_power_spectrum_1';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/fitting_power_spectrum_1.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fitting Red Giant Oscillations Part 2: Flows &amp; Simulation-Based Inference" href="fitting_power_spectrum_2.html" />
+    <link rel="prev" title="Time-domain Data" href="section_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-3.html">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/fitting_power_spectrum_1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/fitting_power_spectrum_1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/fitting_power_spectrum_1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/fitting_power_spectrum_1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Fitting Red Giant Oscillations Part 1: Traditional Optimization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-power-density-profile">Components of the Power Density Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-fitting">Maximum Likelihood Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-all-power-spectrum-properties-together">Putting all power spectrum properties together</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-the-likelihood">Optimizing the Likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-uncertainties">Obtaining Uncertainties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-prior-distribution">The prior distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-likelihood">The likelihood</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-mcmc">Running MCMC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binning-the-spectrum">Binning the spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-binned-spectrum-likelihood">The binned spectrum likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-quick-sanity-check">A Quick Sanity Check</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fitting-red-giant-oscillations-part-1-traditional-optimization">
+<span id="content-references-ps-fitting"></span><h1>Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em><a class="headerlink" href="#fitting-red-giant-oscillations-part-1-traditional-optimization" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Authors: Marc Hon</strong></em></p>
+<p>The oscillations of Sun-like stars and red giants have a characteristic signature in the frequency domain. Fitting this signature allows us to determine fundamental properties of such stars.
+Here, we will explore how such fits are performed in practice.</p>
+<p>Let’s import the necessary libraries for this notebook.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span><span class="o">,</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">timer</span>
+<span class="kn">import</span> <span class="nn">scienceplots</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">astropy.units</span> <span class="kn">import</span> <span class="n">UnitsWarning</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">UnitsWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rg_data</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">data_folder_path</span> <span class="o">/</span> <span class="s1">&#39;hlsp_kepseismic_kepler_phot_kplr006144777-80d_kepler_v1_cor-filt-inp.fits&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">rg_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TIME</th>
+      <th>FLUX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>54953.538687</td>
+      <td>-0.000094</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>54953.559121</td>
+      <td>291.722156</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>54953.579554</td>
+      <td>390.444995</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>54953.599988</td>
+      <td>457.692529</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>54953.620422</td>
+      <td>375.413547</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>71958</th>
+      <td>56423.912748</td>
+      <td>-410.470799</td>
+    </tr>
+    <tr>
+      <th>71959</th>
+      <td>56423.933182</td>
+      <td>-473.127270</td>
+    </tr>
+    <tr>
+      <th>71960</th>
+      <td>56423.953616</td>
+      <td>-33.787705</td>
+    </tr>
+    <tr>
+      <th>71961</th>
+      <td>56423.974050</td>
+      <td>-149.718131</td>
+    </tr>
+    <tr>
+      <th>71962</th>
+      <td>56423.994483</td>
+      <td>65.099297</td>
+    </tr>
+  </tbody>
+</table>
+<p>71963 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>We will be computing the Lomb-Scargle periodogram of a time series observed by the <i>Kepler</i> mission. This time series is based on observations of the red giant KIC 6144777.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rg_data</span><span class="o">.</span><span class="n">TIME</span><span class="p">,</span> <span class="n">rg_data</span><span class="o">.</span><span class="n">FLUX</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Flux (ppm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Time (days)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/b128534d43559fa19705831f2079f6194b2f4093ab4424f89863a7b2260f6d4b.png" src="../_images/b128534d43559fa19705831f2079f6194b2f4093ab4424f89863a7b2260f6d4b.png" />
+</div>
+</div>
+<p>The computation of the Lomb-Scargle periodogram will be performed using the handy package <code class="docutils literal notranslate"><span class="pre">periodogram</span></code>, which can be obtained by <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">periodogram</span></code>. The Power Spectral Density module (<code class="docutils literal notranslate"><span class="pre">psd</span></code>) of the package computes returns the frequency (<code class="docutils literal notranslate"><span class="pre">freq</span></code>) and power density (<code class="docutils literal notranslate"><span class="pre">power</span></code>) of the Lomb-Scargle periodogram.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">periodogram</span> <span class="kn">import</span> <span class="n">psd</span>
+<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span><span class="p">,</span> <span class="n">Box1DKernel</span>
+
+
+<span class="n">freq</span><span class="p">,</span> <span class="n">power</span> <span class="o">=</span> <span class="n">psd</span><span class="p">(</span><span class="n">rg_data</span><span class="o">.</span><span class="n">TIME</span><span class="o">.</span><span class="n">values</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">d</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">Ms</span><span class="p">),</span> <span class="n">rg_data</span><span class="o">.</span><span class="n">FLUX</span><span class="p">)</span>
+
+<span class="c1"># heavily smooth spectrum using a boxcar kernel of 10uHz length</span>
+<span class="n">smooth_power</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">power</span><span class="p">,</span> <span class="n">Box1DKernel</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mf">10.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">freq</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))))</span> 
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">750</span><span class="p">:],</span> <span class="n">smooth_power</span><span class="p">[</span><span class="mi">750</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">3e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Oscillations&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.765</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.765</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;figure fraction&#39;</span><span class="p">,</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">),</span>
+             <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Slow Trend&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.125</span><span class="p">,</span> <span class="mf">0.73</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.125</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;figure fraction&#39;</span><span class="p">,</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">),</span>
+             <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Smoothed spectrum</span><span class="se">\n</span><span class="s1">showing a sloping</span><span class="se">\n</span><span class="s1">background&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mf">.65</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;figure fraction&#39;</span><span class="p">,</span>
+             <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">),</span>
+             <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6065bfdfc205c05fb8bfb703b1884060bfad7ecdf545143108fd8092f114037e.png" src="../_images/6065bfdfc205c05fb8bfb703b1884060bfad7ecdf545143108fd8092f114037e.png" />
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The variations seen in red giants are typically at timescales of days to months. This makes <span class="math notranslate nohighlight">\(\mu\)</span>Hz a natural choice for viewing the frequency range corresponding to such timescales. Importantly, the time array to <code class="docutils literal notranslate"><span class="pre">psd</span></code> needs to be the inverse of <span class="math notranslate nohighlight">\(\mu\)</span>Hz – which is megasecond (Ms).</p>
+</div>
+<section id="components-of-the-power-density-profile">
+<h2>Components of the Power Density Profile<a class="headerlink" href="#components-of-the-power-density-profile" title="Permalink to this headline">#</a></h2>
+<p>The power density profile of the star has several components: a <span style="color: magenta;">slow trend</span> that arises from stellar activity such as rotation, a <span style="color: lime;">sloping background</span> from surface granulation, and the <span style="color: red;">red giant oscillations</span>.</p>
+<p>A model of the power density (<span class="math notranslate nohighlight">\(P\)</span>) as a function of frequency (<span class="math notranslate nohighlight">\(\nu\)</span>) can be described by the following:</p>
+<div class="math notranslate nohighlight" id="equation-psd-model">
+<span class="eqno">(1)<a class="headerlink" href="#equation-psd-model" title="Permalink to this equation">#</a></span>\[\begin{aligned}
+P(\nu) = P_n + \sum\limits_{i} \frac{A_i}{1 + (\nu/b_i)^c} + P_g \exp \frac{(\nu-\nu_{\mathrm{max}})^2}{2\sigma^2}
+\end{aligned}\]</div>
+<p>This is the general form of the power density as presented by <span id="id1">[]</span>. Let’s unpack this equation.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_n\)</span>:       This is the white noise level of the data. In the power spectrum, this presents as flat background, or an additive constant across all frequencies.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum\limits_{i} \frac{A_i}{1 + (\nu/b_i)^c}\)</span>:       A sum of Lorentzian functions describing the variation of the background (e.g., 1/<span class="math notranslate nohighlight">\(\nu\)</span> granulation noise, low-frequency activity) with frequency. Each term is commonly described as a <em><strong>Harvey model</strong></em> in literature.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_g \exp \frac{(\nu-\nu_{\mathrm{max}})^2}{2\sigma^2}\)</span>:       The oscillation power excess, parameterized by a Gaussian profile of height <span class="math notranslate nohighlight">\(P_g\)</span>, center <span class="math notranslate nohighlight">\(\nu_{\mathrm{max}}\)</span>, and width <span class="math notranslate nohighlight">\(\sigma\)</span>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lorentzian functions takes the form of <span class="math notranslate nohighlight">\(\frac{b}{(x-a)^2+b^2}\)</span>, where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constants.</p>
+</div>
+<p>The fit to the power density thus requires a model describing the superposition of the signal from oscillations atop noise contributions from other background components. To describe granulation noise, it is common that two Harvey models are adopted.</p>
+<p>Here, we define code to build the power spectrum model with two Harvey models that have <span class="math notranslate nohighlight">\(c=4\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_sLor</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">nu</span> <span class="o">/</span> <span class="n">b</span><span class="p">)</span> <span class="o">**</span> <span class="n">c</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_sinc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">bgModel</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">nu</span><span class="p">,</span> <span class="n">no_osc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nuNyq</span> <span class="o">=</span> <span class="mf">283.</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Background model value at a given frequency &#39;nu&#39;</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">Pn</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">Pg</span><span class="p">,</span> <span class="n">numax</span><span class="p">,</span> <span class="n">sigmaEnv</span> <span class="o">=</span> <span class="n">theta</span>
+  <span class="n">sc</span> <span class="o">=</span> <span class="n">_sinc</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">nu</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nuNyq</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+  <span class="n">bg</span> <span class="o">=</span> <span class="n">Pn</span>
+  <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">nu</span><span class="p">,</span> <span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">no_osc</span><span class="p">:</span>
+      <span class="n">bg</span> <span class="o">=</span> <span class="n">bg</span> <span class="o">+</span> <span class="n">sc</span> <span class="o">*</span> <span class="n">Pg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">nu</span> <span class="o">-</span> <span class="n">numax</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigmaEnv</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">bg</span>
+
+<span class="c1">## First Guesstimate</span>
+
+<span class="n">param_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;logPn&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="o">**</span><span class="mf">1.0</span><span class="p">,</span>
+             <span class="s1">&#39;A2&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="o">**</span><span class="mf">3.26</span><span class="p">,</span>
+             <span class="s1">&#39;b2&#39;</span><span class="p">:</span> <span class="mf">50.</span><span class="p">,</span>
+             <span class="s1">&#39;A3&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="o">**</span><span class="mf">2.50</span><span class="p">,</span>
+             <span class="s1">&#39;b3&#39;</span><span class="p">:</span> <span class="mf">150.</span><span class="p">,</span>
+             <span class="s1">&#39;P_g&#39;</span><span class="p">:</span> <span class="mi">900</span><span class="p">,</span>
+             <span class="s1">&#39;numax&#39;</span><span class="p">:</span> <span class="mf">130.</span><span class="p">,</span>
+             <span class="s1">&#39;sigmaEnv&#39;</span><span class="p">:</span> <span class="mf">0.28</span><span class="o">*</span><span class="mi">130</span><span class="o">**</span><span class="mf">0.88</span><span class="p">}</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">param_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will be adopting an initial set of parameters in <code class="docutils literal notranslate"><span class="pre">theta</span></code> ,as shown in the following:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">bgModel</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">freq</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Combined Power Spectrum Profile&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">param_dict</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">],</span>
+                             <span class="n">param_dict</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">],</span> 
+                             <span class="mi">4</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Granulation Component (A2, b2)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">_sLor</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">param_dict</span><span class="p">[</span><span class="s1">&#39;A3&#39;</span><span class="p">],</span>
+                         <span class="n">param_dict</span><span class="p">[</span><span class="s1">&#39;b3&#39;</span><span class="p">],</span> 
+                         <span class="mi">4</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Granulation Component (A3, b3)&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">param_dict</span><span class="p">[</span><span class="s1">&#39;logPn&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;White Noise&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8091f8e06a7f952f7d2da7d99f966807014ec929c3cf5aa412b17fbf83541622.png" src="../_images/8091f8e06a7f952f7d2da7d99f966807014ec929c3cf5aa412b17fbf83541622.png" />
+</div>
+</div>
+</section>
+<section id="maximum-likelihood-fitting">
+<h2>Maximum Likelihood Fitting<a class="headerlink" href="#maximum-likelihood-fitting" title="Permalink to this headline">#</a></h2>
+<p>The fit above was performed manually (by eye) and looks reasonable at first glance. With a manual approach, we cannot easily know if this was a good fit, nor would it be feasible to repeat the analysis over a larger sample of targets.</p>
+<p>We thus turn to a statistical approach, namely the maximum likelihood estimate of fits to the power spectrum. Recall from <a class="reference internal" href="ps_statistics.html#content-ps-statistics"><span class="std std-ref">Power Spectrum Statistics</span></a> that the probability <span class="math notranslate nohighlight">\(P_i\)</span> in frequency bin <span class="math notranslate nohighlight">\(i\)</span> in a white noise spectrum follows a <span class="math notranslate nohighlight">\(\chi^2\)</span> two degrees of freedom distribution:</p>
+<div class="math notranslate nohighlight" id="equation-chi2-psd">
+<span class="eqno">(2)<a class="headerlink" href="#equation-chi2-psd" title="Permalink to this equation">#</a></span>\[\begin{align}
+    P_i &amp;= \frac{1}{\text{Model}}\exp\bigg(\frac{-\text{Observed}}{\text{Model}}\bigg).
+\end{align}\]</div>
+<p>The likelihood of observed data over <span class="math notranslate nohighlight">\(i\)</span> frequency bins is the joint probability density over those bins, <span class="math notranslate nohighlight">\(L = \prod\limits_{i} P_i\)</span>. A more numerically stable approach would be to calculate the logarithm of the likelihood:</p>
+<div class="math notranslate nohighlight" id="equation-loglike-psd">
+<span class="eqno">(3)<a class="headerlink" href="#equation-loglike-psd" title="Permalink to this equation">#</a></span>\[\begin{align}
+    -\ln L &amp;= \sum\limits_{i} \bigg[ \ln(\text{Model}_i) + \frac{\text{Observed}_i}{\text{Model}_i} \bigg].
+\end{align}\]</div>
+<p>We are now going to define a likelihood function as the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">lnlike_mle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_freq</span><span class="p">,</span> <span class="n">_power</span><span class="p">,</span> <span class="n">_model</span><span class="p">,</span> <span class="n">p0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">_freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="n">_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">_model</span> <span class="c1"># model power spectrum</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p0</span> <span class="o">=</span> <span class="n">p0</span>  <span class="c1"># initial parameters to optimize</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">update_vars</span><span class="p">):</span>
+        
+        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">update_vars</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">var</span><span class="p">:</span> <span class="n">val</span><span class="p">})</span>
+        
+        <span class="c1"># Construct model for given set of parameters</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">)</span>
+
+        <span class="n">like</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">/</span> <span class="n">mod</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">like</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">1.0e30</span>
+        <span class="k">return</span> <span class="n">like</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="putting-all-power-spectrum-properties-together">
+<h3>Putting all power spectrum properties together<a class="headerlink" href="#putting-all-power-spectrum-properties-together" title="Permalink to this headline">#</a></h3>
+<p>For convenience, let us collate the properties and functions of the power spectrum in a Class instance called <code class="docutils literal notranslate"><span class="pre">Spectrum</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Spectrum</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_freq</span><span class="p">,</span> <span class="n">_power</span><span class="p">,</span> <span class="n">_numax</span><span class="p">,</span> <span class="n">nuNyq</span><span class="o">=</span><span class="mf">283.</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">_freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="n">_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span> <span class="o">=</span> <span class="n">_numax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nuNyq</span> <span class="o">=</span> <span class="n">nuNyq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maxPDS</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">power</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">par_rels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Empirical exponential relations between background parameters and numax.</span>
+<span class="sd">      parameter = k*numax^s. First column is &#39;k&#39;, second is &#39;s&#39;</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Pn&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="mf">1.000000e00</span><span class="p">,</span>  <span class="mf">0.000000</span><span class="p">],</span> <span class="c1"># Inferred from data, left alone</span>
+<span class="c1">#               &quot;A1&quot;       : [1.000000e00,  0.000000], # Inferred from data, left alone</span>
+<span class="c1">#               &quot;b1&quot;       : [0.5787,  0], # For filter of length 40 days</span>
+<span class="c1">#               &quot;c1&quot;       : [4, 0.0],</span>
+              <span class="s2">&quot;A2&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="mi">3382</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.609</span><span class="p">],</span> <span class="c1"># K2014</span>
+              <span class="s2">&quot;b2&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="mf">0.317</span><span class="p">,</span>  <span class="mf">0.970</span><span class="p">],</span> <span class="c1"># K2014</span>
+              <span class="s2">&quot;A3&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="mi">3382</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.609</span><span class="p">],</span> <span class="c1"># K2014</span>
+              <span class="s2">&quot;b3&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="mf">0.948</span><span class="p">,</span>  <span class="mf">0.992</span><span class="p">],</span> <span class="c1"># K2014</span>
+              <span class="s2">&quot;Pg&quot;</span>       <span class="p">:</span> <span class="p">[</span><span class="mf">2.03e7</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.38</span><span class="p">],</span> <span class="c1"># M2012</span>
+              <span class="s2">&quot;numax&quot;</span>    <span class="p">:</span> <span class="p">[</span><span class="mf">1.000000e-00</span><span class="p">,</span>  <span class="mf">1.000000</span><span class="p">],</span>
+              <span class="s2">&quot;sigmaEnv&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">0.28</span><span class="p">,</span>  <span class="mf">0.88</span><span class="p">]}</span> <span class="c1"># M2012</span>
+
+    <span class="k">def</span> <span class="nf">guess_from_numax</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">numax</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()[</span><span class="n">param</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">numax</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()[</span><span class="n">param</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">initial_guess</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">guess_from_numax</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">)</span> <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())])</span>
+
+<span class="n">spec</span> <span class="o">=</span> <span class="n">Spectrum</span><span class="p">(</span><span class="n">_freq</span> <span class="o">=</span> <span class="n">freq</span><span class="p">,</span> <span class="n">_power</span> <span class="o">=</span> <span class="n">power</span><span class="p">,</span> <span class="n">_numax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">initial_guess</span><span class="p">()</span>
+<span class="n">theta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  1.        , 204.72628384,  27.6095458 , 204.72628384,
+        91.37099144, 352.77356824, 100.        ,  16.11231825])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We initialize the class with the power spectrum data and a rough guess of <span class="math notranslate nohighlight">\(\nu_{\mathrm{max}}=100\mu\)</span>Hz.</p>
+<p>Again, we have an initial guess vector <code class="docutils literal notranslate"><span class="pre">theta</span></code>, but these now based on relations in the form of <span class="math notranslate nohighlight">\(k\cdot\nu_{\mathrm{max}}^s\)</span>. The coefficients for these exponential relations were determined empirically from fitting an ensemble of <i>Kepler</i> red giants from the works by <span id="id2">[]</span> (M2012) and <span id="id3">[]</span> (K2014). From the rough guess of <span class="math notranslate nohighlight">\(\nu_{\mathrm{max}}\)</span>, initial parameters for the coefficients describing the power spectrum are estimated. It is useful to have a choice of initial parameters that are not too distant from a true maximum likelihood estimate.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">750</span><span class="p">:],</span> <span class="n">smooth_power</span><span class="p">[</span><span class="mi">750</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Smoothed Observed Spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">bgModel</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">initial_guess</span><span class="p">(),</span> <span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial Guess&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/0111d8f81f5f5f850738938f08b981dd9817ca5d6fb2f6193940d0348aa639f0.png" src="../_images/0111d8f81f5f5f850738938f08b981dd9817ca5d6fb2f6193940d0348aa639f0.png" />
+</div>
+</div>
+<p>The initial guess isn’t great! Let’s optimize for the maximum likelihood solution.</p>
+</section>
+</section>
+<section id="optimizing-the-likelihood">
+<h2>Optimizing the Likelihood<a class="headerlink" href="#optimizing-the-likelihood" title="Permalink to this headline">#</a></h2>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> to run an optimization over the likelihood function in Eqn. <a class="reference internal" href="#equation-loglike-psd">(3)</a>. Because the function provides the <em><strong>negative log-likelihood</strong></em>, the optimization objective is to <em><strong>minimize</strong></em> the function’s output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">op</span>
+
+<span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Optimises the `parameters` with Scipy</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vars : list, optional</span>
+<span class="sd">        List of vars to optimize, by default None</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Results of the optimization</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">vars</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+    <span class="n">x0</span> <span class="o">=</span> <span class="p">[</span><span class="n">parameters</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">]</span>   
+    <span class="n">soln</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">Lnlike_MLE</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="nb">vars</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">vars</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">parameters</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">var</span><span class="p">:</span> <span class="n">val</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">parameters</span>
+
+<span class="n">p0_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">spec</span><span class="o">.</span><span class="n">initial_guess</span><span class="p">()))</span> <span class="c1"># Initial guess encoded in a dictionary</span>
+
+<span class="c1"># Run optimisation</span>
+<span class="n">Lnlike_MLE</span> <span class="o">=</span> <span class="n">lnlike_mle</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">_model</span> <span class="o">=</span> <span class="n">bgModel</span><span class="p">,</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">p0_dict</span><span class="p">)</span>
+
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">p0_dict</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;Pn&#39;</span><span class="p">])</span>   <span class="c1"># optimize A2, b2, keep others fixed</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">result_p0</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">])</span> <span class="c1"># optimize A3, b3, keep others fixed</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">result_p0</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pg&#39;</span><span class="p">,</span> <span class="s1">&#39;numax&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaEnv&#39;</span><span class="p">])</span> <span class="c1"># optimize Pg, numax, sigmaEnv, keep others fixed</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">result_p0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Optimization Tip</p>
+<p>Notice that the optimization is done over subsets of the free parameters at a given time. This is known as <em><strong>block coordinate descent</strong></em> and is useful for optimizing over a high-dimensional vector of free parameters as it can help with convergence and stability.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Parameter&#39;</span><span class="p">:</span> <span class="n">spec</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+    <span class="s1">&#39;Initial Guess&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">spec</span><span class="o">.</span><span class="n">initial_guess</span><span class="p">()],</span>
+    <span class="s1">&#39;Optimized Result&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">result_p0</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>Initial Guess</th>
+      <th>Optimized Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Pn</td>
+      <td>1.0000</td>
+      <td>27.4144</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>204.7263</td>
+      <td>71517.5023</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>b2</td>
+      <td>27.6095</td>
+      <td>0.4562</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>204.7263</td>
+      <td>2239.3082</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b3</td>
+      <td>91.3710</td>
+      <td>50.1397</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Pg</td>
+      <td>352.7736</td>
+      <td>974.7156</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>numax</td>
+      <td>100.0000</td>
+      <td>126.7485</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>sigmaEnv</td>
+      <td>16.1123</td>
+      <td>18.7959</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The optimization seems to have converged to a result across these parameters. Let’s observe what this fit looks like.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="mi">750</span><span class="p">:],</span> <span class="n">smooth_power</span><span class="p">[</span><span class="mi">750</span><span class="p">:],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Smoothed Observed Spectrum&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">bgModel</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">initial_guess</span><span class="p">(),</span> <span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial Guess&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">bgModel</span><span class="p">(</span><span class="n">result_p0</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Maximum Likelihood Estimate&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/460d4b324fb696ed635cfbf21cb58ce4561eef11d936d15670421a33e54aafcd.png" src="../_images/460d4b324fb696ed635cfbf21cb58ce4561eef11d936d15670421a33e54aafcd.png" />
+</div>
+</div>
+<p>The maximum likelihood estimate fits the data much better!</p>
+</section>
+<section id="obtaining-uncertainties">
+<h2>Obtaining Uncertainties<a class="headerlink" href="#obtaining-uncertainties" title="Permalink to this headline">#</a></h2>
+<p>The optimization from the maximum likelihood technique provides a <em><strong>point estimate</strong></em>. It is often desirable to determine uncertainties from this fit, which will inform us about how secure of our identification of this fit as the best solution. Given prior knowledge about the parameter space, we want to sample a range of likelihood values near our solution, which effectively gives us a posterior distribution as per Bayes’ rule:</p>
+<div class="math notranslate nohighlight" id="equation-bayes-psd">
+<span class="eqno">(4)<a class="headerlink" href="#equation-bayes-psd" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \overbrace{p(y|\theta)}^{\text{Posterior}} \propto \underbrace{\mathcal{L}}_{\text{Likelihood}} \times \underbrace{p(\theta)}_{\text{Prior}}.
+\end{align}\]</div>
+<p>A crucial ingredient that we need here is the prior distribution, which encodes any constraints that we have regarding the parameters.</p>
+<section id="the-prior-distribution">
+<h3>The prior distribution<a class="headerlink" href="#the-prior-distribution" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logPrio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="n">Pn</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">A3</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">Pg</span><span class="p">,</span> <span class="n">numax</span><span class="p">,</span> <span class="n">sigmaEnv</span> <span class="o">=</span> <span class="n">theta</span>
+
+    <span class="k">def</span> <span class="nf">check_condition</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">condition</span><span class="p">:</span>
+            <span class="c1"># print(f&quot;Failed prior: {msg}&quot;)</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">return</span> <span class="mf">0.0</span>
+
+    <span class="c1"># List of priors</span>
+    <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">Pn</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxPDS</span><span class="p">,</span> <span class="s2">&quot;Noise cannot be greater than the max PDS value&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">A2</span> <span class="o">&gt;</span> <span class="n">A3</span><span class="p">,</span> <span class="s2">&quot;Relative ordering of granulation amplitudes&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">A3</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Granulation amplitude must be physical&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">b2</span> <span class="o">&lt;</span> <span class="n">b3</span><span class="p">,</span> <span class="s2">&quot;Relative ordering of granulation timescales&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">b3</span> <span class="o">&lt;</span> <span class="mf">1.1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">nuNyq</span><span class="p">,</span> <span class="s2">&quot;Second granulation timescale cannot be too fast&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">b2</span> <span class="o">&lt;</span> <span class="mf">1.3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">,</span> <span class="s2">&quot;First granulation timescale cannot be too fast&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">b3</span> <span class="o">&gt;</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">,</span> <span class="s2">&quot;Granulation timescale cannot be too slow&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numax0</span> <span class="o">*</span> <span class="mf">0.7</span> <span class="o">&lt;</span> <span class="n">numax</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span> <span class="o">*</span> <span class="mf">1.3</span><span class="p">,</span> <span class="s2">&quot;Sampled numax cannot stray too far from initial estimate&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">guess_from_numax</span><span class="p">(</span><span class="s2">&quot;Pg&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">Pg</span> <span class="o">&lt;</span> <span class="mi">60</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">guess_from_numax</span><span class="p">(</span><span class="s2">&quot;Pg&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">),</span>
+         <span class="s2">&quot;Restrict power excess height to physical values&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">guess_from_numax</span><span class="p">(</span><span class="s2">&quot;sigmaEnv&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">sigmaEnv</span> <span class="o">&lt;</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">guess_from_numax</span><span class="p">(</span><span class="s2">&quot;sigmaEnv&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">numax0</span><span class="p">),</span> 
+         <span class="s2">&quot;Restrict power excess width to physical values&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">condition</span><span class="p">,</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">conditions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">check_condition</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+
+    <span class="k">return</span> <span class="mf">0.0</span>
+
+<span class="n">Spectrum</span><span class="o">.</span><span class="n">prior</span> <span class="o">=</span> <span class="n">logPrio</span>   <span class="c1"># insert this prior function into the Spectrum class</span>
+<span class="n">spec_mcmc</span> <span class="o">=</span> <span class="n">Spectrum</span><span class="p">(</span><span class="n">_freq</span> <span class="o">=</span> <span class="n">freq</span><span class="p">,</span> <span class="n">_power</span> <span class="o">=</span> <span class="n">power</span><span class="p">,</span> <span class="n">_numax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The above function lists several priors that are known to work well in practice, which mostly restrict the parameters to a range that is known to be physical. In particular, the function informs the sampler about the feasibility of points by returning a <em><strong>log probability</strong></em> that is infinitely improbable for a sampled value that is out of range.</p>
+</section>
+<section id="the-likelihood">
+<h3>The likelihood<a class="headerlink" href="#the-likelihood" title="Permalink to this headline">#</a></h3>
+<p>We adopt a likelihood function that is similar to the maximum likelihood estimate approach, as shown in the following.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Notice the multiplication with <span class="math notranslate nohighlight">\(-1\)</span> in the log-likelihood function below! Some samplers’ optimization objectives are aimed at <em><strong>maximization</strong></em>, in which we will have to invert the sign of our likelihood function.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">lnprob</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_like</span><span class="p">,</span> <span class="n">_prior</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">like</span> <span class="o">=</span> <span class="n">_like</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prior</span> <span class="o">=</span> <span class="n">_prior</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="n">lp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
+            <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">return</span> <span class="n">lp</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">like</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">lnlike_mcmc</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_freq</span><span class="p">,</span> <span class="n">_power</span><span class="p">,</span> <span class="n">_model</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">_freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="n">_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">_model</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">)</span>
+        <span class="n">like</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">/</span> <span class="n">mod</span><span class="p">))</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">like</span>
+
+
+<span class="n">Lnlike</span> <span class="o">=</span> <span class="n">lnlike_mcmc</span><span class="p">(</span><span class="n">spec_mcmc</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec_mcmc</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">_model</span> <span class="o">=</span> <span class="n">bgModel</span><span class="p">)</span>
+<span class="n">Lnprob</span> <span class="o">=</span> <span class="n">lnprob</span><span class="p">(</span><span class="n">Lnlike</span><span class="p">,</span> <span class="n">spec_mcmc</span><span class="o">.</span><span class="n">prior</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="running-mcmc">
+<h3>Running MCMC<a class="headerlink" href="#running-mcmc" title="Permalink to this headline">#</a></h3>
+<p>To perform this sampling, we will turn to Markov Chain Monte Carlo (MCMC) techniques to sample the parameter space within a local volume near the maximum likelihood estimate. We will use the code <code class="docutils literal notranslate"><span class="pre">emcee</span></code><span id="id4">[]</span>, which is an Affine Invariant Ensemble MCMC sampler that is easy to use and quite popular in astronomy. Its documentation can be found <a class="reference external" href="https://emcee.readthedocs.io/en/stable/">here</a> and it can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">emcee</span></code>.</p>
+<p>To begin, we use our maximum likelihood estimate as a starting point in the sampling. We use 100 walkers and sample for 1,000 draws.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">emcee</span>
+
+<span class="n">ndim</span><span class="p">,</span> <span class="n">nwalkers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result_p0</span><span class="o">.</span><span class="n">values</span><span class="p">()))),</span> <span class="mi">100</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1">## Define starting position</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result_p0</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+
+<span class="n">init_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">Lnprob</span><span class="p">)</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">draws</span><span class="p">,</span> <span class="n">rstate0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time Taken for </span><span class="si">{</span><span class="n">draws</span><span class="si">}</span><span class="s1"> draws: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">init_time</span><span class="p">)</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [04:46&lt;00:00,  3.49it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time Taken for 1000 draws: 287.0 seconds
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is handy to visualize samples from the posterior distribution using a corner plot, easily obtainable via <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">corner</span></code>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">corner</span>
+<span class="n">soln_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spec_mcmc</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>  <span class="c1"># labels for sampled parameters</span>
+
+<span class="n">samples</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">500</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>  <span class="c1"># obtain samples from emcee</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">soln_labels</span><span class="p">))</span> <span class="c1"># plotting the samples in a Corner plot!</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/359fa238e730d3b10739233821f7dc1e498bee6ce378fabb068d982b1b3dc30c.png" src="../_images/359fa238e730d3b10739233821f7dc1e498bee6ce378fabb068d982b1b3dc30c.png" />
+</div>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Discarded Samples</p>
+<p>Notice that only the end portion of the chain was used as samples from the posterior distribution. This is because MCMC methods usually have a <em><strong>burn-in period</strong></em> during which the samples have not lost their initial state and are not yet “in equilibirum”. Thus is it common practice for such early samples to be discarded.</p>
+</div>
+<p>The sampling look fairly uni-modal and well-behaved, which is good. To assess the convergence of the MCMC sampling, we will calculate the Gelman-Rubin statistic, or the <span class="math notranslate nohighlight">\(\hat{R}\)</span> value, of each parameter using <code class="docutils literal notranslate"><span class="pre">arviz</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">arviz</span></code> library is generally handy for Bayesian modeling and is obtainable by <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">arviz</span></code>.</p>
+</div>
+<p>The <span class="math notranslate nohighlight">\(\hat{R}\)</span> value is measured as the root of the ratio between the variance of the posterior distribution and the variance between chains. A value of <span class="math notranslate nohighlight">\(\hat{R} \approx 1\)</span> indicates that the chains have converged to the same distribution, while <span class="math notranslate nohighlight">\(\hat{R}&gt;1.01\)</span> suggests that the chains have not fully converged – more sampling would be required to explore the parameter space.</p>
+<p>At the same time, we can report the properties of the posterior distribution by quoting the Highest Density Intervals (HDI) of the distribution using <code class="docutils literal notranslate"><span class="pre">arviz.hdi</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">arviz</span> <span class="k">as</span> <span class="nn">az</span>
+
+<span class="c1"># Passed array should have shape (chains, draws, *shape)</span>
+<span class="n">idata</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">convert_to_inference_data</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">get_chain</span><span class="p">(</span><span class="n">flat</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))})</span>
+
+<span class="n">rhat</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">rhat</span><span class="p">(</span><span class="n">idata</span><span class="p">)</span>
+<span class="n">hdi</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">hdi_prob</span><span class="o">=</span><span class="mf">.68</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Parameter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">soln_labels</span><span class="p">],</span>
+    <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">hat</span><span class="si">{R}</span><span class="s1">$&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rhat</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
+    <span class="s1">&#39;Median&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;Lower Bound&#39;</span><span class="p">:</span> <span class="n">hdi</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Upper Bound&#39;</span><span class="p">:</span> <span class="n">hdi</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>$\hat{R}$</th>
+      <th>Median</th>
+      <th>Lower Bound</th>
+      <th>Upper Bound</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Pn</td>
+      <td>1.0969</td>
+      <td>27.434082</td>
+      <td>27.122868</td>
+      <td>27.702815</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>1.7139</td>
+      <td>337085.696905</td>
+      <td>256058.491052</td>
+      <td>394014.286183</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>b2</td>
+      <td>1.6977</td>
+      <td>0.258728</td>
+      <td>0.235383</td>
+      <td>0.279264</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>1.1304</td>
+      <td>2260.199012</td>
+      <td>2223.901664</td>
+      <td>2297.077929</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b3</td>
+      <td>1.1133</td>
+      <td>49.903325</td>
+      <td>49.341544</td>
+      <td>50.452351</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Pg</td>
+      <td>1.0774</td>
+      <td>973.084882</td>
+      <td>956.793425</td>
+      <td>987.388597</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>numax</td>
+      <td>1.0854</td>
+      <td>126.701535</td>
+      <td>126.394430</td>
+      <td>127.033513</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>sigmaEnv</td>
+      <td>1.0854</td>
+      <td>18.847720</td>
+      <td>18.599037</td>
+      <td>19.127195</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(\hat{R}\)</span> indicates that we likely haven’t sampled enough draws. However, the cost of increasing the number of  draws can be prohibitively expensive! From the above example, it required 5 minutes for only 1,000 draws. While multiprocessing can certainly speed up the sampling process, there is a far more effective approach to this problem: <em><strong>binning the spectrum</strong></em>.</p>
+</section>
+<section id="binning-the-spectrum">
+<h3>Binning the spectrum<a class="headerlink" href="#binning-the-spectrum" title="Permalink to this headline">#</a></h3>
+<p>Assuming that binning by performed by averaging over <span class="math notranslate nohighlight">\(p\)</span> independent bins in the spectrum, this is equivalent to the addition of <span class="math notranslate nohighlight">\(p\)</span> independent spectra, for which the total likelihood is the product of individual likelihoods:</p>
+<div class="math notranslate nohighlight" id="equation-tot-likelihood-psd">
+<span class="eqno">(5)<a class="headerlink" href="#equation-tot-likelihood-psd" title="Permalink to this equation">#</a></span>\[\begin{align}
+    -\ln L_{\text{total}} = -\ln\bigg( \prod_{j=1}^p L_j \bigg) = \sum_{j=1}^p(-\ln L_j)
+\end{align}\]</div>
+<p>Therefore, all that needs to be modified above is to scale the likelihood by the number of bins <span class="math notranslate nohighlight">\(p\)</span> over which the spectrum is averaged.</p>
+<p>First, we downsample the spectrum into only 1,000 bins and calculate the number of bins that we average over.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binned_statistic</span>
+
+<span class="n">freq_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">283</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">binned_power</span><span class="p">,</span> <span class="n">freq_binedges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binned_statistic</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span>
+                                      <span class="n">power</span><span class="p">,</span>
+                                      <span class="n">statistic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">,</span>
+                                      <span class="n">bins</span> <span class="o">=</span> <span class="n">freq_bins</span><span class="p">)</span>
+
+<span class="n">binned_freq</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">freq_binedges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">freq_binedges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">elements_per_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">binned_freq</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">//</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">freq</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">binned_freq</span><span class="p">,</span> <span class="n">binned_power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binned Spectrum</span><span class="se">\n</span><span class="s1">$N_{\mathrm</span><span class="si">{bins}</span><span class="s1">}$ : </span><span class="si">%d</span><span class="s1">, Elements Per Bin: </span><span class="si">%d</span><span class="s1">&#39;</span> \
+           <span class="o">%</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">freq_bins</span><span class="p">),</span> <span class="n">elements_per_bin</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9694b04db1f743b38eb71ba3ea0774742979a4cf0033285917e400e08b490143.png" src="../_images/9694b04db1f743b38eb71ba3ea0774742979a4cf0033285917e400e08b490143.png" />
+</div>
+</div>
+</section>
+<section id="the-binned-spectrum-likelihood">
+<h3>The binned spectrum likelihood<a class="headerlink" href="#the-binned-spectrum-likelihood" title="Permalink to this headline">#</a></h3>
+<p>Programmatically, all that needs to be done is to modify the log-likelihood function with a multiplicative constant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">lnlike_mle_binned</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_freq</span><span class="p">,</span> <span class="n">_power</span><span class="p">,</span> <span class="n">_model</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">elements_per_bin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">_freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="n">_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">_model</span> <span class="c1"># model power spectrum</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p0</span> <span class="o">=</span> <span class="n">p0</span>  <span class="c1"># initial parameters to optimize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements_per_bin</span> <span class="o">=</span> <span class="n">elements_per_bin</span>  <span class="c1"># new</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">update_vars</span><span class="p">):</span>
+        
+        <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">update_vars</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">var</span><span class="p">:</span> <span class="n">val</span><span class="p">})</span>
+        
+        <span class="c1"># Construct model for given set of parameters</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p0</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">)</span>
+
+        <span class="n">like</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">/</span> <span class="n">mod</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">like</span><span class="p">):</span>
+            <span class="k">return</span> <span class="mf">1.0e30</span>
+        <span class="k">return</span> <span class="n">like</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">elements_per_bin</span>
+
+<span class="k">class</span> <span class="nc">lnlike_mcmc_binned</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_freq</span><span class="p">,</span> <span class="n">_power</span><span class="p">,</span> <span class="n">_model</span><span class="p">,</span> <span class="n">elements_per_bin</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">_freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">=</span> <span class="n">_power</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">elements_per_bin</span> <span class="o">=</span> <span class="n">elements_per_bin</span>  <span class="c1"># new</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+        <span class="n">mod</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="p">)</span>
+        <span class="n">like</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">power</span> <span class="o">/</span> <span class="n">mod</span><span class="p">))</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">like</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">elements_per_bin</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now defined a binned spectrum object, re-optimize, and re-run the MCMC. We should expect to see a dramatic speed (<span class="math notranslate nohighlight">\(\sim20\)</span>) up compared to the unbinned case. We can certainly afford to sample for more draws now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spec_binned</span> <span class="o">=</span> <span class="n">Spectrum</span><span class="p">(</span><span class="n">_freq</span> <span class="o">=</span> <span class="n">binned_freq</span><span class="p">,</span> <span class="n">_power</span> <span class="o">=</span> <span class="n">binned_power</span><span class="p">,</span> <span class="n">_numax</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">## MLE ##</span>
+<span class="n">p0_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">spec_binned</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">spec_binned</span><span class="o">.</span><span class="n">initial_guess</span><span class="p">()))</span> <span class="c1"># Initial guess encoded in a dictionary</span>
+<span class="n">Lnlike_MLE</span> <span class="o">=</span> <span class="n">lnlike_mle_binned</span><span class="p">(</span><span class="n">spec_binned</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec_binned</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">_model</span> <span class="o">=</span> <span class="n">bgModel</span><span class="p">,</span> 
+                               <span class="n">p0</span> <span class="o">=</span> <span class="n">p0_dict</span><span class="p">,</span> <span class="n">elements_per_bin</span> <span class="o">=</span> <span class="n">elements_per_bin</span><span class="p">)</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">p0_dict</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A3&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span> <span class="s1">&#39;Pn&#39;</span><span class="p">])</span>   <span class="c1"># optimize A2, b2, keep others fixed</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">result_p0</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;b2&#39;</span><span class="p">])</span> <span class="c1"># optimize A3, b3, keep others fixed</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">result_p0</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pg&#39;</span><span class="p">,</span> <span class="s1">&#39;numax&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmaEnv&#39;</span><span class="p">])</span> <span class="c1"># optimize Pg, numax, sigmaEnv, keep others fixed</span>
+<span class="n">result_p0</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">result_p0</span><span class="p">)</span>
+
+<span class="c1">## MCMC ##</span>
+
+<span class="n">Lnlike_binned</span> <span class="o">=</span> <span class="n">lnlike_mcmc_binned</span><span class="p">(</span><span class="n">spec_binned</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec_binned</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">_model</span> <span class="o">=</span> <span class="n">bgModel</span><span class="p">,</span> <span class="n">elements_per_bin</span> <span class="o">=</span> <span class="n">elements_per_bin</span><span class="p">)</span>
+<span class="n">Lnprob_binned</span> <span class="o">=</span> <span class="n">lnprob</span><span class="p">(</span><span class="n">Lnlike_binned</span><span class="p">,</span> <span class="n">spec_mcmc</span><span class="o">.</span><span class="n">prior</span><span class="p">)</span>
+
+<span class="n">ndim</span><span class="p">,</span> <span class="n">nwalkers</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result_p0</span><span class="o">.</span><span class="n">values</span><span class="p">()))),</span> <span class="mi">100</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="mi">20000</span>
+
+<span class="c1">## Define starting position</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result_p0</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+
+<span class="n">init_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">Lnprob_binned</span><span class="p">)</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">draws</span><span class="p">,</span> <span class="n">rstate0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">get_state</span><span class="p">(),</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time Taken for </span><span class="si">{</span><span class="n">draws</span><span class="si">}</span><span class="s1"> iterations: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">init_time</span><span class="p">)</span><span class="si">}</span><span class="s1"> seconds&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time Taken for 20000 iterations: 298.0 seconds
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soln_labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">spec_mcmc</span><span class="o">.</span><span class="n">par_rels</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>  <span class="c1"># labels for sampled parameters</span>
+
+<span class="n">samples</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">2000</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>  <span class="c1"># obtain samples from emcee</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">soln_labels</span><span class="p">))</span> <span class="c1"># plotting the samples in a Corner plot!</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/55aa5d433480cea98a0e29e6d25264f764558672c6be8a4ee1c41f75b2cdca3d.png" src="../_images/55aa5d433480cea98a0e29e6d25264f764558672c6be8a4ee1c41f75b2cdca3d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">np</span><span class="o">.</span><span class="n">savez_compressed</span><span class="p">(</span><span class="s1">&#39;/home/marc/jupyter-book/ml_astro/chapter1/data/PS_Part1_samples2.npz&#39;</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="n">samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The sampled posterior distribution is identical to the unbinned case, and this is reflected in the derived posterior intervals as well. Being more thoroughly sampled, the <span class="math notranslate nohighlight">\(\hat{R}\)</span> values now are more indicative of convergence.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Passed array should have shape (chains, draws, *shape)</span>
+<span class="n">idata</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">convert_to_inference_data</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">sampler</span><span class="o">.</span><span class="n">get_chain</span><span class="p">(</span><span class="n">flat</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))})</span>
+
+<span class="n">rhat</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">rhat</span><span class="p">(</span><span class="n">idata</span><span class="p">)</span>
+<span class="n">hdi</span> <span class="o">=</span> <span class="n">az</span><span class="o">.</span><span class="n">hdi</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">hdi_prob</span><span class="o">=</span><span class="mf">.68</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Parameter&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">soln_labels</span><span class="p">],</span>
+    <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">hat</span><span class="si">{R}</span><span class="s1">$&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rhat</span><span class="o">.</span><span class="n">x</span><span class="p">],</span>
+    <span class="s1">&#39;Median&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s1">&#39;Lower Bound&#39;</span><span class="p">:</span> <span class="n">hdi</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Upper Bound&#39;</span><span class="p">:</span> <span class="n">hdi</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Parameter</th>
+      <th>$\hat{R}$</th>
+      <th>Median</th>
+      <th>Lower Bound</th>
+      <th>Upper Bound</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Pn</td>
+      <td>1.0050</td>
+      <td>17.506050</td>
+      <td>17.039948</td>
+      <td>17.938813</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A2</td>
+      <td>1.0048</td>
+      <td>2177.591036</td>
+      <td>2123.578354</td>
+      <td>2232.909925</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>b2</td>
+      <td>1.0052</td>
+      <td>33.124135</td>
+      <td>32.523881</td>
+      <td>33.808159</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>1.0051</td>
+      <td>494.717436</td>
+      <td>478.125483</td>
+      <td>512.623154</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b3</td>
+      <td>1.0051</td>
+      <td>107.893362</td>
+      <td>106.339754</td>
+      <td>109.350789</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Pg</td>
+      <td>1.0043</td>
+      <td>1086.849639</td>
+      <td>1062.594685</td>
+      <td>1109.466374</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>numax</td>
+      <td>1.0040</td>
+      <td>129.520181</td>
+      <td>129.306718</td>
+      <td>129.751426</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>sigmaEnv</td>
+      <td>1.0041</td>
+      <td>13.181892</td>
+      <td>12.964798</td>
+      <td>13.394667</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="a-quick-sanity-check">
+<h2>A Quick Sanity Check<a class="headerlink" href="#a-quick-sanity-check" title="Permalink to this headline">#</a></h2>
+<p>Remember to always visualize your data! A quick sanity check that should consistently be done with your fitted model is to observe how well the draws from the posterior distribution fit the data. This is an example of a <em><strong>posterior predictive check</strong></em>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec_binned</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">spec_binned</span><span class="o">.</span><span class="n">power</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binned Spectrum&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;goldenrod&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior Samples&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">samps</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">200</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec_binned</span><span class="o">.</span><span class="n">freq</span><span class="p">,</span> <span class="n">bgModel</span><span class="p">(</span><span class="n">samps</span><span class="p">,</span> <span class="n">spec_binned</span><span class="o">.</span><span class="n">freq</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;goldenrod&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency ($</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power Density (ppm$^2/</span><span class="se">\\</span><span class="s1">mu$Hz)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">283</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3e7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">4</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">w_pad</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d38ad173e699128458b8f23dd7fcb3feaa2a5da8a38df8761c93aeaf7c3cbea4.png" src="../_images/d38ad173e699128458b8f23dd7fcb3feaa2a5da8a38df8761c93aeaf7c3cbea4.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="section_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Time-domain Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fitting_power_spectrum_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-power-density-profile">Components of the Power Density Profile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-fitting">Maximum Likelihood Fitting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-all-power-spectrum-properties-together">Putting all power spectrum properties together</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-the-likelihood">Optimizing the Likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-uncertainties">Obtaining Uncertainties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-prior-distribution">The prior distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-likelihood">The likelihood</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-mcmc">Running MCMC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binning-the-spectrum">Binning the spectrum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-binned-spectrum-likelihood">The binned spectrum likelihood</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-quick-sanity-check">A Quick Sanity Check</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

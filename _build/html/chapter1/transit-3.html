@@ -1,0 +1,1779 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Planetary Transits Part 3: Fitting a Transit Profile &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter1/transit-3';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter1/transit-3.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spectra" href="../chapter2/section_intro.html" />
+    <link rel="prev" title="Planetary Transits Part 2: Classifying Transits" href="transit-2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Time-domain Data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_1.html">Fitting Red Giant Oscillations Part 1: <em>Traditional Optimization</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fitting_power_spectrum_2.html">Fitting Red Giant Oscillations Part 2: <em>Flows &amp; Simulation-Based Inference</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ps_statistics.html"><em>Power Spectrum Statistics</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_1.html">Eclipse Morphology Part 1: <em>Exploring and Preparing Data</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_2.html">Eclipse Morphology Part 2: <em>Low-Dimensional Representations</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_3.html">Eclipse Morphology Part 3: <em>Latent Spaces and Visualizing Them</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="eb-morphology_4.html">Eclipse Morphology Part 4: <em>The Variational Autoencoder</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-1.html">Planetary Transits Part 1: <em>Observing Transits</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="transit-2.html">Planetary Transits Part 2: <em>Classifying Transits</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Planetary Transits Part 3: <em>Fitting a Transit Profile</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: <em>Observing SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: <em>Fitting SEDs</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: <em>Bayesian Evidence and Model Selection</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: <em>Observing Detailed Spectral Features</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: <em>Detecting Stellar Activity Indicators</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: <em>Domain Transfer</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: <em>Stellar Parameter Regression</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: <em>Interpolation</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: <em>Mixed Data Types</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: <em>Finding Clusters and Overdensities</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html"><em>The Physics Informed Neural Network</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter4/section_intro.html">Images</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter4/images-4.html">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter1/transit-3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter1/transit-3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter1/transit-3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter1/transit-3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Planetary Transits Part 3: Fitting a Transit Profile</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emulation-for-forward-modeling">Emulation for Forward Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-likelihood-inference-nle">Neural Likelihood Inference (NLE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-nle-to-estimate-a-posterior-distribution">Using NLE to estimate a posterior distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-outputs-from-emulation-versus-nle">Comparing outputs from emulation versus NLE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-on-real-data-hd-209458">Application on real data: HD 209458</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-on-hd-209458-using-the-emulator">Inference on HD 209458 using the emulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-on-hd-209458-using-nle">Inference on HD 209458 using NLE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-literature-estimates">Comparison with literature estimates</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="planetary-transits-part-3-fitting-a-transit-profile">
+<span id="content-references-transits-part3"></span><h1>Planetary Transits Part 3: <em>Fitting a Transit Profile</em><a class="headerlink" href="#planetary-transits-part-3-fitting-a-transit-profile" title="Permalink to this headline">#</a></h1>
+<p>In this Section, we will present approaches for which we can fit the profile of a transiting planet using machine learning emulation techniques.</p>
+<p>As before, we will use the <a class="reference external" href="https://lkreidberg.github.io/batman/"><code class="docutils literal notranslate"><span class="pre">batman</span></code></a> library to create our training data.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">batman</span><span class="o">,</span> <span class="nn">torch</span><span class="o">,</span> <span class="nn">copy</span><span class="o">,</span> <span class="nn">corner</span>
+<span class="kn">import</span> <span class="nn">scienceplots</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">astropy.io</span> <span class="kn">import</span> <span class="n">fits</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter1&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">)</span>
+
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="n">batman</span><span class="o">.</span><span class="n">TransitParams</span><span class="p">()</span>       <span class="c1">#object to store transit parameters</span>
+<span class="n">params</span><span class="o">.</span><span class="n">t0</span> <span class="o">=</span> <span class="mf">0.</span>                        <span class="c1">#time of inferior conjunction</span>
+<span class="n">params</span><span class="o">.</span><span class="n">per</span> <span class="o">=</span> <span class="mf">1.</span>                       <span class="c1">#orbital period</span>
+<span class="n">params</span><span class="o">.</span><span class="n">rp</span> <span class="o">=</span> <span class="mf">0.1</span>                       <span class="c1">#planet radius (in units of stellar radii)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mf">15.</span>                        <span class="c1">#semi-major axis (in units of stellar radii)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="mf">90.</span>                      <span class="c1">#orbital inclination (in degrees)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">ecc</span> <span class="o">=</span> <span class="mf">0.</span>                       <span class="c1">#eccentricity</span>
+<span class="n">params</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">90.</span>                        <span class="c1">#longitude of periastron (in degrees)</span>
+<span class="n">params</span><span class="o">.</span><span class="n">limb_dark</span> <span class="o">=</span> <span class="s2">&quot;quadratic&quot;</span>        <span class="c1">#limb darkening model</span>
+<span class="n">params</span><span class="o">.</span><span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>      <span class="c1">#limb darkening coefficients [u1, u2, u3, u4]</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">#times at which to calculate light curve</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">batman</span><span class="o">.</span><span class="n">TransitModel</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>    <span class="c1">#initializes model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will explore varying three parameters:</p>
+<ul class="simple">
+<li><p>Planet radius, <span class="math notranslate nohighlight">\(r_p\)</span>: The size of the planet influences the amount of light from the disk of the star blocked, where transit depth <span class="math notranslate nohighlight">\(\propto (r_p/R_{\star})\)</span>.</p></li>
+<li><p>Orbital semi-major axis, <span class="math notranslate nohighlight">\(a\)</span>: At larger orbital distances (for a given period), the planet moves faster across the stellar disk. At the same time, the range of inclination angles also becomes more restricted to near <span class="math notranslate nohighlight">\(90^{\circ}\)</span>.</p></li>
+<li><p>Inclination angle, <span class="math notranslate nohighlight">\(i\)</span>: Defines the orbital tilt relative to the observer’s line of sight, determining the path (chord) the planet traces across the stellar disk during transit.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Effect of orbital semi-major axis on the range of inclination angles</p>
+<figure class="align-default" id="transit-i-a">
+<a class="reference internal image-reference" href="../_images/transit_i_a.png"><img alt="../_images/transit_i_a.png" src="../_images/transit_i_a.png" style="height: 220px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">An increase in <span class="math notranslate nohighlight">\(a\)</span> results in a smaller range of <span class="math notranslate nohighlight">\(i\)</span> in which a planet can still be observed to transit. Image credit: <a class="reference external" href="https://flexbooks.ck12.org/user:planetfinder/cbook/origins-and-the-search-for-life-in-the-universe/section/10.4/primary/lesson/the-transit-method/">CK-12</a></span><a class="headerlink" href="#transit-i-a" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resampled</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">rp_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.09</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span> <span class="n">a_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">N</span><span class="p">);</span> <span class="n">inc_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">86</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">norm_rp</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">rp_range</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">rp_range</span><span class="p">))</span>
+<span class="n">norm_a</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">a_range</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">a_range</span><span class="p">))</span>
+<span class="n">norm_inc</span> <span class="o">=</span> <span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="n">inc_range</span><span class="p">),</span> <span class="n">vmax</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">inc_range</span><span class="p">))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">rp</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">rp_range</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">rp</span> <span class="o">=</span> <span class="n">rp</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="p">((</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a_range</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="p">((</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">inc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inc_range</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="n">inc</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">),</span> <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">i</span> <span class="o">/</span> <span class="p">((</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">());</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">());</span> 
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_rp</span><span class="p">)</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Planet radius, $r_p$ (units of stellar radii)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>  
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+<span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_a</span><span class="p">)</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Semi-major axis $a$ (units of stellar radii)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span> 
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+<span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm_inc</span><span class="p">)</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Orbital inclination, $i$ (degrees)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_ticks_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>  
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5f7a10a7054148ab9d0d77fa9143f2efb12cc28a35172804c1ee329dc2b15f1a.png" src="../_images/5f7a10a7054148ab9d0d77fa9143f2efb12cc28a35172804c1ee329dc2b15f1a.png" />
+</div>
+</div>
+<p>Characterizing these parameters for an observed transiting planetary system will provide us insights into the orbital architecture and physical properties of the planet. To do this, we will sample across a range of input parameters <span class="math notranslate nohighlight">\(\theta = (r_p, a, i)\)</span>, simulate transits, and match them to observed light curves. This is the <strong>forward modeling</strong> approach.</p>
+<p>In this exercise, the <code class="docutils literal notranslate"><span class="pre">batman</span></code> library provides a very fast and convenient way of simulating transit profiles on the fly. Real physical simulations, however, require far more complexity over the idealized scenarios shown here are thus expensive to compute on demand. Here, we discuss two ways to use machine learning to speed up the forward modeling process.</p>
+<section id="emulation-for-forward-modeling">
+<h2>Emulation for Forward Modeling<a class="headerlink" href="#emulation-for-forward-modeling" title="Permalink to this headline">#</a></h2>
+<p>An emulator is a machine learning model (e.g., a neural network) that serves as a surrogate generative function for complex simulations. Instead of running computationally expensive simulations each time new data is needed, the emulator is pre-trained to replicate their outputs. This shifts the computational burden to the training phase, allowing the emulator to generate high-fidelity approximations of the simulations at a fraction of the cost during inference.</p>
+<p>In this exercise, we will attempt to emulate the transits simulated by <code class="docutils literal notranslate"><span class="pre">batman</span></code> using a simple multi-layer perceptron network. Let’s first define a prior function that allows us to easily sample from a range of parameters <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sbi.utils</span> <span class="kn">import</span> <span class="n">BoxUniform</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+
+<span class="k">class</span> <span class="nc">TransitPrior</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lower</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">upper</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">return_numpy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lower</span> <span class="o">=</span> <span class="n">lower</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upper</span> <span class="o">=</span> <span class="n">upper</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dist</span> <span class="o">=</span> <span class="n">BoxUniform</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_numpy</span> <span class="o">=</span> <span class="n">return_numpy</span>
+
+    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_shape</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([])):</span>
+        <span class="sd">&quot;&quot;&quot;Draw samples from the prior.&quot;&quot;&quot;</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_shape</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">samples</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_numpy</span> <span class="k">else</span> <span class="n">samples</span>
+
+    <span class="k">def</span> <span class="nf">log_prob</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_numpy</span><span class="p">:</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+        <span class="n">log_probs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">log_probs</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_numpy</span> <span class="k">else</span> <span class="n">log_probs</span>
+    
+<span class="c1">## Define prior upper and lower limits here</span>
+<span class="n">t_prior</span> <span class="o">=</span> <span class="n">TransitPrior</span><span class="p">(</span><span class="n">lower</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mf">0.09</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">86</span><span class="p">]),</span> <span class="n">upper</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="mf">0.14</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">90</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We may now sample from the <code class="docutils literal notranslate"><span class="pre">TransitPrior</span></code> object to obtain values uniformly sampled from the 3D hyperrectangle specified by the boundaries we’ve set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">5</span><span class="p">,))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.1189, 13.4565, 86.1350],
+        [ 0.1098, 10.0750, 87.8942],
+        [ 0.1205, 10.1830, 88.5022],
+        [ 0.1373, 14.8661, 88.1728],
+        [ 0.1105, 10.0352, 86.1010]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we define a simulator function, that accepts our sampled values of <span class="math notranslate nohighlight">\(\theta\)</span> and modifies <code class="docutils literal notranslate"><span class="pre">batman</span></code>’s TransitModel accordingly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transit_simulator</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="n">params_new</span><span class="o">.</span><span class="n">rp</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are a few samples drawn from <code class="docutils literal notranslate"><span class="pre">t_prior</span></code>:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">));</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">t_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">();</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;$r_p=</span><span class="si">{</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">$, $a=</span><span class="si">{</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$, $i=</span><span class="si">{</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">$ deg&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time Units&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span> <span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">9</span><span class="p">},</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/dcfda43ba1e7832f8a10526e756b955841c6b873023b091b9e26017a5ef981c1.png" src="../_images/dcfda43ba1e7832f8a10526e756b955841c6b873023b091b9e26017a5ef981c1.png" />
+</div>
+</div>
+<p>Now we define the multi-layer perceptron to be trained using an Adam optimizer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+<span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">Adam</span>
+<span class="kn">from</span> <span class="nn">torchinfo</span> <span class="kn">import</span> <span class="n">summary</span>
+
+<span class="k">class</span> <span class="nc">TransitEmulator</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TransitEmulator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">layers</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="o">*</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">)],</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> 
+        <span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x_</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_</span><span class="o">.</span><span class="n">size</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>  
+            <span class="n">x_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">10.</span>
+            <span class="n">x_</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">90.</span> <span class="o">-</span> <span class="n">x_</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mf">10.</span>
+            <span class="n">x_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">90.</span> <span class="o">-</span> <span class="n">x_</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">x_</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    
+<span class="n">model</span> <span class="o">=</span> <span class="n">TransitEmulator</span><span class="p">();</span> <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">input_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+TransitEmulator                          [1, 100]                  --
+├─Sequential: 1-1                        [1, 100]                  --
+│    └─Linear: 2-1                       [1, 128]                  512
+│    └─ReLU: 2-2                         [1, 128]                  --
+│    └─Sequential: 2-3                   [1, 128]                  --
+│    │    └─Linear: 3-1                  [1, 128]                  16,512
+│    │    └─ReLU: 3-2                    [1, 128]                  --
+│    └─Sequential: 2-4                   [1, 128]                  --
+│    │    └─Linear: 3-3                  [1, 128]                  16,512
+│    │    └─ReLU: 3-4                    [1, 128]                  --
+│    └─Sequential: 2-5                   [1, 128]                  --
+│    │    └─Linear: 3-5                  [1, 128]                  16,512
+│    │    └─ReLU: 3-6                    [1, 128]                  --
+│    └─Sequential: 2-6                   [1, 128]                  --
+│    │    └─Linear: 3-7                  [1, 128]                  16,512
+│    │    └─ReLU: 3-8                    [1, 128]                  --
+│    └─Sequential: 2-7                   [1, 128]                  --
+│    │    └─Linear: 3-9                  [1, 128]                  16,512
+│    │    └─ReLU: 3-10                   [1, 128]                  --
+│    └─Sequential: 2-8                   [1, 128]                  --
+│    │    └─Linear: 3-11                 [1, 128]                  16,512
+│    │    └─ReLU: 3-12                   [1, 128]                  --
+│    └─Sequential: 2-9                   [1, 128]                  --
+│    │    └─Linear: 3-13                 [1, 128]                  16,512
+│    │    └─ReLU: 3-14                   [1, 128]                  --
+│    └─Linear: 2-10                      [1, 100]                  12,900
+==========================================================================================
+Total params: 128,996
+Trainable params: 128,996
+Non-trainable params: 0
+Total mult-adds (M): 0.13
+==========================================================================================
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.01
+Params size (MB): 0.52
+Estimated Total Size (MB): 0.53
+==========================================================================================
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will perform a quick training over the emulator over 5000 epochs, which should provide us with a decent level of accuracy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice the normalization of the input <span class="math notranslate nohighlight">\(\theta\)</span> being passed to `TransitEmulator’ as well as the target light curves.  Investigate the necessity of these normalizations and potential improvements.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">train_cumulative_loss</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">):</span> 
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">train_x</span> <span class="o">=</span> <span class="n">t_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,))</span>
+    <span class="n">train_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">samp</span><span class="p">)</span> <span class="k">for</span> <span class="n">samp</span> <span class="ow">in</span> <span class="n">train_x</span><span class="p">]))</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    
+    <span class="c1"># remove samples whose batman profile has no dimming</span>
+    <span class="n">train_x_inp</span> <span class="o">=</span> <span class="n">train_x</span><span class="o">.</span><span class="n">cuda</span><span class="p">()[</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">train_y</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="n">train_y</span> <span class="o">=</span> <span class="n">train_y</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">train_y</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">!=</span> <span class="n">train_y</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">]]</span> 
+    
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">train_x_inp</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="mi">1000</span><span class="o">*</span><span class="p">(</span><span class="n">train_y</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="n">epoch_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">();</span> <span class="n">train_cumulative_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+    
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s1">, Train Loss: </span><span class="si">{</span><span class="n">epoch_loss</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 0, Train Loss: 86.4594
+Epoch 1000, Train Loss: 0.8653
+Epoch 2000, Train Loss: 0.0796
+Epoch 3000, Train Loss: 0.1673
+Epoch 4000, Train Loss: 0.0789
+Epoch 5000, Train Loss: 0.1867
+Epoch 6000, Train Loss: 0.0259
+Epoch 7000, Train Loss: 0.0509
+Epoch 8000, Train Loss: 0.0233
+Epoch 9000, Train Loss: 0.0176
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_epochs</span><span class="p">),</span> <span class="n">train_cumulative_loss</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;MSE Loss&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/1746f9fb6f554913167d1c5272d4f14b4181845227dd98585e6fcfd474f12a14.png" src="../_images/1746f9fb6f554913167d1c5272d4f14b4181845227dd98585e6fcfd474f12a14.png" />
+</div>
+</div>
+<p>We can perform a quick ‘eye-test’ of our emulator by sampling <span class="math notranslate nohighlight">\(\theta\)</span> from the prior, pushing it through the network, and comparing its predictions with the corresponding <code class="docutils literal notranslate"><span class="pre">batman</span></code> solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta_</span> <span class="o">=</span> <span class="n">t_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">1</span><span class="p">,))</span>
+<span class="n">batman_sol</span> <span class="o">=</span> <span class="n">transit_simulator</span><span class="p">(</span><span class="n">theta_</span><span class="p">)</span>
+<span class="n">emulator_sol</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">theta_</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">));</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">batman_sol</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Ground Truth&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">emulator_sol</span><span class="o">/</span><span class="mi">1000</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Emulation&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">batman_sol</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">emulator_sol</span><span class="o">/</span><span class="mi">1000</span><span class="p">));</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Units&#39;</span><span class="p">);</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;batman - Emulation Flux&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">});</span> <span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.425</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax2</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Residuals&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/28cbb849839d81fe93f51da9b9075d846f905bbe604c7210f95631996614aaff.png" src="../_images/28cbb849839d81fe93f51da9b9075d846f905bbe604c7210f95631996614aaff.png" />
+</div>
+</div>
+<p>The emulator performs reasonably well, but struggles slightly with reproducing the ingress and egress features, in particular where the edges are most pronounced in the transit profile.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Ingress/Egress</p>
+<p>Consider experimenting with different network architectures that may better replicate sharp features, just as those shown by the transit ingress/egress.</p>
+</div>
+<p>With the trained emulator, we can now calculate posterior distributions using Bayesian inference:</p>
+<p><span class="math notranslate nohighlight">\(P(\theta | D) \propto P(\theta)\mathcal{L}(D|\theta)\)</span></p>
+<ul class="simple">
+<li><p>The prior <span class="math notranslate nohighlight">\(P(\theta)\)</span> is available to us via the <code class="docutils literal notranslate"><span class="pre">TransitPrior</span></code> object.</p></li>
+<li><p>Samples generated from the emulator allow us to calculate <span class="math notranslate nohighlight">\(\mathcal{L}(D|\theta)\)</span>, the likelihood of the data given <span class="math notranslate nohighlight">\(\theta\)</span>.</p></li>
+</ul>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">emcee</span></code> library to sample our posterior distribution. First, we define functions encapsulating our prior and likelihood into a log probability function, as outlined in the <a class="reference external" href="https://emcee.readthedocs.io/en/develop/user/line/">emcee tutorials</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">emcee</span>
+
+<span class="k">def</span> <span class="nf">gaussian_log_likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">sigma_squared</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">log_likelihood</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">pred</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma_squared</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">log_likelihood</span>
+
+<span class="k">def</span> <span class="nf">log_prior</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">t_prior</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">log_probability</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">lp</span> <span class="o">=</span> <span class="n">log_prior</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">lp</span><span class="p">):</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">return</span> <span class="n">lp</span> <span class="o">+</span> <span class="n">gaussian_log_likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>   <span class="c1"># log (P(theta) x L(D|theta))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will determine the posterior distribution of the emulator when matching its predictions to observed data. Here, the data is the <code class="docutils literal notranslate"><span class="pre">batman_sol</span></code> above.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Notice the re-normalization of <code class="docutils literal notranslate"><span class="pre">batman_sol</span></code> when passing it into the likelihood function. It’s important to keep track of where transformations are being applied in the workflow!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the exercise below, we set the initial condition equal to <code class="docutils literal notranslate"><span class="pre">theta_</span></code>, the prior values that we <strong>know</strong> correspond to <code class="docutils literal notranslate"><span class="pre">batman_sol</span></code>. This makes the example rather contrived, because in practice we would certainly not know beforehand where are good parts of the parameter space to sample. Feel free, however, to modify <code class="docutils literal notranslate"><span class="pre">pos</span></code> to begin at other points in parameter space instead. The resulting posterior distribution should remain similar.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xo</span> <span class="o">=</span> <span class="n">t_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> 
+
+<span class="n">ndim</span><span class="p">,</span> <span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">xo</span> <span class="p">)</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span>
+    <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">log_probability</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="p">(</span><span class="n">batman_sol</span><span class="o">-</span><span class="mi">1</span><span class="p">),))</span>
+<span class="n">sampler</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [01:49&lt;00:00,  9.16it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$r_p$&#39;</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="s1">&#39;$i$&#39;</span><span class="p">]</span>
+
+<span class="n">samples</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">800</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>  <span class="c1"># obtain samples from emcee</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">truths</span><span class="o">=</span><span class="n">theta_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Posterior Distribution</span><span class="se">\n</span><span class="s1">with Emulator&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2b3c843d5d44f3bbbac277f28b32c13f66ece7b6d53b5a2a52abb625ba6d8907.png" src="../_images/2b3c843d5d44f3bbbac277f28b32c13f66ece7b6d53b5a2a52abb625ba6d8907.png" />
+</div>
+</div>
+<p>The blue lines above represent <span class="math notranslate nohighlight">\(\theta\)</span>, or the ‘ground truth’. Using these samples from the posterior distribution, let’s visualize how the transits appear using our emulator and using the true simulation as a sanity check.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">[::</span><span class="mi">500</span><span class="p">]:</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span> <span class="n">pred</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">theta_</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">theta_</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior Draws</span><span class="se">\n</span><span class="s1">through Emulator&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior Draws</span><span class="se">\n</span><span class="s1">through Simulator&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Units&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Units&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">});</span> <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2971e50b84ebf3398a34eac3894456257a668875406fdb3dfbd2ae3bdf32d18e.png" src="../_images/2971e50b84ebf3398a34eac3894456257a668875406fdb3dfbd2ae3bdf32d18e.png" />
+</div>
+</div>
+<p>The differences between these two scenarios show how accurately the emulator acts as a surrogate to the simulator. The emulator creates transits with a smaller dispersion that what is actually simulated, showing that the emulator’s mapping from observations to data is still relatively imprecise.</p>
+</section>
+<section id="neural-likelihood-inference-nle">
+<h2>Neural Likelihood Inference (NLE)<a class="headerlink" href="#neural-likelihood-inference-nle" title="Permalink to this headline">#</a></h2>
+<p>In this exercise, the calculation of the likelihood is trivially simple. In applications, there may be cases whereby such calculations are infeasible, typically when the likelihood involves integrating over a complex and/or high-dimensional forward model. Complex models may include those that are autoregressive in nature (e.g., time series), or those with latent variables (e.g., Gaussian Mixture Model) for which evaluation of a likelihood means calculating over all possible configurations.</p>
+<p>Instead of directly computing an explicit likelihood, we can use <strong>Neural Likelihood Inference (NLE)</strong> to estimate the distribution <span class="math notranslate nohighlight">\(\mathcal{L}(D|\theta)\)</span>. We will be using NLE as implemented by the <a class="reference external" href="https://sbi-dev.github.io/"><code class="docutils literal notranslate"><span class="pre">sbi</span></code></a> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sbi.utils</span> <span class="kn">import</span> <span class="n">process_prior</span>
+<span class="kn">from</span> <span class="nn">sbi.inference</span> <span class="kn">import</span> <span class="n">SNLE</span><span class="p">,</span> <span class="n">simulate_for_sbi</span>
+
+<span class="n">transit_prior</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">process_prior</span><span class="p">(</span><span class="n">t_prior</span><span class="p">)</span>  <span class="c1"># Wrapping the prior</span>
+<span class="n">inference</span> <span class="o">=</span> <span class="n">SNLE</span><span class="p">(</span><span class="n">prior</span><span class="o">=</span><span class="n">transit_prior</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/user_input_checks_utils.py:389: UserWarning: No prior bounds were passed, consider passing lower_bound
+            and / or upper_bound if your prior has bounded support.
+  warnings.warn(
+/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/user_input_checks_utils.py:69: UserWarning: Prior is lacking mean attribute, estimating prior mean from samples.
+  warnings.warn(
+/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/user_input_checks_utils.py:80: UserWarning: Prior is lacking variance attribute, estimating prior variance from
+                samples...
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>The objective of NLE is to model the likelihood <span class="math notranslate nohighlight">\(p(x|\theta)\)</span> using a conditional neural density estimator <span class="math notranslate nohighlight">\(q_{\phi}(x|\theta)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mathbb{E}_{\tilde{p}(\theta, x)} \left[ \log q_\phi(x | \theta) \right] = - \mathbb{E}_{\tilde{p}(\theta)} \left[ \text{KL} \left( p(x | \theta) \parallel q_\phi(x | \theta) \right) \right] + \text{const}\)</span></p>
+<p>Maximizing the total log-likelihood (left-hand side) is equivalent to minimizing the KL divergence between the true likelihood <span class="math notranslate nohighlight">\(p(x | \theta)\)</span> and the neural likelihood estimator <span class="math notranslate nohighlight">\(q_\phi(x | \theta)\)</span>.</p>
+<p>To generate pairs <span class="math notranslate nohighlight">\((x, \theta)\)</span> for <code class="docutils literal notranslate"><span class="pre">sbi</span></code>, we introduce a wrapper to simulate transits using <code class="docutils literal notranslate"><span class="pre">batman</span></code> that outputs tensors instead of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transit_simulator_t</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="n">params_new</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="n">params_new</span><span class="o">.</span><span class="n">rp</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">params_new</span><span class="o">.</span><span class="n">inc</span> <span class="o">=</span> <span class="n">theta</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">light_curve</span><span class="p">(</span><span class="n">params_new</span><span class="p">))</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">theta</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">simulate_for_sbi</span><span class="p">(</span><span class="n">transit_simulator_t</span><span class="p">,</span> <span class="n">transit_prior</span><span class="p">,</span> <span class="mi">20000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "16337f06231a43fb85724939d86a6a43", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>We follow the syntax of <code class="docutils literal notranslate"><span class="pre">sbi</span></code> and to train a likelihood estimator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">likelihood_estimator</span> <span class="o">=</span> <span class="n">inference</span><span class="o">.</span><span class="n">append_simulations</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Neural network successfully converged after 213 epochs.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-nle-to-estimate-a-posterior-distribution">
+<h2>Using NLE to estimate a posterior distribution<a class="headerlink" href="#using-nle-to-estimate-a-posterior-distribution" title="Permalink to this headline">#</a></h2>
+<p>We can output a ‘potential function’ from <code class="docutils literal notranslate"><span class="pre">sbi</span></code>, which is simply <span class="math notranslate nohighlight">\(\log(P(\theta)\mathcal{L}(D|\theta))\)</span>. We have to pass in an input observation, which here would be the sample <code class="docutils literal notranslate"><span class="pre">batman</span></code> curve analyzed above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The output of the potential function is identical to the output of the manually-defined <code class="docutils literal notranslate"><span class="pre">log_probability</span></code> function when sampling with the emulator earlier in this exercise.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sbi.inference</span> <span class="kn">import</span> <span class="n">likelihood_estimator_based_potential</span>
+
+<span class="n">observation</span> <span class="o">=</span> <span class="n">transit_simulator</span><span class="p">(</span><span class="n">theta_</span><span class="p">)</span>
+
+<span class="n">potential_fn</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">likelihood_estimator_based_potential</span><span class="p">(</span>
+    <span class="n">likelihood_estimator</span><span class="p">,</span> <span class="n">t_prior</span><span class="p">,</span> <span class="n">observation</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/sbiutils.py:646: UserWarning: The passed prior has no support property, transform will be
+                constructed from mean and std. If the passed prior is supposed to be
+                bounded consider implementing the prior.support property.
+  warnings.warn(
+/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/sbiutils.py:680: UserWarning: The passed prior has no mean or stddev attribute, estimating
+                    them from samples to build affimed standardizing transform.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Running the potential function at the same <span class="math notranslate nohighlight">\(\theta\)</span> that generated the observation should give the maximum log-likelihood, as opposed to any other randomly sampled <span class="math notranslate nohighlight">\(\theta\)</span> value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">potential_fn</span><span class="p">(</span><span class="n">theta_</span><span class="p">),</span> <span class="n">potential_fn</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">22</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(tensor([1507.5471], grad_fn=&lt;AddBackward0&gt;),
+ tensor([-465371.8750], grad_fn=&lt;AddBackward0&gt;))
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this trained NLE’s potential function now as an objective function in MCMC.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">potential_fn_npy</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">potential_fn</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">ndim</span><span class="p">,</span> <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">theta_</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">theta</span><span class="p">[</span><span class="mi">40</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+
+<span class="n">sampler_nle</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span>
+    <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">potential_fn_npy</span><span class="p">)</span>
+
+<span class="n">sampler_nle</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2000/2000 [07:34&lt;00:00,  4.40it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$r_p$&#39;</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="s1">&#39;$i$&#39;</span><span class="p">]</span>
+
+<span class="n">samples_nle</span> <span class="o">=</span> <span class="n">sampler_nle</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">800</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span>  <span class="c1"># obtain samples from emcee</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples_nle</span><span class="p">,</span> <span class="n">truths</span> <span class="o">=</span><span class="n">theta_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> <span class="c1"># plotting the samples in a Corner plot!|</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Posterior Distribution</span><span class="se">\n</span><span class="s1">with NLE&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/a313d76b929f6e42a23398e5f67cbb538f9aeb76bb08a13de65a494191d89652.png" src="../_images/a313d76b929f6e42a23398e5f67cbb538f9aeb76bb08a13de65a494191d89652.png" />
+</div>
+</div>
+</section>
+<section id="comparing-outputs-from-emulation-versus-nle">
+<h2>Comparing outputs from emulation versus NLE<a class="headerlink" href="#comparing-outputs-from-emulation-versus-nle" title="Permalink to this headline">#</a></h2>
+<p>The clear winner from this simple comparison is NLE. Differences in architecture aside, the NLE approach is not contingent on the accuracy of a reconstruction process, which is what the emulation process requires.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$r_p$&#39;</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="s1">&#39;$i$&#39;</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">truths</span><span class="o">=</span><span class="n">theta_</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">truth_color</span><span class="o">=</span><span class="s2">&quot;royalblue&quot;</span><span class="p">)</span>
+<span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples_nle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">fig</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)))</span>
+<span class="n">handles</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Ground Truth $\theta$&#39;</span><span class="p">),</span>
+           <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$ from Emulator&#39;</span><span class="p">),</span>
+           <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta$ from NLE&#39;</span><span class="p">)]</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">handles</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/340276db732a25c6c5120e005ec6348b015ddcef7bd7fbdd7b9474bb1d4de21d.png" src="../_images/340276db732a25c6c5120e005ec6348b015ddcef7bd7fbdd7b9474bb1d4de21d.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">axlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">s_</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">samples</span><span class="p">[::</span><span class="mi">500</span><span class="p">],</span> <span class="n">samples_nle</span><span class="p">[::</span><span class="mi">500</span><span class="p">]):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">s_</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Emulator Posterior&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NLE Posterior&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axlist</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">transit_simulator</span><span class="p">(</span><span class="n">theta_</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ground Truth&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time Units&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">});</span> <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/3b1dc196e46b5f423e03c496bd7e64f89f9b9466dad9004525c93a37712251e5.png" src="../_images/3b1dc196e46b5f423e03c496bd7e64f89f9b9466dad9004525c93a37712251e5.png" />
+</div>
+</div>
+</section>
+<section id="application-on-real-data-hd-209458">
+<h2>Application on real data: HD 209458<a class="headerlink" href="#application-on-real-data-hd-209458" title="Permalink to this headline">#</a></h2>
+<p>Let’s apply our posterior inference tools on HD 209458, <a class="reference external" href="https://iopscience.iop.org/article/10.1086/312457">the first extrasolar planet to have its planet detected by the transit method.</a> The discovery paper we reference here is  <span id="id1">[]</span>.</p>
+<figure class="align-default" id="hd209458">
+<a class="reference internal image-reference" href="../_images/hd209458.png"><img alt="../_images/hd209458.png" src="../_images/hd209458.png" style="width: 750px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Average transit of HD 209458 from its discovery paper.</span><a class="headerlink" href="#hd209458" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We will examine observations of the star from TESS in Sector 56. Note the really deep transits that occur with a period of <span class="math notranslate nohighlight">\(&lt;5\)</span> days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_folder_path</span> <span class="o">/</span><span class="s1">&#39;HD209458_LC.txt&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="s1">&#39;Flux&#39;</span><span class="p">],</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">lc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>Flux</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2825.262051</td>
+      <td>1.000848</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2825.262282</td>
+      <td>1.000873</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2825.262514</td>
+      <td>1.001428</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2825.262745</td>
+      <td>1.001210</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2825.262977</td>
+      <td>1.000717</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>114775</th>
+      <td>2853.142934</td>
+      <td>0.999244</td>
+    </tr>
+    <tr>
+      <th>114776</th>
+      <td>2853.143166</td>
+      <td>1.000004</td>
+    </tr>
+    <tr>
+      <th>114777</th>
+      <td>2853.143397</td>
+      <td>0.999635</td>
+    </tr>
+    <tr>
+      <th>114778</th>
+      <td>2853.143629</td>
+      <td>0.999275</td>
+    </tr>
+    <tr>
+      <th>114779</th>
+      <td>2853.143860</td>
+      <td>0.999691</td>
+    </tr>
+  </tbody>
+</table>
+<p>114780 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">Time</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">Flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (d)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;HD 209458&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6c1f205bc99579321bc5c3935d602ef88aae9596bfc6103bda8dc64d1bbdfc24.png" src="../_images/6c1f205bc99579321bc5c3935d602ef88aae9596bfc6103bda8dc64d1bbdfc24.png" />
+</div>
+</div>
+<p>Following the steps in <a class="reference internal" href="transit-1.html#content-references-transits-part1"><span class="std std-ref">Planetary Transits Part 1: Observing Transits</span></a>, we will calculate the period of the transits using the Box Least-Squares Periodogram, and we will fold the light curve on this period to get an average transit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy.timeseries</span> <span class="kn">import</span> <span class="n">BoxLeastSquares</span>
+<span class="kn">import</span> <span class="nn">astropy.units</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">bls</span> <span class="o">=</span> <span class="n">BoxLeastSquares</span><span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">Time</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">Flux</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">dimensionless_unscaled</span><span class="p">)</span>
+<span class="n">periodogram</span> <span class="o">=</span> <span class="n">bls</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">,</span> <span class="n">period</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Period (d)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Max Power at </span><span class="si">{</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> days&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">plot_bls_spectrum</span><span class="p">(</span><span class="n">periodogram</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5061b2539878503352a1442fec5260815defeccb5d194bb0838f24a49ce1fa79.png" src="../_images/5061b2539878503352a1442fec5260815defeccb5d194bb0838f24a49ce1fa79.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)):</span>
+    <span class="n">centered_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">lc</span><span class="o">.</span><span class="n">Time</span> <span class="o">-</span> <span class="n">periodogram</span><span class="o">.</span><span class="n">transit_time</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="o">/</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">centered_phase</span><span class="p">[</span><span class="n">centered_phase</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">centered_phase</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">Flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xlim</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Phase $(</span><span class="se">\\</span><span class="s1">phi)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Flux&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Light Curve Phase Folded at </span><span class="si">{</span><span class="n">periodogram</span><span class="o">.</span><span class="n">period</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">periodogram</span><span class="o">.</span><span class="n">power</span><span class="p">)]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> days&#39;</span><span class="p">);</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">centered_phase</span>
+<span class="n">lc_phase</span> <span class="o">=</span> <span class="n">plot_phase_folded</span><span class="p">(</span><span class="n">periodogram</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/40819a5d596f4aacfda52ed9ab4875c95979a9cdddbd13fcbadad962eee65705.png" src="../_images/40819a5d596f4aacfda52ed9ab4875c95979a9cdddbd13fcbadad962eee65705.png" />
+</div>
+</div>
+<p>To get this transit into a format onto which we can apply our tools, we need to bin the light curve into an appropriate dimensionality.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When the simulated light curves were generated with <code class="docutils literal notranslate"><span class="pre">batman</span></code>, we specified a period of 1 day and a time array of <span class="math notranslate nohighlight">\(t\in[-0.025, 0.025]\)</span>. Since the phase <span class="math notranslate nohighlight">\(\phi = (t\,\text{mod}P)/P\)</span>, we thus have <span class="math notranslate nohighlight">\(\phi\in[-0.025, 0.025]\)</span>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binned_statistic</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">astropy.convolution</span> <span class="kn">import</span> <span class="n">convolve</span><span class="p">,</span> <span class="n">Box1DKernel</span>
+
+<span class="n">phase_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">median_tflux</span><span class="p">,</span> <span class="n">phase_binedges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">binned_statistic</span><span class="p">(</span><span class="n">lc_phase</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">Flux</span><span class="p">,</span> <span class="n">statistic</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">phase_bins</span><span class="p">)</span>
+<span class="n">phase_grid</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">phase_binedges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">phase_binedges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">median_tflux</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">median_tflux</span><span class="p">,</span> <span class="n">Box1DKernel</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="mf">4.</span><span class="o">/</span> <span class="mi">1</span><span class="p">)))</span> <span class="p">,</span><span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;fill&#39;</span><span class="p">,</span> 
+                        <span class="n">fill_value</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">lc_phase</span><span class="p">,</span> <span class="n">lc</span><span class="o">.</span><span class="n">Flux</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raw Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="n">median_tflux</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Binned Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">});</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ee30303c5a0e16766d0b21e79742a4a517ce3c38d192fccaf1ea3b5622008173.png" src="../_images/ee30303c5a0e16766d0b21e79742a4a517ce3c38d192fccaf1ea3b5622008173.png" />
+</div>
+</div>
+<section id="inference-on-hd-209458-using-the-emulator">
+<h3>Inference on HD 209458 using the emulator<a class="headerlink" href="#inference-on-hd-209458-using-the-emulator" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xo</span> <span class="o">=</span> <span class="n">t_prior</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="c1"># random start</span>
+
+<span class="n">ndim</span><span class="p">,</span> <span class="n">nwalkers</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">xo</span> <span class="p">)</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+
+<span class="n">sampler_obsemu</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span>
+    <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">log_probability</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="p">(</span><span class="n">median_tflux</span><span class="o">-</span><span class="mi">1</span><span class="p">),))</span>
+<span class="n">sampler_obsemu</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [01:36&lt;00:00, 10.41it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$r_p$&#39;</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="s1">&#39;$i$&#39;</span><span class="p">]</span>
+
+<span class="n">samples_obsemu</span> <span class="o">=</span> <span class="n">sampler_obsemu</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">800</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span> 
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples_obsemu</span><span class="p">,</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Emulator Posterior Distribution</span><span class="se">\n</span><span class="s1">for HD 209458&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/381c69f99ff5efe946306a9cdc8e41eb0a15706f6615bd277c7631d8c6f0e141.png" src="../_images/381c69f99ff5efe946306a9cdc8e41eb0a15706f6615bd277c7631d8c6f0e141.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples_obsemu</span><span class="p">[::</span><span class="mi">500</span><span class="p">]:</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">())</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span> <span class="n">pred</span><span class="o">/</span><span class="mf">1000.</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="n">transit_simulator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">xo</span> <span class="p">)),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transit from Initial $</span><span class="se">\\</span><span class="s1">theta$&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="n">median_tflux</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed Data&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior Draws</span><span class="se">\n</span><span class="s1">through Emulator&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/60d57251ced9111e8ceafb49d7c8d5e0eeb7180e7e101c966dc1d41f222db485.png" src="../_images/60d57251ced9111e8ceafb49d7c8d5e0eeb7180e7e101c966dc1d41f222db485.png" />
+</div>
+</div>
+<p>The emulator does a reasonable job at matching the observed transits, although there is some curvature near the bottom that is unaccounted for. This can potentially be fitted if we considered proper limb-darkening coefficients, as opposed to assuming a fixed and arbitrary value for them.</p>
+</section>
+<section id="inference-on-hd-209458-using-nle">
+<h3>Inference on HD 209458 using NLE<a class="headerlink" href="#inference-on-hd-209458-using-nle" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">observation</span> <span class="o">=</span> <span class="n">median_tflux</span>
+
+<span class="n">potential_fn_obs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">likelihood_estimator_based_potential</span><span class="p">(</span>
+    <span class="n">likelihood_estimator</span><span class="p">,</span> <span class="n">t_prior</span><span class="p">,</span> <span class="n">observation</span>
+<span class="p">)</span> <span class="c1"># recall that likelihood_estimator = trained NLE model</span>
+
+<span class="k">def</span> <span class="nf">potential_fn_obs_npy</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">potential_fn_obs</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">ndim</span><span class="p">,</span> <span class="n">nwalkers</span> <span class="o">=</span> <span class="n">theta_</span><span class="o">.</span><span class="n">size</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">200</span>
+<span class="n">draws</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span> <span class="o">+</span> <span class="mf">1e-4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">ndim</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nwalkers</span><span class="p">)]</span>
+
+<span class="n">sampler_obsnle</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">EnsembleSampler</span><span class="p">(</span>
+    <span class="n">nwalkers</span><span class="p">,</span> <span class="n">ndim</span><span class="p">,</span> <span class="n">potential_fn_obs_npy</span><span class="p">,</span> <span class="n">moves</span> <span class="o">=</span> <span class="n">emcee</span><span class="o">.</span><span class="n">moves</span><span class="o">.</span><span class="n">DESnookerMove</span><span class="p">())</span>
+
+<span class="n">sampler_obsnle</span><span class="o">.</span><span class="n">run_mcmc</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/sbiutils.py:646: UserWarning: The passed prior has no support property, transform will be
+                constructed from mean and std. If the passed prior is supposed to be
+                bounded consider implementing the prior.support property.
+  warnings.warn(
+/home/marc/anaconda3/lib/python3.8/site-packages/sbi/utils/sbiutils.py:680: UserWarning: The passed prior has no mean or stddev attribute, estimating
+                    them from samples to build affimed standardizing transform.
+  warnings.warn(
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2000/2000 [13:56&lt;00:00,  2.39it/s]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$r_p$&#39;</span><span class="p">,</span> <span class="s1">&#39;$a$&#39;</span><span class="p">,</span> <span class="s1">&#39;$i$&#39;</span><span class="p">]</span>
+
+<span class="n">samples_obsnle</span> <span class="o">=</span> <span class="n">sampler_obsnle</span><span class="o">.</span><span class="n">chain</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">800</span><span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">ndim</span><span class="p">))</span> 
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples_obsnle</span><span class="p">,</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;NLE Posterior Distribution</span><span class="se">\n</span><span class="s1">for HD 209458&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:root:Too few points to create valid contours
+</pre></div>
+</div>
+<img alt="../_images/aab2de61986b3172f287f757b0c8597e8594eb405eef0f6598ba559d35817a90.png" src="../_images/aab2de61986b3172f287f757b0c8597e8594eb405eef0f6598ba559d35817a90.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples_obsnle</span><span class="p">[::</span><span class="mi">500</span><span class="p">]:</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="n">transit_simulator</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+    
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="n">transit_simulator</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transit from Initial $</span><span class="se">\\</span><span class="s1">theta$&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phase_grid</span><span class="p">,</span> <span class="n">median_tflux</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed Data&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior Draws</span><span class="se">\n</span><span class="s1">through NLE&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Relative Flux&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Phase&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="n">fs</span><span class="o">-</span><span class="mi">5</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/9a734479869d1df27890d6c4bddf925fb82556f911650a43718b5f28c036370e.png" src="../_images/9a734479869d1df27890d6c4bddf925fb82556f911650a43718b5f28c036370e.png" />
+</div>
+</div>
+<p>The sampling effectively never moves past the prior, symptomatic of a scenario whereby the NLE extrapolates poorly and provides a completely uninformative likelihood. Density estimation inherently depends on knowing the full support of <span class="math notranslate nohighlight">\(p(x∣\theta)p(x∣\theta)\)</span>, and we know the observed transit is indeed out-of-distribution (OOD).  The normalizing flows used in NLE may struggle with OOD examples as they rely on learning transformations of a base distribution (often Gaussian). If the training data did not cover the region well, the model is likely to assign zero probabilities density even to slightly OOD examples like these.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Verify the behaviour of the predicted likelihoods from the NLE model on this observational target.</p>
+</div>
+<p>For a simple example like this, the emulator is cheaper to train and is far more transparent in its output and sampling process, allowing users to quickly diagnose problems in the inference process.</p>
+</section>
+<section id="comparison-with-literature-estimates">
+<h3>Comparison with literature estimates<a class="headerlink" href="#comparison-with-literature-estimates" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="hd209458-contour">
+<a class="reference internal image-reference" href="../_images/hd209458_contour.png"><img alt="../_images/hd209458_contour.png" src="../_images/hd209458_contour.png" style="width: 450px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Estimates of the transit properties of the planet HD 209458b from its discovery paper.</span><a class="headerlink" href="#hd209458-contour" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>From the <a class="reference external" href="https://exoplanetarchive.ipac.caltech.edu">NASA Exoplanet Archive</a>, HD 209458 has a radius of <span class="math notranslate nohighlight">\(R = 1.19 R_{\odot}\)</span>. Then, let’s use the fact that <span class="math notranslate nohighlight">\(1R_{\odot} = 9.73116 R_J\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;$i$ (degrees)&#39;</span><span class="p">,</span> <span class="s1">&#39;$R_J$&#39;</span><span class="p">]</span>
+<span class="n">samples_obsemu_comp</span> <span class="o">=</span> <span class="n">samples_obsemu</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]][:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">samples_obsemu_comp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">1.19</span> <span class="o">*</span> <span class="mf">9.73116</span>   <span class="c1"># x Rsol x Rjup</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">corner</span><span class="o">.</span><span class="n">corner</span><span class="p">(</span><span class="n">samples_obsemu_comp</span><span class="p">,</span>
+                    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> 
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">set_size</span><span class="p">(</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s1">&#39;Emulator Posterior Distribution</span><span class="se">\n</span><span class="s1">for HD 209458&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/89391edd2378555ee231c8b46a1147da482b04552bf160696ec27e2c9080cf6c.png" src="../_images/89391edd2378555ee231c8b46a1147da482b04552bf160696ec27e2c9080cf6c.png" />
+</div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>Experiment with the following:</p>
+<ol class="arabic simple">
+<li><p>Implementing proper limb darkening coefficients to the <code class="docutils literal notranslate"><span class="pre">batman</span></code> model.</p></li>
+</ol>
+<ul class="simple">
+<li><p>This depends on the properties of its star (effective temperature and surface gravity). Look up the stellar properties from the <a class="reference external" href="https://exoplanetarchive.ipac.caltech.edu">NASA Exoplanet Archive</a> and find the corresponding limb darkening coefficients <a class="reference external" href="https://vizier.cds.unistra.fr/viz-bin/VizieR?-source=J/A+A/600/A30">online</a>.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Including the limb darkening coefficients as free parameters to the transit model.</p></li>
+<li><p>Consider using the Neural Posterior Estimation (NPE) approach as explored in <a class="reference internal" href="fitting_power_spectrum_2.html#content-ps-fitting-sbi"><span class="std std-ref">Fitting Red Giant Oscillations Part 2: Flows &amp; Simulation-Based Inference</span></a>. Does NPE extrapolate to OOD data better than NLE?</p></li>
+</ol>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="transit-2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Planetary Transits Part 2: <em>Classifying Transits</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter2/section_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spectra</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emulation-for-forward-modeling">Emulation for Forward Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-likelihood-inference-nle">Neural Likelihood Inference (NLE)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-nle-to-estimate-a-posterior-distribution">Using NLE to estimate a posterior distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-outputs-from-emulation-versus-nle">Comparing outputs from emulation versus NLE</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-on-real-data-hd-209458">Application on real data: HD 209458</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-on-hd-209458-using-the-emulator">Inference on HD 209458 using the emulator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-on-hd-209458-using-nle">Inference on HD 209458 using NLE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-literature-estimates">Comparison with literature estimates</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1955 @@
+
+
+<!DOCTYPE html>
+
+
+<html data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Images Part 4: Upscaling the Cosmic Web &#8212; AIS 5201: AI In Astrophysics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter4/images-4';</script>
+    <link rel="canonical" href="https://USER.github.io/REPO/chapter4/images-4.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Images Part 3: Self-Supervised Learning" href="images-3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">AIS 5201: AI In Astrophysics</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to AIS 5201
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter1/section_intro.html">Time-domain Data</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_1.html">Fitting the Global Properties of Red Giant Oscillations Part 1: Traditional Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/fitting_power_spectrum_2.html">Fitting the Global Properties of Red Giant Oscillations Part 2: Flows &amp; Simulation-Based Inference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/ps_statistics.html">Power Spectrum Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_1.html">Eclipse Morphology Part 1: Exploring and Preparing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_2.html">Eclipse Morphology Part 2: Low-Dimensional Representations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_3.html">Eclipse Morphology Part 3: Latent Spaces and Visualizing Them</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/eb-morphology_4.html">Eclipse Morphology Part 4: The Variational Autoencoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-1.html">Planetary Transits Part 1: Observing Transits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-2.html">Planetary Transits Part 2: Classifying Transits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter1/transit-3.html">Planetary Transits Part 3: Fitting a Transit Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter2/section_intro.html">Spectra</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-1.html">Spectral Energy Distribution (SED) Part 1: Observing SEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-2.html">Spectral Energy Distribution (SED) Part 2: Fitting SEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/sed-3.html">Spectral Energy Distribution (SED) Part 3: Bayesian Evidence and Model Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-1.html">Stellar Spectra Part 1: Observing Detailed Spectral Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-2.html">Stellar Spectra Part 2: <em>The Cannon</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-3.html">Stellar Spectra Part 3: <em>The Payne</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-4.html">Stellar Spectra Part 4: Detecting Stellar Activity Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter2/spectra-5.html">Stellar Spectra Part 5: Domain Transfer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter3/section_intro.html">Tabular Data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-1.html">Grids of Stellar Models Part 1: Stellar Parameter Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-2.html">Grids of Stellar Models Part 2: Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-3.html">Catalogue Data Part 1: Mixed Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-4.html">Catalogue Data Part 2: Finding Clusters and Overdensities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter3/tabular-5.html">The Physics Informed Neural Network</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="section_intro.html">Images</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="images-1.html">Images Part 1: <em>Galaxy Merger Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="images-2.html">Images Part 2: <em>Galaxy Morphology Classification</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="images-3.html">Images Part 3: <em>Self-Supervised Learning</em></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Images Part 4: <em>Upscaling the Cosmic Web</em></a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/chapter4/images-4.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/edit/master/docs/chapter4/images-4.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter4/images-4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter4/images-4.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Images Part 4: Upscaling the Cosmic Web</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-cosmology-and-astrophysics-with-machine-learning-simulations-camels">Dataset: Cosmology and Astrophysics with MachinE Learning Simulations (CAMELS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-transformations">Image Transformations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models">Diffusion Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probabilistic-model-ddpm">Denoising Diffusion Probabilistic Model (DDPM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-scheduling-discrete-time">Noise Scheduling - Discrete Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-scheduling-continuous-time">Noise Scheduling - Continuous Time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-functions">Loss Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-loss-standard-ddpm">Diffusion Loss - Standard DDPM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-loss-continuous-time">Diffusion Loss - Continuous Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-loss-t-1">Endpoint Loss: <span class="math notranslate nohighlight">\(t=1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-loss-t-0">Endpoint Loss: <span class="math notranslate nohighlight">\(t=0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-from-the-model-putting-it-together">Sampling from the model – putting it together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-model-unet">Denoising Model - UNet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-diffusion-model">Training the Diffusion Model</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="images-part-4-upscaling-the-cosmic-web">
+<span id="content-references-images-part4"></span><h1>Images Part 4: <em>Upscaling the Cosmic Web</em><a class="headerlink" href="#images-part-4-upscaling-the-cosmic-web" title="Permalink to this headline">#</a></h1>
+<p><em><strong>Author: Marc Hon</strong></em></p>
+<p>Cosmological simulations are forward models that evolve primordial density fluctuations under a chosen cosmology and baryonic physics. By following the evolution of gas, dark matter, stars, and black-holes, these simulations predict observable structure known as the <strong>Cosmic Web</strong>— large scale structure in our Universe appearing as nodes (halos), filaments, sheets, and voids. Embedded within these structures are the basic units of cosmic structure, namely <strong>galaxies</strong>.</p>
+<figure class="align-default" id="scales">
+<a class="reference internal image-reference" href="../_images/scales.jpg"><img alt="../_images/scales.jpg" src="../_images/scales.jpg" style="width: 700px; height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">The hierarchy of structure in the Universe. Source: <a class="reference external" href="https://structures.uni-heidelberg.de/blog/posts/2022_12_cw/">STRUCTURES Blog</a></span><a class="headerlink" href="#scales" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It is for this reason that understanding the formation and evolution of galaxies is highly relevant for testing models of cosmology, including <span class="math notranslate nohighlight">\(\Lambda\)</span>CDM. Doing this requires creating simulated galaxies that are as detailed and realistic as possible, and comparing them to galaxies observed in the Universe. One example of such simulations is <a class="reference external" href="https://www.tng-project.org"><strong>IllustrisTNG</strong></a>: a cosmological hydrodynamical simulation that follows dark matter, gas, stars, and black holes self-consistently as the Universe expands. These simulations are computationally very expensive because they generate and track physical quantities across billions of resolution elements.</p>
+<figure class="align-default" id="ilustris">
+<a class="reference internal image-reference" href="../_images/ilustris.png"><img alt="../_images/ilustris.png" src="../_images/ilustris.png" style="width: 850px; height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">(Left) Different scales of the Illustris-TNG simulations spanning cubic volumes of roughly 50, 100, and 300 Mpc side length. (Right) Comparison of various cosmological simulations, showing the tradeoff in simulation volume versus resolution.  Adapted from the <a class="reference external" href="https://www.tng-project.org/about/">IllustrisTNG project</a>.</span><a class="headerlink" href="#ilustris" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Cosmological simulations have types of resolution scales to consider: mass resolution (mass per element) and spatial resolution (smallest scale tracked). In a fixed box, making either finer will sharply increase the compute cost of the simulation. A common compromise is to run a coarser simulation and add small-scale detail afterward, for example by re-simulating selected regions (“zoom-ins”). Another approach, which uses machine learning, is to <strong>upscale a coarser simulation by applying super-resolution techniques</strong>, which we will tackle here. The implementation of this pedagogical work is adapted from the <a class="reference external" href="https://github.com/yueyingn/ML-Hackathon-2024/tree/main">IAIFI 2024 ML Hackathon tutorial</a>.</p>
+<section id="dataset-cosmology-and-astrophysics-with-machine-learning-simulations-camels">
+<h2>Dataset: Cosmology and Astrophysics with MachinE Learning Simulations (CAMELS)<a class="headerlink" href="#dataset-cosmology-and-astrophysics-with-machine-learning-simulations-camels" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://camels.readthedocs.io/en/latest/#">CAMELS</a> is a large suite of N-body and state-of-the-art (magneto-)hydrodynamic simulations tailored towards machine learning (ML). The CAMELS data are readily packaged in the <a class="reference external" href="https://camels-multifield-dataset.readthedocs.io/en/latest/index.html">CAMELS Multifield Dataset (CMD)</a>, which includes a set of labels/parameters per 2D map.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">scienceplots</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="nn">transforms</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<span class="kn">import</span> <span class="nn">h5py</span><span class="o">,</span> <span class="nn">torch</span>
+
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">Normalize</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">autograd</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">einsum</span><span class="p">,</span> <span class="n">nn</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">softmax</span>
+<span class="kn">from</span> <span class="nn">torchinfo</span> <span class="kn">import</span> <span class="n">summary</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">torchvision.transforms</span> <span class="kn">import</span> <span class="n">Resize</span> <span class="k">as</span> <span class="n">VisionResize</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">TensorDataset</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">random_split</span>
+<span class="kn">from</span> <span class="nn">torch.distributions.normal</span> <span class="kn">import</span> <span class="n">Normal</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">trange</span>
+<span class="kn">from</span> <span class="nn">torch.special</span> <span class="kn">import</span> <span class="n">expm1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;science&#39;</span><span class="p">);</span> <span class="n">fs</span><span class="o">=</span><span class="mi">15</span>
+
+<span class="n">data_folder_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s1">&#39;ml_astro&#39;</span> <span class="o">/</span> <span class="s1">&#39;chapter4&#39;</span> <span class="o">/</span> <span class="s1">&#39;data&#39;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In this Section, we will use 2D maps of the Dark Matter density field generated by the IllustrisTNG simulations. These maps are ‘snapshots’ of the simulations at given instance of time, which is the present day given a redshift of <span class="math notranslate nohighlight">\(z=0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simPath</span> <span class="o">=</span> <span class="s1">&#39;/Maps_Mcdm_IllustrisTNG_CV_z=0.00.npz&#39;</span>
+<span class="n">dm_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">data_folder_path</span><span class="p">)</span> <span class="o">+</span> <span class="n">simPath</span><span class="p">)[</span><span class="s1">&#39;dm_map&#39;</span><span class="p">]</span>
+
+<span class="n">dm_map</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dm_map</span><span class="p">)</span>
+<span class="n">dm_map</span> <span class="o">=</span> <span class="p">(</span><span class="n">dm_map</span> <span class="o">-</span> <span class="n">dm_map</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">dm_map</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="c1"># Data Normalization</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Data Shape:&quot;</span><span class="p">,</span><span class="n">dm_map</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Shape: (405, 256, 256)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dm_map</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/0df0afe7752b6ade32377479ddb1644cafdbe3b9351fb736a1c73bd0556a0d33.png" src="../_images/0df0afe7752b6ade32377479ddb1644cafdbe3b9351fb736a1c73bd0556a0d33.png" />
+</div>
+</div>
+<section id="image-transformations">
+<h3>Image Transformations<a class="headerlink" href="#image-transformations" title="Permalink to this headline">#</a></h3>
+<p>In <a class="reference internal" href="images-2.html#content-references-images-part2"><span class="std std-ref">Images Part 2: Galaxy Morphology Classification</span></a> and <a class="reference internal" href="images-3.html#content-references-images-part3"><span class="std std-ref">Images Part 3: Self-Supervised Learning</span></a>, spatial transformations were introduced to encourage deep learning networks to learn physically meaningful features from images. Such transformations are again applied to this dataset to improveness the robustness of the training approach.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Translate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">=</span> <span class="n">ndim</span>
+        
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">):</span>
+        <span class="n">in_img</span> <span class="o">=</span> <span class="n">sample</span> 
+        
+        <span class="n">shift_dims</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+        <span class="n">shift_pixels</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">in_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">d</span><span class="p">],</span> <span class="p">(</span><span class="mi">1</span><span class="p">,))</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">shift_dims</span><span class="p">])</span>
+
+        <span class="n">in_img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">in_img</span><span class="p">,</span> <span class="n">shift_pixels</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="n">shift_dims</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">in_img</span>
+    
+
+<span class="k">class</span> <span class="nc">Flip</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">=</span> <span class="n">ndim</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;flipping is ambiguous for 1D scalars/vectors&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)[</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]</span>
+
+        <span class="n">in_img</span> <span class="o">=</span> <span class="n">sample</span>
+
+        <span class="k">if</span> <span class="n">in_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span> 
+            <span class="n">in_img</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">in_img</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]</span>
+
+        <span class="n">shifted_axes</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">in_img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">in_img</span><span class="p">,</span> <span class="n">shifted_axes</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">in_img</span>
+    
+
+<span class="k">class</span> <span class="nc">Permutate</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ndim</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">=</span> <span class="n">ndim</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;permutation is not necessary for 1D fields&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">axes</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+        
+        <span class="n">in_img</span> <span class="o">=</span> <span class="n">sample</span>
+
+        <span class="k">if</span> <span class="n">in_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">ndim</span><span class="p">:</span>  <span class="c1"># permutate vector components</span>
+            <span class="n">in_img</span> <span class="o">=</span> <span class="n">in_img</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">]</span>
+
+        <span class="n">shifted_axes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">in_img</span> <span class="o">=</span> <span class="n">in_img</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="n">shifted_axes</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">in_img</span>
+    
+<span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">train_transforms</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">Translate</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">Flip</span><span class="p">(</span><span class="n">ndim</span><span class="p">),</span> <span class="n">Permutate</span><span class="p">(</span><span class="n">ndim</span><span class="p">)])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The resulting transformations to be used in training will be a combination of the <code class="docutils literal notranslate"><span class="pre">Translate</span></code>, <code class="docutils literal notranslate"><span class="pre">Flip</span></code>, and <code class="docutils literal notranslate"><span class="pre">Permutate</span></code> transformations chained in sequence.</p>
+<div class="tip admonition">
+<p class="admonition-title">Interpreting Image Transforms</p>
+<p>What do the <code class="docutils literal notranslate"><span class="pre">Translate</span></code>, <code class="docutils literal notranslate"><span class="pre">Flip</span></code>, and <code class="docutils literal notranslate"><span class="pre">Permutate</span></code> transformations do an input image individually?
+How might these transformations help the model see <em>different versions</em> of the same image?</p>
+</div>
+<p>The transformations are applied in a Dataset, which additionally creates two copies of transformed input images:</p>
+<ul class="simple">
+<li><p>A <strong>low resolution</strong> image, whose size is controlled by the parameter <code class="docutils literal notranslate"><span class="pre">lr_size</span></code></p></li>
+<li><p>A <strong>high resolution</strong> image, whose size is controlled by the parameter <code class="docutils literal notranslate"><span class="pre">hr_size</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SupResDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Make the pairs of LR, HR img pairs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imgs</span><span class="p">,</span> <span class="n">lr_size</span><span class="p">,</span> <span class="n">hr_size</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span> <span class="o">=</span> <span class="n">imgs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr_resize</span> <span class="o">=</span> <span class="n">VisionResize</span><span class="p">(</span><span class="n">lr_size</span><span class="p">,</span> <span class="n">antialias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hr_resize</span> <span class="o">=</span> <span class="n">VisionResize</span><span class="p">(</span><span class="n">hr_size</span><span class="p">,</span> <span class="n">antialias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        
+        <span class="n">LR_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr_resize</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">HR_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hr_resize</span><span class="p">(</span><span class="n">img</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">imgs</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">LR_img</span><span class="p">,</span> <span class="n">HR_img</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the dataset</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">SupResDataset</span><span class="p">(</span><span class="n">dm_map</span><span class="p">,</span> <span class="n">lr_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">hr_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">train_transforms</span><span class="p">)</span>
+
+<span class="c1"># split dataset for training and validation</span>
+<span class="n">train_set_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="n">val_set_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_set_size</span>
+<span class="n">train_dataset</span><span class="p">,</span> <span class="n">val_dataset</span> <span class="o">=</span> <span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="n">train_set_size</span><span class="p">,</span> <span class="n">val_set_size</span><span class="p">])</span>
+
+<span class="c1"># Create train and validation data loaders</span>
+<span class="n">BATCH_SIZE</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">train_iterator</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+<span class="n">val_iterator</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">BATCH_SIZE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>As defined by <code class="docutils literal notranslate"><span class="pre">hr_size=128</span></code>, the ‘high-resolution’ images are still downsampled from the images’ native resolution of <span class="math notranslate nohighlight">\(256\times256\)</span>, but serve their purpose of being upsampled versions of the low-resolution images in the training data.</p>
+</div>
+<p>A sample visualization of the image transformation is as follows:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iter_train</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">train_iterator</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">ori_img</span><span class="p">,</span> <span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">iter_train</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ori_img</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">hr_img</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;High-Res Transformed&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lr_img</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Low-Res Transformed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/6fec73de0ed4119b3065da8bd8a8600772fe69485c3420623e06e7d01c34d8d2.png" src="../_images/6fec73de0ed4119b3065da8bd8a8600772fe69485c3420623e06e7d01c34d8d2.png" />
+<img alt="../_images/76097f69633f2e1112b8da7f1f7f6386df0fac988cf42a34d221df0e12350ab0.png" src="../_images/76097f69633f2e1112b8da7f1f7f6386df0fac988cf42a34d221df0e12350ab0.png" />
+<img alt="../_images/60a03762b6f0eb2d88d356e3995d4fb6f3c887d5cd0f64f6c20e352d65af449b.png" src="../_images/60a03762b6f0eb2d88d356e3995d4fb6f3c887d5cd0f64f6c20e352d65af449b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="diffusion-models">
+<h2>Diffusion Models<a class="headerlink" href="#diffusion-models" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p><strong>Diffusion models are a family of probabilistic generative models that progressively destruct data by injecting noise, then learn to reverse this process for sample generation.</strong> <a class="reference external" href="https://arxiv.org/pdf/2209.00796">Yang et al. (2024)</a></p>
+</div></blockquote>
+<section id="denoising-diffusion-probabilistic-model-ddpm">
+<h3>Denoising Diffusion Probabilistic Model (DDPM)<a class="headerlink" href="#denoising-diffusion-probabilistic-model-ddpm" title="Permalink to this headline">#</a></h3>
+<p>A <a class="reference external" href="https://arxiv.org/pdf/2006.11239">DDPM</a> makes use of two Markov chains across steps <span class="math notranslate nohighlight">\(t \in [0, 1, ..., T]\)</span>:</p>
+<ul class="simple">
+<li><p>A forward chain that gradually adds noise to the data (<span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>) until the signal is destroyed. This is done by generating a sequence <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}_2\)</span>, …, <span class="math notranslate nohighlight">\(\mathbf{x}_T\)</span>, with transition kernel <span class="math notranslate nohighlight">\(q\,(\mathbf{x}_t, \mathbf{x}_{t-1})\)</span>.</p></li>
+<li><p>A reverse chain that converts noise back to data. This is done by <strong>learning</strong> the transition kernels running in the opposite direction, namely <strong><span class="math notranslate nohighlight">\(p_{\theta}\,(\mathbf{x}_{t-1}, \mathbf{x}_{t})\)</span></strong>.</p></li>
+</ul>
+<figure class="align-default" id="ddpm">
+<a class="reference internal image-reference" href="../_images/ddpm.png"><img alt="../_images/ddpm.png" src="../_images/ddpm.png" style="width: 700px; height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Schematic of a Denoising Diffusion Probabilistic Model. Source: <a class="reference external" href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/">What Are Diffusion Models?</a></span><a class="headerlink" href="#ddpm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This Section will implement a DDPM, where we will examine individual elements.</p>
+</section>
+<section id="noise-scheduling-discrete-time">
+<h3>Noise Scheduling - Discrete Time<a class="headerlink" href="#noise-scheduling-discrete-time" title="Permalink to this headline">#</a></h3>
+<p>A schedule is the plan for how much noise we add at each step.</p>
+<p>In classic DDPM, this is done using a sequence <span class="math notranslate nohighlight">\(\{{\beta_t}\}_{t=1}^T\)</span> with <span class="math notranslate nohighlight">\(0&lt;\beta_t&lt;1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+q(\mathbf{x}_t \mid \mathbf{x}_{t-1}) \;=\; \mathcal{N}\!\big(\sqrt{1-\beta_t}\,\mathbf{x}_{t-1},\; \beta_t I\big),\quad 0&lt;\beta_t&lt;1.
+\]</div>
+<p>Now by defining</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_t \equiv 1-\beta_t, \qquad \bar{\alpha}_t \equiv \prod_{i=1}^{t}\alpha_i .
+\]</div>
+<p>we may sample <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> <em>in one shot</em> from <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_t \;=\; \sqrt{\bar{\alpha}_t}\,\mathbf{x}_0 \;+\; \sqrt{1-\bar{\alpha}_t}\,\varepsilon,\qquad \varepsilon\sim\mathcal{N}(0,I),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varepsilon\)</span> is noise.</p>
+</section>
+<section id="noise-scheduling-continuous-time">
+<h3>Noise Scheduling - Continuous Time<a class="headerlink" href="#noise-scheduling-continuous-time" title="Permalink to this headline">#</a></h3>
+<p>Instead of adding noise in discrete steps, we may add it in <strong>continuous time</strong> through a smooth function <span class="math notranslate nohighlight">\(\gamma(t)\)</span> known as the log-SNR schedule.</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha^2(t) \;=\; \mathrm{sigmoid}\!\big(-\gamma(t)\big), 
+\qquad
+\sigma^2(t) \;=\; \mathrm{sigmoid}\!\big(\gamma(t)\big),
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-vp-identity">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-vp-identity" title="Permalink to this equation">#</a></span>\[\mathbf{x}_t \;=\; \alpha(t)\,\mathbf{x}_0 \;+\; \sigma(t)\,\varepsilon,\qquad \varepsilon\sim\mathcal{N}(0,I).\]</div>
+<div class="note admonition">
+<p class="admonition-title">Interpretation of Continuous Time Scheduling</p>
+<p>In the simplest cases, <span class="math notranslate nohighlight">\(\gamma(t)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma(t) = \gamma_{\mathrm{min}} + (\gamma_{\mathrm{max}} - \gamma_{\mathrm{min}}) \times t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma_{\mathrm{min}}\)</span> and <span class="math notranslate nohighlight">\(\gamma_{\mathrm{max}}\)</span> are constants that are set to saturate the sigmoid function at <span class="math notranslate nohighlight">\(t=0\)</span> and <span class="math notranslate nohighlight">\(t=1\)</span>, respectively. This allows equation <a class="reference internal" href="#equation-eq-vp-identity">(36)</a> to control the addition of noise over time.</p>
+<ul class="simple">
+<li><p>At <span class="math notranslate nohighlight">\(t=0\)</span>, <span class="math notranslate nohighlight">\(\gamma(t=0) = \gamma_{\mathrm{min}}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\rightarrow \alpha^2(t=0) \approx 1; \qquad \sigma^2(t=0) \approx 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\rightarrow \mathbf{x}_T \approx \mathbf{x}_0\)</span></p></li>
+</ul>
+</li>
+<li><p>At <span class="math notranslate nohighlight">\(t=1\)</span>, <span class="math notranslate nohighlight">\(\gamma(t=1) = \gamma_{\mathrm{max}}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\rightarrow \alpha^2(t=1) \approx 0; \qquad \sigma^2(t=1) \approx 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\rightarrow \mathbf{x}_T \approx \epsilon \sim \mathcal{N}(0,I)\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Early steps keep signal from the data high (large <span class="math notranslate nohighlight">\(\alpha\)</span>, small <span class="math notranslate nohighlight">\(\sigma\)</span>), while late steps drown it in noise (small <span class="math notranslate nohighlight">\(\alpha\)</span>, large <span class="math notranslate nohighlight">\(\sigma\)</span>) until <span class="math notranslate nohighlight">\(\mathbf{x}_T\)</span> is nearly Gaussian.</p>
+<p>This method of adding noise is described to be <strong>variance preserving</strong>, with <span class="math notranslate nohighlight">\(\alpha^2(t) + \sigma^2(t) = 1\)</span>.</p>
+<p>The <strong>signal-to-noise</strong> is defined as <span class="math notranslate nohighlight">\(\mathrm{SNR}(t) = \alpha^2/\sigma^2 = \exp(-\gamma(t))\)</span>.</p>
+</div>
+<!-- such that the total variance of $\mathbf{x}_T$ stays normalized.  --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FixedLinearSchedule</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma_min</span><span class="o">=-</span><span class="mf">13.3</span><span class="p">,</span> <span class="n">gamma_max</span><span class="o">=</span><span class="mf">13.3</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma_min</span> <span class="o">=</span> <span class="n">gamma_min</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma_max</span> <span class="o">=</span> <span class="n">gamma_max</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_min</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma_max</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_min</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+
+<span class="k">def</span> <span class="nf">variance_preserving_map</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">gamma_fn</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Variance-preserving forward noising: x_t = alpha(t) * x_0 + sigma(t) * eps</span>
+<span class="sd">    where alpha^2 = sigmoid(-gamma), sigma^2 = sigmoid(gamma).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">enable_grad</span><span class="p">():</span>  <span class="c1"># keep grads for loss terms downstream</span>
+        <span class="n">times</span> <span class="o">=</span> <span class="n">times</span><span class="o">.</span><span class="n">view</span><span class="p">((</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">gamma_t</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="o">-</span><span class="n">gamma_t</span><span class="p">))</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">gamma_t</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">noise</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">noise</span><span class="p">,</span> <span class="n">gamma_t</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercise: Corrupting an Image</p>
+<p>Let’s observe a sequence of noise corruption to an image of dark matter simulation using <code class="docutils literal notranslate"><span class="pre">variance_preserving_map</span></code>.
+At the same time, we want to calculate the noise statistics, and we can do this by taking any image from the simulation, and duplicating it <span class="math notranslate nohighlight">\(B\)</span> times, which each duplicate corrupted by an independent noise draw.</p>
+<ol class="arabic simple">
+<li><p>Show, for <span class="math notranslate nohighlight">\(t\in[0, 1]\)</span>, sequential images from the gradual increment of noise. Generate <strong>at least 10</strong> images in the sequence.</p></li>
+<li><p>For each <span class="math notranslate nohighlight">\(t\)</span>, compute across <span class="math notranslate nohighlight">\(B\)</span> independent noise draws:</p></li>
+</ol>
+<ul class="simple">
+<li><p>The <strong>mean empirical SNR</strong></p></li>
+<li><p>The <strong>total variance</strong> of <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> (averaged over pixels)</p></li>
+</ul>
+<p>Do the SNR values across the sequence make sense? What do you notice about the total variance of the image across the sequence? To begin, you may use the following code hint:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">dm_map</span><span class="p">[</span><span class="mi">137</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    <span class="c1"># a single &quot;image&quot;</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">512</span>                                     <span class="c1"># many draws of noise at each t</span>
+
+<span class="k">def</span> <span class="nf">var_over_pixels</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># per-sample pixel variance</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="c1"># replicate the same image B times; draw fresh noise each time</span>
+    <span class="n">x0_batch</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">times</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">B</span><span class="p">,),</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">x_t</span><span class="p">,</span> <span class="n">g_t</span> <span class="o">=</span> <span class="n">variance_preserving_map</span><span class="p">(</span><span class="n">x0_batch</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">FixedLinearSchedule</span><span class="p">())</span>
+    
+    <span class="c1">### CODE FOR PLOTTING IMAGES AND PRESENTING STATISTICS HERE ###</span>
+</pre></div>
+</div>
+</div>
+<figure class="align-default" id="corruption">
+<a class="reference internal image-reference" href="../_images/corruption.png"><img alt="../_images/corruption.png" src="../_images/corruption.png" style="width: 700px; height: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Example of a forward chain.</span><a class="headerlink" href="#corruption" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="loss-functions">
+<h2>Loss Functions<a class="headerlink" href="#loss-functions" title="Permalink to this headline">#</a></h2>
+<section id="diffusion-loss-standard-ddpm">
+<h3>Diffusion Loss - Standard DDPM<a class="headerlink" href="#diffusion-loss-standard-ddpm" title="Permalink to this headline">#</a></h3>
+<p>The overall goal in a <strong>standard DDPM</strong> is to predict the Gaussian noise <span class="math notranslate nohighlight">\(\varepsilon\)</span> that corrupted <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> at a randomly chosen diffusion step <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{simple}}
+\;=\;
+\mathbb{E}_{t,\,\mathbf{x}_0,\,\varepsilon}
+\big[
+\|\varepsilon - \varepsilon_\theta(\mathbf{x}_t, t)\|_2^2
+\big],
+\qquad
+\mathbf{x}_t \;=\; \sqrt{\bar\alpha_t}\,\mathbf{x}_0 \;+\; \sqrt{1-\bar\alpha_t}\,\varepsilon.
+\]</div>
+<p>Predicting <span class="math notranslate nohighlight">\(\varepsilon\)</span> provides the denoiser for <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> and the <strong>score</strong> <span class="math notranslate nohighlight">\(\nabla_{\mathbf{x}_t} \log q(\mathbf{x}_t)\)</span> for the reverse chain.</p>
+<div class="tip admonition">
+<p class="admonition-title">The Score Function</p>
+<p>For each noise level <span class="math notranslate nohighlight">\(t\)</span>, the <strong>score</strong> is the gradient of the log density of the corrupted data:</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(s_t \equiv \nabla_{x_t} \log q(\mathbf{x}_t)\)</span></p>
+</div></blockquote>
+<p>Its interpretation is that of a vector field pointing towards higher probability of the data distribution at noise level <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Recall that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_t \;=\; \alpha(t)\,\mathbf{x}_0 \;+\; \sigma(t)\,\varepsilon,\qquad \varepsilon\sim\mathcal N(0,I),
+\quad q(\mathbf{x}_t|\mathbf{x}_0) \sim\mathcal N(\mathbf{x}_t;\mathbf{x}_0,I)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha^2(t)=\mathrm{sigmoid}\!\big(-\gamma(t)\big),
+\qquad
+\sigma^2(t)=\mathrm{sigmoid}\!\big(\gamma(t)\big).
+\]</div>
+<p>Now, the score-matching identity (see Eqn. 8 of <a class="reference external" href="https://arxiv.org/pdf/2209.00796">Yang et al. (2024)</a>, also Section 1.2 of <a class="reference external" href="https://arxiv.org/pdf/2402.08667">Bortoli et al. (2024)</a>), presents the score as the following:</p>
+<div class="math notranslate nohighlight">
+\[
+s_t(\mathbf{x}_t) \equiv \nabla_{x_t} \log q(\mathbf{x}_t)
+\;=\;\frac{\mathbb E[\alpha(t)\,\mathbf{x}_0\,|\,\mathbf{x}_t]-\mathbf{x}_t}{\sigma^2(t)}
+\;=\;-\frac{1}{\sigma(t)}\,\mathbb E[\varepsilon\,|\,\mathbf{x}_t].
+\]</div>
+<p>The model predicts  <span class="math notranslate nohighlight">\(\hat\varepsilon_\theta(x_t,t)\)</span>, which converges to <span class="math notranslate nohighlight">\(\mathbb E[\varepsilon\,|\,\mathbf{x}_t]\)</span> during training. Therefore, the score</p>
+<div class="math notranslate nohighlight">
+\[
+\hat s_t(\mathbf{x}_t)\;\approx\;-\dfrac{\hat\varepsilon_\theta(\mathbf{x}_t,t)}{\sigma(t)}.
+\]</div>
+<p>Crucially, <span class="math notranslate nohighlight">\(\sigma(t)\)</span> is known from the schedule, not predicted. Rearranging the equation for <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span>, we get the denoiser for the clean data <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mathbf{x}}_0(\mathbf{x}_t,t)
+\;=\;\frac{\mathbf{x}_t-\sigma(t)\,\hat\varepsilon_\theta(\mathbf{x}_t,t)}{\alpha(t)}
+\;=\;\frac{\mathbf{x}_t+\sigma^2(t)\,\hat s_t(\mathbf{x}_t)}{\alpha(t)}.
+\]</div>
+</div>
+</section>
+<section id="diffusion-loss-continuous-time">
+<h3>Diffusion Loss - Continuous Time<a class="headerlink" href="#diffusion-loss-continuous-time" title="Permalink to this headline">#</a></h3>
+<p>As <span class="math notranslate nohighlight">\(t\in[0,1]\)</span>, it is tempting to simply set a noising/denoising schedule that steps forward linearly in time. However, by doing so, the image very quickly loses SNR, as shown below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">dm_map</span><span class="p">[</span><span class="mi">137</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>    
+<span class="n">B</span> <span class="o">=</span> <span class="mi">512</span>                                   
+
+<span class="k">def</span> <span class="nf">var_over_pixels</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+
+<span class="n">snrs</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">timesteps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">timesteps</span><span class="p">:</span>
+    <span class="n">x0_batch</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+    <span class="n">times</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">B</span><span class="p">,),</span> <span class="n">t</span><span class="p">)</span>
+    <span class="n">x_t</span><span class="p">,</span> <span class="n">g_t</span> <span class="o">=</span> <span class="n">variance_preserving_map</span><span class="p">(</span><span class="n">x0_batch</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">FixedLinearSchedule</span><span class="p">())</span>
+    <span class="n">snrs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">g_t</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">));</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">snrs</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">timesteps</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">snrs</span><span class="p">),</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>   
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$t$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;SNR&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">log_</span><span class="si">{10}</span><span class="s1">$ SNR&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="o">-</span><span class="mi">3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$\\log_{10}$ SNR&#39;)
+</pre></div>
+</div>
+<img alt="../_images/92759fb7ff5fd228b0cac2f1a74b9bc0521c904423c13f555a9daf5d39c959d6.png" src="../_images/92759fb7ff5fd228b0cac2f1a74b9bc0521c904423c13f555a9daf5d39c959d6.png" />
+</div>
+</div>
+<p>Ultimately, we want to parameterize our loss to care about predictions average error by <strong>noise level</strong>, not by an arbitrary time label. Because of this, <span class="math notranslate nohighlight">\(\gamma_t\)</span>, the log-SNR, is used to parameterize the loss as a sum over timestamps <strong>weighted by log-SNR</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{diff,disc}}
+\;\approx\;
+\mathbb{E}_{\mathbf{x}_0,\varepsilon}\!\left[
+\sum_{t=1}^{T}
+\tfrac{1}{2}\,
+\big[
+\|\varepsilon-\varepsilon_\theta(\mathbf{x}_t,t)\|\big]_2^2\;
+\big(\gamma_t-\gamma_{t-1}\big)
+\right].
+\]</div>
+<p>This can be taken to the limit as <span class="math notranslate nohighlight">\(T\to\infty\)</span>, whereby the sum above becomes</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{diff}}
+\;=\;
+\mathbb{E}_{\mathbf{x}_0,\varepsilon}\!\left[
+\int_{0}^{1}
+\tfrac{1}{2}\,
+\big[
+\|\varepsilon-\varepsilon_\theta(\mathbf{x}_t,t)\|\big]_2^2\;
+\frac{d\gamma(t)}{dt}\,dt
+\right],
+\qquad
+\mathbf{x}_t=\alpha(t)\,\mathbf{x}_0+\sigma(t)\,\varepsilon.
+\]</div>
+<p>The following implements the continuous time version of the diffusion loss:</p>
+<!-- #BPD  -->
+<!-- The ELBO/KL terms are in nats (natural log). To report the conventional metric and to make losses comparable across resolutions, you divide by D and convert nats→bits by dividing by log⁡2 --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_diffusion_loss</span><span class="p">(</span>
+    <span class="n">gamma_t</span><span class="p">,</span>
+    <span class="n">times</span><span class="p">,</span>
+    <span class="n">pred_noise</span><span class="p">,</span>
+    <span class="n">noise</span><span class="p">,</span>
+    <span class="n">bpd_factor</span><span class="p">):</span>
+
+    <span class="n">gamma_grad</span> <span class="o">=</span> <span class="n">autograd</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span>  <span class="c1"># gamma_grad shape: (B, )</span>
+        <span class="n">gamma_t</span><span class="p">,</span>  <span class="c1"># (B, )</span>
+        <span class="n">times</span><span class="p">,</span>  <span class="c1"># (B, )</span>
+        <span class="n">grad_outputs</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">gamma_t</span><span class="p">),</span>
+        <span class="n">create_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">retain_graph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pred_loss</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="p">((</span><span class="n">pred_noise</span> <span class="o">-</span> <span class="n">noise</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">start_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>  <span class="c1"># (B, )</span>
+    <span class="k">return</span> <span class="n">bpd_factor</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">pred_loss</span> <span class="o">*</span> <span class="n">gamma_grad</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="endpoint-loss-t-1">
+<h3>Endpoint Loss: <span class="math notranslate nohighlight">\(t=1\)</span><a class="headerlink" href="#endpoint-loss-t-1" title="Permalink to this headline">#</a></h3>
+<p>At <span class="math notranslate nohighlight">\(t=1\)</span>, conditioned on <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{t=1} \mid \mathbf{x}_0 \sim \mathcal N\,(\alpha_{t=1}\,\mathbf{x}_0,\ \sigma^2_{t=1}\,I)
+\]</div>
+<p>We need this to match the constraint at <span class="math notranslate nohighlight">\(t=1\)</span>, namely that the <strong>end result of the forward chain is noise</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{t=1} \approx \epsilon \sim \mathcal{N}(0,I)
+\]</div>
+<p>By defining,</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_1=\alpha_{t=1}\,\mathbf{x}_0,\ \ \sigma_1^2=\sigma^2_{t=1},
+\]</div>
+<p>the following loss explicitly enforces this constraint using the K-L Divergence between the Gaussian distribution predicted by the diffusion model and the normal distribution expected at <span class="math notranslate nohighlight">\(t=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{KL}\!\left(q(\mathbf{x}_{t=1}\mid \mathbf{x}_{0})\;\|\;p(\mathbf{x}_{t=1})\right)
+=\mathrm{KL}\!\left(\mathcal N(\mu_1,\sigma_1^2 I)\;\|\;\mathcal N(0,I)\right).
+\]</div>
+<p>The KL-loss in the following is a consequence of measuring the divergence with respect to a normal distribution, derived in Equation <a class="reference internal" href="../chapter1/eb-morphology_4.html#equation-kl-gaussian">(26)</a> in <a class="reference internal" href="../chapter1/eb-morphology_4.html#content-references-eclipse-part4"><span class="std std-ref">Eclipse Morphology Part 4: The Variational Autoencoder</span></a></p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{KL}=\tfrac12\Big(\sigma_1^2+\mu_1^2-\log\sigma_1^2-1\Big).
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kl_std_normal</span><span class="p">(</span><span class="n">mean_squared</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">var</span> <span class="o">+</span> <span class="n">mean_squared</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">))</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_latent_loss</span><span class="p">(</span>
+    <span class="n">gamma_fn</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">,</span>
+    <span class="n">bpd_factor</span><span class="p">):</span>
+
+    <span class="n">gamma_1</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+    <span class="n">sigma_1_sq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">gamma_1</span><span class="p">)</span>
+    <span class="n">mean_sq</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sigma_1_sq</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">bpd_factor</span> <span class="o">*</span> <span class="n">kl_std_normal</span><span class="p">(</span><span class="n">mean_sq</span><span class="p">,</span> <span class="n">sigma_1_sq</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">start_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Applying the Variance-Preserving Identity</p>
+<p>The code above uses the following identity to simplify the expression to using only <span class="math notranslate nohighlight">\(\sigma_1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_{t=1}^2+\sigma_1^2=1 \qquad \text{(variance-preserving)} \qquad \;\;\Rightarrow\;\;
+\mu_1^2=(\alpha_{t=1} \mathbf{x}_0)^2=\alpha_{t=1}^2 \mathbf{x}_0^2=(1-\sigma_1^2)\,\mathbf{x}_0^2.
+\]</div>
+</div>
+</section>
+<section id="endpoint-loss-t-0">
+<h3>Endpoint Loss: <span class="math notranslate nohighlight">\(t=0\)</span><a class="headerlink" href="#endpoint-loss-t-0" title="Permalink to this headline">#</a></h3>
+<p>The <span class="math notranslate nohighlight">\(t=0\)</span> loss is a <strong>data-likelihood</strong> term: we draw <span class="math notranslate nohighlight">\(z_0 \sim q(z_0\mid \mathbf{x}_0)\)</span> from the forward process and require the observation model <span class="math notranslate nohighlight">\(p(\mathbf{x}_0\mid z_0)\)</span> to assign high probability to the observed <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>.</p>
+<p>Mathematically, the objective is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{recon}}
+\;=\;
+-\;\mathbb{E}_{q(z_0\mid x_0)}\big[\log p(\mathbf{x}_0\mid z_0)\big]
+\]</div>
+<p>Near <span class="math notranslate nohighlight">\(t=0\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+z_0 \;=\; \alpha_0\,\mathbf{x}_0 \;+\; \sigma_0\,\varepsilon,\qquad
+\sigma_0^2 \approx 0,\ \ \alpha_0^2 \approx 1,
+\quad\Rightarrow\quad
+\frac{z_0}{\alpha_0} \;\approx\; \mathbf{x}_0.
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\log p(\mathbf{x}_0 \mid z_0)\;\approx\;\log \mathcal N\!\big(\mathbf{x}_0;\ z_0/\alpha_0,\ \texttt{data_noise}^2 I\big).
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_reconstruction_loss</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span>
+    <span class="n">bpd_factor</span><span class="p">,</span>
+    <span class="n">gamma_fn</span><span class="p">,</span>
+    <span class="n">data_noise</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">noise_0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">z_0</span><span class="p">,</span> <span class="n">gamma_0</span> <span class="o">=</span> <span class="n">variance_preserving_map</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+        <span class="n">gamma_fn</span><span class="o">=</span><span class="n">gamma_fn</span><span class="p">,</span>
+        <span class="n">noise</span><span class="o">=</span><span class="n">noise_0</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># Generate a sample for z_0 -&gt; closest to the data</span>
+    <span class="n">alpha_0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="o">-</span><span class="n">gamma_0</span><span class="p">))</span>
+    <span class="n">z_0_rescaled</span> <span class="o">=</span> <span class="n">z_0</span> <span class="o">/</span> <span class="n">alpha_0</span>
+    <span class="k">return</span> <span class="n">bpd_factor</span> <span class="o">*</span>\
+ <span class="n">Normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">z_0_rescaled</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">data_noise</span><span class="p">)</span><span class="o">.</span><span class="n">log_prob</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">start_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Putting all the losses together, we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_times</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">device</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Sample diffusion times for batch, used for monte carlo estimates</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        batch_size (int): size of batch</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Tensor: times</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">times</span>
+
+
+<span class="k">def</span> <span class="nf">get_loss</span><span class="p">(</span><span class="n">denoising_model</span><span class="p">,</span>
+             <span class="n">gamma_fn</span><span class="p">,</span>
+             <span class="n">sample_times</span><span class="p">,</span>
+             <span class="n">variance_preserving_map</span><span class="p">,</span>
+             <span class="n">get_diffusion_loss</span><span class="p">,</span>
+             <span class="n">get_latent_loss</span><span class="p">,</span>
+             <span class="n">get_reconstruction_loss</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span>
+             <span class="n">conditioning</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    
+    <span class="n">bpd_factor</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    
+    <span class="c1"># Sample from q(x_t | x_0) with random t</span>
+    
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">noise</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">noise</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        
+    <span class="c1"># Forward noising</span>
+    <span class="n">x_t</span><span class="p">,</span> <span class="n">gamma_t</span> <span class="o">=</span> <span class="n">variance_preserving_map</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span> <span class="n">gamma_fn</span><span class="o">=</span><span class="n">gamma_fn</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">)</span>
+    
+    <span class="c1"># Predict noise added</span>
+    <span class="n">pred_noise</span> <span class="o">=</span> <span class="n">denoising_model</span><span class="p">(</span>
+        <span class="n">x_t</span><span class="p">,</span>
+        <span class="n">conditioning</span><span class="o">=</span><span class="n">conditioning</span><span class="p">,</span>
+        <span class="n">g_t</span><span class="o">=</span><span class="n">gamma_t</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span>
+    <span class="p">)</span>
+    
+    
+    <span class="n">diffusion_loss</span> <span class="o">=</span> <span class="n">get_diffusion_loss</span><span class="p">(</span>
+        <span class="n">gamma_t</span><span class="o">=</span><span class="n">gamma_t</span><span class="p">,</span>
+        <span class="n">times</span><span class="o">=</span><span class="n">times</span><span class="p">,</span>
+        <span class="n">pred_noise</span><span class="o">=</span><span class="n">pred_noise</span><span class="p">,</span>
+        <span class="n">noise</span><span class="o">=</span><span class="n">noise</span><span class="p">,</span>
+        <span class="n">bpd_factor</span><span class="o">=</span><span class="n">bpd_factor</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">latent_loss</span> <span class="o">=</span> <span class="n">get_latent_loss</span><span class="p">(</span>
+        <span class="n">gamma_fn</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+        <span class="n">bpd_factor</span><span class="o">=</span><span class="n">bpd_factor</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">recons_loss</span> <span class="o">=</span> <span class="n">get_reconstruction_loss</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
+        <span class="n">bpd_factor</span><span class="o">=</span><span class="n">bpd_factor</span><span class="p">,</span>
+        <span class="n">gamma_fn</span> <span class="o">=</span> <span class="n">gamma_fn</span>
+    <span class="p">)</span>
+
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">diffusion_loss</span> <span class="o">+</span> <span class="n">latent_loss</span> <span class="o">+</span> <span class="n">recons_loss</span>
+
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;elbo&quot;</span><span class="p">:</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">&quot;diffusion_loss&quot;</span><span class="p">:</span> <span class="n">diffusion_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">&quot;latent_loss&quot;</span><span class="p">:</span> <span class="n">latent_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="s2">&quot;reconstruction_loss&quot;</span><span class="p">:</span> <span class="n">recons_loss</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sampling-from-the-model-putting-it-together">
+<h2>Sampling from the model – putting it together<a class="headerlink" href="#sampling-from-the-model-putting-it-together" title="Permalink to this headline">#</a></h2>
+<p>We need to implement a <strong>reverse-diffusion step</strong> to describe the transition from a noisier state at time <span class="math notranslate nohighlight">\(t\)</span> to a slightly cleaner state at time <span class="math notranslate nohighlight">\(s&lt;t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_s \sim p_\theta(\mathbf{x}_s \mid \mathbf{x}_t)\,.
+\]</div>
+<p>This uses the learned <strong>noise predictor</strong> <span class="math notranslate nohighlight">\(\hat\varepsilon_\theta(\mathbf{x}_t,t,\text{cond})\)</span> and the schedule <span class="math notranslate nohighlight">\(\gamma(\cdot)\)</span> to produce a Gaussian transition with a closed-form mean and variance.</p>
+<p>Let <span class="math notranslate nohighlight">\(\gamma_u=\gamma(u)\)</span>, <span class="math notranslate nohighlight">\(\alpha_u=\alpha(\gamma_u)=\sqrt{\mathrm{sigmoid}(-\gamma_u)}\)</span>, and <span class="math notranslate nohighlight">\(\sigma_u=\sigma(\gamma_u)=\sqrt{\mathrm{sigmoid}(\gamma_u)}\)</span>.<br />
+Define</p>
+<div class="math notranslate nohighlight">
+\[
+c \;=\; 1 - e^{\,\gamma_s - \gamma_t} \;=\; -\,\mathrm{expm1}(\gamma_s-\gamma_t).
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_s \;\sim\; \mathcal N\!\Big(
+\underbrace{\tfrac{\alpha_s}{\alpha_t}\,\big[\mathbf{x}_t \;-\; c\,\sigma_t\,\hat\varepsilon_\theta(\mathbf{x}_t,t,\text{cond})\big]}_{\text{mean}},
+\;
+\underbrace{c\,\sigma_s^2\,I}_{\text{variance}}
+\Big).
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_zs_given_zt</span><span class="p">(</span><span class="n">zt</span><span class="p">,</span><span class="n">conditioning</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">gamma_fn</span><span class="p">,</span> <span class="n">denoising_model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sample p(z_s|z_t, x) used for standard ancestral sampling. </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gamma_t</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">gamma_s</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="n">expm1</span><span class="p">(</span><span class="n">gamma_s</span> <span class="o">-</span> <span class="n">gamma_t</span><span class="p">)</span>
+    <span class="n">alpha_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="o">-</span><span class="n">gamma_t</span><span class="p">))</span>
+    <span class="n">alpha_s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="o">-</span><span class="n">gamma_s</span><span class="p">))</span>
+    <span class="n">sigma_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">gamma_t</span><span class="p">))</span>
+    <span class="n">sigma_s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">gamma_s</span><span class="p">))</span>
+
+    <span class="n">pred_noise</span> <span class="o">=</span> <span class="n">denoising_model</span><span class="p">(</span>
+        <span class="n">zt</span><span class="p">,</span>
+        <span class="n">conditioning</span><span class="o">=</span><span class="n">conditioning</span><span class="p">,</span>
+        <span class="n">g_t</span><span class="o">=</span><span class="n">gamma_t</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">alpha_s</span> <span class="o">/</span> <span class="n">alpha_t</span> <span class="o">*</span> <span class="p">(</span><span class="n">zt</span> <span class="o">-</span> <span class="n">c</span> <span class="o">*</span> <span class="n">sigma_t</span> <span class="o">*</span> <span class="n">pred_noise</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">sigma_s</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">scale</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">zt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>What does it do?</strong> The code draws a cleaner latent <span class="math notranslate nohighlight">\(\mathbf{x}_s\)</span> from a Gaussian whose <strong>mean</strong> moves <span class="math notranslate nohighlight">\(\mathbf{x}_t\)</span> in the denoising direction and whose <strong>variance</strong> injects fresh noise for the new noise level.</p>
+<div class="tip admonition">
+<p class="admonition-title">The role of <span class="math notranslate nohighlight">\(c\)</span></p>
+<p>The parameter <span class="math notranslate nohighlight">\(c\)</span> acts as a step-size in “noise space”: small values result in small updates and little injected noise, whereas larger results in stronger denoising moves and more noise added.</p>
+<p><strong>If the denoiser were perfect</strong>, one reverse step <span class="math notranslate nohighlight">\(t\!\to\!s\)</span> reproduces the correct marginal at time <span class="math notranslate nohighlight">\(s\)</span>. Matching the variance when
+<span class="math notranslate nohighlight">\(\mathbf{x}_t=\alpha_t x_0+\sigma_t\varepsilon_t\)</span> and <span class="math notranslate nohighlight">\(\hat\varepsilon_\theta=\varepsilon_t\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[
+\Big(\tfrac{\alpha_s}{\alpha_t}\sigma_t(1-c)\Big)^2 + c\,\sigma_s^2 \;=\; \sigma_s^2
+\quad\Rightarrow\quad
+\boxed{\,c \;=\; 1 - e^{\,\gamma_s-\gamma_t}\,}.
+\]</div>
+<p>(Here <span class="math notranslate nohighlight">\(e^{\gamma}=\sigma^2/\alpha^2\)</span>. In code: <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">-expm1(gamma_s</span> <span class="pre">-</span> <span class="pre">gamma_t)</span></code>.)</p>
+</div>
+<p>Finally, we wrap the sampling function in a wrapper that generates new samples <span class="math notranslate nohighlight">\(t\in[0,1]\)</span> <strong>given</strong> a conditioning vector (more on that below).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">gen_samples</span><span class="p">(</span><span class="n">conditioning</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">n_sampling_steps</span><span class="p">,</span>
+    <span class="n">device</span><span class="p">,</span>
+    <span class="n">image_shape</span><span class="p">,</span>
+    <span class="n">sample_zs_given_zt</span><span class="p">,</span>
+    <span class="n">gamma_fn</span><span class="p">,</span>
+    <span class="n">denoising_model</span><span class="p">,</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate new samples given some conditioning vector</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">if</span> <span class="n">z</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="o">*</span><span class="n">image_shape</span><span class="p">),</span>
+            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">steps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+        <span class="mf">1.0</span><span class="p">,</span>
+        <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">n_sampling_steps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">trange</span><span class="p">(</span><span class="n">n_sampling_steps</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;sampling&quot;</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">sample_zs_given_zt</span><span class="p">(</span>
+            <span class="n">zt</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+            <span class="n">conditioning</span><span class="o">=</span><span class="n">conditioning</span><span class="p">,</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">steps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+            <span class="n">s</span><span class="o">=</span><span class="n">steps</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="n">gamma_fn</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">,</span>
+            <span class="n">denoising_model</span> <span class="o">=</span> <span class="n">denoising_model</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="denoising-model-unet">
+<h2>Denoising Model - UNet<a class="headerlink" href="#denoising-model-unet" title="Permalink to this headline">#</a></h2>
+<p>What remains to form the DDPM is the choice of neural network architecture that does the <strong>noise prediction</strong> at every timestep. The architecture used here is known as a <a class="reference external" href="https://arxiv.org/abs/1505.04597"><strong>U-Net</strong></a>, a convolutional neural network (CNN) structure initially designed for image segmentation. It comprises an encoder–decoder CNN with skip connections that are capable of processing inputs at multiple spatial scales and fusing coarse semantic context with fine spatial detail to produce high-resolution outputs.</p>
+<figure class="align-default" id="unet">
+<a class="reference internal image-reference" href="../_images/unet.png"><img alt="../_images/unet.png" src="../_images/unet.png" style="width: 700px; height: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Schematic of a U-Net adapted to the super-resolution task in this Section. Image from <a class="reference external" href="http://dx.doi.org/10.1007/s12652-024-04832-9">Thiagarajan et al. (2024)</a>, with additional annotations included.</span><a class="headerlink" href="#unet" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The key characteristics of the U-Net architecture are the following:</p>
+<ul class="simple">
+<li><p><strong>Encoder (“down” path)</strong>: stacked conv/residual blocks with downsampling. Learns global context and long receptive fields.</p>
+<ul>
+<li><p>The encoder captures large scale features across multiple scales during the downsampling.</p></li>
+</ul>
+</li>
+<li><p><strong>Decoder (“down” path)</strong>: upsampling blocks to restore convolution.</p>
+<ul>
+<li><p>The decoder plus skip connections aim to restore fine detail in the image during the mapping.</p></li>
+</ul>
+</li>
+<li><p><strong>Skip connections</strong>: feature maps from each encoder stage concatenated to the matching decoder stage.</p>
+<ul>
+<li><p>These deliver high-frequency spatial information (edges, small halos, filaments) directly to the decoder, preserving edges, textures, and small structures lost during downsampling.</p></li>
+</ul>
+</li>
+<li><p><strong>Bottleneck</strong>: the lowest-resolution, highest-channel part of the U-Net.</p>
+<ul>
+<li><p>This component aggregates global context (very large receptive field) and mixes information before the decoder upsamples.</p></li>
+</ul>
+</li>
+</ul>
+<p>These define the components of a standard U-Net. However, the network used in this study contains additional adaptations:</p>
+<ul class="simple">
+<li><p><strong>Input conditioning</strong>: The low-resolution image to be upsampled is included as an extra channel in the input.</p></li>
+<li><p><strong>Time conditioning</strong>: An embedding for time is passed through an MLP and injected into every residual block. This conditions the same network to behave appropriately across various SNR levels.</p></li>
+</ul>
+<p>The following lists the network modules used in the U-Net.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">zero_init</span><span class="p">(</span><span class="n">module</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Sets to zero all the parameters of a module, and returns the module.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">zeros_</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">module</span>
+
+
+
+<span class="k">def</span> <span class="nf">get_timestep_embedding</span><span class="p">(</span>
+    <span class="n">timesteps</span><span class="p">,</span>
+    <span class="n">embedding_dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+    <span class="n">max_timescale</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
+    <span class="n">min_timescale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="c1"># Scale timesteps by a factor of 1000</span>
+    <span class="n">timesteps</span> <span class="o">*=</span> <span class="mi">1000</span>
+    <span class="c1"># Ensure timesteps is a 1-dimensional tensor</span>
+    <span class="k">assert</span> <span class="n">timesteps</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="k">assert</span> <span class="n">embedding_dim</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="n">num_timescales</span> <span class="o">=</span> <span class="n">embedding_dim</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="c1"># Create a tensor of inverse timescales logarithmically spaced</span>
+    <span class="n">inv_timescales</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span>
+        <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">min_timescale</span><span class="p">),</span>
+        <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">max_timescale</span><span class="p">),</span>
+        <span class="n">num_timescales</span><span class="p">,</span>
+        <span class="n">device</span><span class="o">=</span><span class="n">timesteps</span><span class="o">.</span><span class="n">device</span><span class="p">,</span>
+    <span class="p">)</span>
+    
+    <span class="n">emb</span> <span class="o">=</span> <span class="n">timesteps</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">dtype</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">inv_timescales</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># Shape: (T, D/2)</span>
+    <span class="c1"># Return the concatenation of sine and cosine of the embedding</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">emb</span><span class="o">.</span><span class="n">sin</span><span class="p">(),</span> <span class="n">emb</span><span class="o">.</span><span class="n">cos</span><span class="p">()],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Shape: (T, D)</span>
+
+
+
+<span class="c1"># the residual block class</span>
+<span class="k">class</span> <span class="nc">ResnetBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch_in</span><span class="p">,</span> <span class="n">ch_out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">condition_dim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dropout_prob</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">norm_groups</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Set output channels to input channels if not specified</span>
+        <span class="n">ch_out</span> <span class="o">=</span> <span class="n">ch_in</span> <span class="k">if</span> <span class="n">ch_out</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">ch_out</span>
+
+        <span class="c1"># Store the channel and condition dimensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ch_in</span> <span class="o">=</span> <span class="n">ch_in</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ch_out</span> <span class="o">=</span> <span class="n">ch_out</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">condition_dim</span> <span class="o">=</span> <span class="n">condition_dim</span>
+
+        <span class="c1"># First part of the network</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">GroupNorm</span><span class="p">(</span><span class="n">num_groups</span><span class="o">=</span><span class="n">norm_groups</span><span class="p">,</span> <span class="n">num_channels</span><span class="o">=</span><span class="n">ch_in</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">ch_in</span><span class="p">,</span> <span class="n">ch_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Conditional projection if condition_dim is specified</span>
+        <span class="k">if</span> <span class="n">condition_dim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cond_proj</span> <span class="o">=</span> <span class="n">zero_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">condition_dim</span><span class="p">,</span> <span class="n">ch_out</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+        <span class="c1"># Second part of the network</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">GroupNorm</span><span class="p">(</span><span class="n">num_groups</span><span class="o">=</span><span class="n">norm_groups</span><span class="p">,</span> <span class="n">num_channels</span><span class="o">=</span><span class="n">ch_out</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">(),</span>
+            <span class="o">*</span><span class="p">([</span><span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_prob</span><span class="p">)]</span> <span class="o">*</span> <span class="p">(</span><span class="n">dropout_prob</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)),</span>
+            <span class="n">zero_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">ch_out</span><span class="p">,</span> <span class="n">ch_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding_mode</span><span class="o">=</span><span class="s2">&quot;circular&quot;</span><span class="p">)),</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Skip connection if input and output channels differ</span>
+        <span class="k">if</span> <span class="n">ch_in</span> <span class="o">!=</span> <span class="n">ch_out</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">skip_conv</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">ch_in</span><span class="p">,</span> <span class="n">ch_out</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">condition</span><span class="p">):</span>
+        <span class="c1"># Apply the first part of the network</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">net1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># Apply conditional projection if condition is provided</span>
+        <span class="k">if</span> <span class="n">condition</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Ensure condition shape matches the batch size</span>
+            <span class="k">assert</span> <span class="n">condition</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition_dim</span><span class="p">)</span>
+            <span class="n">condition</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cond_proj</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+            <span class="c1"># Expand condition to match the spatial dimensions of x</span>
+            <span class="n">condition</span> <span class="o">=</span> <span class="n">condition</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>  <span class="c1"># 2D</span>
+            <span class="c1"># Add the condition to the output of the first network part</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">+</span> <span class="n">condition</span>
+
+        <span class="c1"># Apply the second part of the network</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">net2</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+        <span class="c1"># Apply skip connection if needed</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_out</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">skip_conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="c1"># Ensure the shapes of the input and the processed input match</span>
+        <span class="k">assert</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span>
+        <span class="c1"># Return the sum of the input and the processed input</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+    
+<span class="k">class</span> <span class="nc">UNetVDM</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">scale_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">embedding_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+        <span class="n">norm_groups</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="n">dropout_prob</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">input_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">conditioning_channels</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">n_blocks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="n">gamma_min</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mf">13.3</span><span class="p">,</span>
+        <span class="n">gamma_max</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">13.3</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span> <span class="o">=</span> <span class="n">scale_factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span> <span class="o">=</span> <span class="n">embedding_dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma_min</span> <span class="o">=</span> <span class="n">gamma_min</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma_max</span> <span class="o">=</span> <span class="n">gamma_max</span>
+        
+        <span class="n">resnet_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+            <span class="n">ch_in</span><span class="o">=</span><span class="n">embedding_dim</span><span class="p">,</span>
+            <span class="n">ch_out</span><span class="o">=</span><span class="n">embedding_dim</span><span class="p">,</span>
+            <span class="n">condition_dim</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="n">embedding_dim</span><span class="p">,</span>
+            <span class="n">dropout_prob</span><span class="o">=</span><span class="n">dropout_prob</span><span class="p">,</span>
+            <span class="n">norm_groups</span><span class="o">=</span><span class="n">norm_groups</span><span class="p">,</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">embed_conditioning</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">embedding_dim</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">embedding_dim</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">(),</span>
+        <span class="p">)</span>
+        
+        <span class="n">total_input_ch</span> <span class="o">=</span> <span class="n">input_channels</span> <span class="o">+</span> <span class="n">conditioning_channels</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_in</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">total_input_ch</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># Down path: n_blocks blocks with a resnet block and maybe attention.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">down_blocks</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="n">ResnetBlock</span><span class="p">(</span><span class="o">**</span><span class="n">resnet_params</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_resnet_block_1</span> <span class="o">=</span> <span class="n">ResnetBlock</span><span class="p">(</span><span class="o">**</span><span class="n">resnet_params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mid_resnet_block_2</span> <span class="o">=</span> <span class="n">ResnetBlock</span><span class="p">(</span><span class="o">**</span><span class="n">resnet_params</span><span class="p">)</span>
+
+        <span class="c1"># Up path: n_blocks+1 blocks with a resnet block and maybe attention.</span>
+        <span class="n">resnet_params</span><span class="p">[</span><span class="s2">&quot;ch_in&quot;</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">2</span>  <span class="c1"># double input channels due to skip connections</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up_blocks</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span>
+            <span class="n">ResnetBlock</span><span class="p">(</span><span class="o">**</span><span class="n">resnet_params</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_blocks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">conv_out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">GroupNorm</span><span class="p">(</span><span class="n">num_groups</span><span class="o">=</span><span class="n">norm_groups</span><span class="p">,</span> <span class="n">num_channels</span><span class="o">=</span><span class="n">embedding_dim</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">SiLU</span><span class="p">(),</span>
+            <span class="n">zero_init</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">input_channels</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">z</span><span class="p">,</span>
+        <span class="n">g_t</span><span class="p">,</span>
+        <span class="n">conditioning</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        
+        <span class="k">if</span> <span class="n">conditioning</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">conditioning</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">conditioning</span><span class="p">,</span> <span class="n">scale_factor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scale_factor</span><span class="p">,</span>
+                                             <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">z_concat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">conditioning</span><span class="p">),</span>
+                <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z_concat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span>
+                <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="p">)</span>
+        
+        <span class="c1"># Get gamma to shape (B, ).</span>
+        <span class="n">g_t</span> <span class="o">=</span> <span class="n">g_t</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">z_concat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># assume shape () or (1,) or (B,)</span>
+        <span class="k">assert</span> <span class="n">g_t</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="n">z_concat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],)</span>
+        <span class="c1"># Rescale to [0, 1], but only approximately since gamma0 &amp; gamma1 are not fixed.</span>
+        <span class="n">g_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">g_t</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma_max</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_min</span><span class="p">)</span>
+        <span class="n">t_embedding</span> <span class="o">=</span> <span class="n">get_timestep_embedding</span><span class="p">(</span><span class="n">g_t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_dim</span><span class="p">)</span>
+        <span class="c1"># We will condition on time embedding.</span>
+        <span class="n">cond</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed_conditioning</span><span class="p">(</span><span class="n">t_embedding</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv_in</span><span class="p">(</span><span class="n">z_concat</span><span class="p">)</span>  <span class="c1"># (B, embedding_dim, H, W)</span>
+        <span class="n">hs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">down_block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">down_blocks</span><span class="p">:</span>  <span class="c1"># n_blocks times</span>
+            <span class="n">hs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">down_block</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">cond</span><span class="p">)</span>
+        <span class="n">hs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_resnet_block_1</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">cond</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mid_resnet_block_2</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">cond</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">up_block</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_blocks</span><span class="p">:</span>  <span class="c1"># n_blocks+1 times</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">h</span><span class="p">,</span> <span class="n">hs</span><span class="o">.</span><span class="n">pop</span><span class="p">()],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">up_block</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">cond</span><span class="p">)</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv_out</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">prediction</span> <span class="o">+</span> <span class="n">z</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">denoising_model</span> <span class="o">=</span> <span class="n">UNetVDM</span><span class="p">(</span>
+    <span class="n">scale_factor</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="c1"># our SR task upscale the spatial resolution by 4 times</span>
+    <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> 
+    <span class="n">norm_groups</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">n_blocks</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">input_channels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="c1">#</span>
+    <span class="n">conditioning_channels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">summary</span><span class="p">(</span><span class="n">denoising_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+UNetVDM                                  --
+├─Sequential: 1-1                        --
+│    └─Linear: 2-1                       9,408
+│    └─SiLU: 2-2                         --
+│    └─Linear: 2-3                       37,056
+│    └─SiLU: 2-4                         --
+├─Conv2d: 1-2                            912
+├─ModuleList: 1-3                        --
+│    └─ResnetBlock: 2-5                  --
+│    │    └─Sequential: 3-1              20,880
+│    │    └─Linear: 3-2                  9,216
+│    │    └─Sequential: 3-3              20,880
+│    └─ResnetBlock: 2-6                  --
+│    │    └─Sequential: 3-4              20,880
+│    │    └─Linear: 3-5                  9,216
+│    │    └─Sequential: 3-6              20,880
+│    └─ResnetBlock: 2-7                  --
+│    │    └─Sequential: 3-7              20,880
+│    │    └─Linear: 3-8                  9,216
+│    │    └─Sequential: 3-9              20,880
+│    └─ResnetBlock: 2-8                  --
+│    │    └─Sequential: 3-10             20,880
+│    │    └─Linear: 3-11                 9,216
+│    │    └─Sequential: 3-12             20,880
+├─ResnetBlock: 1-4                       --
+│    └─Sequential: 2-9                   --
+│    │    └─GroupNorm: 3-13              96
+│    │    └─SiLU: 3-14                   --
+│    │    └─Conv2d: 3-15                 20,784
+│    └─Linear: 2-10                      9,216
+│    └─Sequential: 2-11                  --
+│    │    └─GroupNorm: 3-16              96
+│    │    └─SiLU: 3-17                   --
+│    │    └─Dropout: 3-18                --
+│    │    └─Conv2d: 3-19                 20,784
+├─ResnetBlock: 1-5                       --
+│    └─Sequential: 2-12                  --
+│    │    └─GroupNorm: 3-20              96
+│    │    └─SiLU: 3-21                   --
+│    │    └─Conv2d: 3-22                 20,784
+│    └─Linear: 2-13                      9,216
+│    └─Sequential: 2-14                  --
+│    │    └─GroupNorm: 3-23              96
+│    │    └─SiLU: 3-24                   --
+│    │    └─Dropout: 3-25                --
+│    │    └─Conv2d: 3-26                 20,784
+├─ModuleList: 1-6                        --
+│    └─ResnetBlock: 2-15                 --
+│    │    └─Sequential: 3-27             41,712
+│    │    └─Linear: 3-28                 9,216
+│    │    └─Sequential: 3-29             20,880
+│    │    └─Conv2d: 3-30                 4,656
+│    └─ResnetBlock: 2-16                 --
+│    │    └─Sequential: 3-31             41,712
+│    │    └─Linear: 3-32                 9,216
+│    │    └─Sequential: 3-33             20,880
+│    │    └─Conv2d: 3-34                 4,656
+│    └─ResnetBlock: 2-17                 --
+│    │    └─Sequential: 3-35             41,712
+│    │    └─Linear: 3-36                 9,216
+│    │    └─Sequential: 3-37             20,880
+│    │    └─Conv2d: 3-38                 4,656
+│    └─ResnetBlock: 2-18                 --
+│    │    └─Sequential: 3-39             41,712
+│    │    └─Linear: 3-40                 9,216
+│    │    └─Sequential: 3-41             20,880
+│    │    └─Conv2d: 3-42                 4,656
+│    └─ResnetBlock: 2-19                 --
+│    │    └─Sequential: 3-43             41,712
+│    │    └─Linear: 3-44                 9,216
+│    │    └─Sequential: 3-45             20,880
+│    │    └─Conv2d: 3-46                 4,656
+├─Sequential: 1-7                        --
+│    └─GroupNorm: 2-20                   96
+│    └─SiLU: 2-21                        --
+│    └─Conv2d: 2-22                      433
+=================================================================
+Total params: 736,081
+Trainable params: 736,081
+Non-trainable params: 0
+=================================================================
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-the-diffusion-model">
+<h2>Training the Diffusion Model<a class="headerlink" href="#training-the-diffusion-model" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.optim</span> <span class="kn">import</span> <span class="n">AdamW</span><span class="p">,</span> <span class="n">lr_scheduler</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+
+<span class="n">denoising_model</span> <span class="o">=</span> <span class="n">denoising_model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">AdamW</span><span class="p">(</span><span class="n">denoising_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1.0e-5</span><span class="p">)</span>
+<span class="n">scheduler</span> <span class="o">=</span> <span class="n">lr_scheduler</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">)</span>
+<span class="n">gamma_fn</span> <span class="o">=</span> <span class="n">FixedLinearSchedule</span><span class="p">()</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_samples</span><span class="p">(</span><span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span><span class="p">,</span> <span class="n">samples</span><span class="p">):</span>
+    
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Low-Res&#39;</span><span class="p">,</span><span class="s1">&#39;High-Res Prediction&#39;</span><span class="p">,</span><span class="s1">&#39;High-Res Original&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ds</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">lr_img</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">hr_img</span><span class="p">[</span><span class="mi">0</span><span class="p">]]):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">step</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_iterator</span><span class="p">):</span>
+        
+        <span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span> <span class="o">=</span> <span class="n">lr_img</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">hr_img</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        
+        <span class="n">loss</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">get_loss</span><span class="p">(</span><span class="n">denoising_model</span><span class="p">,</span>
+             <span class="n">gamma_fn</span><span class="p">,</span>
+             <span class="n">sample_times</span><span class="p">,</span>
+             <span class="n">variance_preserving_map</span><span class="p">,</span>
+             <span class="n">get_diffusion_loss</span><span class="p">,</span>
+             <span class="n">get_latent_loss</span><span class="p">,</span>
+             <span class="n">get_reconstruction_loss</span><span class="p">,</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">hr_img</span><span class="p">,</span> <span class="n">conditioning</span><span class="o">=</span><span class="n">lr_img</span><span class="p">)</span>
+        
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">step</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2"> | Diffusion_loss =%.1f&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">metric</span><span class="p">[</span><span class="s1">&#39;diffusion_loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()))</span>
+            
+            <span class="n">samples</span> <span class="o">=</span> <span class="n">gen_samples</span><span class="p">(</span>
+                    <span class="n">conditioning</span><span class="o">=</span><span class="n">lr_img</span><span class="p">,</span>
+                    <span class="n">batch_size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">lr_img</span><span class="p">),</span>
+                    <span class="n">n_sampling_steps</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+                    <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                    <span class="n">image_shape</span> <span class="o">=</span> <span class="n">hr_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+                    <span class="n">sample_zs_given_zt</span><span class="o">=</span><span class="n">sample_zs_given_zt</span><span class="p">,</span>
+                    <span class="n">gamma_fn</span> <span class="o">=</span> <span class="n">gamma_fn</span><span class="p">,</span>
+                    <span class="n">denoising_model</span> <span class="o">=</span> <span class="n">denoising_model</span>
+            <span class="p">)</span>
+            
+            <span class="n">plot_samples</span><span class="p">(</span><span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 15 | Diffusion_loss =7.6
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sampling: 100%|███████████████████████████████| 250/250 [00:08&lt;00:00, 27.78it/s]
+</pre></div>
+</div>
+<img alt="../_images/346a2510ffd32f3cf5fcf9479dd0e0b6f764528272d5ee8bd5f89e7bb493fe5c.png" src="../_images/346a2510ffd32f3cf5fcf9479dd0e0b6f764528272d5ee8bd5f89e7bb493fe5c.png" />
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercise: Sampling Steps</p>
+<p>Try sampling with different numbers of reverse steps and compare output sharpness vs. runtime. Display as a grid for a particular example, where columns = number of sampling steps and rows = samples.</p>
+<p>Comment on the image quality with an increasing number of steps. Do you always see better detail and coherence at all stages, or do you see a clear “knee” where extra steps stop helping?</p>
+<p>*Hint: Use the validation set through <code class="docutils literal notranslate"><span class="pre">val_iterator</span></code> to ensure reproducibility in retrieving samples.</p>
+<p>Perform the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">Ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+    <span class="n">outs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Ns</span><span class="p">:</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">gen_samples</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
+                       <span class="n">n_sampling_steps</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">plot_samples</span><span class="p">(</span><span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Exercise: Initial noise “temperature”</p>
+<p>Scale the initial Gaussian <span class="math notranslate nohighlight">\(z_{t=1}\sim \mathcal N(0, \tau^2 I)\)</span> by a <strong>temperature</strong> <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
+<p>Describe the changes seen in the predicted samples when <span class="math notranslate nohighlight">\(\tau \gg 1\)</span>. The reverse kernels and your training objective assume a <strong>standard-normal</strong> endpoint. How does adding noise temperature violate this assumption?</p>
+<p>*Hint: The standard-normal is effectively our latent prior in high-dimensions. Recall what happens to points in high dimensions, particularly when distances are scaled – are the points still following the prior?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">outs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">temps</span><span class="p">:</span>
+        <span class="n">z0</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="o">*</span><span class="n">vdm</span><span class="o">.</span><span class="n">image_shape</span><span class="p">),</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="n">zN</span> <span class="o">=</span> <span class="n">gen_samples</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
+                           <span class="n">z</span><span class="o">=</span><span class="n">z0</span><span class="p">)</span>
+        <span class="n">plot_samples</span><span class="p">(</span><span class="n">lr_img</span><span class="p">,</span> <span class="n">hr_img</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="images-3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Images Part 3: <em>Self-Supervised Learning</em></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-cosmology-and-astrophysics-with-machine-learning-simulations-camels">Dataset: Cosmology and Astrophysics with MachinE Learning Simulations (CAMELS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-transformations">Image Transformations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models">Diffusion Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probabilistic-model-ddpm">Denoising Diffusion Probabilistic Model (DDPM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-scheduling-discrete-time">Noise Scheduling - Discrete Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-scheduling-continuous-time">Noise Scheduling - Continuous Time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-functions">Loss Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-loss-standard-ddpm">Diffusion Loss - Standard DDPM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-loss-continuous-time">Diffusion Loss - Continuous Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-loss-t-1">Endpoint Loss: <span class="math notranslate nohighlight">\(t=1\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#endpoint-loss-t-0">Endpoint Loss: <span class="math notranslate nohighlight">\(t=0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-from-the-model-putting-it-together">Sampling from the model – putting it together</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-model-unet">Denoising Model - UNet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-the-diffusion-model">Training the Diffusion Model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marc Hon
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
