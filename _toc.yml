@@ -8,4 +8,33 @@ chapters:
   sections: 
   - file: chapter1/fitting_power_spectrum_1
   - file: chapter1/fitting_power_spectrum_2
-  - file: chapter1/ps_statistics
+  - file: chapter1/eb-morphology_1  
+  - file: chapter1/eb-morphology_2
+  - file: chapter1/eb-morphology_3
+  - file: chapter1/eb-morphology_4
+  - file: chapter1/transit-1
+  - file: chapter1/transit-2
+  - file: chapter1/transit-3
+- file: chapter2/section_intro
+  sections: 
+  - file: chapter2/sed-1
+  - file: chapter2/sed-2
+  - file: chapter2/sed-3
+  - file: chapter2/spectra-1
+  - file: chapter2/spectra-2
+  - file: chapter2/spectra-3
+  - file: chapter2/spectra-4
+  - file: chapter2/spectra-5
+- file: chapter3/section_intro
+  sections: 
+  - file: chapter3/tabular-1
+  - file: chapter3/tabular-2
+  - file: chapter3/tabular-3
+  - file: chapter3/tabular-4
+  - file: chapter3/tabular-5
+- file: chapter4/section_intro
+  sections: 
+  - file: chapter4/images-1
+  - file: chapter4/images-2
+  - file: chapter4/images-3
+  - file: chapter4/images-4
